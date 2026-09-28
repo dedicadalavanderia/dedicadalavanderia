@@ -55,9 +55,9 @@ function tabelaFamilias() {
   const linhas = ['gordura', 'proteina', 'tanino'].map((id) => {
     const f = D.FAMILIAS[id];
     const ex = f.exemplos.charAt(0).toUpperCase() + f.exemplos.slice(1);
-    return `<tr><th scope="row">${esc(f.nome)}</th><td data-rotulo="Exemplos">${esc(ex)}</td><td data-rotulo="Tira-manchas">${esc(f.hydret)}</td></tr>`;
+    return `<tr><th scope="row">${esc(f.nome)}</th><td data-rotulo="Exemplos">${esc(ex)}</td></tr>`;
   });
-  return `<table class="dm-tabela"><thead><tr><th scope="col">Família de mancha</th><th scope="col">Exemplos</th><th scope="col">Tira-manchas</th></tr></thead><tbody>\n${linhas.join('\n')}\n</tbody></table>`;
+  return `<table class="dm-tabela"><thead><tr><th scope="col">Família de mancha</th><th scope="col">Exemplos</th></tr></thead><tbody>\n${linhas.join('\n')}\n</tbody></table>`;
 }
 
 // 3. O que não sai na lavagem

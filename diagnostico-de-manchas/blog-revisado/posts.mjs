@@ -42,7 +42,7 @@ export const POSTS = [
       { h2: 'Em quanto tempo levar a peça com vinho?', html: `<p>Depende do tecido. A tabela traz o prazo que os guias da Dedicada recomendam para cada peça:</p>
 {{TABELA}}
 <p>Em camisas, toalhas de mesa e outras peças, a regra é a mesma: quanto antes a peça chega, maior a chance de a mancha sair.</p>` },
-      { h2: 'Como a Dedicada tira a mancha de vinho?', html: `<p>Cada família de mancha tem o seu tira-manchas, da linha Hydret da Seitz, e o vinho vai com o das manchas de tanino, o Hydret 3. Dois desses produtos se anulam se forem usados juntos, por isso cada mancha é tratada na sua vez, antes da lavagem. Na Dedicada, isso se chama protocolos de manchas.</p>
+      { h2: 'Como a Dedicada tira a mancha de vinho?', html: `<p>Cada família de mancha tem o seu tira-manchas da Seitz, o V1, o V2 ou o V3, e o vinho vai com o das manchas de tanino. Dois desses produtos se anulam se forem usados juntos, por isso cada mancha é tratada na sua vez, antes da lavagem. Na Dedicada, isso se chama protocolos de manchas.</p>
 <ul>
 <li><strong>Seda:</strong> o álcool é retirado primeiro; depois a seda é lavada a seco e, se ficar sombra, em água fria, no programa da Seitz para seda.</li>
 <li><strong>Vestido de festa e de noiva:</strong> pré-lavagem à mão, molho e o tira-manchas certo para cada mancha, antes das lavagens no programa da Seitz para vestidos. O vestido de noiva fica pronto em 7 dias.</li>
@@ -59,7 +59,7 @@ export const POSTS = [
     guias: ['seda', 'festa-noiva', 'linho', 'la', 'couro'],
     mudou: [
       'Saíram "produto exclusivo", "da melhor marca do mundo" e "uma das melhores lavanderias do Brasil"; da descrição, saiu "definitivamente".',
-      'O produto "V2" virou o nome que os guias confirmam: o Hydret 3, da Seitz, para as manchas de tanino.',
+      'Saiu "o V2 retira as manchas de vinho tinto": os guias ligam o vinho ao tira-manchas das manchas de tanino, e falta confirmar qual dos três (V1, V2 ou V3) é esse (pergunta 20).',
       '"Vários bairros de Florianópolis" virou a coleta confirmada: 26 bairros da Ilha e do Continente, em dias fixos.',
       'Entraram a resposta curta no começo, o passo a passo, a urgência de cada tecido tirada dos guias, o processo de cada peça, a fala aprovada da Liliane e perguntas frequentes com dados estruturados.',
       'Entraram o botão para o Diagnóstico de Manchas, já na mancha de vinho, e os links para os guias.'
@@ -87,7 +87,7 @@ export const POSTS = [
       { h2: 'Por que o cheiro de xixi volta?', html: `<p>Porque a urina entra no enchimento. No edredom, na pelúcia e no acolchoado do carrinho de bebê, ela passa do tecido para o recheio, e o cheiro volta com a umidade. No couro, a urina penetra e endurece o material, e a maciez original pode não voltar totalmente.</p>
 <p>Por isso o prazo pesa. Os guias da Dedicada recomendam levar estas peças em até 24 horas:</p>
 {{TABELA}}` },
-      { h2: 'Como a Dedicada lava peças com xixi?', html: `<p>O xixi é uma mancha orgânica e é tratado antes da lavagem, com o tira-manchas próprio dessa família, o Hydret 2 da Seitz. Depois, cada peça segue o seu processo:</p>
+      { h2: 'Como a Dedicada lava peças com xixi?', html: `<p>O xixi é uma mancha orgânica e é tratado antes da lavagem, com o tira-manchas da Seitz próprio dessa família (V1, V2 ou V3). Depois, cada peça segue o seu processo:</p>
 <ul>
 <li><strong>Edredom:</strong> remoção manual de manchas e lavagem em máquinas industriais; os claros passam por duplo alvejamento sem cloro. Pronto em 2 dias; solteiro a partir de R$ 69,00.</li>
 <li><strong>Pelúcia:</strong> escovação à mão, wet cleaning e secagem natural, sem secadora. Pronta em 3 dias, a partir de R$ 80,00.</li>

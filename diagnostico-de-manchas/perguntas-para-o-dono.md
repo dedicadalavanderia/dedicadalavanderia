@@ -7,6 +7,8 @@ Respondidas em 28/09/2026:
 - **Quem assina a página:** Jorge Isaac Mazza (pergunta 1).
 - **Fotos dos cartões:** aprovadas (pergunta 7). As 5 fotos novas foram refeitas para mostrar a peça inteira, sem zoom, como as outras.
 - **Revisão dos 25 posts do blog:** aprovada (pergunta 16). O conteúdo pode mudar para seguir as regras do projeto.
+- **Nome dos tira-manchas da Seitz:** V1, V2 e V3 (pergunta 18). A ferramenta, a página e os posts já usam esse nome.
+- **Três posts sobre urina:** aprovado revisar "Como lavar roupa com xixi" e redirecionar os outros dois para ele (pergunta 19).
 
 Já resolvidas pelos guias no ar: o couro fica pronto em **5 a 7 dias** (a fala do Alejandro já diz isso), e a fala do guia de lã é do **Jorge**.
 
@@ -42,3 +44,4 @@ Já resolvidas pelos guias no ar: o couro fica pronto em **5 a 7 dias** (a fala 
 17. **As 3 perguntas frequentes novas estão aprovadas?** São elas: "Minha roupa manchou com a cor de outra peça. Tem jeito?", "A mancha clara de água sanitária sai?" e "Como tirar mancha de desodorante?". As respostas foram montadas com frases dos guias de algodão e de jeans. A de desodorante é a resposta publicada no guia de algodão.
 18. **Os tira-manchas da Seitz se chamam V1, V2 e V3, ou Hydret 1, 2 e 3?** Os posts do blog falam em "V1, V2 e V3"; os guias e a Base técnica, em "Hydret 1, 2 e 3". Os posts revisados usam Hydret, como os guias. Se o nome certo for V1, V2 e V3, a troca é feita em todos os lugares de uma vez.
 19. **Os três posts sobre urina podem virar um só?** São eles: "Como lavar roupa com xixi", "Como remover cheiro de urina da roupa (pets e crianças)" e "Lavagem de roupas com urina em Florianópolis". Eles competem entre si no Google. A sugestão é revisar o primeiro e redirecionar os outros dois para ele. A outra opção é manter os três, cada um com um ângulo próprio.
+20. **Qual V é de qual família de mancha?** Os guias ligam cada família a um tira-manchas: gordurosas e sintéticas, orgânicas e proteicas, e vegetais e de tanino. Mas o post antigo de vinho diz que o V2 tira vinho tinto, e o vinho é da família vegetal e de tanino. Enquanto isso não for confirmado, a ferramenta, a página e os posts dizem só "V1, V2 ou V3", sem ligar cada um a uma família. O guia de cetim e organza, que está no ar, tem uma tabela com "Hydret 1, 2 e 3" e também precisa ser trocado.

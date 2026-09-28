@@ -64,25 +64,26 @@
     sem_solucao: { ordem: 7, rotulo: 'Sem solução na lavagem', tom: 'aviso' }
   };
 
-  /* ---------- Famílias de manchas (tira-manchas Hydret da Seitz) ---------- */
+  /* ---------- Famílias de manchas (tira-manchas V1, V2 e V3 da Seitz) ----------
+   * seitz: true quando a família tem tira-manchas próprio. Qual V é de qual família: pergunta 20. */
   var FAMILIAS = {
     gordura: {
-      nome: 'Gordurosas e sintéticas', singular: 'gordurosa ou sintética', hydret: 'Hydret 1',
+      nome: 'Gordurosas e sintéticas', singular: 'gordurosa ou sintética', seitz: true,
       exemplos: 'maquiagem, batom, caneta, tinta, esmalte, cola, óleo e graxa',
       primeiro: 'Tire o excesso sem esfregar e não use álcool, acetona nem removedor: em couro e em detalhes sintéticos, eles tiram a cor ou dissolvem o material.'
     },
     proteina: {
-      nome: 'Orgânicas e proteicas', singular: 'orgânica ou proteica', hydret: 'Hydret 2',
+      nome: 'Orgânicas e proteicas', singular: 'orgânica ou proteica', seitz: true,
       exemplos: 'sangue, suor, comida, leite, ovo e urina',
       primeiro: 'Tire o excesso encostando um pano limpo, sem esfregar, e não use água quente: o calor fixa sangue, suor e comida.'
     },
     tanino: {
-      nome: 'Vegetais e de tanino', singular: 'vegetal ou de tanino', hydret: 'Hydret 3',
+      nome: 'Vegetais e de tanino', singular: 'vegetal ou de tanino', seitz: true,
       exemplos: 'vinho, café, chá, suco, refrigerante e perfume',
       primeiro: 'Tire o excesso encostando um pano limpo, sem esfregar, e não use água quente, que fixa manchas de café, chá e vinho.'
     },
-    outras: { nome: 'Outras manchas', hydret: null, exemplos: '', primeiro: 'Não esfregue, não use produto caseiro e não passe ferro antes de a mancha sair.' },
-    dano: { nome: 'Danos no tecido', hydret: null, exemplos: '', primeiro: 'Mande uma foto ou leve a peça para a equipe avaliar: alguns danos não se desfazem na lavagem.' }
+    outras: { nome: 'Outras manchas', seitz: false, exemplos: '', primeiro: 'Não esfregue, não use produto caseiro e não passe ferro antes de a mancha sair.' },
+    dano: { nome: 'Danos no tecido', seitz: false, exemplos: '', primeiro: 'Mande uma foto ou leve a peça para a equipe avaliar: alguns danos não se desfazem na lavagem.' }
   };
 
   /* Posts do blog que passaram pela conferência das regras (28/09/2026): sem "o melhor",
@@ -98,7 +99,8 @@
 
   /* ---------- Vocabulário de manchas e danos ----------
    * familia: chave de FAMILIAS. sinonimos: palavras que a busca reconhece (escritas sem acento).
-   * dica: primeiro cuidado próprio desta mancha, tirado dos guias. leia: chave de BLOG. */
+   * dica: primeiro cuidado próprio desta mancha, tirado dos guias. leia: chave de BLOG.
+   * nao: peças em que o problema não faz sentido (bolinhas no couro): não aparece nos botões nem na busca. */
   var MANCHAS = [
     { id: 'vinho', nome: 'Vinho', familia: 'tanino', sinonimos: ['vinho', 'vinho tinto', 'tinto', 'vinho branco'] },
     { id: 'cafe', nome: 'Café', familia: 'tanino', sinonimos: ['cafe', 'cafezinho', 'capuccino', 'cappuccino', 'cafe com leite'] },
@@ -130,7 +132,7 @@
     { id: 'ferrugem', nome: 'Ferrugem', familia: 'outras', sinonimos: ['ferrugem', 'enferrujado', 'enferrujada'], dica: 'Não use água sanitária: ela escurece a mancha de ferrugem.' },
     { id: 'cor', nome: 'Cor de outra peça', familia: 'outras', sinonimos: ['cor de outra peca', 'outra roupa', 'outra peca', 'manchada por outra', 'manchou de outra', 'soltou tinta', 'soltou cor', 'transferencia de cor', 'passou cor', 'tingiu', 'manchou na lavagem', 'manchou na maquina', 'jeans manchou', 'roupa tingida', 'manchou de vermelho', 'manchou de azul', 'desbotou em', 'uma roupa na outra', 'roupa na outra', 'colorida na branca', 'colorida em roupa branca', 'colorida na roupa branca', 'roupa de cor na branca'], dica: 'Não seque a peça: o calor da secadora fixa o corante de vez.' },
     { id: 'desodorante', nome: 'Desodorante', familia: 'outras', sinonimos: ['desodorante', 'antitranspirante'], dica: 'Não passe a ferro sobre a mancha: o calor fixa desodorante e suor.' },
-    { id: 'lama', nome: 'Lama ou terra', familia: 'outras', sinonimos: ['lama', 'barro', 'terra', 'poeira', 'areia'], dica: 'Não coloque na máquina com outras roupas: a terra espalha e encarde o resto.' },
+    { id: 'lama', nome: 'Lama ou terra', familia: 'outras', sinonimos: ['lama', 'barro', 'terra', 'poeira', 'areia'], dica: 'Não misture a peça com outras roupas: a terra espalha e encarde o resto.' },
     { id: 'amarelado', nome: 'Amarelado', familia: 'outras', sinonimos: ['amarelado', 'amarelada', 'amarelou', 'encardido', 'encardida', 'amarelamento', 'mancha amarela'], dica: 'Não use água sanitária: o cloro deixa o amarelado mais forte e enfraquece a fibra.' },
     { id: 'agua-sanitaria', nome: 'Água sanitária ou cloro', familia: 'outras', sinonimos: ['agua sanitaria', 'qboa', 'quiboa', 'candida', 'cloro', 'alvejante com cloro', 'descoloriu'], dica: 'Em peça colorida, o cloro deixa manchas claras que não voltam, como no jeans e na sarja; em peça branca, enfraquece a fibra. Na Dedicada, o alvejamento é à base de oxigênio, sem cloro.' },
     { id: 'amaciante', nome: 'Amaciante', familia: 'outras', sinonimos: ['amaciante', 'mancha de amaciante'] },
@@ -139,10 +141,10 @@
     { id: 'cera', nome: 'Cera de vela', familia: 'outras', sinonimos: ['vela', 'cera', 'cera de vela', 'parafina'] },
     { id: 'chiclete', nome: 'Chiclete', familia: 'outras', sinonimos: ['chiclete', 'goma de mascar', 'chicle'] },
     { id: 'pasta', nome: 'Pasta de dente', familia: 'outras', sinonimos: ['pasta de dente', 'creme dental'] },
-    { id: 'queimado', nome: 'Marca de ferro ou queimado', familia: 'dano', sinonimos: ['queimado', 'queimou', 'queimei', 'queimada', 'ferro quente', 'passei ferro', 'passei o ferro', 'marca de ferro', 'ferro de passar', 'brilho de ferro', 'chamuscado', 'brilho'], dica: 'O calor achata a fibra, e em alguns tecidos a marca não sai. Da próxima vez, passe a vapor ou com um pano por cima.' },
+    { id: 'queimado', nome: 'Marca de ferro ou queimado', familia: 'dano', sinonimos: ['queimado', 'queimou', 'queimei', 'queimada', 'ferro quente', 'passei ferro', 'passei o ferro', 'marca de ferro', 'ferro de passar', 'brilho de ferro', 'chamuscado', 'brilho'], dica: 'O calor achata ou derrete a fibra, e em alguns materiais a marca não sai.', nao: ['tenis', 'carrinho', 'pelucias'] },
     { id: 'encolheu', nome: 'Encolheu', familia: 'dano', sinonimos: ['encolheu', 'encolhida', 'encolhido', 'encolhimento', 'diminuiu', 'feltrou', 'feltragem', 'ficou pequena', 'ficou pequeno'], dica: 'Água quente e secadora são as causas mais comuns, e em muitos tecidos o encolhimento não tem volta na lavagem.' },
     { id: 'desbotou', nome: 'Desbotou ou perdeu a cor', familia: 'dano', sinonimos: ['desbotou', 'desbotada', 'desbotado', 'desbote', 'perdeu a cor', 'clareou', 'mancha clara', 'manchas claras'], dica: 'Álcool e água sanitária atacam o corante, e as manchas claras que eles deixam costumam não voltar.' },
-    { id: 'bolinhas', nome: 'Bolinhas e pelos', familia: 'dano', sinonimos: ['bolinhas', 'bolinha', 'pelinhos', 'pilling'], dica: 'Não puxe as bolinhas com a mão nem com lâmina: pode furar ou abrir a malha.' },
+    { id: 'bolinhas', nome: 'Bolinhas e pelos', familia: 'dano', sinonimos: ['bolinhas', 'bolinha', 'pelinhos', 'pilling'], dica: 'Não puxe as bolinhas com a mão nem com lâmina: pode furar ou abrir a malha.', nao: ['couro', 'peles', 'tenis'] },
     { id: 'cheiro', nome: 'Cheiro ruim', familia: 'dano', sinonimos: ['cheiro', 'fedor', 'odor', 'cheiro ruim', 'catinga', 'fedendo', 'cheirando mal'], dica: 'Deixe a peça arejar e não guarde úmida: cheiro de guardado costuma vir da umidade.' }
   ];
 
@@ -179,7 +181,7 @@
   /* Processo das peças que ainda não têm guia próprio (só fatos gerais confirmados). */
   var PROCESSO_GERAL = [
     'Avaliação da peça e da etiqueta antes da lavagem.',
-    'Mancha tratada antes da lavagem, com o tira-manchas da família dela, da linha Hydret da Seitz.',
+    'Mancha tratada antes da lavagem, com o tira-manchas da Seitz próprio da família dela (V1, V2 ou V3).',
     'Lavagem a seco com percloroetileno, wet cleaning com produtos Seitz ou lavagem em água, conforme a etiqueta e o tecido.',
     'Alvejamento, quando a peça pede, à base de oxigênio, sem cloro.'
   ];
@@ -197,7 +199,7 @@
       fala: 'Muita seda chega com mancha de bebida. Primeiro tiramos o álcool, lavamos a seco e depois em água, para sumir a sombra que a bebida deixa. Quando o tecido colorido fica com aqueles quebrados brancos, um amaciante concentrado da Seitz alinha de novo o brilho da fibra.',
       maquina: 'Não. Mesmo um ciclo rápido pode encolher ou deformar a peça de forma permanente.',
       maquinaNao: true,
-      caseiro: ['Tira-manchas caseiro: produtos feitos para algodão são agressivos demais para a seda.', 'Torcer para tirar a água: a seda perde a forma e marca.'],
+      caseiro: ['Tira-manchas caseiro: produtos feitos para algodão são agressivos demais para a seda.'],
       processo: [
         'Remoção do álcool deixado por perfume ou bebida, antes de qualquer lavagem.',
         'Tira-manchas Seitz, escolhido conforme o tipo de mancha.',
@@ -271,7 +273,7 @@
       fala: 'O vestido de noiva costuma chegar com a barra muito suja e manchas de comida e vinho. Fazemos a pré-lavagem, deixamos de molho e tratamos cada tipo de mancha com um protocolo próprio antes de lavar no programa da Seitz para noivas. Por isso o prazo é de 7 dias.',
       maquina: 'Não. Zibeline e tafetá perdem a estrutura, e a saia fica sem volume.',
       maquinaNao: true,
-      caseiro: ['Demaquilante: cria uma segunda mancha, de óleo.', 'Borrifar perfume com o vestido já vestido: o álcool pode tirar a cor das pedrarias.'],
+      caseiro: [],
       processo: [
         'Teste de solidez da cor e proteção manual das pedrarias.',
         'Pré-lavagem manual, com as barras lavadas à mão.',
@@ -344,7 +346,7 @@
       fala: 'Veludo, lavamos com produtos Seitz e secamos ao natural. Se precisar passar, é só com o ferro a distância e em temperatura baixa. No fim, alinhamos o pelo numa só direção para o tecido não ficar rajado.',
       maquina: 'Só se a etiqueta permitir água: do avesso, em saco de proteção, em ciclo curto e com centrifugação breve.',
       maquinaNao: false,
-      caseiro: ['Torcer para tirar a água: o pelo amassa e a peça perde a forma.', 'Secadora: o calor e o atrito do tambor achatam o pelo.'],
+      caseiro: [],
       processo: [
         'Avaliação da peça e da etiqueta antes da lavagem.',
         'Lavagem a seco, em percloroetileno, ou em água, com produtos Seitz, conforme a etiqueta.',
@@ -367,7 +369,7 @@
           id: 'marca-agua', nome: 'Marca de água', manchas: [], nivel: 'urgente',
           urgencia: 'Urgente (24h)',
           acontece: '“Marca de pisada” de uma gota que secou sozinha; molhar em volta piora.',
-          fazer: ['Leve a peça logo para avaliação: quanto mais tempo o líquido seca sozinho, maior a chance de a marca ficar.'],
+          fazer: ['Leve a peça em até 24 horas para avaliação: quanto mais tempo o líquido seca sozinho, maior a chance de a marca ficar.'],
           evitar: ['Molhar em volta para disfarçar: a marca aumenta.']
         },
         {
@@ -609,7 +611,7 @@
       fala: 'Jaqueta de pena tem que sair daqui completamente seca. Secamos em temperatura baixa até as penas voltarem soltas para os gomos, porque pena que fica úmida pode mofar.',
       maquina: 'Nylon e poliéster, se a etiqueta permitir: zíperes fechados, do avesso, água fria, ciclo delicado e sem amaciante comum.',
       maquinaNao: false,
-      caseiro: ['Removedor, querosene ou álcool na mancha: derretem o nylon e ressecam o poliuretano.', 'Amaciante comum: entope os poros da membrana impermeável e térmica.'],
+      caseiro: ['Removedor, querosene ou álcool na mancha: derretem o nylon e ressecam o poliuretano.'],
       processo: [
         'Lavagem a seco ou em água, conforme a etiqueta; na água, em programa da Seitz.',
         'Jaqueta de pena: secagem completa em temperatura baixa, até as penas voltarem soltas para os gomos.',
@@ -659,7 +661,7 @@
           id: 'fitas-derretidas', nome: 'Fitas e zíperes derretidos', manchas: ['queimado'], nivel: 'sem_solucao',
           urgencia: 'Não tem conserto na lavagem',
           acontece: 'Calor de secadora ou de ferro.',
-          fazer: ['Da próxima vez, secadora só se a etiqueta permitir, e em temperatura baixa.'],
+          fazer: ['Da próxima vez, seque à sombra, no cabide, sem secadora quente nem ferro.'],
           evitar: ['Secadora quente ou ferro.']
         },
         {
@@ -678,7 +680,7 @@
       fala: 'Das duas ou três peças de couro que chegam por dia, a maioria vem com mofo. Lavamos em wet cleaning, deixamos secar ao natural e só então hidratamos. Por isso o couro leva de 5 a 7 dias: pular a secagem estraga a peça.',
       maquina: 'Não: a estrutura do couro se danifica de forma irreparável.',
       maquinaNao: true,
-      caseiro: ['Álcool ou água sanitária na mancha: os dois atacam o corante.', 'Graxa de sapato para disfarçar esfolados: costuma piorar o problema.'],
+      caseiro: ['Álcool ou água sanitária na mancha: os dois atacam o corante.'],
       processo: [
         'Lavagem e higienização em wet cleaning, com produtos Seitz, que removem o mofo e os cheiros fortes.',
         'Secagem natural, sem calor, até a peça secar por completo.',
@@ -728,7 +730,7 @@
           id: 'encolhimento-calor', nome: 'Encolhimento por calor', manchas: ['encolheu'], nivel: 'sem_solucao',
           urgencia: 'Sem solução, apenas prevenção',
           acontece: 'Enrugamento por calor não tem correção.',
-          fazer: ['Guarde o couro pendurado, em cabide de ombro largo, longe do calor.'],
+          fazer: ['Da próxima vez, mantenha o couro longe do sol forte, do ferro e de fontes de calor.'],
           evitar: ['Secar no sol forte ou perto de fonte de calor.', 'Guardar dobrado ou amassado: com calor e pressão, o couro enruga de forma irreversível.']
         }
       ]
@@ -740,7 +742,7 @@
       fala: 'O que mais chega aqui é colete de pele sintética. Lavamos a seco ou em água, conforme a etiqueta, e depois penteamos o pelo. Na pele natural, também hidratamos o couro; a de coelho vai sempre a seco, porque encolhe na água.',
       maquina: 'Não, nem secadora: a agitação embaraça o pelo, e a secadora deforma a pelagem sintética e resseca o couro da pele natural.',
       maquinaNao: true,
-      caseiro: ['Perfume ou desodorante direto na peça: o álcool pode manchar ou endurecer o material.'],
+      caseiro: [],
       processo: [
         'Avaliação da peça, principalmente das antigas: se o couro estiver ressecado, a Dedicada avisa os riscos antes de lavar.',
         'Lavagem a seco ou em wet cleaning, conforme a instrução de lavagem; pele de coelho, sempre a seco.',
@@ -818,7 +820,7 @@
           id: 'colarinho', nome: 'Colarinho e punho amarelados', manchas: ['suor', 'amarelado'], nivel: 'media',
           urgencia: 'Média urgência (48h)',
           acontece: 'Suor e oleosidade oxidados; repassar a ferro sem lavar fixa a mancha.',
-          fazer: ['Molhe a área, aplique detergente, esfregue com escova macia e lave com alvejante à base de oxigênio, se a etiqueta permitir.', 'Só passe a ferro depois de a mancha sair.', 'Se o amarelado for forte e com gordura, leve a camisa.'],
+          fazer: ['Molhe a área, aplique detergente, esfregue com escova macia e lave com alvejante à base de oxigênio, se a etiqueta permitir.', 'Só passe a ferro depois de a mancha sair.', 'Se o amarelado for forte e com gordura, leve a camisa em até 48 horas.'],
           evitar: ['Água sanitária: deixa o amarelado mais forte e enfraquece a fibra.', 'Repassar a camisa usada: o ferro fixa o suor e o amarelado a cada vez.'],
           dedicada: 'Branqueador óptico, escovação à mão e o programa de alta sujidade da Seitz. Nas camisas muito amareladas e com gordura: lavagem a seco antes da água e uma pasta que age de um dia para o outro.'
         },
@@ -826,7 +828,7 @@
           id: 'desodorante', nome: 'Mancha de desodorante', manchas: ['desodorante'], nivel: 'media',
           urgencia: 'Média urgência (48h)',
           acontece: 'Sais de alumínio e suor deixam marca amarelada e endurecem o tecido das axilas.',
-          fazer: ['Trate antes de passar a ferro: esfregue a axila com detergente e escova macia e lave com alvejante à base de oxigênio, se a etiqueta permitir.', 'Marca antiga, que já endureceu o tecido, pede tratamento profissional.'],
+          fazer: ['Trate antes de passar a ferro: esfregue a axila com detergente e escova macia e lave com alvejante à base de oxigênio, se a etiqueta permitir.', 'Marca antiga, que já endureceu o tecido, pede tratamento profissional.', 'Se não for tratar em casa, leve a camisa em até 48 horas.'],
           evitar: ['Passar a ferro sobre a mancha: o calor fixa desodorante e suor.'],
           dedicada: 'Quando as axilas estão muito amareladas e com gordura, a camisa vai antes para a lavagem a seco, e as axilas recebem a mesma pasta do colarinho.'
         },
@@ -841,7 +843,7 @@
           id: 'puidos', nome: 'Colarinho e punho puídos', manchas: [], nivel: 'sem_solucao',
           urgencia: 'Sem urgência; não tem conserto na lavagem',
           acontece: 'Desgaste pelo atrito do uso e do ferro nas bordas do tecido.',
-          fazer: ['Da próxima vez, evite repassar a camisa usada e o ferro forte nas bordas.'],
+          fazer: ['Da próxima vez, não use água sanitária no colarinho: com o tempo, o cloro enfraquece a fibra, e o colarinho fica puído antes do resto da camisa.'],
           evitar: ['Água sanitária: com o tempo, o cloro enfraquece a fibra, e o colarinho fica puído antes do resto da camisa.']
         },
         {
@@ -1142,7 +1144,7 @@
       fala: 'Nas cortinas, esfregamos as barras à mão, lavamos em ciclo próprio e secamos ao natural. Blackout, só lavamos quando o tecido é lavável: a maioria fica pegajosa ou quebradiça.',
       maquina: 'Voal e poliéster leves, se a etiqueta permitir: água fria, ciclo delicado, sem centrifugação forte; linho, blackout e cortinas grandes, não.',
       maquinaNao: false,
-      caseiro: ['Secadora.'],
+      caseiro: [],
       processo: [
         'Avaliação do tecido: blackout só é lavado quando o tecido é lavável.',
         'Barras esfregadas à mão antes da lavagem.',
@@ -1207,7 +1209,7 @@
       fala: 'Escovamos a pelúcia à mão antes do wet cleaning e secamos ao natural, sem secadora. Nas fantasias de mascote, a cabeça e o corpo com estrutura não vão para a máquina: higienizamos à mão e secamos ao sol.',
       maquina: 'Pelúcias pequenas e sem estrutura às vezes aceitam ciclo delicado com água fria, se a etiqueta permitir; secadora, nunca.',
       maquinaNao: false,
-      caseiro: ['Secadora: o calor deforma o pelo sintético.'],
+      caseiro: [],
       processo: [
         'Conferência do tamanho (até 1 metro de altura por 40 a 50 cm de largura) e das peças eletrônicas, que precisam ser retiradas.',
         'Escovação manual do pelo, para soltar a sujeira.',
@@ -1264,7 +1266,7 @@
       fala: 'Desmontamos o carrinho inteiro e lavamos à mão a capa e a estrutura; os cintos são higienizados por fora, sem encharcar. A secagem é natural, com ventilador profissional, e depois montamos de novo. Se for para guardar, entregamos desmontado.',
       maquina: 'Estrutura, não; capas, conforme a etiqueta e o manual.',
       maquinaNao: false,
-      caseiro: ['Mangueira na estrutura: a água parada oxida o metal e danifica os rolamentos.'],
+      caseiro: [],
       processo: [
         'Desmontagem completa do carrinho ou do bebê conforto.',
         'Lavagem manual da capa e da estrutura.',
@@ -1301,14 +1303,14 @@
           id: 'comida', nome: 'Restos de comida', manchas: ['comida'], nivel: 'media',
           urgencia: 'Média',
           acontece: 'Acumulam nas costuras, no cesto e nos cantos da estrutura.',
-          fazer: [F.levar48],
+          fazer: ['Leve o carrinho para lavar.'],
           evitar: []
         },
         {
           id: 'terra', nome: 'Terra e poeira da rua', manchas: ['lama'], nivel: 'sem_urgencia',
           urgencia: 'Sem urgência',
           acontece: 'Rodas, cesto e barra da capa acumulam sujeira.',
-          fazer: ['Com uso frequente, lave a cada 15 a 30 dias.'],
+          fazer: ['Na orientação da Dedicada, o carrinho se lava a cada 1 a 2 meses com uso frequente, e o bebê conforto, a cada 15 a 30 dias.'],
           evitar: []
         },
         {
@@ -1333,7 +1335,7 @@
       leia: ['cupro'],
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
       maquinaNao: false,
-      caseiro: ['Esfregar ou torcer a peça molhada: a viscose fica mais frágil quando está molhada.', 'Secadora e água quente: a peça pode encolher ou deformar.'],
+      caseiro: ['Esfregar ou torcer a peça molhada: a viscose fica mais frágil quando está molhada.'],
       processo: PROCESSO_GERAL,
       prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
       preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
@@ -1348,7 +1350,7 @@
       leia: ['fitness'],
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
       maquinaNao: false,
-      caseiro: ['Água sanitária ou alvejante com cloro: segundo a ANEL, o poliéster e a poliamida amarelam com cloro.', 'Secadora quente ou ferro no máximo: o elastano perde a força.'],
+      caseiro: ['Água sanitária ou alvejante com cloro: segundo a ANEL, o poliéster e a poliamida amarelam com cloro.'],
       processo: PROCESSO_GERAL,
       prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
       preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
@@ -1362,7 +1364,7 @@
       nota: 'Além de carrinho e bebê conforto, a Dedicada lava ninhos de bebê, enxoval e roupas de bebê.',
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
       maquinaNao: false,
-      caseiro: [F.sanitaria, 'Água quente em mancha de leite, xixi ou vômito: o calor fixa manchas orgânicas.'],
+      caseiro: [F.sanitaria],
       processo: PROCESSO_GERAL,
       prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
       preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
@@ -1376,7 +1378,7 @@
       nota: null,
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
       maquinaNao: false,
-      caseiro: [F.quenteTanino, 'Esperar para tratar: manchas de comida e de bebida se fixam com o tempo.', F.umida],
+      caseiro: [F.umida],
       processo: PROCESSO_GERAL,
       prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
       preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
@@ -1439,6 +1441,7 @@
     for (var i = 0; i < lista.length; i++) if (lista[i].manchas.indexOf(manchaId) >= 0) return lista[i];
     return null;
   }
+  function servePara(m, peca) { return !m.nao || m.nao.indexOf(peca.id) < 0; }
   function problemasOrdenados(peca) {
     return peca.problemas.map(function (p, i) { return { p: p, i: i }; })
       .sort(function (a, b) { return (NIVEIS[a.p.nivel].ordem - NIVEIS[b.p.nivel].ordem) || (a.i - b.i); })
@@ -1491,14 +1494,14 @@
       var especifico = problemaDaMancha(peca, m.id);
       if (especifico) return resolver(peca, especifico.id);
       var titulo = m.familia === 'dano' ? peca.nome + ': ' + minuscula(m.nome) : m.nome + ' em ' + minuscula(peca.nome);
-      return { tipo: 'mancha', chave: chave, peca: peca, nome: m.nome, titulo: titulo, pr: problemaGenerico(peca, m), familia: FAMILIAS[m.familia].hydret ? m.familia : null, mancha: m };
+      return { tipo: 'mancha', chave: chave, peca: peca, nome: m.nome, titulo: titulo, pr: problemaGenerico(peca, m), familia: FAMILIAS[m.familia].seitz ? m.familia : null, mancha: m };
     }
     return null;
   }
 
   function familiaDoProblema(pr) {
     var conta = {};
-    (pr.manchas || []).forEach(function (id) { var m = acharMancha(id); if (m && FAMILIAS[m.familia].hydret) conta[m.familia] = (conta[m.familia] || 0) + 1; });
+    (pr.manchas || []).forEach(function (id) { var m = acharMancha(id); if (m && FAMILIAS[m.familia].seitz) conta[m.familia] = (conta[m.familia] || 0) + 1; });
     var fams = Object.keys(conta);
     return fams.length === 1 ? fams[0] : null;
   }
@@ -1538,7 +1541,7 @@
     var fam = FAMILIAS[m.familia];
     return {
       nivel: 'logo', urgencia: 'Quanto antes, melhor',
-      acontece: m.dica || (fam && fam.hydret
+      acontece: m.dica || (fam && fam.seitz
         ? 'É uma mancha ' + fam.singular + ': pede um tira-manchas próprio, diferente do usado nas outras famílias de manchas.'
         : null),
       fazer: (SEM_PANO.indexOf(m.id) >= 0 ? [] : [F.pano]).concat([F.levarLogo, F.ateLevar]),
@@ -1686,6 +1689,7 @@
     var itens = [];
     function add(item) { if (item && !itens.some(function (i) { return i.hash === item.hash; })) itens.push(item); }
     function doResultado(p, m) {
+      if (!servePara(m, p)) return null;
       var r = resolver(p, 'm-' + m.id);
       return r && { rotulo: r.nome, detalhe: p.nome, hash: '#' + p.id + '/' + r.chave, nivel: r.pr.nivel };
     }
@@ -1698,6 +1702,8 @@
         a.manchas.slice(0, a.pecas.length ? 2 : 1).forEach(function (m) { add(doResultado(p, m)); });
       });
       if (!a.pecas.length) add({ rotulo: a.manchas[0].nome, detalhe: 'Em outra peça', hash: '#m-' + a.manchas[0].id, nivel: null });
+      // Problema que não faz sentido na peça (bolinhas no couro): oferece a peça.
+      if (!itens.length) pecas.forEach(function (p) { add({ rotulo: p.nome, detalhe: 'Ver os problemas mais comuns', hash: '#' + p.id, nivel: null }); });
     } else if (a.manchas.length) {
       a.manchas.slice(0, 2).forEach(function (m) {
         add({ rotulo: m.nome, detalhe: 'Escolha a peça manchada', hash: '#m-' + m.id, nivel: null });
@@ -1914,7 +1920,7 @@
       h('p', { class: 'dm-outra-dica' }, 'Cada família de mancha pede um tira-manchas diferente.'),
       familias.map(function (fid) {
         var fam = FAMILIAS[fid];
-        var ms = MANCHAS.filter(function (m) { return m.familia === fid; });
+        var ms = MANCHAS.filter(function (m) { return m.familia === fid && servePara(m, peca); });
         return h('div', { class: 'dm-familia' },
           h('h3', { class: 'dm-familia-nome' }, fam.nome),
           h('ul', { class: 'dm-chips', role: 'list' }, ms.map(function (m) {
@@ -2027,7 +2033,7 @@
       h('div', { class: 'dm-bloco dm-dedicada' },
         h('h3', null, 'Como a Dedicada trata'),
         pr.dedicada ? h('p', null, pr.dedicada) : null,
-        fam ? h('p', { class: 'dm-familia-nota' }, 'É uma mancha ' + fam.singular + ', como ' + fam.exemplos + '. Na Dedicada, cada família de mancha tem o seu tira-manchas, da linha Hydret da Seitz, e cada mancha é tratada na sua vez, antes da lavagem.') : null,
+        fam ? h('p', { class: 'dm-familia-nota' }, 'É uma mancha ' + fam.singular + ', como ' + fam.exemplos + '. Na Dedicada, cada família de mancha tem o seu tira-manchas da Seitz (V1, V2 ou V3), e cada mancha é tratada na sua vez, antes da lavagem.') : null,
         h('details', { class: 'dm-processo' },
           h('summary', null, 'Ver as ' + peca.processo.length + ' etapas do processo'),
           lista('ol', peca.processo, 'dm-passos')),
@@ -2099,6 +2105,11 @@
         if (!NIVEIS[pr.nivel]) erros.push(k + ': nível inválido');
         if (!pr.fazer || !pr.fazer.length) erros.push(k + ': falta o que fazer');
         if (!Array.isArray(pr.manchas)) erros.push(k + ': manchas deve ser uma lista');
+        var f = (pr.fazer || []).join(' '), u = pr.urgencia || '';
+        var uMenos = /menos de 24/.test(u), u24 = !uMenos && /\(24h\)|24 horas/.test(u), u48 = /48/.test(u);
+        if (uMenos !== /menos de 24 horas/.test(f) || u24 !== /até 24 horas/.test(f) || u48 !== /48 horas/.test(f)) {
+          erros.push(k + ': o prazo em "o que fazer" não bate com a urgência do guia');
+        }
         (pr.manchas || []).forEach(function (m) { if (!acharMancha(m)) erros.push(k + ': mancha desconhecida ' + m); });
       });
     });

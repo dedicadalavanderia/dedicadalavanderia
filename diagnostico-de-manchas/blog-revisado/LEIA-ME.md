@@ -54,7 +54,8 @@ O conteúdo tem um bloco de dados estruturados (`<script type="application/ld+js
 |---|---|
 | Removemos manchas de vinho | Amostra pronta, aguardando aprovação do formato |
 | Roupa com cheiro de xixi | Amostra pronta, aguardando aprovação do formato |
-| Os outros 23 de `../auditoria-blog.md` | Depois da aprovação das amostras |
+| 2 posts sobre urina | Redirecionar para "Como lavar roupa com xixi" (não precisam de revisão) |
+| Os outros 21 de `../auditoria-blog.md` | Depois da aprovação das amostras |
 
 ## Três posts sobre o mesmo assunto
 
@@ -64,4 +65,9 @@ Três posts tratam de urina e competem entre si no Google:
 - "Como remover cheiro de urina da roupa (pets e crianças)";
 - "Lavagem de roupas com urina em Florianópolis".
 
-A sugestão é revisar só o primeiro e redirecionar os outros dois para ele (redirecionamento 301). Se preferir manter os três, cada um precisa de um ângulo próprio: por exemplo, um só para pets. Essa decisão é do dono (pergunta 19).
+O dono aprovou (pergunta 19): revisar só o primeiro e redirecionar os outros dois para ele, com redirecionamento 301:
+
+- `/como-remover-cheiro-de-urina-da-roupa-pets-e-criancas/` → `/como-lavar-roupa-com-xixi/`
+- `/lavagem-de-roupas-com-urina-em-florianopolis/` → `/como-lavar-roupa-com-xixi/`
+
+O redirecionamento é feito no plugin de SEO ou de redirecionamentos, depois de publicar o post revisado. A página central e os guias de pelúcias e de algodão, que linkam para os posts sobre urina, continuam funcionando por causa do redirecionamento, mas o ideal é trocar os links pelo endereço novo.

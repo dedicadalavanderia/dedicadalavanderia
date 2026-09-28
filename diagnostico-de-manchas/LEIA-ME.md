@@ -22,6 +22,7 @@ Refeito em 28/09/2026 numa sessão na nuvem com acesso ao site.
 | `prototipo.html` + `prototipo-img/` | Para testar fora do site: abra `prototipo.html` no navegador |
 | `pesquisa.html` | A pesquisa, o que cada referência mudou na ferramenta, SEO e GEO (rodadas 1 e 2) |
 | `auditoria-banco-antigo.md` | O banco antigo (516 situações) e tudo o que ele trazia contra as regras |
+| `auditoria-combinacoes.md` | A revisão de todas as combinações de peça e mancha contra os guias: o que foi corrigido e o que ficou |
 | `auditoria-blog.md` | Os 31 posts do blog sobre manchas e tecidos: 6 ligados na ferramenta e 25 para revisar |
 | `perguntas-para-o-dono.md` | O que precisa de resposta antes de publicar |
 | `referencias/` | O que foi baixado: página atual, banco antigo, guias em texto, posts do blog, buscas do Google e páginas de referência |
@@ -29,6 +30,7 @@ Refeito em 28/09/2026 numa sessão na nuvem com acesso ao site.
 | `ferramentas/montar.mjs` | Gera `pagina-3165.html` e `prototipo.html` a partir do banco e do modelo |
 | `ferramentas/testar.mjs` | Testa tudo no Chromium |
 | `ferramentas/cobertura.mjs` | Mede quanto a busca entende das buscas reais do Google |
+| `ferramentas/auditar-textos.mjs` | Junta todas as frases que a ferramenta pode mostrar e compara com os guias |
 | `ferramentas/regras.mjs` | As regras de texto do projeto, usadas no teste da ferramenta e nos posts |
 | `blog-revisado/` + `ferramentas/montar-blog.mjs` | Revisão dos posts do blog: textos, conteúdo pronto para o WordPress, o que mudou e prévia (ver `blog-revisado/LEIA-ME.md`) |
 
