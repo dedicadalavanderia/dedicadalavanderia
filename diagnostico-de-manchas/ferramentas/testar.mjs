@@ -108,9 +108,9 @@ let dados;
   if (familiasHtml !== 5) erro(`Mancha por mancha: esperava 5 famílias, achei ${familiasHtml}`);
   if (linhasHtml !== dados.manchas.length) erro(`Mancha por mancha: esperava ${dados.manchas.length} linhas, achei ${linhasHtml}`);
   // Números da introdução saem do banco.
-  const numeros = await pagina.$eval('.dm-intro-numeros', (el) => el.textContent);
+  const numeros = await pagina.$eval('#fontes .dm-sobre', (el) => el.textContent);
   const totalPr = dados.pecas.reduce((n, p) => n + p.problemas.length, 0);
-  if (!numeros.includes(`${dados.pecas.length} peças`) || !numeros.includes(`${totalPr} problemas`) || !numeros.includes(`${dados.manchas.length} tipos`)) erro('Introdução: números diferentes do banco');
+  if (!numeros.includes(`${dados.pecas.length} peças`) || !numeros.includes(`${totalPr} problemas`) || !numeros.includes(`${dados.manchas.length} tipos`)) erro('"De onde vêm as orientações?": números diferentes do banco');
 
   const blocos = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => m[1]);
   if (!blocos.length) erro('JSON-LD: nenhum bloco');
@@ -132,9 +132,11 @@ let dados;
       });
     }
   }
-  // Imagens dos cartões carregam.
+  // Imagens dos cartões carregam (as que falham somem do cartão, e a contagem cai).
+  await pagina.$$eval('.dm-cartao-img', (is) => is.forEach((i) => { i.loading = 'eager'; }));
+  await pagina.waitForFunction(() => [...document.querySelectorAll('.dm-cartao-img')].every((i) => i.complete));
   const imgs = await pagina.$$eval('.dm-cartao-img', (is) => is.length);
-  if (imgs !== 17) erro(`Passo 1: esperava 17 fotos nos cartões, achei ${imgs}`);
+  if (imgs !== dados.pecas.length) erro(`Passo 1: esperava ${dados.pecas.length} fotos nos cartões, achei ${imgs}`);
   const cartoes = await pagina.$$eval('.dm-cartao', (cs) => cs.length);
   if (cartoes !== dados.pecas.length) erro(`Passo 1: esperava ${dados.pecas.length} cartões, achei ${cartoes}`);
   await semRolagemLateral(pagina, 'Página inteira a 375px');
@@ -267,7 +269,9 @@ let familiasTestadas = 0, combinacoes = 0;
   if ((await pagina.evaluate(() => location.hash)) !== '#camisas/m-batom') erro('Enter na busca não abriu #camisas/m-batom');
   const corMarcada = await pagina.$eval('.dm-pergunta .dm-chip[aria-pressed="true"]', (b) => b.textContent).catch(() => null);
   if (corMarcada !== 'Branca') erro(`Cor da busca: esperava "Branca" marcada, achei ${corMarcada}`);
-  if (!decodeURIComponent(await hrefWhats(pagina)).includes('Cor da peça: branca')) erro('WhatsApp: a cor não entrou na mensagem');
+  const msgCor = decodeURIComponent(await hrefWhats(pagina));
+  if (!msgCor.includes('Cor da peça: branca')) erro('WhatsApp: a cor não entrou na mensagem');
+  if (!msgCor.includes('\nResultado que vi: https://dedicadalavanderia.com.br/diagnostico-de-manchas/#camisas/m-batom')) erro('WhatsApp: falta o link do resultado');
 
   // Dano numa peça sem guia: título, nota do tecido e botão para Cuidados por Tecido.
   await pagina.goto(url + '#viscose/m-encolheu');

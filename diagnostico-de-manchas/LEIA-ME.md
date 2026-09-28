@@ -45,9 +45,9 @@ Refeito em 28/09/2026 numa sessão na nuvem com acesso ao site.
   - abre a primeira sugestão com Enter.
 - **Palavras que não dizem o tecido** ("blusa", "vestido", "calça", "saia", "casaco", "toalha"...) mostram as peças possíveis. Por exemplo, "blusa" com vinho oferece algodão, seda, linho, viscose, poliéster e lã, cada uma com a urgência dela.
 - **A cor da peça** ("camisa branca") já vem marcada no resultado e vai na mensagem do WhatsApp.
-- **22 cartões:**
-  - os 17 guias, com foto;
-  - 5 peças sem guia próprio, só com texto: viscose e malha fria; poliéster e roupa de academia; roupa de bebê e infantil; toalhas de mesa e guardanapos; outra peça ou tecido.
+- **22 cartões com foto:**
+  - os 17 guias, com as fotos dos cards da página central;
+  - 5 peças sem guia próprio: viscose e malha fria; poliéster e roupa de academia; roupa de bebê e infantil; toalhas de mesa e guardanapos; outra peça ou tecido. As fotos foram recortadas das imagens dos posts do blog da Dedicada, só a parte da foto, sem texto nem logo.
 
 ### Passo 2: o problema
 
@@ -70,6 +70,21 @@ Refeito em 28/09/2026 numa sessão na nuvem com acesso ao site.
   - Quando aconteceu?
   - Já tentou tirar em casa?
   - Cor da peça?
+
+  As respostas entram na mensagem pronta do WhatsApp, uma por linha, com o link do resultado que a pessoa viu. Por exemplo:
+
+  ```
+  Olá! Vim do Diagnóstico de Manchas do site.
+
+  Peça: Linho
+  Problema: Vinho, café ou chá
+  Cor da peça: branca
+  Quando aconteceu: hoje
+  Já tentei tirar em casa.
+  Resultado que vi: https://dedicadalavanderia.com.br/diagnostico-de-manchas/#linho/vinho-cafe-cha
+
+  Posso mandar uma foto?
+  ```
 - "Leia também", com os posts do blog aprovados.
 
 ### Todas as combinações têm resposta
@@ -79,17 +94,17 @@ As 22 peças × 44 manchas e danos dão 968 combinações, e todas têm resultad
 ### Página
 
 1. Um só H1, a assinatura e uma resposta rápida de cerca de 40 palavras.
-2. A introdução "Como usar o diagnóstico?", com os números gerados do banco e os fatos da página central: família, desde 2003, de 300 a 400 peças por dia.
+2. A introdução "Como usar o diagnóstico?", em três passos curtos.
 3. A ferramenta.
 4. As seções estáticas, geradas do mesmo banco:
    - manchas mais urgentes por peça;
-   - **mancha por mancha** (novo): uma tabela por família, com o cuidado de cada mancha e as peças em que ela é mais urgente;
    - as três famílias de manchas;
+   - **mancha por mancha** (novo): uma tabela por família, com o cuidado de cada mancha e as peças em que ela é mais urgente;
    - regras para qualquer mancha;
    - o que não sai na lavagem;
    - 9 perguntas frequentes (3 novas: cor de outra peça, água sanitária e desodorante);
    - endereços e dias de coleta;
-   - fontes.
+   - "De onde vêm as orientações?": o que o diagnóstico cobre, com os números gerados do banco, quem orienta (família, desde 2003, de 300 a 400 peças por dia, equipe com média de 17 anos de experiência) e as fontes. Esses fatos estão na página central e ajudam o Google e as IAs a saber quem responde.
 
 ### Medição
 
@@ -137,7 +152,7 @@ A cobertura foi medida com 1.308 buscas reais do autocompletar do Google. Dessas
 ## O que falta para instalar
 
 1. **Respostas do dono** (`perguntas-para-o-dono.md`).
-2. **Miniaturas dos cartões.** Suba os 17 arquivos `prototipo-img/dm-*.webp` na biblioteca de mídia e ajuste `FOTOS` no topo do JS para a pasta onde ficarem. Se as fotos não carregarem, os cartões ficam só com o texto, sem quebrar.
+2. **Miniaturas dos cartões.** Suba os 22 arquivos `prototipo-img/dm-*.webp` na biblioteca de mídia e ajuste `FOTOS` no topo do JS para a pasta onde ficarem. Se as fotos não carregarem, os cartões ficam só com o texto, sem quebrar.
 3. **Instalação, com autorização:**
    1. guarde o conteúdo atual dos snippets 3168 e 3164 e da página 3165;
    2. troque os snippets pelo CSS e pelo JS;

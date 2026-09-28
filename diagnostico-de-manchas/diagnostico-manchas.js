@@ -82,7 +82,7 @@
       primeiro: 'Tire o excesso encostando um pano limpo, sem esfregar, e não use água quente, que fixa manchas de café, chá e vinho.'
     },
     outras: { nome: 'Outras manchas', hydret: null, exemplos: '', primeiro: 'Não esfregue, não use produto caseiro e não passe ferro antes de a mancha sair.' },
-    dano: { nome: 'Danos no tecido', hydret: null, exemplos: '', primeiro: '' }
+    dano: { nome: 'Danos no tecido', hydret: null, exemplos: '', primeiro: 'Mande uma foto ou leve a peça para a equipe avaliar: alguns danos não se desfazem na lavagem.' }
   };
 
   /* Posts do blog que passaram pela conferência das regras (28/09/2026): sem "o melhor",
@@ -1328,12 +1328,12 @@
     {
       id: 'viscose', grupo: 'outras', nome: 'Viscose e malha fria', exemplos: 'Viscose, raiom, cupro, modal e malha fria',
       sinonimos: ['viscose', 'viscolycra', 'malha fria', 'raiom', 'rayon', 'cupro', 'modal', 'liocel', 'tencel', 'viscolinho', 'crepe de viscose', 'vestido de viscose', 'blusa de viscose'],
-      semGuia: true, foto: false, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
+      semGuia: true, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
       nota: 'Segundo a ANEL, a viscose perde boa parte da resistência quando está molhada. Por isso, não esfregue nem torça a peça molhada.',
       leia: ['cupro'],
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
       maquinaNao: false,
-      caseiro: ['Esfregar ou torcer a peça molhada: a viscose fica mais frágil quando está molhada.', 'Água quente e secadora.'],
+      caseiro: ['Esfregar ou torcer a peça molhada: a viscose fica mais frágil quando está molhada.', 'Secadora e água quente: a peça pode encolher ou deformar.'],
       processo: PROCESSO_GERAL,
       prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
       preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
@@ -1343,7 +1343,7 @@
     {
       id: 'sinteticos', grupo: 'outras', nome: 'Poliéster e roupa de academia', exemplos: 'Legging, top, dry fit, poliéster, poliamida e elastano',
       sinonimos: ['poliester', 'poliamida', 'elastano', 'lycra', 'legging', 'top', 'dry fit', 'dryfit', 'roupa de academia', 'roupa de ginastica', 'roupa fitness', 'fitness', 'roupa esportiva', 'roupa de treino', 'roupa de ciclismo', 'tactel', 'microfibra', 'oxford', 'tecido oxford', 'malha de academia', 'camisa de time', 'camisa de futebol'],
-      semGuia: true, foto: false, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
+      semGuia: true, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
       nota: 'Segundo a ANEL, o poliéster e a poliamida, que é o nylon, amarelam com cloro, e secadora ou ferro muito quentes fazem o elastano perder a força.',
       leia: ['fitness'],
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
@@ -1358,7 +1358,7 @@
     {
       id: 'bebe', grupo: 'outras', nome: 'Roupa de bebê e infantil', exemplos: 'Roupinhas, enxoval, ninho e manta de bebê',
       sinonimos: ['roupa de bebe', 'roupinha', 'roupinha de bebe', 'body', 'body de bebe', 'macacao de bebe', 'enxoval de bebe', 'ninho', 'ninho de bebe', 'manta de bebe', 'roupa infantil', 'roupa de crianca', 'babador', 'cueiro', 'saida de maternidade'],
-      semGuia: true, foto: false, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
+      semGuia: true, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
       nota: 'Além de carrinho e bebê conforto, a Dedicada lava ninhos de bebê, enxoval e roupas de bebê.',
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
       maquinaNao: false,
@@ -1372,7 +1372,7 @@
     {
       id: 'mesa', grupo: 'outras', nome: 'Toalhas de mesa e guardanapos', exemplos: 'Toalhas de mesa, guardanapos e caminhos de mesa',
       sinonimos: ['toalha de mesa', 'guardanapo', 'guardanapo de pano', 'jogo americano', 'caminho de mesa', 'pano de prato', 'jacquard', 'toalha de natal', 'mesa posta'],
-      semGuia: true, foto: false, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
+      semGuia: true, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
       nota: null,
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
       maquinaNao: false,
@@ -1386,7 +1386,7 @@
     {
       id: 'outra', grupo: 'outras', nome: 'Outra peça ou tecido', exemplos: 'O que não está na lista: a equipe avalia pela foto',
       sinonimos: ['outro tecido', 'uniforme', 'jaleco', 'farda', 'camurca', 'suede', 'nobuck', 'acrilico', 'kimono', 'quimono', 'tapete', 'bolsa', 'mochila', 'bone', 'colchao', 'sofa', 'estofado'],
-      semGuia: true, foto: false, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
+      semGuia: true, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
       nota: 'Esta peça ainda não tem guia próprio. Mande uma foto da peça e da etiqueta pelo WhatsApp: a equipe diz se lava e como.',
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
       maquinaNao: false,
@@ -1505,12 +1505,13 @@
 
   /* Mancha que não está na tabela do guia: orientação pela família da mancha. */
   function problemaGenerico(peca, m) {
-    if (m.familia === 'dano') {
+    // Dano no tecido, e a água sanitária, que tira a cor: não há o que correr, é caso de avaliar.
+    if (m.familia === 'dano' || m.id === 'agua-sanitaria') {
       return {
         nivel: 'atencao', urgencia: 'Leve para avaliação',
         acontece: m.dica || null,
         fazer: [F.avaliar, 'Se preferir, mande antes uma foto da peça e da etiqueta pelo WhatsApp.'],
-        evitar: (peca.caseiro || []).slice()
+        evitar: []
       };
     }
     var evitar = [F.esfregar];
@@ -1519,7 +1520,11 @@
     evitar.push(F.calor);
     if (m.id === 'ferrugem' || m.id === 'protetor') evitar.push('Água sanitária: escurece ou fixa a mancha.');
     if (m.id === 'maquiagem' || m.id === 'batom') evitar.push('Demaquilante: cria uma segunda mancha, de óleo.');
-    evitar = evitar.concat(peca.caseiro || []);
+    // O que o guia da peça manda evitar, sem repetir a água quente que a família já trouxe.
+    var temQuente = m.familia === 'tanino' || m.familia === 'proteina';
+    (peca.caseiro || []).forEach(function (t) {
+      if (evitar.indexOf(t) < 0 && !(temQuente && t.indexOf('Água quente') === 0)) evitar.push(t);
+    });
     if (peca.maquinaNao) evitar.push('Lavar na máquina de casa.');
 
     if (m.id === 'mofo') {
@@ -1943,13 +1948,14 @@
     return h(tag, { class: classe }, itens.map(function (t) { return h('li', null, t); }));
   }
 
+  // Mensagem pronta, uma informação por linha, com o link do resultado que a pessoa viu.
   function mensagemWhats(r) {
-    var partes = ['Olá! Vim do Diagnóstico de Manchas do site.', 'Peça: ' + r.peca.nome + '.', 'Problema: ' + r.nome + '.'];
-    if (contexto.cor) partes.push('Cor da peça: ' + minuscula(contexto.cor) + '.');
-    if (contexto.quando) partes.push('Quando aconteceu: ' + minuscula(contexto.quando) + '.');
-    if (contexto.tentou) partes.push(contexto.tentou === 'Sim' ? 'Já tentei tirar em casa.' : 'Ainda não tentei nada em casa.');
-    partes.push('Posso mandar uma foto?');
-    return partes.join(' ');
+    var linhas = ['Olá! Vim do Diagnóstico de Manchas do site.', '', 'Peça: ' + r.peca.nome, 'Problema: ' + r.nome];
+    if (contexto.cor) linhas.push('Cor da peça: ' + minuscula(contexto.cor));
+    if (contexto.quando) linhas.push('Quando aconteceu: ' + minuscula(contexto.quando));
+    if (contexto.tentou) linhas.push(contexto.tentou === 'Sim' ? 'Já tentei tirar em casa.' : 'Ainda não tentei nada em casa.');
+    linhas.push('Resultado que vi: ' + SITE + '/diagnostico-de-manchas/#' + r.peca.id + '/' + r.chave, '', 'Posso mandar uma foto?');
+    return linhas.join('\n');
   }
 
   // Posts do blog ligados à mancha do resultado e ao tecido.

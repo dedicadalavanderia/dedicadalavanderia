@@ -107,7 +107,7 @@ const PERGUNTAS = [
   ['Minha roupa manchou com a cor de outra peça. Tem jeito?',
     'Quanto antes o tratamento, maior a chance de reverter. O algodão absorve o corante solto com facilidade, e a secadora fixa a mancha: não seque a peça e leve em menos de 24 horas. Para não repetir, não misture peças de cor forte com as brancas.'],
   ['A mancha clara de água sanitária sai?',
-    'Em peça colorida, geralmente não: o cloro tira o corante, e as manchas claras que ele deixa no jeans e na sarja coloridos não voltam. Em peça branca, o cloro enfraquece a fibra e, segundo a ANEL, amarela o poliéster e a poliamida. Na Dedicada, o alvejamento é à base de oxigênio, sem cloro.'],
+    'Em peça colorida, geralmente não: o cloro tira o corante, e as manchas claras que ele deixa no jeans e na sarja coloridos não voltam. Em peça branca, o cloro enfraquece a fibra e, segundo a ANEL, amarela o poliéster e a poliamida. Na dúvida, mande uma foto pelo WhatsApp antes de trazer a peça.'],
   ['Como tirar mancha de desodorante?',
     'Trate antes de passar a ferro, porque o calor fixa a mancha. Esfregue a axila com detergente e escova macia e lave com alvejante à base de oxigênio, se a etiqueta permitir. Marca antiga, que já endureceu o tecido, pede tratamento profissional. Na Dedicada, quando as axilas estão muito amareladas e com gordura, a camisa vai antes para a lavagem a seco, e as axilas recebem a mesma pasta do colarinho, que age de um dia para o outro.'],
   ['Vocês buscam as roupas em casa?',
@@ -136,7 +136,7 @@ function jsonLd() {
       {
         '@type': 'Person', '@id': url + '#revisor', name: pessoa.nome,
         jobTitle: pessoa.papel.charAt(0).toUpperCase() + pessoa.papel.slice(1), image: pessoa.foto,
-        worksFor: { '@type': 'LocalBusiness', name: 'Dedicada Lavanderia', url: 'https://dedicadalavanderia.com.br/' }
+        worksFor: { '@type': 'LocalBusiness', name: 'Dedicada Lavanderia', url: 'https://dedicadalavanderia.com.br/', foundingDate: '2003' }
       },
       {
         '@type': 'BreadcrumbList', '@id': url + '#trilha',
