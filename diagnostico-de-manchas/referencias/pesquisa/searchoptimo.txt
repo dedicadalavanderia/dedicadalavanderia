@@ -1,0 +1,71 @@
+URL: https://searchoptimo.com/blog/do-ai-crawlers-render-javascript
+HTTP: 200
+TITLE: Do AI Crawlers Render JavaScript? GPTBot, ClaudeBot, and Perplexity in 2026 | SearchOptimo
+HTML bytes: 66793
+
+JSON-LD:
+{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Do AI Crawlers Render JavaScript? GPTBot, ClaudeBot, and Perplexity in 2026","description":"The crawlers behind ChatGPT, Claude, and Perplexity don't run JavaScript. Here's what that means for AI search visibility and how to make sure your content is readable.","datePublished":"2026-06-28T00:00:00.000Z","dateModified":"2026-06-28T00:00:00.000Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://searchoptimo.com/blog/do-ai-crawlers-render-javascript"},"author":{"@type":"Organization","name":"SearchOptimo Team","url":"https://searchoptimo.com"},"publisher":{"@type":"Organization","@id":"https://searchoptimo.com/#organization","name":"SearchOptimo","url":"https://searchoptimo.com"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://searchoptimo.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://searchoptimo.com/blog"},{"@type":"ListItem","position":3,"name":"Do AI Crawlers Render JavaScript? GPTBot, ClaudeBot, and Perplexity in 2026","item":"https://searchoptimo.com/blog/do-ai-crawlers-render-javascript"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do AI crawlers like GPTBot and ClaudeBot execute JavaScript?","acceptedAnswer":{"@type":"Answer","text":"No. Vercel's 2024 analysis of real crawler traffic concluded that none of the major AI crawlers render JavaScript. GPTBot fetched JavaScript files in about 11.5% of requests but did not execute them, and ClaudeBot downloaded JavaScript in about 23.84% of requests and never executed them. They read your raw HTML and move on, so any content that only appears after client-side rendering is invisible to them."}},{"@type":"Question","name":"Why does my content show up on Google but not in ChatGPT or Perplexity?","acceptedAnswer":{"@type":"Answer","text":"The most likely reason is client-side rendering. Google can eventually render JavaScript in its render
+
+TEXT:
+If your pages rank on Google but never get cited by ChatGPT, Claude, or Perplexity, the cause may not be authority or content quality. It may be that the AI crawler literally could not read your page. The crawlers behind today's AI answer engines do not run JavaScript, and that single fact reshapes how you have to publish content in 2026.
+## Do AI crawlers render JavaScript?
+No. The crawlers behind the major AI answer engines do not execute JavaScript, so they only see the raw HTML your server returns. Vercel's 2024 "Rise of the AI Crawler" study, based on real crawler traffic, concluded that "none of the major AI crawlers currently render JavaScript." The specifics are striking: GPTBot, OpenAI's crawler, fetched JavaScript files in about 11.5% of its requests but did not execute them, while ClaudeBot, Anthropic's crawler, downloaded JavaScript in about 23.84% of requests "and never executes them." In other words, even when these bots download your scripts, they do not run them. They parse the HTML they first receive, extract what they can, and move on. There is no second render pass the way Google has. If your headline, body copy, or product details are injected by JavaScript after the page loads, an AI crawler sees the empty shell that loaded first.
+## Which AI crawlers run JavaScript, and which don't?
+Almost none run JavaScript, and the one big exception is Google's Gemini. Here is how the major AI crawlers behave, per Vercel's analysis and each vendor's documentation:
+Crawler
+Used by
+Renders JavaScript?
+GPTBot, OAI-SearchBot, ChatGPT-User
+OpenAI / ChatGPT
+No
+ClaudeBot, Claude-SearchBot
+Anthropic / Claude
+PerplexityBot
+Perplexity
+Bingbot
+Bing, Copilot
+Partially, not at scale
+Googlebot (used by Gemini)
+Google AI Overviews, Gemini
+Yes, on a delay
+The pattern is clear: outside of Google's own infrastructure, assume the AI crawler reads static HTML only. One analysis summarized that roughly 69% of AI crawlers cannot execute JavaScript. Even Bing, which powers Copilot, says it can process JavaScript but not reliably at scale and still recommends dynamic rendering.
+## Why does my content rank on Google but not appear in AI answers?
+The usual culprit is client-side rendering, which Google tolerates but AI crawlers do not. Google crawls your raw HTML, then queues the page for a headless browser that runs your JavaScript before indexing the result, so client-rendered content can still make it into Google's index, just later. AI crawlers skip that render step entirely. The result is a visibility split: a page built as a client-side app can rank in classic Google search while being completely absent from ChatGPT, Claude, and Perplexity, because those engines only ever saw a loading state. This is why "just rely on Googlebot rendering," a defensible stance a few years ago, no longer holds. For AI search visibility, the content has to exist in the HTML before any JavaScript runs. The deeper mechanics are in does Google index JavaScript .
+[a] does Google index JavaScript
+## How do I check what AI crawlers actually see?
+View the raw HTML, because that is exactly what an AI crawler gets. Open your page, view source (not the DevTools Elements panel, which shows the rendered DOM after JavaScript runs), and search for a sentence of your main content. If the text is in view source, AI crawlers can read it. If it only appears in DevTools but not view source, it is client-rendered and invisible to GPTBot, ClaudeBot, and PerplexityBot. An important nuance: content does not have to be visible prose to count. Data embedded in the initial HTML as inline JSON, structured-data markup, or a server-rendered component payload is still in the raw response and readable by AI crawlers. What they miss is specifically content that the browser builds on the client after the page loads.
+## How do I make my site readable to AI crawlers?
+Serve your real content in server-rendered HTML and keep your crawlers unblocked. A practical checklist:
+- Render content server-side. Use server-side rendering, static rendering, or incremental regeneration so the main content is in the initial HTML response. This is the single highest-leverage move.
+- Confirm in view source. If your key content and metadata are not in view source, neither AI crawlers nor non-rendering search bots can use them.
+- Don't block the AI user-agents in robots.txt if you want AI visibility. Blocking GPTBot or ClaudeBot removes you from that engine's training and retrieval.
+- Front-load extractable answers. AI engines lift short, self-contained passages, so put a direct, complete answer near the top of each section.
+- Add structured data. Article, FAQ, and Organization schema in the HTML give the model machine-readable context it can trust.
+## Catching AI-visibility regressions early
+The trap with AI search is that there is no Search Console for it. A deploy that moves content into a client component can silently make your pages unreadable to AI crawlers, and there is no dashboard from OpenAI or Anthropic to warn you. Monitoring your raw index status is the closest early-warning signal, because the same client-rendering regressions that hide content from AI crawlers also tend to weaken classic indexing. SearchOptimo re-checks the index status of every URL on a schedule and alerts you when something changes, so a rendering regression surfaces quickly instead of quietly eroding your reach.
+If AI-search visibility matters to you, see whether SearchOptimo is worth it for your case , or start free and watch your own URLs.
+[a] SearchOptimo is worth it for your case
+[a] start free
+## Frequently asked questions
+Do AI crawlers like GPTBot and ClaudeBot execute JavaScript?
+No. Vercel's 2024 analysis of real crawler traffic concluded that none of the major AI crawlers render JavaScript. GPTBot fetched JavaScript files in about 11.5% of requests but did not execute them, and ClaudeBot downloaded JavaScript in about 23.84% of requests and never executed them. They read your raw HTML and move on, so any content that only appears after client-side rendering is invisible to them.
+Why does my content show up on Google but not in ChatGPT or Perplexity?
+The most likely reason is client-side rendering. Google can eventually render JavaScript in its render queue, but AI crawlers do not execute JavaScript at all, so they only see your initial HTML. If your content is injected by JavaScript after the page loads, Google may index it while AI engines see a blank shell. Serving the content in server-rendered HTML fixes the gap.
+Does Perplexity render JavaScript?
+No. PerplexityBot parses static HTML only and does not execute JavaScript, according to Vercel's 2024 crawler analysis. The same is true of OpenAI's OAI-SearchBot and ChatGPT-User, Anthropic's Claude-SearchBot, and others. The one major exception across AI search is Google's Gemini, which uses Googlebot's rendering service and can therefore render JavaScript.
+How do I make my site readable by AI crawlers?
+Put your real content in the server HTML response, not in client-side JavaScript. Use server-side rendering, static rendering, or incremental regeneration so the content is present in view source. Then confirm by viewing the raw HTML: if your main text is missing from view source, AI crawlers can't see it. Don't block AI crawler user-agents in robots.txt if you want AI visibility.
+## Monitor your index status automatically
+SearchOptimo re-checks your URLs on a schedule and alerts you when something drops. Start free, no credit card.
+[a] Start free
+## Keep reading
+Indexing
+### Does Google Index JavaScript? How Rendering and Indexing Work
+[a] Does Google Index JavaScript? How Rendering and Indexing Work
+Google indexes JavaScript-generated content, but on a delay and in three stages: crawl, render, index. How the render queue and Web Rendering Service work, what breaks it, and how to check your pages.
+### Why Your Next.js or React Pages Aren't Getting Indexed (JavaScript Rendering, Explained)
+React and Next.js sites often ship content that crawlers can't see. Here's how Google renders JavaScript, why AI crawlers can't, and how to get your pages indexed.
+Google Search Console
+### "Duplicate Without User-Selected Canonical": What It Means and When to Act
+[a] "Duplicate Without User-Selected Canonical": What It Means and When to Act
+Google found two or more URLs it reads as the same page, you never told it which one to keep, so it picked one. What that costs you, how to diagnose the cause, and when the right move is nothing.

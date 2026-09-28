@@ -1,0 +1,16 @@
+URL: https://www.dr-beckmann.com/de-de/ratgeber/fleckendetektiv/
+HTTP: 200
+TITLE: Fleckendetektiv: jeden Fleck entfernen | Dr. Beckmann
+HTML bytes: 344780
+
+JSON-LD:
+{"@context":"https://schema.org/","@graph":[{"@type":"WebPage","@id":"https://www.dr-beckmann.com/de-de/ratgeber/fleckendetektiv/#webpage","about":{"@id":"https://www.dr-beckmann.com/#brand"},"inLanguage":"de-DE","isPartOf":{"@id":"https://www.dr-beckmann.com/de-de/#website"},"name":"Fleckendetektiv","url":"https://www.dr-beckmann.com/de-de/ratgeber/fleckendetektiv/"},{"@type":"Corporation","@id":"https://www.drbeckmanngroup.com/#corporation","address":{"@type":"PostalAddress","addressCountry":"DE","addressLocality":"Egelsbach","postalCode":"63329","streetAddress":"Kurt-Schumacher-Ring 15-17"},"email":"kundenberatung@drbeckmanngroup.com","image":"https://www.drbeckmanngroup.com/fileadmin/user_upload/logos/drbeckmanngroup-logo.svg","legalName":"Dr. Beckmann Group GmbH","logo":{"@type":"ImageObject","@id":"https://www.drbeckmanngroup.com/#logo","url":"https://www.drbeckmanngroup.com/fileadmin/user_upload/logos/drbeckmanngroup-logo.svg"},"name":"Dr. Beckmann Group GmbH","sameAs":"https://www.linkedin.com/company/drbeckmanngroup/","telephone":"+49-6103-4045-0","url":"https://www.drbeckmanngroup.com/"},{"@type":"Brand","@id":"https://www.dr-beckmann.com/#brand","name":"Dr. Beckmann","url":"https://www.dr-beckmann.com/de-de/"},{"@type":"WebSite","@id":"https://www.dr-beckmann.com/de-de/#website","inLanguage":"de-DE","name":"Dr. Beckmann","publisher":{"@id":"https://www.drbeckmanngroup.com/#corporation"},"url":"https://www.dr-beckmann.com/de-de/"}]}
+
+TEXT:
+# Dr. Beckmann Fleckendetektiv
+## Finde für jeden Fleck den richtigen Fleckenentferner
+Mit unserem Fleckendetektiv können Sie hier auf Spurensuche gehen und Ihren Fleck erfolgreich entfernen.
+1. Geben Sie die Art des Flecks in das Feld "Fleckensuche" ein. 2. Klicken Sie auf das Bild, das der Art Ihres Flecks entspricht. 3. Wählen Sie die Art des Gewebes aus, auf dem sich der Fleck befindet. 4. Dann die Option "Waschbar" oder "Nicht waschbar". 5. Der Fleckendetektiv wählt für Sie passende Dr. Beckmann Produkte aus.
+## Fleckendetektiv
+[a] Zurück
+[a] Kontakt

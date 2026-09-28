@@ -1,0 +1,73 @@
+URL: https://dlionline.org/stain-removal-guide/
+HTTP: 200
+TITLE: Stain Removal Guide | Dry Cleaning and Laundry Institute International
+HTML bytes: 63404
+
+JSON-LD:
+
+
+TEXT:
+[a] Skip to content
+[a] Skip to footer
+# Stain Removal Guide
+- Home
+[a] Home
+- Stain Removal Guide
+[a] Stain Removal Guide
+## Step-by-step stain removal instructions for any fabric.
+Are there stains or fabrics your staff have difficulty cleaning? DLI has created an app that guides your staff through the toughest garments on the spotting board. Pick a stain, pick a fabric, then follow the stain removal instructions. It's that simple.
+[btn] Close
+- Why Join show submenu for Why Join Membership Benefits Advocacy Allied Trade Partnership Program Expertise Community Education Savings
+[a] Why Join
+[btn] show submenu for Why Join
+- Membership Benefits
+[a] Membership Benefits
+- Advocacy
+[a] Advocacy
+- Allied Trade Partnership Program
+[a] Allied Trade Partnership Program
+- Expertise
+[a] Expertise
+- Community
+[a] Community
+- Education
+[a] Education
+- Savings
+[a] Savings
+- Allied Trade show submenu for Allied Trade Meet our Allied Trade Members Membership Benefits Partnership Program Signup Buyers Guide Manufacturer Training Videos
+[a] Allied Trade
+[btn] show submenu for Allied Trade
+- Meet our Allied Trade Members
+[a] Meet our Allied Trade Members
+- Partnership Program Signup
+[a] Partnership Program Signup
+- Buyers Guide
+[a] Buyers Guide
+- Manufacturer Training Videos
+[a] Manufacturer Training Videos
+- Leadership show submenu for Leadership HR Benefit Your DLI Board Your DLI Team
+[a] Leadership
+[btn] show submenu for Leadership
+- HR Benefit
+[a] HR Benefit
+- Your DLI Board
+[a] Your DLI Board
+- Your DLI Team
+[a] Your DLI Team
+- News & Events show submenu for News & Events Calendar of Events Hall of Fame Award Breaking News
+[a] News & Events
+[btn] show submenu for News & Events
+- Calendar of Events
+[a] Calendar of Events
+- Hall of Fame Award
+[a] Hall of Fame Award
+- Breaking News
+[a] Breaking News
+- Find A Cleaner
+[a] Find A Cleaner
+- Login
+[a] Login
+- Join Now
+[a] Join Now
+- Search
+[a] Search

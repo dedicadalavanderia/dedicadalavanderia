@@ -1,0 +1,52 @@
+URL: https://www.vanish.co.uk/stain-removal/stains-on-fabrics/
+HTTP: 200
+TITLE: How to Remove Stains From Fabrics | Vanish UK
+HTML bytes: 681698
+
+JSON-LD:
+{"name":"How to Remove Stains From Fabrics","@context":"https://schema.org","@type":"WebPage","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.vanish.co.uk/"},"inLanguage":"en-us","author":{"@type":"Person"},"publisher":{"@type":"Organization","url":"https://www.vanish.co.uk/","logo":{"@type":"ImageObject","url":"https://eu-images.contentstack.com/v3/assets/blte6b9e99033a702bd/blt9faa8ca8b36a4b2a/664ee3e6b23b1510298a0616/cfc2af41e232ff6b1fcc0a0d485ee75c78ad140d.png"}}}
+
+TEXT:
+- How to Remove Stains from Cotton and Wool Read our step-by-step guide to removing stains from cotton and wool.
+### How to Remove Stains from Cotton and Wool
+[a] How to Remove Stains from Cotton and Wool
+- How to Remove Stains from Linen? Learn how to remove stains from linen with our handy guide.
+### How to Remove Stains from Linen?
+[a] How to Remove Stains from Linen?
+- How to Remove Stains from Silk? Read our advice on removing stains from silk.
+### How to Remove Stains from Silk?
+[a] How to Remove Stains from Silk?
+- How To Get Stains Out Of Denim & Jeans? Find out how to remove stains from denim and jeans.
+### How To Get Stains Out Of Denim & Jeans?
+[a] How To Get Stains Out Of Denim & Jeans?
+- How to Remove Stains from Fabric? Our tips on removing stains from fabric with Vanish.
+### How to Remove Stains from Fabric?
+[a] How to Remove Stains from Fabric?
+- How to remove stains from a sofa Sofa stain removal is key to keeping your sofa looking brand new. Find what sofa stain remover to use depending on the material and type of stain.
+### How to remove stains from a sofa
+[a] How to remove stains from a sofa
+- What setting to wash towels Discover the best way to wash towels with this step-by-step guide. Plus, learn what setting to use and how to get towels white again. Read more.
+### What setting to wash towels
+[a] What setting to wash towels
+## Popular Stain Remover Products
+- 0% OXI ACTION STAIN REMOVER POWDER
+### 0% OXI ACTION STAIN REMOVER POWDER
+[a] 0% OXI ACTION STAIN REMOVER POWDER
+- GOLD OXI ACTION FABRIC STAIN REMOVER SPRAY 2X Power for better stain removal
+### GOLD OXI ACTION FABRIC STAIN REMOVER SPRAY
+[a] GOLD OXI ACTION FABRIC STAIN REMOVER SPRAY
+- OXI ACTION FABRIC STAIN REMOVER SPRAY Amazing Power on 100+ stains
+### OXI ACTION FABRIC STAIN REMOVER SPRAY
+[a] OXI ACTION FABRIC STAIN REMOVER SPRAY
+- OXI ACTION STAIN REMOVER POWDER Amazing stain removal
+### OXI ACTION STAIN REMOVER POWDER
+[a] OXI ACTION STAIN REMOVER POWDER
+- OXI ACTION MULTI POWER GEL Breathe Life into Clothes
+### OXI ACTION MULTI POWER GEL
+[a] OXI ACTION MULTI POWER GEL
+- Vanish Gold Oxi Action Stain Remover Powder, For Colours Stains gone 1st time
+### Vanish Gold Oxi Action Stain Remover Powder, For Colours
+[a] Vanish Gold Oxi Action Stain Remover Powder, For Colours
+[a] See all
+## Clothes Live Longer With Vanish
+[a] Read More

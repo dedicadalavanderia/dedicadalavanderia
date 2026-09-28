@@ -1,0 +1,221 @@
+URL: https://askjeevesny.com/public/guides/blood-stains.html
+HTTP: 200
+TITLE: How to Remove Blood Stains | Jeeves NY
+HTML bytes: 31113
+
+JSON-LD:
+
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://askjeevesny.com/#zach-pozniak",
+  "name": "Zach Pozniak",
+  "url": "https://askjeevesny.com/public/about-zach.html",
+  "image": "https://askjeevesny.com/public/zach-pozniak.jpg",
+  "jobTitle": "VP of Operations",
+  "description": "VP of Operations and co-owner of Jeeves of Belgravia New York. Fourth-generation dry cleaner, TikTok creator (@jeeves_ny), and co-author of The Laundry Book.",
+  "worksFor": {
+    "@id": "https://askjeevesny.com/#jeeves-ny"
+  },
+  "knowsAbout": [
+    "garment care",
+    "stain removal",
+    "dry cleaning",
+    "fabric care",
+    "laundry"
+  ],
+  "sameAs": [
+    "https://www.tiktok.com/@jeeves_ny",
+    "https://www.youtube.com/channel/UCvy2aLWRJkQLGT9px_is05A",
+    "https://www.goodmorningamerica.com/culture/video/zachary-jerry-pozniak-talk-new-book-share-laundry-114845107",
+    "https://geni.us/LaundryBook"
+  ]
+}
+        
+---
+
+{
+  "@context": "https://schema.org",
+  "@type": "DryCleaningOrLaundry",
+  "@id": "https://askjeevesny.com/#jeeves-ny",
+  "name": "Jeeves of Belgravia New York",
+  "alternateName": "Jeeves NY",
+  "url": "https://www.jeevesofbelgravia.com/newyork/",
+  "logo": "https://askjeevesny.com/public/logo_light.svg",
+  "image": "https://askjeevesny.com/public/Jeeves%20Watermark.png",
+  "foundingDate": "1979",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1318 Madison Avenue",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "postalCode": "10128",
+    "addressCountry": "US"
+  },
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "Jeeves of Belgravia",
+    "url": "https://www.jeevesofbelgravia.com/",
+    "award": "Royal Warrant Holder"
+  },
+  "employee": {
+    "@id": "https://askjeevesny.com/#zach-pozniak"
+  }
+}
+        
+---
+
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Remove Blood Stains",
+  "description": "How to remove blood stains with cold water, hydrogen peroxide, and enzyme cleaners. Stop before drying so the stain does not set.",
+  "author": { "@id": "https://askjeevesny.com/#zach-pozniak" },
+  "publisher": { "@id": "https://askjeevesny.com/#jeeves-ny" },
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Rinse with cold water",
+      "text": "Flush the stain with cold water as soon as possible. Avoid warm or hot water at this stage because it can make blood harder to remove."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Treat the stain",
+      "text": "Apply 3% hydrogen peroxide directly to the spot, or use an enzyme stain remover with protease. Let it sit for 15 to 30 minutes."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Wash the item",
+      "text": "Wash the garment according to the care label, using the appropriate water temperature for the fabric after pretreating."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Inspect before drying",
+      "text": "Check the stain carefully before putting the item in the dryer. If any blood remains, repeat the treatment instead of drying."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Repeat if needed",
+      "text": "For old or stubborn stains, reapply treatment or soak in oxygen bleach solution, then wash again until the stain is gone."
+    }
+  ]
+}
+        
+---
+
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I use hot water on blood stains?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not at the start. Cold water is safest for rinsing blood, and dryer heat is what really sets a stain if it is still there."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know if a stain is blood?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hydrogen peroxide will usually foam on blood. If it does not react, the stain may be something else like wine or juice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I dry blood stains after washing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only after the stain is completely gone. If you dry it too soon, the remaining blood can set into the fabric."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if the blood stain is old?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Old blood stains usually need repeat treatments, longer soak time, or an oxygen bleach soak before washing again."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is hydrogen peroxide safe on all fabrics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It can affect some delicate or colored fabrics, so test in an inconspicuous spot first and use professional cleaning for fragile items."
+      }
+    }
+  ]
+}
+        
+
+TEXT:
+[a] Home
+[a] Guides
+# How to Remove Blood Stains
+By Zach Pozniak , VP of Operations at Jeeves of Belgravia New York and fourth-generation dry cleaner · @jeeves_ny
+[a] Zach Pozniak
+[a] Jeeves of Belgravia New York
+[a] @jeeves_ny
+Quick answer: Rinse blood stains with cold water, then treat them with 3% hydrogen peroxide or a protease enzyme stain remover. Let it sit, wash as directed, and never dry the item until the stain is fully gone.
+## How to remove blood stains at home
+The fastest way to remove blood stains is to act quickly, rinse with cold water , then treat the spot with 3% hydrogen peroxide or an enzyme stain remover that contains protease. Let it sit, wash as directed, and check the stain before drying so you do not set it permanently.
+## What to do first
+Blood is a protein stain, which means heat can make it harder to remove if the stain has not been fully lifted yet. Start by rinsing the area under cold running water or soaking it in cold water for a few minutes.
+Do not use warm or hot water at the start. For fresh blood, cold water helps lift the stain without cooking it into the fibers.
+## Best home treatment
+### Use hydrogen peroxide
+Apply 3% hydrogen peroxide directly to the stain. If it is blood, it will usually foam. That foam is a useful sign that the treatment is reacting with the stain.
+- Rinse the stain with cold water.
+- Apply 3% hydrogen peroxide to the stained area.
+- Let it sit for about 15 to 30 minutes.
+- Rinse again and wash according to the care label.
+### Or use an enzyme stain remover
+If you prefer a spray or laundry treatment, choose one that includes protease . Protease helps break down protein stains like blood. Apply it, let it sit, then wash as directed.
+## After washing
+Inspect the stain before tumble drying. Dryer heat can lock in any remaining blood and make removal much harder. If you still see color, repeat the treatment instead of drying it.
+For stubborn stains, re-treat with hydrogen peroxide or soak the item in an oxygen bleach solution, then wash again. Old blood stains usually need more than one round.
+## What not to do
+- Do not use hot water first.
+- Do not dry the item until the stain is gone.
+- Do not rub aggressively if the fabric is delicate.
+## When to get professional help
+If the blood stain is on silk, wool, upholstery, a rug, or a dry-clean-only garment, professional cleaning is often the safest option. Old or large stains may also need specialized treatment.
+### Related guides
+- Stain removal basics - The general rescue plan for any stain.
+[a] Stain removal basics
+- Best stain remover - Which stain removers a dry cleaner actually recommends.
+[a] Best stain remover
+- Best laundry detergent - The detergent you use matters too - see our tested picks for stains.
+[a] Best laundry detergent
+### Got a stubborn blood stain?
+[a] Ask Jeeves AI
+Or ask about any laundry or garment care question
+### Watch the full guide
+[a] Watch on YouTube ↗
+### Watch Jeeves NY demonstrate these techniques:
+- Rinse blood stains and treat with peroxide
+[a] Rinse blood stains and treat with peroxide
+- Use cold water, peroxide, and avoid drying
+[a] Use cold water, peroxide, and avoid drying
+- Remove blood stains with peroxide and repeat washing
+[a] Remove blood stains with peroxide and repeat washing
+- Wash blood stains with peroxide and oxygen bleach
+[a] Wash blood stains with peroxide and oxygen bleach
+- Quick blood stain removal with peroxide or enzyme remover
+[a] Quick blood stain removal with peroxide or enzyme remover
+- Why salt does not remove blood stains
+[a] Why salt does not remove blood stains
+- Remove old blood stains with stronger peroxide
+[a] Remove old blood stains with stronger peroxide
+### About the author
+Zach Pozniak is VP of Operations and co-owner of Jeeves of Belgravia New York , the Madison Avenue dry cleaner serving New York since 1979, and the fourth generation of his family in the trade. Zach posts garment care techniques as @jeeves_ny on TikTok to over 900,000 followers, and his book The Laundry Book , co-written with his father Jerry Pozniak, was featured on Good Morning America in October 2024. Jeeves NY's clients include the Metropolitan Opera, the Met Museum, and FIT, and the business has been featured in The Wall Street Journal and New York Magazine .
+[a] The Laundry Book
+[a] Good Morning America
+[a] The Wall Street Journal
+[a] New York Magazine
+[a] Terms
+[a] Privacy
+[a] Powered by Jeeves NY

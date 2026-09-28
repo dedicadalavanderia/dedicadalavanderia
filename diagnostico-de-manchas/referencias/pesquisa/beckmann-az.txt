@@ -1,0 +1,22 @@
+URL: https://www.dr-beckmann.com/de-de/ratgeber/flecken-von-a-z/
+HTTP: 200
+TITLE: Flecken S.O.S. - weg mit Flecken | Dr. Beckmann
+HTML bytes: 181782
+
+JSON-LD:
+{"@context":"https://schema.org/","@graph":[{"@type":"WebPage","@id":"https://www.dr-beckmann.com/de-de/ratgeber/flecken-von-a-z/#webpage","about":{"@id":"https://www.dr-beckmann.com/#brand"},"inLanguage":"de-DE","isPartOf":{"@id":"https://www.dr-beckmann.com/de-de/#website"},"name":"Flecken von A-Z","url":"https://www.dr-beckmann.com/de-de/ratgeber/flecken-von-a-z/"},{"@type":"Corporation","@id":"https://www.drbeckmanngroup.com/#corporation","address":{"@type":"PostalAddress","addressCountry":"DE","addressLocality":"Egelsbach","postalCode":"63329","streetAddress":"Kurt-Schumacher-Ring 15-17"},"email":"kundenberatung@drbeckmanngroup.com","image":"https://www.drbeckmanngroup.com/fileadmin/user_upload/logos/drbeckmanngroup-logo.svg","legalName":"Dr. Beckmann Group GmbH","logo":{"@type":"ImageObject","@id":"https://www.drbeckmanngroup.com/#logo","url":"https://www.drbeckmanngroup.com/fileadmin/user_upload/logos/drbeckmanngroup-logo.svg"},"name":"Dr. Beckmann Group GmbH","sameAs":"https://www.linkedin.com/company/drbeckmanngroup/","telephone":"+49-6103-4045-0","url":"https://www.drbeckmanngroup.com/"},{"@type":"Brand","@id":"https://www.dr-beckmann.com/#brand","name":"Dr. Beckmann","url":"https://www.dr-beckmann.com/de-de/"},{"@type":"WebSite","@id":"https://www.dr-beckmann.com/de-de/#website","inLanguage":"de-DE","name":"Dr. Beckmann","publisher":{"@id":"https://www.drbeckmanngroup.com/#corporation"},"url":"https://www.dr-beckmann.com/de-de/"}]}
+
+TEXT:
+# Flecken von A-Z
+## Flecken von A bis Z – vom Experten für Experten
+Flecken lauern überall und können ganz unterschiedlicher Art sein. Damit Sie ganz leicht das richtige Mittel zum Fleck finden, haben wir für Sie im Flecken S.O.S. die häufigsten Flecken von A-Z mit dem dafür geeigneten Fleckenteufel aufgeführt. Einfach die PDF-Datei downloaden:
+[a] Fleckenteufel
+[a] Flecken S.O.S.
+## Hilfreiche Tipps zur Fleckentfernung
+Alle Fleckenteufel können sowohl auf waschbaren als auch auf nicht-waschbaren Textilien wie z.B. Blazern, Anzügen und Mänteln angewendet werden. Um die Chance auf eine erfolgreiche Fleckentfernung zu erhöhen, haben wir hier noch einige Tipps aufgelistet:
+- Je früher ein Fleck behandelt wird, desto leichter lässt er sich entfernen.
+- Vorab Farbe und Beständigkeit an verdeckter Gewebestelle prüfen.
+- Pflegesymbole der Textilien beachten.
+- Fleckentfernung immer vor dem Waschen durchführen.
+- Fleckbehandlung nicht auf empfindlichen Oberflächen durchführen.
+- Geeignete Unterlage, z.B. Untertasse und sauberes Tuch verwenden.

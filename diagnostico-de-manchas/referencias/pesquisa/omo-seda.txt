@@ -1,0 +1,61 @@
+URL: https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/como-lavar-e-tirar-mancha-de-roupa-de-seda.html
+HTTP: 200
+TITLE: Como lavar e tirar mancha de roupa de seda | OMO
+HTML bytes: 530017
+
+JSON-LD:
+{"@context":"https://schema.org","@type":"WebSite","name":"OMO","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/como-lavar-e-tirar-mancha-de-roupa-de-seda.html"}
+---
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/como-lavar-e-tirar-mancha-de-roupa-de-seda.html#webpage","name":"Como lavar e tirar mancha de roupa de seda","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/como-lavar-e-tirar-mancha-de-roupa-de-seda.html"}
+---
+{"@context":"https://schema.org","@type":"Brand","@id":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/como-lavar-e-tirar-mancha-de-roupa-de-seda.html#brand","logo":"https://www.omo.com/images/h0nadbhvm6m4/68zXpMN3Shc1IgECsZjlFg/9505212f848a00b77ba23ca9cadea243/T01PX0xPR09fTE9DS1VQX0hPUklaX0JMVUUyOTRfUkdCX18xXy5wbmc/160w-92h/omo-logo.jpg","name":"OMO","sameAs":["https://www.facebook.com/omobrasil","https://mobile.twitter.com/OMOBrasil","https://m.youtube.com/user/omobrasil/featured","https://vm.tiktok.com/ZMLbatfDm/","https://instagram.com/omobrasil?igshid=NDA1YzNhOGU="],"description":"Quer saber mais informações sobre os produtos da OMO? Conheça toda a linha de sabão em pó e para diluir, desinfetantes e removedores. Clique aqui!","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/como-lavar-e-tirar-mancha-de-roupa-de-seda.html","mainEntityOfPage":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/como-lavar-e-tirar-mancha-de-roupa-de-seda.html"}
+---
+{"@context":"https://schema.org","@type":"Organization","@id":"https://www.omo.com/br/home.html","name":"OMO","url":"https://www.omo.com/br/home.html","logo":"/images/h0nadbhvm6m4/68zXpMN3Shc1IgECsZjlFg/9505212f848a00b77ba23ca9cadea243/T01PX0xPR09fTE9DS1VQX0hPUklaX0JMVUUyOTRfUkdCX18xXy5wbmc/160w-92h/omo-logo.jpg","address":{"@type":"PostalAddress","addressLocality":"São Paulo","addressCountry":{"@type":"Country","name":"Brasil"},"postalCode":"CEP 04533-085","streetAddress":"Av. of the United Nations, 14,261 - Brooklin Paulista"},"contactPoint":[{"@type":"ContactPoint","telephone":"+55 11 2505-4034","contactType":"Customer Service"},{"@type":"ContactPoint","email":"omobrasil@gmail.com"}]}
+---
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Vá para a página inicial","item":"https://www.omo.com/br/home.html"},{"@type":"ListItem","position":2,"name":"Como lavar e tirar mancha de roupa de seda"}]}
+
+TEXT:
+# Como lavar e tirar mancha de roupa de seda
+Você consegue pensar em algo pior do que borrar seu lenço de seda pura com batom? Ou então lavar uma blusa de seda novinha só para descobrir que ela encolheu e ficou com metade do seu tamanho original? Esse tecido delicado pode ser a fonte de muitas catástrofes de moda, mas não precisa ser.
+Na verdade, limpar seda não é muito difícil. Mas como lavar roupa de seda pura corretamente? E como tirar mancha de blusa de seda? Basta ter o seguinte em mente:
+- Faça o teste de firmeza das cores. Primeiro, certifique-se de que a sua roupa não solta tinta (veja aqui como fazer o teste para descobrir) e pode ser lavada com segurança. Caso ela solte tinta, lave a peça separadamente das demais para evitar transferência de cor de uma peça para outra.
+Faça o teste de firmeza das cores. Primeiro, certifique-se de que a sua roupa não solta tinta (veja aqui como fazer o teste para descobrir) e pode ser lavada com segurança. Caso ela solte tinta, lave a peça separadamente das demais para evitar transferência de cor de uma peça para outra.
+- Evite a secadora de roupas. O calor pode fazer a seda encolher ou danificá-la.
+Evite a secadora de roupas. O calor pode fazer a seda encolher ou danificá-la.
+- Não utilize água sanitária. Limpar seda com um produto químico forte como este pode facilmente danificar as suas fibras naturais.
+Não utilize água sanitária. Limpar seda com um produto químico forte como este pode facilmente danificar as suas fibras naturais.
+## Como lavar roupa de seda pura à mão
+Lavar roupa de seda à mão geralmente é um método seguro, desde que a peça não seja marcada como "somente lavagem a seco". Verifique a etiqueta para ter certeza e, em seguida, siga estas etapas de como lavar roupa de seda pura à mão:
+- Encha a pia com água e adicione uma dose de OMO Líquido Roupas Delicadas , tomando cuidado para dissolver bem o sabão. Se desejar deixe de molho por até 30 minutos e esfregue a peça suavemente.
+Encha a pia com água e adicione uma dose de OMO Líquido Roupas Delicadas , tomando cuidado para dissolver bem o sabão. Se desejar deixe de molho por até 30 minutos e esfregue a peça suavemente.
+[a] OMO Líquido Roupas Delicadas
+- A seguir, escorra toda a água e encha novamente a pia com água fria, enxaguando bem a roupa até que não sobrem resíduos de sabão.
+A seguir, escorra toda a água e encha novamente a pia com água fria, enxaguando bem a roupa até que não sobrem resíduos de sabão.
+- Esprema delicadamente a peça para remover o excesso de água. Não torça roupas de seda, pois isso pode fazer o tecido esticar ou deformar.
+Esprema delicadamente a peça para remover o excesso de água. Não torça roupas de seda, pois isso pode fazer o tecido esticar ou deformar.
+- Coloque a roupa sobre uma toalha limpa e enrole-a para remover o excesso de água. Por fim, coloque-a sobre uma toalha na vertical para secar naturalmente.
+Coloque a roupa sobre uma toalha limpa e enrole-a para remover o excesso de água. Por fim, coloque-a sobre uma toalha na vertical para secar naturalmente.
+## Como lavar roupas de seda na máquina de lavar
+Não tem tempo (ou paciência) para tarefas como lavar blusa de seda à mão? Algumas peças de seda pura podem ser lavadas na máquina sem problema, mas antes confira a etiqueta e certifique-se de que é seguro fazer isso. Tudo certo? Veja abaixo como lavar roupas de seda na máquina de lavar passo a passo:
+- Coloque a roupa de seda de preferência dentro de sacos protetores na máquina de lavar sozinha ou com cores e tecidos semelhantes – não adicione itens pesados, especialmente peças com fechos, pois podem acabar danificando a seda durante o processo de lavagem.
+Coloque a roupa de seda de preferência dentro de sacos protetores na máquina de lavar sozinha ou com cores e tecidos semelhantes – não adicione itens pesados, especialmente peças com fechos, pois podem acabar danificando a seda durante o processo de lavagem.
+- Adicione uma dose de OMO Líquido Roupas Delicadas, de acordo com as instruções na embalagem.
+Adicione uma dose de OMO Líquido Roupas Delicadas, de acordo com as instruções na embalagem.
+- Selecione o ciclo "delicado" na sua máquina de lavar e use água fria.
+Selecione o ciclo "delicado" na sua máquina de lavar e use água fria.
+- Uma vez que o ciclo de lavagem tenha terminado, coloque a peça de seda sobre uma toalha limpa para secar na horizontal e, de preferência, em um local ventilado.
+Uma vez que o ciclo de lavagem tenha terminado, coloque a peça de seda sobre uma toalha limpa para secar na horizontal e, de preferência, em um local ventilado.
+## Como tirar mancha de roupa de seda
+Se você descobriu uma mancha na sua roupa de seda, a princípio, isso pode parecer uma causa perdida. Mas não perca a esperança ainda: há alguns truques de como tirar mancha de seda que você pode tentar.
+- Trate a mancha o mais rapidamente possível – uma mancha seca será muito mais difícil de remover.
+Trate a mancha o mais rapidamente possível – uma mancha seca será muito mais difícil de remover.
+- Pressione suavemente a área manchada com um guardanapo de papel ou algodão limpo para absorver a maior parte possível da mancha.
+Pressione suavemente a área manchada com um guardanapo de papel ou algodão limpo para absorver a maior parte possível da mancha.
+- Aplique uma parte da dose de Omo Liquido Roupas Delicadas fazendo movimentos circulares sobre a mancha e em seguida lavar na máquina com o restante da dose, seguindo as instruções na etiqueta.
+Aplique uma parte da dose de Omo Liquido Roupas Delicadas fazendo movimentos circulares sobre a mancha e em seguida lavar na máquina com o restante da dose, seguindo as instruções na etiqueta.
+Com estas dicas de como lavar roupa de seda pura e como tirar mancha de seda, da próxima vez que acontecer um acidente, não deve ser difícil resolver o problema. Apenas lembre-se de tratar o tecido suavemente e você nunca mais precisará se preocupar com manchas ou blusas encolhidas.
+Pintou outra dúvida? Fale com o SOS Lavanderia no Facebook Messenger.
+[a] Facebook Messenger.
+## Compartilhar
+[a] Compartilhar : Facebook
+[a] Compartilhar : X

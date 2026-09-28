@@ -13,98 +13,125 @@
 </style>
 </head>
 <body>
-<div class="prototipo-aviso">Protótipo para teste. Não é a página publicada.</div>
+<div class="prototipo-aviso">Protótipo para avaliação. Não é a página publicada.</div>
 <header class="prototipo-topo">Dedicada Lavanderia</header>
 <main>
 <div class="dm-pagina">
 <p class="dm-trilha"><a href="https://dedicadalavanderia.com.br/">Início</a> › <a href="https://dedicadalavanderia.com.br/cuidados-por-tecido/">Cuidados por Tecido</a> › Diagnóstico de Manchas</p>
 <h1>Diagnóstico de manchas: o que fazer antes de lavar?</h1>
-<p class="dm-resposta">Tire o excesso encostando um pano limpo, sem esfregar, e não use água quente, que fixa manchas de café, chá e vinho. Depois, escolha abaixo a peça e o problema: em três passos, você vê o que fazer em casa, o que evitar e como a Dedicada trata.</p>
-<p class="dm-assinatura"><span class="dm-iniciais" aria-hidden="true">JM</span><span>Revisado por <strong>Jorge Isaac Mazza</strong>, sócio fundador da Dedicada Lavanderia · Atualizado em setembro de 2026</span></p>
+<p class="dm-resposta">Não esfregue, não use água quente nem produto caseiro: tire o excesso encostando um pano limpo e leve a peça quanto antes. Vinho tinto na seda e mofo no couro pedem cuidado em menos de 24 horas.</p>
+<p class="dm-assinatura"><img src="prototipo-img/jorge.webp" alt="Jorge Isaac Mazza" width="48" height="48"><span>Revisado por <strong>Jorge Isaac Mazza</strong>, sócio fundador da Dedicada Lavanderia · Atualizado em setembro de 2026</span></p>
+<p class="dm-intro">Escolha abaixo a peça e o problema: em três passos, você vê o que fazer em casa, o que evitar e como a Dedicada trata, com prazo e preço.</p>
 <link rel="stylesheet" href="diagnostico-manchas.css">
-<div id="dm-app" class="dm-app"><p class="dm-sem-js">A ferramenta precisa de JavaScript. Veja abaixo o guia da sua peça ou fale com a Dedicada pelo <a href="https://wa.me/5548984280639">WhatsApp</a>.</p></div>
+<div id="dm-app" class="dm-app"><p class="dm-sem-js">A ferramenta precisa de JavaScript. Veja abaixo as manchas mais urgentes de cada peça, com o link para o guia, ou fale com a Dedicada pelo <a href="https://wa.me/5548984280639">WhatsApp</a>.</p></div>
+<script>window.DM_CONFIG = {"fotos":"prototipo-img/","fotoLiliane":"prototipo-img/liliane.webp","fotoJorge":"prototipo-img/jorge.webp","fotoAlejandro":"prototipo-img/alejandro.webp"};</script>
 <script src="diagnostico-manchas.js"></script>
-<section class="dm-secao">
-<h2>Qual é o guia da sua peça?</h2>
-<div class="dm-guias">
-<div><h3>Festa e peças finas</h3><ul>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-seda/">Como lavar seda</a></li>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-vestidos-festa-noiva/">Vestidos de festa e de noiva (cetim e organza)</a></li>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-veludo/">Como lavar veludo</a></li>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-linho/">Como lavar linho sem encolher</a></li>
-</ul></div>
-<div><h3>Inverno, couro e alfaiataria</h3><ul>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-la/">Como lavar lã</a></li>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-alfaiataria/">Ternos e alfaiataria</a></li>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-sintetico/">Jaquetas e sintéticos</a></li>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-couro/">Como cuidar do couro</a></li>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-peles/">Peles naturais e sintéticas</a></li>
-</ul></div>
-<div><h3>Dia a dia</h3><ul>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-algodao/">Camisas e algodão</a></li>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-jeans-sarja/">Jeans e sarja</a></li>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-tenis-calcados/">Tênis e calçados</a></li>
-</ul></div>
-<div><h3>Casa</h3><ul>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-roupa-de-cama/">Roupa de cama e toalhas</a></li>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-edredom/">Edredom</a></li>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-cortinas/">Cortinas</a></li>
-</ul></div>
-<div><h3>Crianças</h3><ul>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-pelucias-fantasias/">Pelúcias e fantasias</a></li>
-<li><a href="https://dedicadalavanderia.com.br/cuidados-carrinho-de-bebe/">Carrinho de bebê e bebê conforto</a></li>
-</ul></div>
-</div>
-<p>Os 17 guias estão reunidos em <a href="https://dedicadalavanderia.com.br/cuidados-por-tecido/">Cuidados por Tecido</a>, com o que pode ou não ir na máquina de casa e os símbolos da etiqueta.</p>
+<section class="dm-secao" id="mais-urgentes">
+<h2>Quais manchas são mais urgentes?</h2>
+<p>Depende da peça: vinho tinto é o mais urgente na seda; no couro, são mofo, sangue e leite. A tabela traz o problema mais urgente de cada peça, com o prazo que o guia da Dedicada recomenda. Quanto antes a peça chega, maior a chance de a mancha sair.</p>
+<details class="dm-mais"><summary>Ver a tabela das 17 peças</summary>
+<table class="dm-tabela"><thead><tr><th scope="col">Peça</th><th scope="col">Mais urgente</th><th scope="col">Urgência</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-seda/">Seda</a></th><td data-rotulo="Mais urgente">Vinho tinto</td><td data-rotulo="Urgência">Muito urgente (menos de 24h)</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-cetim-organza/">Cetim e organza</a></th><td data-rotulo="Mais urgente">Mofo (guarda prolongada)</td><td data-rotulo="Urgência">Muito urgente (menos de 24h)</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-veludo/">Veludo</a></th><td data-rotulo="Mais urgente">Mofo; marca de água; mancha de bebida ou comida</td><td data-rotulo="Urgência">Urgente (24h)</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-linho/">Linho</a></th><td data-rotulo="Mais urgente">Mofo</td><td data-rotulo="Urgência">Muito urgente (menos de 24h)</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-alfaiataria/">Ternos e alfaiataria</a></th><td data-rotulo="Mais urgente">Mofo</td><td data-rotulo="Urgência">Muito urgente (menos de 24h)</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-la/">Lã</a></th><td data-rotulo="Mais urgente">Vinho tinto; suor nas axilas (casacos e blazers)</td><td data-rotulo="Urgência">Urgente (24h)</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-sintetico/">Jaquetas e sintéticos</a></th><td data-rotulo="Mais urgente">Mofo no recheio de pena</td><td data-rotulo="Urgência">Muito urgente (menos de 24h)</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-couro/">Couro</a></th><td data-rotulo="Mais urgente">Mofo; sangue, leite e resíduos biológicos</td><td data-rotulo="Urgência">Muito urgente (menos de 24h)</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-peles/">Peles</a></th><td data-rotulo="Mais urgente">Mofo</td><td data-rotulo="Urgência">Urgente: quanto antes, maior a chance de sair</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-algodao/">Camisas e algodão</a></th><td data-rotulo="Mais urgente">Cor de outra peça</td><td data-rotulo="Urgência">Muito urgente (menos de 24h)</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-jeans-sarja/">Jeans e sarja</a></th><td data-rotulo="Mais urgente">Graxa de bicicleta ou moto</td><td data-rotulo="Urgência">Urgente (24h)</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-tenis-calcados/">Tênis e calçados</a></th><td data-rotulo="Mais urgente">Graxa e óleo; mofo</td><td data-rotulo="Urgência">Urgente (24h)</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-roupa-de-cama/">Roupa de cama e toalhas</a></th><td data-rotulo="Mais urgente">Toalha com cheiro de mofo</td><td data-rotulo="Urgência">Urgente (24h)</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-edredom/">Edredom</a></th><td data-rotulo="Mais urgente"><ul><li>Mofo e cheiro de guardado, urgente: lave logo</li><li>Xixi de criança ou de pet, urgente (24h)</li><li>Percevejos, urgente</li></ul></td><td data-rotulo="Urgência">Urgente</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-cortinas/">Cortinas</a></th><td data-rotulo="Mais urgente">Mofo</td><td data-rotulo="Urgência">Urgente: quanto antes, maior a chance de sair</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-pelucias-fantasias/">Pelúcias e fantasias</a></th><td data-rotulo="Mais urgente"><ul><li>Xixi, vômito ou leite, urgente (24h)</li><li>Mofo na pelúcia, urgente: quanto antes, maior a chance de sair</li></ul></td><td data-rotulo="Urgência">Urgente</td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-carrinho-de-bebe/">Carrinho de bebê</a></th><td data-rotulo="Mais urgente"><ul><li>Vômito e leite, urgente (24h)</li><li>Xixi ou fralda vazada, urgente (24h)</li><li>Mofo, urgente: quanto antes, maior a chance de sair</li></ul></td><td data-rotulo="Urgência">Urgente</td></tr>
+</tbody></table>
+</details>
+<p>Cada peça tem um guia completo, com todos os problemas, o que fazer em casa, o processo, o prazo e o preço. Os 17 guias estão reunidos em <a href="https://dedicadalavanderia.com.br/cuidados-por-tecido/">Cuidados por Tecido</a>.</p>
 </section>
-<section class="dm-secao dm-faixa">
-<h2>O que vale para qualquer mancha?</h2>
+<section class="dm-secao dm-faixa" id="familias">
+<h2>Por que cada mancha pede um tratamento diferente?</h2>
+<p>Porque as manchas têm químicas diferentes: gordura, proteína e tanino não saem com o mesmo produto. Na Dedicada, cada família de mancha tem o seu tira-manchas, da linha Hydret da Seitz.</p>
+<table class="dm-tabela"><thead><tr><th scope="col">Família de mancha</th><th scope="col">Exemplos</th><th scope="col">Tira-manchas</th></tr></thead><tbody>
+<tr><th scope="row">Gordurosas e sintéticas</th><td data-rotulo="Exemplos">Maquiagem, batom, caneta, tinta, esmalte, cola, óleo e graxa</td><td data-rotulo="Tira-manchas">Hydret 1</td></tr>
+<tr><th scope="row">Orgânicas e proteicas</th><td data-rotulo="Exemplos">Sangue, suor, comida, leite, ovo e urina</td><td data-rotulo="Tira-manchas">Hydret 2</td></tr>
+<tr><th scope="row">Vegetais e de tanino</th><td data-rotulo="Exemplos">Vinho, café, chá, suco, refrigerante e perfume</td><td data-rotulo="Tira-manchas">Hydret 3</td></tr>
+</tbody></table>
+<p>Dois desses produtos se anulam se forem usados juntos, por isso cada mancha é tratada na sua vez, antes da lavagem. Na Dedicada, isso se chama protocolos de manchas.</p>
+</section>
+<section class="dm-secao" id="regras">
+<h2>O que fazer (e não fazer) com qualquer mancha?</h2>
+<p>Em casa, o mais importante é não piorar a mancha até a peça chegar à lavanderia.</p>
 <ol>
-<li>Tire o excesso encostando um pano limpo, sem esfregar.</li>
-<li>Não use água quente: ela fixa manchas de café, chá e vinho.</li>
-<li>Leve a peça quanto antes. Com mofo, de preferência em até 24 horas.</li>
-<li>Leia a etiqueta antes de lavar. A tina com X diz que a peça não vai à água em casa. Os cinco símbolos estão explicados em <a href="https://dedicadalavanderia.com.br/cuidados-por-tecido/">Cuidados por Tecido</a>.</li>
+<li>Tire o excesso encostando um pano limpo, sem esfregar: o atrito espalha a mancha e pode tirar a cor.</li>
+<li>Não use água quente: ela fixa manchas de café, chá e vinho, e o calor fixa manchas de sangue, suor e comida.</li>
+<li>Não passe ferro, secador de cabelo nem secadora antes de a mancha sair.</li>
+<li>Evite tira-manchas caseiro, álcool e água sanitária: em seda, couro e jeans colorido, o dano costuma ser pior que a mancha.</li>
+<li>Até levar, deixe a peça arejar, fora de saco plástico. Com mofo, leve de preferência em até 24 horas.</li>
+<li>Ao entregar, conte o que é a mancha, quando aconteceu e se já tentou tirar em casa.</li>
 <li>Em casa, seda, lã, ternos e blazers, couro, peles, tênis e vestidos de festa e de noiva não vão à máquina. Na lavanderia é diferente: a seda com sombra de bebida também vai à água fria, no programa para seda; a lã pode ir ao programa de wet cleaning para lã; e couro e vestidos de noiva vão para o wet cleaning.</li>
 </ol>
 </section>
-<section class="dm-secao">
+<section class="dm-secao" id="sem-solucao">
 <h2>O que pode não sair na lavagem?</h2>
-<p>Nem todo dano se desfaz na lavagem. Estes são os casos que vale conhecer antes:</p>
-<ul>
-<li><strong>Lã feltrada.</strong> A lã que encolheu e endureceu na máquina não volta ao tamanho. Por isso, ela não vai à máquina de casa, nem no ciclo delicado.</li>
-<li><strong>Veludo marcado pelo ferro.</strong> A marca do ferro encostado não sai. No veludo, o ferro só passa a distância e em temperatura baixa.</li>
-<li><strong>Jaqueta de poliuretano que já descasca.</strong> Ela é lavada em água ou higienizada só na superfície, e a Dedicada avisa o cliente antes.</li>
-<li><strong>Peles antigas.</strong> O couro pode estar ressecado. Nessas peças, a Dedicada avisa antes de lavar.</li>
-<li><strong>Cortina blackout.</strong> Só é lavada quando o tecido é lavável: a maioria fica pegajosa ou quebradiça.</li>
-</ul>
+<p>Alguns danos não se desfazem na lavagem, e o que resta é evitar da próxima vez. Estes são os que os guias da Dedicada registram:</p>
+<details class="dm-mais"><summary>Ver o que não se desfaz em cada peça</summary>
+<table class="dm-tabela"><thead><tr><th scope="col">Peça</th><th scope="col">O que não se desfaz na lavagem</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-seda/">Seda</a></th><td><ul><li><strong>Brilho de ferro</strong> (sem urgência; difícil de reverter): o calor achata a fibra e cria um efeito espelhado.</li></ul></td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-veludo/">Veludo</a></th><td><ul><li><strong>Marca de ferro</strong>: pelo esmagado pelo ferro encostado, liso e brilhante no formato da base.</li></ul></td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-linho/">Linho</a></th><td><ul><li><strong>Encolheu</strong>: água quente ou secadora em linho não pré-encolhido.</li><li><strong>Mudança de cor</strong>: linho tingido lavado em água, segundo a ANEL.</li><li><strong>Área clara ou marcada</strong>: mancha esfregada.</li></ul></td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-alfaiataria/">Ternos e alfaiataria</a></th><td><ul><li><strong>Bolhas no peito</strong> (muitas vezes não tem conserto): a cola da entretela soltou com água ou calor.</li><li><strong>Brilho no tecido</strong> (difícil de reverter): ferro quente direto na lã escura achata a fibra.</li><li><strong>Desgaste e fios puxados</strong>: atrito entre as pernas da calça ou nos braços do paletó.</li></ul></td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-la/">Lã</a></th><td><ul><li><strong>Encolheu e endureceu (feltragem)</strong>: dano físico; nenhum processo recupera.</li><li><strong>Bolhas na entretela</strong> (muitas vezes irreversível): bolhas no peito de blazers, por água ou calor errados.</li></ul></td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-sintetico/">Jaquetas e sintéticos</a></th><td><ul><li><strong>Poliuretano descascando</strong>: o revestimento envelheceu, ressecou e rachou.</li><li><strong>Fitas e zíperes derretidos</strong>: calor de secadora ou de ferro.</li></ul></td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-couro/">Couro</a></th><td><ul><li><strong>Encolhimento por calor</strong>: enrugamento por calor não tem correção.</li></ul></td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-algodao/">Camisas e algodão</a></th><td><ul><li><strong>Colarinho e punho puídos</strong>: desgaste pelo atrito do uso e do ferro nas bordas do tecido.</li><li><strong>Encolheu</strong>: água quente e secadora, principalmente na malha.</li></ul></td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-jeans-sarja/">Jeans e sarja</a></th><td><ul><li><strong>Riscos brancos</strong>: quebra do corante por lavar muitas calças com pouca água.</li><li><strong>Calça frouxa, sem elasticidade</strong>: elastano danificado por secadora ou ferro muito quentes.</li></ul></td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-tenis-calcados/">Tênis e calçados</a></th><td><ul><li><strong>Cola solta e tênis deformado</strong>: máquina de lavar, secadora ou calor.</li></ul></td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-roupa-de-cama/">Roupa de cama e toalhas</a></th><td><ul><li><strong>Capa de sofá encolhida</strong>: calor da secadora.</li><li><strong>Protetor impermeável rachado</strong>: calor forte na secagem ou no ferro.</li></ul></td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-edredom/">Edredom</a></th><td><ul><li><strong>Enchimento embolado</strong>: manta rasgada e costura rompida por lavagem em máquina pequena.</li><li><strong>Manta sem volume, com bolinhas</strong>: desgaste natural da manta de poliéster com o uso e as lavagens.</li></ul></td></tr>
+<tr><th scope="row"><a href="https://dedicadalavanderia.com.br/cuidados-cortinas/">Cortinas</a></th><td><ul><li><strong>Revestimento do blackout soltando</strong>: sol, calor e lavagem inadequada quebram a camada do avesso.</li><li><strong>Encolheu</strong>: linho ou algodão sem pré-encolhimento lavado em água.</li></ul></td></tr>
+</tbody></table>
+</details>
+<p>Na dúvida, mande uma foto pelo WhatsApp antes de trazer a peça.</p>
 </section>
-<section class="dm-secao dm-perguntas">
+<section class="dm-secao dm-perguntas" id="perguntas">
 <h2>Perguntas frequentes</h2>
-<details><summary><h3>Como tirar uma mancha sem estragar a roupa?</h3></summary><p>Tire o excesso encostando um pano limpo, sem esfregar, e não use água quente, que fixa manchas de café, chá e vinho. Leve a peça quanto antes. Para ver o que fazer com cada mancha, escolha a peça e o problema na ferramenta desta página.</p></details>
+<details><summary><h3>O que fazer logo depois que a roupa mancha?</h3></summary><p>Tire o excesso encostando um pano limpo, sem esfregar, e não use água quente, que fixa manchas de café, chá e vinho. Não passe ferro nem secador antes de a mancha sair, e leve a peça quanto antes: as mais urgentes, como vinho tinto na seda e mofo no couro, pedem cuidado em menos de 24 horas.</p></details>
+<details><summary><h3>Por que não usar água sanitária nas manchas?</h3></summary><p>Porque o cloro costuma piorar: deixa o amarelado do colarinho mais forte, escurece a mancha de ferrugem, enfraquece a fibra do linho, ataca o corante do couro e deixa manchas claras no jeans colorido. Na Dedicada, o alvejamento é sempre à base de oxigênio, nunca cloro.</p></details>
 <details><summary><h3>Quais tecidos não podem ir na máquina de lavar?</h3></summary><p>Na máquina de casa, não vão seda, lã, ternos e blazers, couro, peles, tênis e vestidos de festa e de noiva. Edredons de casal ou king não cabem direito, e a estrutura do carrinho de bebê não vai à máquina. Linho, veludo, jaquetas, pelúcias pequenas e cortinas leves só quando a etiqueta permite água, e com cuidado.</p></details>
 <details><summary><h3>Como evitar mofo nas roupas em Florianópolis?</h3></summary><p>Guarde as peças limpas e secas, em armário arejado e em capa de tecido, nunca de plástico. Mofo é o problema que mais chega à Dedicada em veludo, couro, peles e pelúcias, e o ideal é tratar quanto antes, de preferência em até 24 horas.</p></details>
 <details><summary><h3>Quanto tempo a lavanderia leva e quanto custa?</h3></summary><p>Na Dedicada, a maioria das peças fica pronta em 2 dias; lençóis, tênis e pelúcias, em 3; cortinas, em 3 a 4; vestidos finos e fantasias, em cerca de 5; couro, em 5 a 7; e vestido de noiva, peles e carrinho de bebê, em 7. Veludo, conforme a peça. Camisa a partir de R$ 23,90 e terno a partir de R$ 91,00. Há serviço expresso para a maioria das peças, no mesmo dia ou no seguinte, com acréscimo de 50%; couro e tênis não têm expresso.</p></details>
 <details><summary><h3>Vocês buscam as roupas em casa?</h3></summary><p>Sim. A coleta e a entrega são grátis, sem taxa, em 26 bairros da Ilha e do Continente, em dias fixos da semana. De outros bairros, é só levar as peças a uma das lojas, no Centro ou no Santa Mônica.</p></details>
 </section>
-<section class="dm-secao dm-faixa dm-local">
-<h2>Onde levar a peça?</h2>
-<p>A Dedicada é uma lavanderia de família, em Florianópolis desde 2003, com duas lojas: Centro e Santa Mônica. As duas abrem de segunda a sexta, das 8h às 18h, e sábado, das 8h às 13h.</p>
-<p>A coleta e a entrega são grátis, sem taxa, em 26 bairros da Ilha e do Continente, em dias fixos da semana. De outros bairros, é só levar as peças a uma das lojas.</p>
-<details class="dm-rotas"><summary>Ver os bairros e os dias da coleta</summary>
-<table>
-<thead><tr><th scope="col">Dia</th><th scope="col">Bairros</th></tr></thead>
-<tbody>
-<tr><th scope="row">Todos os dias</th><td>Centro</td></tr>
-<tr><th scope="row">Segunda</th><td>Lagoa da Conceição, Itacorubi, Santa Mônica, Parque São Jorge, Canto da Lagoa, Trindade, Agronômica, Córrego Grande, Pantanal, Canto dos Araçás, Porto da Lagoa, Jurerê, Jurerê Internacional e Daniela</td></tr>
-<tr><th scope="row">Terça</th><td>João Paulo, Cacupé, Santo Antônio de Lisboa, Sambaqui, Saco Grande e Monte Verde</td></tr>
-<tr><th scope="row">Quarta</th><td>Jurerê, Jurerê Internacional, Lagoa da Conceição, Itacorubi, Santa Mônica, Parque São Jorge, Canto da Lagoa, Trindade, Agronômica, Córrego Grande, Pantanal, Canto dos Araçás, Porto da Lagoa e Canasvieiras</td></tr>
-<tr><th scope="row">Quinta</th><td>Coqueiros, Estreito, Campinas e Abraão</td></tr>
-<tr><th scope="row">Sexta</th><td>Lagoa da Conceição, Itacorubi, Santa Mônica, Parque São Jorge, Canto da Lagoa, Trindade, Agronômica, Córrego Grande, Pantanal, Canto dos Araçás, Porto da Lagoa, Jurerê, Jurerê Internacional e Daniela</td></tr>
-<tr><th scope="row">Sábado</th><td>Jurerê e Jurerê Internacional</td></tr>
-</tbody>
-</table>
-</details>
-<p><a class="dm-btn dm-btn--primario" href="https://wa.me/5548984280639?text=Ol%C3%A1!%20Vim%20do%20Diagn%C3%B3stico%20de%20Manchas.">Falar com a Dedicada pelo WhatsApp</a></p>
+<section class="dm-secao dm-faixa dm-local" id="onde-levar">
+<h2>Onde levar a peça em Florianópolis?</h2>
+<p>Nas lojas da Dedicada no Centro e no Santa Mônica, ou pela coleta e entrega grátis, que passa por 26 bairros da Ilha e do Continente ao longo da semana.</p>
+<p><strong>Loja do Centro:</strong> Rua Germano Wendhausen, 286, Centro, Florianópolis (SC).<br><strong>Loja do Santa Mônica:</strong> Rua Dr. Agostinho Sielski, 44, Santa Mônica, Florianópolis (SC).<br><strong>Horário das duas lojas:</strong> de segunda a sexta, das 8h às 18h, sem fechar para o almoço; aos sábados, das 8h às 13h.</p>
+<p><strong>Coleta e entrega grátis, sem taxa:</strong></p>
+<ul>
+<li>Centro: de segunda a sábado</li>
+<li>Lagoa da Conceição, Itacorubi, Santa Mônica, Parque São Jorge, Canto da Lagoa, Trindade, Agronômica, Córrego Grande, Pantanal, Canto dos Araçás e Porto da Lagoa: segunda, quarta e sexta</li>
+<li>Jurerê e Jurerê Internacional: segunda, quarta, sexta e sábado</li>
+<li>Daniela: segunda e sexta</li>
+<li>Canasvieiras: quarta</li>
+<li>João Paulo, Cacupé, Santo Antônio de Lisboa, Sambaqui, Saco Grande e Monte Verde: terça</li>
+<li>Coqueiros, Estreito, Campinas e Abraão: quinta</li>
+</ul>
+<p>Os dias podem mudar em feriados; confirme pelo WhatsApp. De outros bairros, é só levar as peças a uma das lojas.</p>
+<p><a class="dm-btn dm-btn--primario" href="https://wa.me/5548984280639?text=Ol%C3%A1!%20Vim%20do%20Diagn%C3%B3stico%20de%20Manchas%20do%20site.">Falar com a Dedicada pelo WhatsApp: (48) 98428-0639</a></p>
+</section>
+<section class="dm-secao dm-fontes" id="fontes">
+<h2>Fontes</h2>
+<ul>
+<li>Guias de <a href="https://dedicadalavanderia.com.br/cuidados-por-tecido/">Cuidados por Tecido</a> da Dedicada Lavanderia: problemas mais comuns, urgência, processos, prazos e preços de cada peça (setembro de 2026).</li>
+<li>Seitz: tabela tira-manchas (famílias Hydret 1, 2 e 3) e programas do sistema Triton.</li>
+<li>ANEL, Associação Nacional das Empresas de Lavanderia: Mostruário de Tecidos para Lavanderia.</li>
+<li>Inmetro: norma de símbolos de cuidado para produtos têxteis (ABNT NBR NM-ISO 3758:2013, exigida pela Portaria Inmetro nº 118/2021).</li>
+<li>Dados internos da Dedicada Lavanderia (2026): prazos, preços e processos.</li>
+</ul>
 </section>
 </div>
 <script type="application/ld+json">
@@ -127,16 +154,27 @@
         "@id": "https://dedicadalavanderia.com.br/diagnostico-de-manchas/#trilha"
       },
       "reviewedBy": {
-        "@type": "Person",
-        "name": "Jorge Isaac Mazza",
-        "jobTitle": "S\u00f3cio fundador",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Dedicada Lavanderia"
-        }
+        "@id": "https://dedicadalavanderia.com.br/diagnostico-de-manchas/#revisor"
       },
       "lastReviewed": "2026-09-28",
-      "dateModified": "2026-09-28"
+      "dateModified": "2026-09-28",
+      "about": [
+        "remo\u00e7\u00e3o de manchas",
+        "cuidados com tecidos",
+        "lavanderia em Florian\u00f3polis"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://dedicadalavanderia.com.br/diagnostico-de-manchas/#revisor",
+      "name": "Jorge Isaac Mazza",
+      "jobTitle": "S\u00f3cio fundador",
+      "image": "https://dedicadalavanderia.com.br/wp-content/uploads/2026/09/jorge-isaac-mazza-dedicada-lavanderia.webp",
+      "worksFor": {
+        "@type": "LocalBusiness",
+        "name": "Dedicada Lavanderia",
+        "url": "https://dedicadalavanderia.com.br/"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -168,10 +206,18 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Como tirar uma mancha sem estragar a roupa?",
+          "name": "O que fazer logo depois que a roupa mancha?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tire o excesso encostando um pano limpo, sem esfregar, e n\u00e3o use \u00e1gua quente, que fixa manchas de caf\u00e9, ch\u00e1 e vinho. Leve a pe\u00e7a quanto antes. Para ver o que fazer com cada mancha, escolha a pe\u00e7a e o problema na ferramenta desta p\u00e1gina."
+            "text": "Tire o excesso encostando um pano limpo, sem esfregar, e n\u00e3o use \u00e1gua quente, que fixa manchas de caf\u00e9, ch\u00e1 e vinho. N\u00e3o passe ferro nem secador antes de a mancha sair, e leve a pe\u00e7a quanto antes: as mais urgentes, como vinho tinto na seda e mofo no couro, pedem cuidado em menos de 24 horas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Por que n\u00e3o usar \u00e1gua sanit\u00e1ria nas manchas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Porque o cloro costuma piorar: deixa o amarelado do colarinho mais forte, escurece a mancha de ferrugem, enfraquece a fibra do linho, ataca o corante do couro e deixa manchas claras no jeans colorido. Na Dedicada, o alvejamento \u00e9 sempre \u00e0 base de oxig\u00eanio, nunca cloro."
           }
         },
         {

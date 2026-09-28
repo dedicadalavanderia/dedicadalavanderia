@@ -1,0 +1,303 @@
+URL: https://askjeevesny.com/public/guides/index.html
+HTTP: 200
+TITLE: Laundry & Garment Care Guides - Jeeves Laundry Assistant
+HTML bytes: 108923
+
+JSON-LD:
+
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://askjeevesny.com/#zach-pozniak",
+  "name": "Zach Pozniak",
+  "url": "https://askjeevesny.com/public/about-zach.html",
+  "image": "https://askjeevesny.com/public/zach-pozniak.jpg",
+  "jobTitle": "VP of Operations",
+  "description": "VP of Operations and co-owner of Jeeves of Belgravia New York. Fourth-generation dry cleaner, TikTok creator (@jeeves_ny), and co-author of The Laundry Book.",
+  "worksFor": {
+    "@id": "https://askjeevesny.com/#jeeves-ny"
+  },
+  "knowsAbout": [
+    "garment care",
+    "stain removal",
+    "dry cleaning",
+    "fabric care",
+    "laundry"
+  ],
+  "sameAs": [
+    "https://www.tiktok.com/@jeeves_ny",
+    "https://www.youtube.com/channel/UCvy2aLWRJkQLGT9px_is05A",
+    "https://www.goodmorningamerica.com/culture/video/zachary-jerry-pozniak-talk-new-book-share-laundry-114845107",
+    "https://geni.us/LaundryBook"
+  ]
+}
+        
+---
+
+{
+  "@context": "https://schema.org",
+  "@type": "DryCleaningOrLaundry",
+  "@id": "https://askjeevesny.com/#jeeves-ny",
+  "name": "Jeeves of Belgravia New York",
+  "alternateName": "Jeeves NY",
+  "url": "https://www.jeevesofbelgravia.com/newyork/",
+  "logo": "https://askjeevesny.com/public/logo_light.svg",
+  "image": "https://askjeevesny.com/public/Jeeves%20Watermark.png",
+  "foundingDate": "1979",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1318 Madison Avenue",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "postalCode": "10128",
+    "addressCountry": "US"
+  },
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "Jeeves of Belgravia",
+    "url": "https://www.jeevesofbelgravia.com/",
+    "award": "Royal Warrant Holder"
+  },
+  "employee": {
+    "@id": "https://askjeevesny.com/#zach-pozniak"
+  }
+}
+        
+
+TEXT:
+[a] Ask Jeeves AI
+# Laundry & Garment Care Guides
+[a] Zach Pozniak
+[btn] Clear
+## Results
+No guides match your search. Ask our AI assistant instead.
+[a] Ask our AI assistant instead.
+### Nellie's POW Powder Review: I Scored It 55.9
+Nellie's Laundry Soda scored 18.8 and made my worst-detergent list. Then their owner brought me POW Powder, a different formula with an added enzyme. It scored 55.9.
+## Tested rankings & reviews
+Lab-tested by Zach, with the scores.
+[a] Most read Best laundry detergent 78 detergents tested
+[a] No. 2 Best stain remover 10 stain removers tested
+[a] No. 3 Best oxygen bleach 8 oxygen bleaches tested
+[a] No. 4 Best non-toxic detergent Fragrance-free picks that clean
+[a] No. 5 Best free and clear detergent No dyes, no fragrance, lab-tested
+[a] No. 6 Ariel 2X powder review 102.4 highest score on the board
+[a] No. 7 Tide Odor Refresh review 96.9 best liquid tested
+[a] No. 8 Tide evo review 84.5 sixth best tested
+[a] No. 9 Laundry Sauce review 82.2 7th of 78, five times the price
+[a] No. 10 Nellie's POW Powder review 55.9 the second Nellie's formula, tested
+## Browse all guides
+Stain removal 38 guides
+- Stain Removal Tips That Actually Work
+[a] Stain Removal Tips That Actually Work
+- How to Remove Blood Stains
+[a] How to Remove Blood Stains
+- How to Remove Chocolate Stains
+[a] How to Remove Chocolate Stains
+- How to Remove Coffee Stains
+[a] How to Remove Coffee Stains
+- How to Remove Curry Stains
+[a] How to Remove Curry Stains
+- How to Remove Grass Stains
+[a] How to Remove Grass Stains
+- Grass Stains on Jeans: How to Remove
+[a] Grass Stains on Jeans: How to Remove
+- How to Remove Ink Stains
+[a] How to Remove Ink Stains
+- How to Remove Makeup Stains
+[a] How to Remove Makeup Stains
+- How to Remove Mascara Stains
+[a] How to Remove Mascara Stains
+- Mascara Stain on Silk Removal
+[a] Mascara Stain on Silk Removal
+- Mascara Stain on White Clothes
+[a] Mascara Stain on White Clothes
+- How to Remove Waterproof Mascara Stains
+[a] How to Remove Waterproof Mascara Stains
+- How to Remove Mold From Clothes
+[a] How to Remove Mold From Clothes
+- How to Remove Mud Stains
+[a] How to Remove Mud Stains
+- How to Remove Oil and Grease Stains
+[a] How to Remove Oil and Grease Stains
+- How to Remove Pizza Grease Stains
+[a] How to Remove Pizza Grease Stains
+- How to Remove Pet Urine Stains
+[a] How to Remove Pet Urine Stains
+- How to Remove Red Wine Stains
+[a] How to Remove Red Wine Stains
+- How to Remove Rust Stains
+[a] How to Remove Rust Stains
+- How to Remove Sunscreen Stains
+[a] How to Remove Sunscreen Stains
+- How to Remove Tomato Sauce Stains
+[a] How to Remove Tomato Sauce Stains
+- How to Remove Fresh Tomato Sauce Stain
+[a] How to Remove Fresh Tomato Sauce Stain
+- How to Remove Dried Tomato Sauce Stain
+[a] How to Remove Dried Tomato Sauce Stain
+- How to Remove Pasta Sauce Stains
+[a] How to Remove Pasta Sauce Stains
+- How to Remove Turmeric Stains
+[a] How to Remove Turmeric Stains
+- Turmeric Stain on White Clothes
+[a] Turmeric Stain on White Clothes
+- Remove Yellow Sweat Stains
+[a] Remove Yellow Sweat Stains
+- How to Remove Yellow Armpit Stains
+[a] How to Remove Yellow Armpit Stains
+- Sweat Stains on Colored Shirts
+[a] Sweat Stains on Colored Shirts
+- How to Remove Collar Yellowing
+[a] How to Remove Collar Yellowing
+- Hydrogen Peroxide for Sweat Stains
+[a] Hydrogen Peroxide for Sweat Stains
+- How to Remove Deodorant Stains
+[a] How to Remove Deodorant Stains
+- Best Way to Remove Deodorant Stains
+[a] Best Way to Remove Deodorant Stains
+- Deodorant Stains on Dark Clothes
+[a] Deodorant Stains on Dark Clothes
+- Antiperspirant Stains vs Deodorant Stains
+[a] Antiperspirant Stains vs Deodorant Stains
+- How to Prevent Deodorant Stains
+[a] How to Prevent Deodorant Stains
+- How to Remove Water Stains
+[a] How to Remove Water Stains
+Washing basics 21 guides
+- What Temperature to Wash Clothes
+[a] What Temperature to Wash Clothes
+- How Much Laundry Detergent to Use
+[a] How Much Laundry Detergent to Use
+- How to Sort Laundry the Right Way
+[a] How to Sort Laundry the Right Way
+- How to Wash Baby Clothes and Cloth Diapers
+[a] How to Wash Baby Clothes and Cloth Diapers
+- Laundry Symbols Explained
+[a] Laundry Symbols Explained
+- How to Whiten Clothes
+[a] How to Whiten Clothes
+- How to Remove Odor from Clothes
+[a] How to Remove Odor from Clothes
+- How to Prevent Color Bleeding
+[a] How to Prevent Color Bleeding
+- How to Prevent Clothes from Shrinking
+[a] How to Prevent Clothes from Shrinking
+- Bleach Alternatives for Laundry
+[a] Bleach Alternatives for Laundry
+- Oxygen Bleach vs Chlorine Bleach
+[a] Oxygen Bleach vs Chlorine Bleach
+- Hydrogen Peroxide for Laundry
+[a] Hydrogen Peroxide for Laundry
+- Using Vinegar in Laundry
+[a] Using Vinegar in Laundry
+- Does Vinegar and Baking Soda Clean Laundry
+[a] Does Vinegar and Baking Soda Clean Laundry
+- Does homemade laundry detergent work
+[a] Does homemade laundry detergent work
+- Are Dryer Sheets Worth It
+[a] Are Dryer Sheets Worth It
+- Should You Use Fabric Softener
+[a] Should You Use Fabric Softener
+- Why Aren't My Laundry Pods Dissolving
+[a] Why Aren't My Laundry Pods Dissolving
+- How to Get Rid of Static Cling
+[a] How to Get Rid of Static Cling
+- How to Remove Pilling from Clothes
+[a] How to Remove Pilling from Clothes
+- How to Dry Clean at Home
+[a] How to Dry Clean at Home
+Fabric care 10 guides
+- How to Wash Silk at Home
+[a] How to Wash Silk at Home
+- How to Wash Wool Safely
+[a] How to Wash Wool Safely
+- How to Care for Cashmere
+[a] How to Care for Cashmere
+- How to Hand Wash Cashmere
+[a] How to Hand Wash Cashmere
+- How to Hand Wash a Knit Sweater
+[a] How to Hand Wash a Knit Sweater
+- How to Wash Linen
+[a] How to Wash Linen
+- How to Wash Jeans Without Fading
+[a] How to Wash Jeans Without Fading
+- How to Wash Polyester
+[a] How to Wash Polyester
+- How to Clean Velvet
+[a] How to Clean Velvet
+- How to Wash Delicates
+[a] How to Wash Delicates
+Clothes & garments 11 guides
+- How to Wash a Hoodie
+[a] How to Wash a Hoodie
+- How to Wash Gym Clothes
+[a] How to Wash Gym Clothes
+- How to Wash a Bra
+[a] How to Wash a Bra
+- How to Wash a Swimsuit
+[a] How to Wash a Swimsuit
+- How to Wash a Hat
+[a] How to Wash a Hat
+- How to Clean a Down Jacket
+[a] How to Clean a Down Jacket
+- How to Clean a Winter Coat
+[a] How to Clean a Winter Coat
+- How to Store Winter Clothes
+[a] How to Store Winter Clothes
+- How to Care for a Suit
+[a] How to Care for a Suit
+- How to Clean a Tie
+[a] How to Clean a Tie
+- How to Clean a Wedding Dress
+[a] How to Clean a Wedding Dress
+Shoes, leather & bags 11 guides
+- How to Clean Sneakers
+[a] How to Clean Sneakers
+- How to Clean Leather Shoes
+[a] How to Clean Leather Shoes
+- How to Clean Suede Shoes
+[a] How to Clean Suede Shoes
+- How to Clean Leather
+[a] How to Clean Leather
+- How to Clean Suede
+[a] How to Clean Suede
+- How to Clean a Leather Jacket
+[a] How to Clean a Leather Jacket
+- How to Clean a Leather Bag
+[a] How to Clean a Leather Bag
+- How to Clean the Inside of a Purse
+[a] How to Clean the Inside of a Purse
+- How to Condition Leather
+[a] How to Condition Leather
+- How to Restore Leather
+[a] How to Restore Leather
+- How to Remove Water Stains from Leather
+[a] How to Remove Water Stains from Leather
+Bedding & towels 4 guides
+- How to Wash Bed Sheets
+[a] How to Wash Bed Sheets
+- How to Wash Pillows
+[a] How to Wash Pillows
+- How to Wash a Comforter
+[a] How to Wash a Comforter
+- How to Wash Towels
+[a] How to Wash Towels
+Ironing & wrinkles 6 guides
+- How to Iron a Dress Shirt
+[a] How to Iron a Dress Shirt
+- How to Press a Dress Shirt at Home
+[a] How to Press a Dress Shirt at Home
+- How to Iron Pants
+[a] How to Iron Pants
+- How to Steam Clothes
+[a] How to Steam Clothes
+- How to Remove Wrinkles from Clothes
+[a] How to Remove Wrinkles from Clothes
+- How to Remove Wrinkles Without an Iron
+[a] How to Remove Wrinkles Without an Iron
+### Can't find what you need?
+Our AI assistant has answers for any laundry or garment care question.
+[a] Terms
+[a] Privacy
+[a] Powered by Jeeves NY

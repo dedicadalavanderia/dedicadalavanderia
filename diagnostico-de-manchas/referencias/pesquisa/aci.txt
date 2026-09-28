@@ -1,0 +1,305 @@
+URL: https://www.cleaninginstitute.org/cleaning-tips/clothes/stain-removal-guide
+HTTP: 200
+TITLE: Stain Removal Guide | The American Cleaning Institute (ACI)
+HTML bytes: 144682
+
+JSON-LD:
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://www.cleaninginstitute.org/#organization",
+            "description": "The American Cleaning Institute (ACI) serves the growth and innovation of the U.S. cleaning products industry through a commitment to health, sustainability, sound science and being a credible industry voice.",
+            "name": "American Cleaning Institute",
+            "sameAs": [
+                "https://www.linkedin.com/company/991491",
+                "https://www.facebook.com/AmericanCleaningInstitute",
+                "https://www.instagram.com/americancleaninginstitute/",
+                "https://twitter.com/CleanInstitute",
+                "https://en.wikipedia.org/wiki/American_Cleaning_Institute"
+            ],
+            "url": "https://www.cleaninginstitute.org/",
+            "telephone": "+1-202-347-2900",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+1-202-347-2900",
+                "email": "info@cleaninginstitute.org",
+                "url": "https://www.cleaninginstitute.org"
+            },
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.cleaninginstitute.org/themes/custom/aci/logo.svg",
+                "width": "121.83",
+                "height": "157"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1401 H Street NW Suite 700",
+                "addressLocality": "Washington",
+                "addressRegion": "DC",
+                "postalCode": "20005",
+                "addressCountry": "US"
+            }
+        }
+    ]
+}
+
+TEXT:
+Life's messy. Have a stain you're not sure how to get out?
+### How to remove stains from clothes:
+- Deal with it as early as possible. The less time a stain has to soak in, the easier it will be to remove, although there are ways to remove old stains out of clothes as well.
+- Pre-treat with a stain remover, then let it soak in.
+- Launder according to the fabric care instructions . Regular stains should come out in cold water but for extra dirty clothing or very tough stains, use the warmest setting safe for the fabric. If the stain remains, repeat the steps above. Do not put it in the dryer until the stain is removed.
+[a] fabric care instructions
+### Choose a stain substance below for more specific advice on how to get stains out of clothes:
+### Adhesives
+[a] Adhesives
+- Apply ice or cold water to harden surface; scrape with a dull knife.
+- Saturate with prewash stain remover or cleaning fluid.
+- Rinse, then launder.
+### Baby Formula
+[a] Baby Formula
+- Pretreat or soak stains using a product containing enzymes.
+- Soak for at least 30 minutes or several hours for aged stains
+- Launder.
+### Barbeque Sauce
+[a] Barbeque Sauce
+- Working from the back of the stain, flush it with cold water.
+- Pretreat it with a liquid laundry detergent, using an up-and-down motion with a soft brush to break up the stain.
+- Rinse well.
+- Sponge with white vinegar and rinse again.
+- Repeat, treating the stain with liquid detergent, then with white vinegar until you’ve removed as much stain as possible.
+- Pretreat with a prewash stain remover and launder with bleach that’s safe for the fabric.
+### Beverages
+[a] Beverages
+- Sponge or soak stain in cool water.
+- Pretreat with prewash stain remover, liquid laundry detergent, liquid detergent booster or paste of powder laundry product and water.
+- Launder using sodium hypochlorite bleach, if safe for fabric, or oxygen bleach.
+NOTE : Older stains may respond to pretreating or soaking in a product containing enzymes, then laundering.
+### Blood
+[a] Blood
+### Fresh Stains:
+- Soak in cold water (do not use hot water as it will set blood stains).
+### Dried Stains:
+- Pretreat or soak in warm water with a product containing enzymes.
+NOTE: If stain remains, rewash using a bleach safe for fabric.
+### Bodily Fluids
+[a] Bodily Fluids
+- Pretreat or soak in a product containing enzymes.
+### Brown / Yellow Discoloration
+[a] Brown / Yellow Discoloration
+- Use a rust remover recommended for fabrics.
+NOTE: Do not use a sodium hypochlorite bleach to remove rust stains because it may intensify discoloration
+Do you have more cleaning questions? We've got answers!
+[a] Ask Your Questions
+### Butter
+[a] Butter
+- Pretreat with a prewash stain remover
+- Launder, using the hottest water that’s safe for the fabric.
+### Candle Wax
+[a] Candle Wax
+- Scrape off surface wax with a dull knife.
+- Place stain between clean paper towels and press with a warm iron. Replace paper towels frequently to absorb more wax and to avoid transferring stains.
+- Place stain facedown on clean paper towels. Sponge remaining stain with prewash stain remover or cleaning fluid; blot with paper towels. Let dry.
+NOTE : If any color remains, rewash using sodium hypochlorite bleach, if safe for fabric, or oxygen bleach.
+### Chocolate
+[a] Chocolate
+- When the stain strikes, gently scrape off any excess chocolate.
+- Once you get the item home, soak it in cool water.
+- Then pretreat with a prewash stain remover
+- Launder in the hottest water that’s safe for the fabric.
+Watch our video for more information on chocolate stains.
+[a] Watch our video
+### Collar / Cuff Soil
+[a] Collar / Cuff Soil
+- Pretreat with prewash stain remover, liquid laundry detergent or paste of powder detergent and water.
+### Coffee / Tea
+[a] Coffee / Tea
+- Launder using sodium hypochlorite bleach, if safe for fabric, or oxygen bleach. (Note: Older stains may respond to pretreating or soaking in a product containing enzymes, then laundering.)
+### Cosmetics / Lipstick
+[a] Cosmetics / Lipstick
+- Pretreat with prewash stain remover, liquid laundry detergent, paste of powder detergent or laundry additive and water. Or, rub with bar soap.
+Visit our guide for how to remove lipstick from napkins .
+[a] remove lipstick from napkins
+### Crayon
+[a] Crayon
+### For a Few Spots:
+- Treat the same as candle wax or dampen the stain and rub with bar soap,
+- Launder using hottest water safe for fabric.
+### For a Whole Load of Clothes:
+- Wash with hot water using a laundry soap and 1 cup (212 g) baking soda.
+NOTE: If color remains, launder using sodium hypochlorite bleach, if safe for fabric. Otherwise, pretreat or soak in a product containing enzymes or an oxygen bleach using hottest water safe for fabric, then launder.
+### Dairy Products
+[a] Dairy Products
+- Soak for at least 30 minutes or several hours for aged stains.
+### Deodorants
+[a] Deodorants
+### Light Stains:
+- Pretreat with liquid laundry detergent. Launder.
+### Heavy Stains:
+- Pretreat with prewash stain remover. Allow to stand for 5 to 10 minutes.
+- Launder using an oxygen bleach.
+### Dye Transfer
+[a] Dye Transfer
+- Attempt restoration of white fabrics that have picked up color from other fabrics by using a packaged color remover, following label directions.
+NOTE: If dye remains, launder again using sodium hypochlorite bleach, if safe for fabric. For non-colorfast fabrics, soak in oxygen bleach, then launder.
+NOTE: This type of stain may be prevented if proper sorting and laundering procedures are followed.
+### Egg
+[a] Egg
+### Fabric Softener
+[a] Fabric Softener
+- Dampen the stain and rub with bar soap.
+- Rinse out, then launder.
+### Fruit and Juices
+[a] Fruit and Juices
+- If that doesn't remove the stain, use a bleach safe for the fabric.
+### Grass
+[a] Grass
+NOTE: If stain persists, launder using sodium hypochlorite bleach, if safe for fabric, or oxygen bleach.
+### Grease and Oil
+[a] Grease and Oil
+- Pretreat with prewash stain remover, liquid laundry detergent or liquid detergent booster.
+- Place stain facedown on clean paper towels. Apply cleaning fluid to back of stain.
+- Replace paper towels under stain frequently.
+- Let dry, rinse. Launder using hottest water safe for fabric.
+### Ice Cream
+[a] Ice Cream
+- Soak for at least 30 minutes – longer if the stains are old.
+- Launder, using the warmest water that’s safe for the fabric.
+### Ink
+[a] Ink
+- Sponge the area around the stain with rubbing alcohol or cleaning fluid before applying it directly on the stain.
+- Place stain facedown on clean paper towels. Apply alcohol or cleaning fluid to back of stain. Replace paper towels frequently.
+- Rinse thoroughly. Launder.
+### Alternate Method:
+- Place stain over mouth of a jar or glass; hold fabric taut.
+- Drip the alcohol or cleaning fluid through the stain so ink will drop into the container as it is being removed.
+NOTE: Some inks in each of the following categories _ ballpoint, felt tip, liquid- may be impossible to remove.
+Want to know what those symbols mean on the tags of our clothing? Do you really need to sort your laundry? How often should you wash jeans? Find out!
+[a] Laundry Basics
+### Ketchup
+[a] Ketchup
+- Remove any excess ketchup with a spoon or knife, but be careful not to rub it into the fabric.
+- If the garment is washable, remove the garment as soon as possible and run cold water through the stain from the backside to force the stain out of the clothing.
+Note: Avoid dabbing at it as this can spread the stain.
+### Lipstick
+[a] Lipstick
+- To remove most lipstick stains from napkins, put the napkin stain down on top of a couple layers of paper towel or absorbent towel.
+- Dampen another towel with rubbing alcohol (70 or 90 percent), then dab, dab, dab the stained area.
+- Look underneath and you should see lipstick on the paper towels. Keep at it until all of the stain is gone. Some long-lasting lipsticks may need more work to get off.
+NOTE: You also can spritz a prewash spray onto both sides of the fabric, let set for a few minutes to let the spray work, then scrub with a small brush. Rinse, wash as usual and air dry. If a little color is left, repeat the steps and it should take care of the problem.
+See more holiday cleaning hints from Heloise .
+[a] Heloise
+### Maple Syrup
+[a] Maple Syrup
+Maple syrup or corn syrup stains should be removed as soon as possible.
+- Begin by using a blunt kitchen knife to remove any excess syrup still on the fabric.
+- For washable fabrics, flush with cool to warm water from the back of the stain.
+- Pretreat with a stain remover or liquid laundry detergent and let sit for several minutes. Rinse well.
+- Wash as recommended according to the garment label.
+- Don’t put in the dryer until the stain is gone!
+### Mayonnaise
+[a] Mayonnaise
+- Pretreat with a prewash stain remover.
+### Mildew
+[a] Mildew
+- Launder stained items using a bleach safe for fabric and hottest water recommended for fabric.
+NOTE: Badly mildewed fabrics may be damaged beyond repair.
+### Mud
+[a] Mud
+- When dry, brush off as much mud as possible.
+- Pretreat with a paste of powder detergent and water, liquid laundry detergent or a liquid detergent booster.
+- Pretreat or presoak with a laundry detergent or a product containing enzymes.
+### Mustard
+[a] Mustard
+- Flush under cold water to loosen the stain, and then pretreat with a prewash stain remover.
+- Launder, using the hottest water that’s safe for the fabric. Add bleach to the wash also – preferably chlorine bleach. (Check the care label to see if it is safe for the fabric.)
+### Nail Polish
+[a] Nail Polish
+- Try nail polish remover but do not use on acetate or triacetate fabrics.
+- Place stain facedown on clean paper towels. Apply nail polish remover to back of stain. Replace paper towels frequently.
+- Repeat until stain disappears, if it does.
+- Rinse and launder.
+NOTE: Nail polish may be impossible to remove.
+Red sauce or wine stain? We have a guide to get rid of any mess caused by a pasta dinner!
+[a] Learn More
+### Paint
+[a] Paint
+### Water-based Paint:
+- Rinse fabric in warm water while stains are still wet.
+NOTE: Once paint is dry, it cannot be removed.
+### Oil-based Paint and Varnish:
+- Use the same solvent the label on the can advises for a thinner.
+- If not available, use turpentine.
+- Rinse.
+- Pretreat with prewash stain remover, bar soap or laundry detergent.
+### Perfume
+[a] Perfume
+- Pretreat with prewash stain remover or liquid laundry detergent.
+### Perspiration
+[a] Perspiration
+- Use a prewash stain remover or rub with bar soap.
+NOTE: If perspiration has changed the color of the fabric, apply ammonia to fresh stains or white vinegar to old stains; rinse.
+NOTE: Stubborn stains may respond to washing in a product containing enzymes or oxygen bleach in hottest water safe for fabric.
+### Pine Resin
+[a] Pine Resin
+- Sponge the stained area with a dry-cleaning solvent; let it air-dry.
+- Soak the stain in a solution of one cup of liquid laundry detergent and a few drops of ammonia (Caution: Never mix chlorine bleach and ammonia - the resulting fumes are hazardous) for at least 30 minutes.
+- Launder using liquid laundry detergent.
+### Scorch
+[a] Scorch
+- Launder using sodium hypochlorite bleach, if safe for fabric. Or, soak in oxygen bleach and hot water, then launder.
+NOTE: Badly scorched fabrics may be damaged beyond repair.
+### Shoe Polish
+[a] Shoe Polish
+### Liquid Shoe Polish:
+- Pretreat with a paste of powder detergent and water.
+### Paste Shoe Polish:
+- Scrape residue from fabric with a dull knife.
+- Pretreat with a prewash stain remover or cleaning fluid; rinse.
+- Rub detergent into dampened area.
+- Launder using a bleach safe for fabric.
+### Soft Drink
+[a] Soft Drink
+- Sponge the stain with cool water or soak it in cool water for about 30 minutes.
+- Launder; if safe for the fabric, add chlorine bleach to the wash.
+### Tar or Tree Sap
+[a] Tar or Tree Sap
+- Scrape residue from fabric.
+- Place stain facedown on paper towels. Sponge with cleaning fluid. Replace paper towels frequently to absorb more tar and to avoid transferring stains.
+- Launder in hottest water safe for fabric.
+### Tobacco
+[a] Tobacco
+- Dampen stain and rub with bar soap; rinse.
+NOTE: If stain remains, launder again using a bleach safe for fabric.
+### Tomato Sauce
+[a] Tomato Sauce
+- Remove as much of the excess tomato sauce as possible from the fabric.
+- If the fabric is washable, run cold water through the back of the stain as quickly as possible. This will force the stain back out through the fabric. Don't run it through the front of the tomato stain, which will only force it more deeply into your clothing.
+- Rub a liquid laundry detergent into the stained portion of the fabric. Work it into the fabric gently in a circular motion beginning on the outside of the stained area, and working in.
+- If the garment is white, or you have tested it for colorfastness, apply a mild bleaching agent. Possible agents include hydrogen peroxide or white vinegar applied with a sponge. You can also use lemon juice on white fabrics. Rinse well.
+- Repeat with detergent followed by mild bleaching agent until the stain no longer appears. Hold the stain up to the light to make sure it is fully gone.
+- Apply a stain remover stick, gel, or spray. Allow it to sit for at least 5 minutes while you wait.
+- Wash normally with detergent. Before drying, double-check the stain. Stains that are dried will often be permanent.
+- If it remains, rub detergent into the tomato stain. Next, soak in warm water for 30 minutes. Rinse well.
+- If the tomato stain is still stubborn, apply stain remover stick, gel, or spray and launder according to directions.
+### Wine
+[a] Wine
+For more information, visit our spaghetti dinner stain guide .
+[a] spaghetti dinner stain guide
+### Wood Stain
+[a] Wood Stain
+#### Water-Based Wood Stain
+- Lay down a thick layer of white paper towels. Place the stained clothing on top of the paper towels, with the stain face down on the paper towels.
+- Pour a capful of acetone onto the stain. Dip a clean, white rag into the acetone.
+- Blot the stain with the acetone-soaked rag. Press the stain into the paper towels. Move the stained fabric around the surface of the paper towels to clean areas after each blotting. Rub the stain beginning at the outer edges and working your way toward the center. Continue to blot and rub the clothing until the stain disappears.
+#### Oil-Based Wood Stain
+- Place a thick layer of white paper towels on a work surface. Lay the stained fabric facing down on the paper towels.
+- Dip a clean, white rag into mineral spirits.
+- Blot the stain, beginning at the outer edge of the stain. Push the stain into the paper towels to transfer the wood stain from the fabric onto the paper towels. Move the stained fabric from place to place on the paper towel surfaces. Continue to dip the rag into mineral spirits and blot the stain until it is removed.
+#### Launder the garment
+- Rinse the garment and launder as usual.
+- Once the clothing is removed from the wash, inspect for any remaining stains.
+- Repeat the stain removal process if necessary before placing the clothing in the dryer.
+Updated: March 31, 2026

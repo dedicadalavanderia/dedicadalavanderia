@@ -1,0 +1,68 @@
+URL: https://hubloai.com/
+HTTP: 200
+TITLE: Hublo AI — L’intelligence artificielle au service du soin du textile
+HTML bytes: 59770
+
+JSON-LD:
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://hubloai.com/#organization","name":"Hublo AI"},{"@type":"WebSite","@id":"https://hubloai.com/#website","url":"https://hubloai.com","name":"Hublo AI","publisher":{"@id":"https://hubloai.com/#organization"},"inLanguage":"fr-FR","potentialAction":{"@type":"SearchAction","target":"https://hubloai.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ImageObject","@id":"https://hubloai.com/wp-content/uploads/2026/08/hublo-ai-og.webp","url":"https://hubloai.com/wp-content/uploads/2026/08/hublo-ai-og.webp","width":"1200","height":"630","inLanguage":"fr-FR"},{"@type":"WebPage","@id":"https://hubloai.com/#webpage","url":"https://hubloai.com/","name":"Hublo AI \u2014 L\u2019intelligence artificielle au service du soin du textile","datePublished":"2026-08-25T12:03:53+02:00","dateModified":"2026-08-25T12:03:53+02:00","about":{"@id":"https://hubloai.com/#organization"},"isPartOf":{"@id":"https://hubloai.com/#website"},"primaryImageOfPage":{"@id":"https://hubloai.com/wp-content/uploads/2026/08/hublo-ai-og.webp"},"inLanguage":"fr-FR"},{"@type":"Person","@id":"https://hubloai.com/#author","image":{"@type":"ImageObject","@id":"https://secure.gravatar.com/avatar/?s=96&amp;d=mm&amp;r=g","url":"https://secure.gravatar.com/avatar/?s=96&amp;d=mm&amp;r=g","inLanguage":"fr-FR"},"worksFor":{"@id":"https://hubloai.com/#organization"}},{"@type":"Article","headline":"Hublo AI \u2014 L\u2019intelligence artificielle au service du soin du textile","datePublished":"2026-08-25T12:03:53+02:00","dateModified":"2026-08-25T12:03:53+02:00","author":{"@id":"https://hubloai.com/#author"},"publisher":{"@id":"https://hubloai.com/#organization"},"description":"Reconnaissance des mati\u00e8res, d\u00e9tection des taches et \u00e9valuation des risques en quelques secondes. Hublo AI accompagne les pressings d\u2019exception, de la prise en charge au ticket de caisse.","name":"Hublo AI \u2014 L\u
+---
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://hubloai.com/#organization","name":"Hublo AI","url":"https://hubloai.com/","description":"L’intelligence artificielle au service du soin du textile","logo":{"@type":"ImageObject","url":"https://hubloai.com/wp-content/themes/hublo-ai/assets/img/hublo-ai-logo.png"},"areaServed":{"@type":"Country","name":"France"},"knowsAbout":["Intelligence artificielle appliquée au textile","Pressing et blanchisserie","Reconnaissance visuelle de vêtements","Automatisation de la prise en charge"]},{"@type":"WebSite","@id":"https://hubloai.com/#website","url":"https://hubloai.com/","name":"Hublo AI","inLanguage":"fr-FR","publisher":{"@id":"https://hubloai.com/#organization"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://hubloai.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}}]}
+
+TEXT:
+Intelligence artificielle · Soin du textile
+# Une photo suffit. L’expertise fait le reste.
+Hublo AI reconnaît la matière, repère les taches et évalue les risques de traitement en quelques secondes. Vos équipes gagnent en constance, vos clients en confiance.
+[a] Demander une démo
+[a] Découvrir la solution
+Le point de friction
+## Tout se joue à la prise en charge
+C’est au comptoir que se décide la qualité du traitement — et que naissent les litiges. En quelques secondes, il faut identifier une matière, repérer une tache, anticiper un risque, et le consigner sans ralentir la file d’attente.
+### Le temps manque
+Un diagnostic sérieux demande de l’attention. La file d’attente, elle, ne l’accorde pas.
+### L’expertise est inégale
+Vingt ans de métier ne se transmettent pas à un renfort saisonnier en une matinée.
+### Le litige coûte cher
+Une pièce abîmée, c’est un remboursement, une réputation entamée, un client perdu.
+La méthode
+## Quatre gestes, aucune complexité
+Hublo AI s’insère dans le geste existant du comptoir. Rien à réapprendre : une photo, une validation, un ticket.
+### Photographier
+L’opérateur prend le vêtement en photo depuis la tablette du comptoir. Aucun matériel spécifique.
+### Analyser
+Le modèle de vision identifie la pièce, sa matière, ses taches et les risques associés au traitement.
+### Valider
+La proposition s’affiche avec son niveau de confiance. L’opérateur confirme ou corrige en un geste.
+### Éditer
+Le ticket part directement dans votre logiciel de caisse, articles et consignes déjà renseignés.
+Ce que le modèle voit
+## Une lecture complète de la pièce
+Chaque analyse restitue une fiche structurée, exploitable immédiatement — et archivée avec la photo d’origine.
+### Matières et compositions
+Soie, cachemire, laine, viscose, cuir, mélanges : la famille de matière détermine le rail de traitement.
+### Taches et altérations
+Localisation, nature probable et ancienneté estimée, pour orienter le détachage sans tâtonner.
+### Risques de traitement
+Décoloration, rétrécissement, accessoires fragiles : les alertes remontent avant la machine, pas après.
+### Articles de caisse
+La pièce est traduite en lignes de facturation conformes à votre catalogue et à vos tarifs.
+Ce que vous y gagnez
+## La constance d’un expert, à chaque comptoir
+### Un diagnostic homogène
+Le même niveau d’exigence quel que soit le point de vente, l’heure ou l’ancienneté de l’opérateur.
+### Un comptoir plus fluide
+La saisie disparaît. Le temps gagné retourne au client et au conseil.
+### Une preuve datée
+Chaque pièce est photographiée à l’entrée : l’état initial n’est plus une question d’appréciation.
+### Une matière à décider
+Volumes, matières, taches récurrentes : votre activité devient lisible et pilotable.
+Sous le capot
+## Une technologie exigeante, discrète à l’usage
+Des modèles de vision de dernière génération, spécialisés sur le textile par un apprentissage nourri du terrain — et un système conçu pour rester lisible par ceux qui l’utilisent.
+[a] Explorer la technologie
+- Modèles de vision multimodaux, spécialisés sur les familles de matières du pressing
+- Score de confiance affiché sur chaque prédiction : l’opérateur garde la décision
+- Corrections des opérateurs réinjectées : le système s’affine avec votre activité
+- Données hébergées en France, aucune revente, aucun usage publicitaire
+Passer à la pratique
+## Voyez Hublo AI sur vos propres vêtements
+Vingt minutes, vos pièces, vos process. C’est le format le plus court pour juger sur pièce — sans engagement.

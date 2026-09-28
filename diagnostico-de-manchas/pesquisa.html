@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pesquisa do Diagnóstico de Manchas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Archivo+Narrow:wght@600;700&display=swap">
+<style>
+  /* Layout: uma coluna de leitura, faixas cinza como no site da Dedicada, tabelas com rolagem própria. */
+  :root {
+    --fundo: #ffffff;
+    --texto: #16181a;
+    --suave: #4d5257;
+    --faixa: #d3d3d3;
+    --linha: #c4c7ca;
+    --destaque: #111111;
+    --cartao: #f2f3f4;
+    --fonte-titulo: "Archivo Narrow", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+    --fonte-texto: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --fundo: #121416; --texto: #eceef0; --suave: #a9afb5; --faixa: #2a2e32; --linha: #3a3f44; --destaque: #f4f5f6; --cartao: #1b1e21;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --fundo: #121416; --texto: #eceef0; --suave: #a9afb5; --faixa: #2a2e32; --linha: #3a3f44; --destaque: #f4f5f6; --cartao: #1b1e21;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--fundo); color: var(--texto); font-family: var(--fonte-texto); font-size: 17px; line-height: 1.6; }
+  .pagina { max-width: 760px; margin: 0 auto; padding-inline: 16px; padding-block: 24px 56px; }
+  a { color: var(--destaque); text-underline-offset: 2px; }
+  a:focus-visible, summary:focus-visible { outline: 3px solid var(--destaque); outline-offset: 2px; }
+  .topo { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 16px; font-size: 14px; color: var(--suave); border-bottom: 2px solid var(--destaque); padding-bottom: 10px; margin-bottom: 28px; }
+  .topo strong { font-family: var(--fonte-titulo); letter-spacing: .08em; text-transform: uppercase; color: var(--texto); font-size: 15px; }
+  h1 { font-family: var(--fonte-titulo); font-size: clamp(30px, 7vw, 44px); line-height: 1.08; margin: 0 0 14px; text-wrap: balance; letter-spacing: .01em; }
+  h2 { font-family: var(--fonte-titulo); text-transform: uppercase; letter-spacing: .06em; font-size: 22px; line-height: 1.2; margin: 44px 0 12px; text-wrap: balance; }
+  h3 { font-size: 17px; margin: 22px 0 6px; }
+  p { margin: 0 0 14px; max-width: 68ch; }
+  .lead { font-size: 19px; }
+  .faixa { background: var(--faixa); padding: 20px 18px; border-radius: 10px; margin: 24px 0; }
+  .faixa p:last-child, .faixa ul:last-child { margin-bottom: 0; }
+  ul, ol { padding-left: 22px; margin: 0 0 14px; }
+  li { margin: 0 0 8px; max-width: 68ch; }
+  .rolagem { overflow-x: auto; margin: 12px 0 18px; border: 1px solid var(--linha); border-radius: 10px; }
+  table { border-collapse: collapse; width: 100%; min-width: 600px; font-size: 15px; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--linha); }
+  thead th { font-family: var(--fonte-titulo); text-transform: uppercase; letter-spacing: .05em; font-size: 13px; background: var(--cartao); }
+  tbody tr:last-child td, tbody tr:last-child th { border-bottom: 0; }
+  tbody th { font-weight: 700; min-width: 140px; }
+  .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .marca { display: inline-block; font-family: var(--fonte-titulo); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; border: 1.5px solid var(--destaque); border-radius: 999px; padding: 1px 8px; margin-right: 6px; vertical-align: 2px; }
+  .fontes li { font-size: 15px; color: var(--suave); }
+  .fontes a { color: var(--texto); }
+  .volta { display: inline-block; margin-top: 8px; font-weight: 700; }
+  .etapas { counter-reset: e; list-style: none; padding: 0; }
+  .etapas li { counter-increment: e; position: relative; padding-left: 40px; }
+  .etapas li::before { content: counter(e); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--destaque); color: var(--fundo); font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; }
+  @media (max-width: 600px) {
+    .rolagem { overflow: visible; border: 0; }
+    table, tbody, tr, th, td { display: block; width: 100%; min-width: 0; }
+    thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    tbody tr { border: 1px solid var(--linha); border-radius: 10px; padding: 10px 14px; margin: 0 0 10px; background: var(--fundo); }
+    tbody th, tbody td { border: 0; padding: 4px 0; min-width: 0; }
+    tbody th { font-size: 17px; }
+    td[data-rotulo]::before { content: attr(data-rotulo); display: block; font-family: var(--fonte-titulo); text-transform: uppercase; letter-spacing: .05em; font-size: 12px; color: var(--suave); }
+  }
+  @media (max-width: 480px) { body { font-size: 16px; } .lead { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="pagina">
+  <div class="topo"><strong>Dedicada Lavanderia</strong><span>Pesquisa e decisões · 28 de setembro de 2026</span></div>
+
+  <h1>O que a pesquisa mudou no Diagnóstico de Manchas</h1>
+  <p class="lead">As melhores ferramentas de manchas perguntam pouco e numa ordem clara, respondem pelo tecido e não só pela mancha, e deixam o conteúdo legível para o Google e para as IAs. A versão 2 faz as três coisas com o conteúdo já aprovado dos 17 guias da Dedicada.</p>
+  <p><a class="volta" href="index.html">← Voltar ao protótipo</a></p>
+
+  <div class="faixa">
+    <p><strong>Como avaliar o protótipo no celular</strong></p>
+    <ol class="etapas">
+      <li>Toque numa peça, depois num problema, e leia o resultado de cima para baixo.</li>
+      <li>Volte ao começo e digite na busca "vinho no vestido de noiva", depois "mofo".</li>
+      <li>Num resultado, responda "Quando aconteceu?" e toque no WhatsApp para ver a mensagem pronta.</li>
+      <li>Role a página abaixo da ferramenta: as tabelas e as perguntas também valem para quem não usa a ferramenta.</li>
+    </ol>
+  </div>
+
+  <h2>O que estava errado na versão antiga</h2>
+  <ul>
+    <li><strong>Sem ordem:</strong> a mesma lista genérica de 45 manchas se repetia em 21 categorias. Na seda, eram 56 opções numa tela só, sem dizer qual era urgente.</li>
+    <li><strong>Textos sem confirmação:</strong> 13 situações prometiam "100%", 17 traziam percentuais sem fonte e várias citavam processos que a Dedicada não usa (ozônio, hidrocarboneto, re-pigmentação, tratamento enzimático). A auditoria completa está em <code>auditoria-banco-antigo.md</code>.</li>
+    <li><strong>Invisível para as IAs:</strong> todo o conteúdo vinha de um JavaScript de 254 KB. Os robôs do ChatGPT, do Claude e do Perplexity não rodam JavaScript e só leem o HTML.</li>
+    <li><strong>Sem ligação com os guias:</strong> não havia nenhum link para os 17 guias, nem assinatura.</li>
+  </ul>
+
+  <h2>O que cada referência faz</h2>
+  <p>Foram analisadas ferramentas e guias de manchas de lavanderias, associações do setor e marcas de produtos de 6 países. As páginas foram abertas em 28/09/2026.</p>
+  <div class="rolagem">
+    <table>
+      <thead><tr><th scope="col">Referência</th><th scope="col">O que faz</th><th scope="col">O que entrou na Dedicada</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><a href="https://dlionline.org/stain-removal-guide/">DLI</a> (EUA)</th><td data-rotulo="O que faz">Aplicativo do instituto de lavanderias para o balcão: escolhe a mancha, escolhe o tecido e segue as instruções.</td><td data-rotulo="O que entrou na Dedicada">Ordem fixa de passos, com a resposta dependendo do tecido.</td></tr>
+        <tr><th scope="row"><a href="https://tide.com/en-us/how-to-wash-clothes/how-to-remove-stains">Tide</a> (EUA)</th><td data-rotulo="O que faz">Cerca de 75 manchas em botões, uma opção de mancha "misteriosa" e 5 passos gerais.</td><td data-rotulo="O que entrou na Dedicada">A opção "Não sei o que é a mancha".</td></tr>
+        <tr><th scope="row"><a href="https://www.dr-beckmann.com/de-de/ratgeber/fleckendetektiv/">Dr. Beckmann, Fleckendetektiv</a> (Alemanha)</th><td data-rotulo="O que faz">Busca pelo nome da mancha, imagem que corresponde à mancha, tipo de tecido e se a peça é lavável ou não.</td><td data-rotulo="O que entrou na Dedicada">Busca por mancha ou peça, cartões com foto e convite para mandar foto pelo WhatsApp.</td></tr>
+        <tr><th scope="row"><a href="https://hubloai.com/">Hublo AI</a> (França)</th><td data-rotulo="O que faz">No balcão, uma foto identifica o material, as manchas e os riscos, com nível de confiança e registro da peça.</td><td data-rotulo="O que entrou na Dedicada">Foto pelo WhatsApp e medição das manchas que mais aparecem (eventos no Google Analytics).</td></tr>
+        <tr><th scope="row"><a href="https://askjeevesny.com/public/guides/blood-stains.html">Jeeves of Belgravia</a> (Nova York e Londres)</th><td data-rotulo="O que faz">Guias assinados por um tintureiro de quarta geração, com resposta rápida, "o que não fazer" e "quando procurar a lavanderia". Pede ao cliente que conte o que era a mancha e o que tentou.</td><td data-rotulo="O que entrou na Dedicada">Resposta rápida no topo, "O que não fazer" e as perguntas "Quando aconteceu?" e "Já tentou tirar em casa?" na mensagem.</td></tr>
+        <tr><th scope="row"><a href="https://www.cleaninginstitute.org/cleaning-tips/clothes/stain-removal-guide">ACI</a> (EUA)</th><td data-rotulo="O que faz">Lista de manchas com passos curtos e a regra de agir o quanto antes.</td><td data-rotulo="O que entrou na Dedicada">Frases curtas e diretas em "O que fazer agora".</td></tr>
+        <tr><th scope="row"><a href="https://benesse.jp/kosodate/201502/20150227-5.html">Benesse</a> (Japão)</th><td data-rotulo="O que faz">Separa as manchas em três tipos (que se dissolvem em água, oleosas e insolúveis) antes de dizer o que fazer.</td><td data-rotulo="O que entrou na Dedicada">As três famílias de manchas da Seitz como explicação e como atalho para "Outra mancha?".</td></tr>
+        <tr><th scope="row"><a href="https://www.vanish.com.br/remocao-de-manchas/">Vanish</a> (Brasil e Reino Unido)</th><td data-rotulo="O que faz">Guias por tecido e por mancha; avisa que cada tipo de mancha pede um tratamento e que a água quente fixa manchas de proteína, como sangue e ovo.</td><td data-rotulo="O que entrou na Dedicada">Confirma o caminho de responder pelo tecido e pelo tipo de mancha, e a regra da água quente.</td></tr>
+        <tr><th scope="row"><a href="https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas.html">OMO</a> (Brasil)</th><td data-rotulo="O que faz">Um artigo por mancha, pensado para vender o produto; o de seda chega a sugerir a máquina.</td><td data-rotulo="O que entrou na Dedicada">O diferencial da Dedicada é a visão profissional: quando não tentar em casa e o que a lavanderia faz.</td></tr>
+        <tr><th scope="row"><a href="https://mariamelialavanderia.com.br/roupa-manchou-veja-o-que-fazer-antes-de-levar-para-a-lavanderia/">Mariamélia</a> (São Paulo)</th><td data-rotulo="O que faz">Lavanderia com página "o que fazer antes de levar": não esfregar, sem receita caseira, sem calor e guardar fora do plástico.</td><td data-rotulo="O que entrou na Dedicada">Confirma as regras de "O que fazer (e não fazer) com qualquer mancha?".</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>SEO e GEO: o que muda na página</h2>
+  <h3>As IAs não leem ferramentas em JavaScript</h3>
+  <p>O estudo da Vercel com a MERJ mostrou que os robôs do ChatGPT, do Claude, do Perplexity e da Meta não executam JavaScript; os do ChatGPT e do Claude chegam a baixar os arquivos, mas não os rodam. Só o Gemini, que usa a estrutura do Google, e o robô da Apple rodam JavaScript. Por isso, a página nova traz em HTML as tabelas de urgência por peça, as famílias de manchas e o que não sai na lavagem. Elas são geradas do mesmo banco da ferramenta, para nunca se contradizerem.</p>
+  <h3>O Google não trata os endereços da ferramenta como páginas</h3>
+  <p>O Google ignora o que vem depois do "#" quando decide o que indexar. Os endereços dos resultados (por exemplo, <code>#seda/vinho-tinto</code>) servem para compartilhar, mas não viram páginas no Google. O próprio guia do Google para buscas com IA, de julho de 2026, também desaconselha criar páginas em massa para cada variação de busca. O peso fica na página da ferramenta e nos 17 guias.</p>
+  <h3>O Google pede conteúdo que não seja genérico</h3>
+  <p>O mesmo guia do Google valoriza conteúdo com experiência própria, e não o que qualquer site já diz. Na Dedicada, isso são os dados reais: o programa de seda a 16 °C, os 7 dias do vestido de noiva, o couro que seca ao natural antes da hidratação e os bairros e dias da coleta.</p>
+  <h3>A busca genérica não traz clique</h3>
+  <p>Na linha de base do projeto, "como limpar manchas difíceis" está em 1º lugar no Google, com 185 impressões e nenhum clique, porque o Google responde direto na busca. O trabalho da ferramenta é outro: transformar quem tem uma peça manchada em conversa no WhatsApp e ser citada pelas IAs.</p>
+  <h3>O que foi aplicado</h3>
+  <ul>
+    <li>Um só H1, resposta rápida de cerca de 40 palavras logo abaixo, títulos em forma de pergunta e fontes no fim.</li>
+    <li>Assinatura com nome e foto, e dados estruturados de página, pessoa, trilha e perguntas frequentes, com os acentos escritos em código.</li>
+    <li>As tabelas longas ficam recolhidas para quem lê, mas continuam no HTML para quem indexa.</li>
+  </ul>
+
+  <h2>A ferramenta, antes e depois</h2>
+  <div class="rolagem">
+    <table>
+      <thead><tr><th scope="col">Tema</th><th scope="col">Antes</th><th scope="col">Versão 2</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Ordem</th><td data-rotulo="Antes">Peça, problema e diagnóstico, com listas de até 56 itens.</td><td data-rotulo="Versão 2">Três passos fixos. O passo 2 mostra de 5 a 7 problemas do guia, do mais urgente ao menos urgente.</td></tr>
+        <tr><th scope="row">Encontrar a mancha</th><td data-rotulo="Antes">Rolar a lista.</td><td data-rotulo="Versão 2">Busca com sinônimos, "Outra mancha?" pelas três famílias e "Não sei o que é".</td></tr>
+        <tr><th scope="row">Conteúdo</th><td data-rotulo="Antes" class="num">516 situações escritas antes das confirmações</td><td data-rotulo="Versão 2"><span class="num">109</span> problemas das tabelas dos guias e <span class="num">30</span> manchas por família.</td></tr>
+        <tr><th scope="row">Resultado</th><td data-rotulo="Antes">Dificuldade de remoção sem fonte e textos variados.</td><td data-rotulo="Versão 2">Urgência do guia, o que acontece, o que fazer e não fazer, máquina de casa, processo em etapas, prazo, preço, expresso e fala.</td></tr>
+        <tr><th scope="row">Contato</th><td data-rotulo="Antes">WhatsApp genérico.</td><td data-rotulo="Versão 2">Mensagem pronta com a peça, o problema, quando aconteceu e se já tentou algo.</td></tr>
+        <tr><th scope="row">Página</th><td data-rotulo="Antes">H2 antes do H1, 8 regras de ouro, casos reais sem fonte e PDF antigo.</td><td data-rotulo="Versão 2">Um H1, resposta rápida, assinatura e seções curtas, todas ligadas à ferramenta e aos guias.</td></tr>
+        <tr><th scope="row">Celular</th><td data-rotulo="Antes">Sem teste registrado.</td><td data-rotulo="Versão 2">Testada a 375 px, sem rolagem lateral, nos 109 problemas.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>O que ficou de fora</h2>
+  <ul>
+    <li><span class="marca">Depois</span>Diagnóstico por foto com IA, como na Hublo. O convite para mandar foto pelo WhatsApp resolve agora, com atendimento de gente.</li>
+    <li><span class="marca">Não</span>Uma página separada para cada mancha. O Google desaconselha, e os guias por tecido já fazem esse papel.</li>
+    <li><span class="marca">Não</span>Dicas caseiras com vinagre, limão ou bicarbonato, comuns nos sites de marcas. Nenhuma foi confirmada pela Dedicada, e os guias pedem para não usar produtos caseiros.</li>
+  </ul>
+
+  <h2>Fontes</h2>
+  <ul class="fontes">
+    <li><a href="https://vercel.com/blog/the-rise-of-the-ai-crawler">Vercel e MERJ: The rise of the AI crawler</a> (robôs de IA e JavaScript)</li>
+    <li><a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide">Google: otimizar para os recursos de IA na Busca</a> (atualizado em julho de 2026)</li>
+    <li><a href="https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics">Google: noções básicas de SEO com JavaScript</a> (endereços com #)</li>
+    <li><a href="https://www.nngroup.com/articles/wizards/">Nielsen Norman Group: assistentes passo a passo</a> (mostrar os passos, ordem fixa, botões que dizem o próximo passo)</li>
+    <li><a href="https://dlionline.org/stain-removal-guide/">DLI: Stain Removal Guide</a> · <a href="https://tide.com/en-us/how-to-wash-clothes/how-to-remove-stains">Tide: How to remove stains</a> · <a href="https://www.cleaninginstitute.org/cleaning-tips/clothes/stain-removal-guide">ACI: Stain Removal Guide</a></li>
+    <li><a href="https://www.dr-beckmann.com/de-de/ratgeber/fleckendetektiv/">Dr. Beckmann: Fleckendetektiv</a> · <a href="https://hubloai.com/">Hublo AI</a> · <a href="https://www.jeevesofbelgravia.com/newyork/stains-out-and-about">Jeeves: stains out and about</a></li>
+    <li><a href="https://benesse.jp/kosodate/201502/20150227-5.html">Benesse: tipos de mancha</a> · <a href="https://www.vanish.com.br/remocao-de-manchas/">Vanish Brasil: remoção de manchas</a> · <a href="https://www.vanish.co.uk/stain-removal/stains-on-fabrics/">Vanish UK: stains on fabrics</a> · <a href="https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas.html">OMO: remoção de manchas</a> · <a href="https://mariamelialavanderia.com.br/roupa-manchou-veja-o-que-fazer-antes-de-levar-para-a-lavanderia/">Mariamélia Lavanderia</a></li>
+    <li>Dedicada Lavanderia: os 17 guias de <a href="https://dedicadalavanderia.com.br/cuidados-por-tecido/">Cuidados por Tecido</a>, a Base técnica (Seitz, ANEL e apostila de couro) e a linha de base do Search Console no Plano do projeto.</li>
+  </ul>
+  <p><a class="volta" href="index.html">← Voltar ao protótipo</a></p>
+</div>
+</body>
+</html>

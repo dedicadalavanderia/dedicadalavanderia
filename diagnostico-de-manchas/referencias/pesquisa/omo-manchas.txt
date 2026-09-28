@@ -1,0 +1,41 @@
+URL: https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas.html
+HTTP: 200
+TITLE: Remoção de manchas | OMO
+HTML bytes: 625474
+
+JSON-LD:
+{"@context":"https://schema.org","@type":"WebSite","name":"OMO","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas.html"}
+---
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas.html#webpage","name":"Remoção de manchas","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas.html"}
+---
+{"@context":"https://schema.org","@type":"Brand","@id":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas.html#brand","logo":"https://www.omo.com/images/h0nadbhvm6m4/68zXpMN3Shc1IgECsZjlFg/9505212f848a00b77ba23ca9cadea243/T01PX0xPR09fTE9DS1VQX0hPUklaX0JMVUUyOTRfUkdCX18xXy5wbmc/160w-92h/omo-logo.jpg","name":"OMO","sameAs":["https://www.facebook.com/omobrasil","https://mobile.twitter.com/OMOBrasil","https://m.youtube.com/user/omobrasil/featured","https://vm.tiktok.com/ZMLbatfDm/","https://instagram.com/omobrasil?igshid=NDA1YzNhOGU="],"description":"Quer saber mais informações sobre os produtos da OMO? Conheça toda a linha de sabão em pó e para diluir, desinfetantes e removedores. Clique aqui!","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas.html","mainEntityOfPage":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas.html"}
+---
+{"@context":"https://schema.org","@type":"Organization","@id":"https://www.omo.com/br/home.html","name":"OMO","url":"https://www.omo.com/br/home.html","logo":"/images/h0nadbhvm6m4/68zXpMN3Shc1IgECsZjlFg/9505212f848a00b77ba23ca9cadea243/T01PX0xPR09fTE9DS1VQX0hPUklaX0JMVUUyOTRfUkdCX18xXy5wbmc/160w-92h/omo-logo.jpg","address":{"@type":"PostalAddress","addressLocality":"São Paulo","addressCountry":{"@type":"Country","name":"Brasil"},"postalCode":"CEP 04533-085","streetAddress":"Av. of the United Nations, 14,261 - Brooklin Paulista"},"contactPoint":[{"@type":"ContactPoint","telephone":"+55 11 2505-4034","contactType":"Customer Service"},{"@type":"ContactPoint","email":"omobrasil@gmail.com"}]}
+---
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Vá para a página inicial","item":"https://www.omo.com/br/home.html"},{"@type":"ListItem","position":2,"name":"Remoção de manchas"}]}
+---
+{"@context":"https://schema.org","@type":"ItemList","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas.html","name":"Remoção de manchas","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"ListItem","name":"OMO Tira Manchas: descomplique o seu dia","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/omo-tira-manchas-descomplique-o-seu-dia.html"}},{"@type":"ListItem","position":2,"item":{"@type":"ListItem","name":"Não amarele: como clarear manchas amareladas nas roupas","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/nao-amarele-como-clarear-manchas-amareladas-nas-roupas.html"}},{"@type":"ListItem","position":3,"item":{"@type":"ListItem","name":"Como lavar blusas e casacos de lã na máquina ","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/como-lavar-blusas-e-casacos-de-la-na-maquina .html"}},{"@type":"ListItem","position":4,"item":{"@type":"ListItem","name":"Como tirar vela de roupa","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/como-tirar-vela-de-tecido.html"}},{"@type":"ListItem","position":5,"item":{"@type":"ListItem","name":"Como tirar mancha de sangue seco da roupa","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/como-tirar-sangue-seco-de-roupa-com-facilidade.html"}},{"@type":"ListItem","position":6,"item":{"@type":"ListItem","name":"Como tirar mancha de vômito e tirar cheiro de vômito da roupa","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/como-tirar-mancha-de-vomito-e-tirar-cheiro-de-vomito-da-roupa.html"}},{"@type":"ListItem","position":7,"item":{"@type":"ListItem","name":"Como tirar bolor de roupa","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/como-tirar-bolor-de-roupa.html"}},{"@type":"ListItem","position":8,"item":{"@type":"ListItem","name":"Como lavar e tirar mancha de roupa de seda","url":"https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas/como-lavar-e-tirar-manc
+
+TEXT:
+# Remoção de manchas
+Manchas são sinônimo de experiências. Por isso, adquiri-las é bom, mas removê-las com facilidade é ainda melhor. Recupere suas roupas com as dicas e truques de remoção de manchas de quem é especialista no assunto. Seja para saber como tirar graxa de roupas ou como tirar mancha de vinho, OMO está aqui para ajudar você.
+- OMO Tira Manchas: descomplique o seu dia
+[a] OMO Tira Manchas: descomplique o seu dia
+- Não amarele: como clarear manchas amareladas nas roupas
+[a] Não amarele: como clarear manchas amareladas nas roupas
+- Como lavar blusas e casacos de lã na máquina
+[a] Como lavar blusas e casacos de lã na máquina
+- Como tirar vela de roupa
+[a] Como tirar vela de roupa
+- Como tirar mancha de sangue seco da roupa
+[a] Como tirar mancha de sangue seco da roupa
+- Como tirar mancha de vômito e tirar cheiro de vômito da roupa
+[a] Como tirar mancha de vômito e tirar cheiro de vômito da roupa
+- Como tirar bolor de roupa
+[a] Como tirar bolor de roupa
+- Como lavar e tirar mancha de roupa de seda
+[a] Como lavar e tirar mancha de roupa de seda
+- Como tirar esmalte de tecido
+[a] Como tirar esmalte de tecido
+- Como lavar roupa de academia e tirar manchas das roupas esportivas
+[a] Como lavar roupa de academia e tirar manchas das roupas esportivas
