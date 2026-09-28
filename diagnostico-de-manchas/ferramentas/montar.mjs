@@ -216,7 +216,7 @@ if (iPrevia > 0 && process.argv[iPrevia + 1]) {
   .previa-topo { background: #111111; color: #ffffff; padding: 14px 16px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
   .previa-rodape { background: #111111; color: #d3d3d3; padding: 20px 16px; font-size: 13px; text-align: center; margin-top: 40px; }
 </style>
-<div class="previa-aviso"><span>Protótipo para avaliação. Não é a página publicada.</span><a href="pesquisa.html">Ver a pesquisa e as decisões</a></div>
+<div class="previa-aviso"><span>Protótipo para avaliação. Não é a página publicada.</span><a href="pesquisa.html">Ver a pesquisa e as decisões</a><a href="blog.html">Ver os posts revisados do blog</a></div>
 <header class="previa-topo">Dedicada Lavanderia</header>
 <main>
 ${corpo}

@@ -29,6 +29,8 @@ Refeito em 28/09/2026 numa sessão na nuvem com acesso ao site.
 | `ferramentas/montar.mjs` | Gera `pagina-3165.html` e `prototipo.html` a partir do banco e do modelo |
 | `ferramentas/testar.mjs` | Testa tudo no Chromium |
 | `ferramentas/cobertura.mjs` | Mede quanto a busca entende das buscas reais do Google |
+| `ferramentas/regras.mjs` | As regras de texto do projeto, usadas no teste da ferramenta e nos posts |
+| `blog-revisado/` + `ferramentas/montar-blog.mjs` | Revisão dos posts do blog: textos, conteúdo pronto para o WordPress, o que mudou e prévia (ver `blog-revisado/LEIA-ME.md`) |
 
 ## Como a ferramenta funciona agora
 

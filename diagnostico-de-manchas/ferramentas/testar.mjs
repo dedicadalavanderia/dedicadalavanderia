@@ -9,6 +9,7 @@ import { execSync } from 'node:child_process';
 import { mkdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join } from 'node:path';
+import * as regras from './regras.mjs';
 
 const pasta = join(dirname(fileURLToPath(import.meta.url)), '..');
 const capturas = join(pasta, 'capturas');
@@ -26,28 +27,11 @@ const avisos = [];
 const erro = (m) => erros.push(m);
 const aviso = (m) => avisos.push(m);
 
-// Palavras e números que não podem aparecer (regras do projeto).
-const PROIBIDAS = [
-  /\búnic[oa]s?\b/i, /\bo melhor\b/i, /\ba melhor\b/i, /\bexclusiv/i, /toda (a )?(região de )?florian[oó]polis/i,
-  /qualquer região/i, /garant(imos|ido|ia)/i, /\bmais de 500\b/i, /prolonga a vida/i, /nossa equipe técnica/i
-];
-// Percentuais permitidos: só os confirmados.
-const PERCENTUAIS_OK = [/acréscimo de 50%/g, /cerca de 80%/g];
-// Processos que saíram dos guias por não serem confirmados (ver LEIA-ME).
-const RETIRADOS = [
-  /capilaridade/i, /de recupera[çc][aã]o/i, /removedor(es)? ácidos?/i, /prensagem úmida/i, /enzim/i, /teflon/i, /re-?pigmenta/i,
-  /fixador(es)? de cor/i, /congel/i, /esferas/i, /re-?impermeabiliza/i, /removedor de ferrugem/i, /redutor(es)? de corante/i,
-  /vaporiza/i, /prancha de agulhas/i, /oxi-?sanitiza/i, /fuligem/i, /ozônio/i, /bactericida/i, /suportes? de secagem/i,
-  /hidrocarboneto/i, /duas ou três lavagens por ano/i
-];
-
+// Regras de texto do projeto (termos proibidos, percentuais, processos retirados, receitas caseiras).
 function checarTexto(origem, texto) {
-  for (const r of PROIBIDAS) { const m = texto.match(r); if (m) erro(`${origem}: termo proibido "${m[0]}"`); }
-  let semOk = texto;
-  for (const r of PERCENTUAIS_OK) semOk = semOk.replace(r, '');
-  const pct = semOk.match(/\d+\s?%/);
-  if (pct) erro(`${origem}: percentual sem fonte confirmada "${pct[0]}"`);
-  for (const r of RETIRADOS) { const m = texto.match(r); if (m) aviso(`${origem}: termo de processo retirado dos guias "${m[0]}" (conferir)`); }
+  const r = regras.checarTexto(origem, texto);
+  r.erros.forEach(erro);
+  r.avisos.forEach(aviso);
 }
 
 const url = pathToFileURL(join(pasta, 'prototipo.html')).href;
