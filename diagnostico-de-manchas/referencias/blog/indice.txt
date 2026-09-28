@@ -1,0 +1,8 @@
+https://dedicadalavanderia.com.br/post-sitemap.xml
+https://dedicadalavanderia.com.br/page-sitemap.xml
+https://dedicadalavanderia.com.br/portfolio_page-sitemap.xml
+https://dedicadalavanderia.com.br/portfolio_category-sitemap.xml
+https://dedicadalavanderia.com.br/portfolio_tag-sitemap.xml
+https://dedicadalavanderia.com.br/testimonials_category-sitemap.xml
+https://dedicadalavanderia.com.br/slides_category-sitemap.xml
+https://dedicadalavanderia.com.br/carousels_category-sitemap.xml

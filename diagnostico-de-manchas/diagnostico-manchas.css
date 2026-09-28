@@ -1,5 +1,5 @@
 /*
- * Dedicada Lavanderia · Diagnóstico de Manchas (versão 2)
+ * Dedicada Lavanderia · Diagnóstico de Manchas (versão 3)
  * Snippet WPCode 3168 (CSS). Vai ANTES de <div id="dm-app"> no conteúdo da página 3165.
  * Tudo fica dentro de .dm-pagina e .dm-app, para não mexer no resto do site.
  * Cores do site: preto, branco e cinza (#D3D3D3 nas faixas).
@@ -29,7 +29,11 @@
 .dm-trilha a { color: inherit; text-decoration: underline; }
 .dm-pagina h1 { font-size: clamp(26px, 6vw, 36px); line-height: 1.2; margin: 0 0 12px; color: var(--dm-preto); }
 .dm-resposta { font-size: 18px; margin: 0 0 16px; }
-.dm-intro { font-size: 16px; margin: 0 0 12px; color: var(--dm-suave); }
+.dm-intro { margin: 0 0 16px; padding: 14px 16px; background: var(--dm-cinza-claro); border-radius: 8px; }
+.dm-intro-titulo { font-weight: 700; font-size: 16px; margin: 0 0 8px; color: var(--dm-preto); }
+.dm-intro-passos { margin: 0 0 10px; padding-left: 22px; font-size: 15.5px; }
+.dm-intro-passos li { margin: 0 0 4px; }
+.dm-intro-numeros { margin: 0; font-size: 14px; color: var(--dm-suave); }
 .dm-assinatura { display: flex; align-items: center; gap: 12px; margin: 0 0 24px; font-size: 14px; color: var(--dm-suave); }
 .dm-assinatura img { width: 48px; height: 48px; border-radius: 50%; flex: 0 0 48px; object-fit: cover; }
 .dm-assinatura strong { color: var(--dm-texto); }
@@ -65,6 +69,7 @@
 .dm-mais > summary { cursor: pointer; font-weight: 700; padding: 12px 14px; min-height: 48px; }
 .dm-mais[open] > summary { border-bottom: 1px solid var(--dm-borda); }
 .dm-mais > .dm-tabela { margin: 0; }
+.dm-mais-txt { margin: 12px 14px 4px !important; font-size: 15px !important; }
 @media (max-width: 639px) { .dm-mais > .dm-tabela { padding: 10px 10px 2px; } }
 @media (min-width: 640px) { .dm-mais > .dm-tabela th:first-child, .dm-mais > .dm-tabela td:first-child { padding-left: 14px; } }
 .dm-perguntas details { border-top: 1px solid var(--dm-borda); padding: 12px 0; }
@@ -133,6 +138,7 @@ button.dm-etapa-btn:hover { border-color: var(--dm-preto); }
 .dm-sugestao-det { grid-area: det; font-size: 13px; color: var(--dm-suave); }
 .dm-sugestao .dm-selo { grid-area: selo; }
 .dm-sugestao-vazia { font-size: 15px; padding: 6px 2px; }
+.dm-entendi { font-size: 13.5px; color: var(--dm-suave); padding: 0 2px; }
 .dm-contexto { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; padding: 10px 14px; margin: 0 0 16px; background: var(--dm-faixa); border-radius: 8px; }
 .dm-contexto p { margin: 0; }
 
@@ -150,6 +156,8 @@ button.dm-etapa-btn:hover { border-color: var(--dm-preto); }
 .dm-cartao-txt { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px 10px; }
 .dm-cartao-nome { font-weight: 700; font-size: 15px; line-height: 1.25; }
 .dm-cartao-sub { font-size: 12.5px; color: var(--dm-suave); line-height: 1.3; }
+.dm-cartao--sem-foto { background: var(--dm-cinza-claro); justify-content: center; min-height: 96px; }
+.dm-cartao--sem-foto .dm-cartao-txt { padding: 12px 12px 14px; }
 .dm-rodape-tela { text-align: center; font-size: 15px; margin: 8px 0 0; }
 
 /* Passo 2: problemas */
@@ -170,6 +178,7 @@ button.dm-etapa-btn:hover { border-color: var(--dm-preto); }
 .dm-outra > summary { cursor: pointer; padding: 14px 12px; font-weight: 700; min-height: 48px; }
 .dm-outra[open] > summary { border-bottom: 1px solid var(--dm-borda); }
 .dm-outra-dica { margin: 10px 12px 0; font-size: 14px; color: var(--dm-suave); }
+.dm-outra--aberta { margin-top: 0; padding-top: 2px; }
 .dm-familia { padding: 8px 12px 4px; }
 .dm-familia-nome { font-size: 13px !important; color: var(--dm-suave) !important; margin: 4px 0 6px !important; }
 .dm-chips { list-style: none; padding: 0 !important; display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px !important; }
@@ -223,6 +232,7 @@ button.dm-etapa-btn:hover { border-color: var(--dm-preto); }
 .dm-evitar { list-style: none; padding-left: 0 !important; }
 .dm-evitar li { position: relative; padding-left: 26px; }
 .dm-evitar li::before { content: "✕"; position: absolute; left: 2px; top: 0; font-weight: 700; }
+.dm-nota-tecido { padding: 12px 14px; background: var(--dm-faixa); border-radius: 8px; margin: 0 0 12px; }
 .dm-maquina { padding: 12px 14px; border: 1px solid var(--dm-borda); border-radius: 8px; margin: 0 0 18px; }
 .dm-dedicada { background: var(--dm-cinza-claro); border-radius: 8px; padding: 14px; }
 .dm-dedicada p { margin: 0 0 10px; }
@@ -246,6 +256,9 @@ button.dm-etapa-btn:hover { border-color: var(--dm-preto); }
 .dm-pergunta .dm-chips { margin: 0 !important; }
 .dm-acoes--final { margin: 12px 0 0; }
 .dm-coleta { font-size: 14px; color: var(--dm-suave); margin: 0 0 12px; }
+.dm-leia { margin: 0 0 14px; }
+.dm-leia ul { padding-left: 20px; }
+.dm-leia li { margin: 0 0 6px; }
 .dm-navegar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; border-top: 1px solid var(--dm-borda); padding-top: 8px; }
 
 @media (max-width: 479px) {

@@ -1,5 +1,5 @@
 /*
- * Dedicada Lavanderia · Diagnóstico de Manchas (versão 2)
+ * Dedicada Lavanderia · Diagnóstico de Manchas (versão 3)
  * Snippet WPCode 3164 (JavaScript). Vai DEPOIS de <div id="dm-app"> no conteúdo da página 3165.
  * Protótipo de 28/09/2026. Não publicar sem a revisão descrita em LEIA-ME.md.
  *
@@ -8,21 +8,28 @@
  *   "problemas mais comuns" (problema, o que geralmente acontece e urgência), os erros que
  *   estragam a peça, as perguntas frequentes, o processo da Dedicada, prazos, preços e falas.
  *   As três famílias de manchas vêm da tabela tira-manchas da Seitz (Base técnica do Plano)
- *   e do guia de cetim e organza. Nada do banco antigo foi reaproveitado.
+ *   e do guia de cetim e organza. As notas de tecido citam a ANEL, como os guias.
+ *   Nada do banco antigo foi reaproveitado.
  *
  * COMO O BANCO ESTÁ ORGANIZADO (tudo abaixo, antes do "funcionamento")
  *   PESSOAS  → quem assina (nome, papel, foto).
  *   NIVEIS   → níveis de urgência e a ordem em que aparecem.
- *   FAMILIAS → gordurosas e sintéticas, orgânicas e proteicas, vegetais e de tanino, outras.
- *   MANCHAS  → vocabulário de manchas (com sinônimos) para a busca e para "Outra mancha".
- *   GRUPOS   → os 5 grupos da página central.
- *   PECAS    → os 17 guias. Cada peça traz os fatos do guia e a lista de problemas:
+ *   FAMILIAS → gordurosas e sintéticas, orgânicas e proteicas, vegetais e de tanino, outras
+ *              manchas e danos no tecido; "primeiro" é o primeiro cuidado de cada família.
+ *   BLOG     → posts do blog que passaram pela conferência das regras.
+ *   MANCHAS  → 44 manchas e danos, com sinônimos para a busca, "dica" (cuidado próprio,
+ *              tirado dos guias) e "leia" (post do blog).
+ *   GRUPOS   → os 5 grupos da página central, mais "Outras peças e tecidos".
+ *   PECAS    → os 17 guias e 5 peças sem guia próprio (semGuia). Cada peça traz os fatos do
+ *              guia e a lista de problemas:
  *     problema = { id, nome, manchas[], nivel, urgencia, acontece, fazer[], evitar[], dedicada }
  *       manchas:  ids de MANCHAS que caem neste problema (liga a busca ao problema certo)
  *       nivel:    chave de NIVEIS
  *       urgencia: texto da coluna "Urgência" do guia, sem mudar nada
  *       acontece: texto da coluna "O que geralmente acontece" do guia
  *       dedicada: o que é próprio deste problema no processo (opcional)
+ *   Qualquer peça com qualquer mancha tem resultado: o problema do guia, quando existe, ou a
+ *   orientação pela família da mancha.
  *
  * Regra: só fatos confirmados pela Dedicada. Nada de "único", "o melhor", "exclusivo",
  * "100%", percentuais sem fonte ou "toda Florianópolis".
@@ -61,52 +68,82 @@
   var FAMILIAS = {
     gordura: {
       nome: 'Gordurosas e sintéticas', singular: 'gordurosa ou sintética', hydret: 'Hydret 1',
-      exemplos: 'maquiagem, batom, caneta, tinta, esmalte, cola, óleo e graxa'
+      exemplos: 'maquiagem, batom, caneta, tinta, esmalte, cola, óleo e graxa',
+      primeiro: 'Tire o excesso sem esfregar e não use álcool, acetona nem removedor: em couro e em detalhes sintéticos, eles tiram a cor ou dissolvem o material.'
     },
     proteina: {
       nome: 'Orgânicas e proteicas', singular: 'orgânica ou proteica', hydret: 'Hydret 2',
-      exemplos: 'sangue, suor, comida, leite, ovo e urina'
+      exemplos: 'sangue, suor, comida, leite, ovo e urina',
+      primeiro: 'Tire o excesso encostando um pano limpo, sem esfregar, e não use água quente: o calor fixa sangue, suor e comida.'
     },
     tanino: {
       nome: 'Vegetais e de tanino', singular: 'vegetal ou de tanino', hydret: 'Hydret 3',
-      exemplos: 'vinho, café, chá, suco, refrigerante e perfume'
+      exemplos: 'vinho, café, chá, suco, refrigerante e perfume',
+      primeiro: 'Tire o excesso encostando um pano limpo, sem esfregar, e não use água quente, que fixa manchas de café, chá e vinho.'
     },
-    outras: { nome: 'Outros problemas', hydret: null, exemplos: '' }
+    outras: { nome: 'Outras manchas', hydret: null, exemplos: '', primeiro: 'Não esfregue, não use produto caseiro e não passe ferro antes de a mancha sair.' },
+    dano: { nome: 'Danos no tecido', hydret: null, exemplos: '', primeiro: '' }
   };
 
-  /* ---------- Vocabulário de manchas ----------
-   * familia: chave de FAMILIAS. sinonimos: palavras que a busca reconhece (sem acento também). */
+  /* Posts do blog que passaram pela conferência das regras (28/09/2026): sem "o melhor",
+   * "definitivo", percentuais ou receitas caseiras. Os outros ficaram de fora até serem revisados. */
+  var BLOG = {
+    sangue: ['/como-remover-manchas-de-sangue-de-roupas-de-forma-segura/', 'Como remover manchas de sangue das roupas'],
+    gordura: ['/como-remover-manchas-de-gordura-das-roupas-descubra-a-solucao-definitiva/', 'Como remover manchas de gordura das roupas'],
+    maquiagem: ['/remocao-de-manchas-de-maquiagem/', 'Remoção de manchas de maquiagem'],
+    vomito: ['/lavanderia-lava-roupa-com-vomito/', 'Lavanderia lava roupa com vômito?'],
+    cupro: ['/lavagem-de-roupas-em-cupro-cuidados-para-pecas-delicadas/', 'Lavagem de roupas em cupro'],
+    fitness: ['/lavagem-de-roupas-fitness-e-esportivas/', 'Lavagem de roupas fitness e esportivas']
+  };
+
+  /* ---------- Vocabulário de manchas e danos ----------
+   * familia: chave de FAMILIAS. sinonimos: palavras que a busca reconhece (escritas sem acento).
+   * dica: primeiro cuidado próprio desta mancha, tirado dos guias. leia: chave de BLOG. */
   var MANCHAS = [
     { id: 'vinho', nome: 'Vinho', familia: 'tanino', sinonimos: ['vinho', 'vinho tinto', 'tinto', 'vinho branco'] },
-    { id: 'cafe', nome: 'Café', familia: 'tanino', sinonimos: ['cafe', 'cafezinho', 'capuccino', 'cappuccino'] },
-    { id: 'cha', nome: 'Chá', familia: 'tanino', sinonimos: ['cha', 'mate', 'chimarrao'] },
-    { id: 'suco', nome: 'Suco ou fruta', familia: 'tanino', sinonimos: ['suco', 'fruta', 'frutas', 'acai', 'morango', 'uva'] },
-    { id: 'refrigerante', nome: 'Refrigerante', familia: 'tanino', sinonimos: ['refrigerante', 'refri', 'coca'] },
+    { id: 'cafe', nome: 'Café', familia: 'tanino', sinonimos: ['cafe', 'cafezinho', 'capuccino', 'cappuccino', 'cafe com leite'] },
+    { id: 'cha', nome: 'Chá ou mate', familia: 'tanino', sinonimos: ['cha', 'mate', 'erva mate', 'chimarrao', 'terere'] },
+    { id: 'suco', nome: 'Suco ou fruta', familia: 'tanino', sinonimos: ['suco', 'fruta', 'acai', 'morango', 'uva', 'suco de uva', 'amora', 'jabuticaba', 'laranja', 'beterraba', 'banana', 'nodoa', 'nodoa de banana', 'manga', 'goiaba', 'jenipapo'] },
+    { id: 'refrigerante', nome: 'Refrigerante', familia: 'tanino', sinonimos: ['refrigerante', 'refri', 'coca', 'guarana'] },
     { id: 'bebida', nome: 'Cerveja ou drinque', familia: 'tanino', sinonimos: ['cerveja', 'chopp', 'chope', 'drinque', 'drink', 'bebida', 'licor', 'caipirinha', 'alcool', 'espumante', 'champanhe'] },
-    { id: 'perfume', nome: 'Perfume', familia: 'tanino', sinonimos: ['perfume', 'colonia'] },
-    { id: 'grama', nome: 'Grama', familia: 'tanino', sinonimos: ['grama', 'clorofila', 'folha'] },
-    { id: 'sangue', nome: 'Sangue', familia: 'proteina', sinonimos: ['sangue', 'menstruacao'] },
-    { id: 'suor', nome: 'Suor', familia: 'proteina', sinonimos: ['suor', 'transpiracao', 'axila', 'axilas', 'cheiro de suor', 'sovaco'] },
-    { id: 'comida', nome: 'Comida ou molho', familia: 'proteina', sinonimos: ['comida', 'molho', 'carne', 'churrasco', 'ketchup', 'maionese', 'chocolate', 'sorvete', 'caldo'] },
-    { id: 'leite', nome: 'Leite', familia: 'proteina', sinonimos: ['leite', 'iogurte', 'mamadeira', 'golfada', 'papinha'] },
-    { id: 'ovo', nome: 'Ovo', familia: 'proteina', sinonimos: ['ovo', 'gema', 'clara'] },
-    { id: 'xixi', nome: 'Xixi', familia: 'proteina', sinonimos: ['xixi', 'urina', 'pipi', 'fralda'] },
-    { id: 'vomito', nome: 'Vômito', familia: 'proteina', sinonimos: ['vomito', 'vomitou'] },
-    { id: 'maquiagem', nome: 'Maquiagem', familia: 'gordura', sinonimos: ['maquiagem', 'base', 'corretivo', 'po compacto', 'rimel', 'delineador', 'blush', 'make'] },
-    { id: 'batom', nome: 'Batom', familia: 'gordura', sinonimos: ['batom', 'gloss'] },
-    { id: 'caneta', nome: 'Caneta', familia: 'gordura', sinonimos: ['caneta', 'esferografica', 'canetinha', 'marcador', 'tinta de caneta'] },
-    { id: 'tinta', nome: 'Tinta', familia: 'gordura', sinonimos: ['tinta', 'tinta de parede', 'guache', 'tinta acrilica', 'pintura'] },
+    { id: 'perfume', nome: 'Perfume', familia: 'tanino', sinonimos: ['perfume', 'colonia', 'body splash'] },
+    { id: 'grama', nome: 'Grama', familia: 'tanino', sinonimos: ['grama', 'clorofila', 'folha', 'gramado'] },
+    { id: 'acafrao', nome: 'Açafrão, urucum ou curry', familia: 'tanino', sinonimos: ['acafrao', 'curcuma', 'acafrao da terra', 'urucum', 'colorau', 'curry', 'mostarda'] },
+    { id: 'sangue', nome: 'Sangue', familia: 'proteina', sinonimos: ['sangue', 'menstruacao', 'menstrual', 'sangramento'], leia: 'sangue' },
+    { id: 'suor', nome: 'Suor', familia: 'proteina', sinonimos: ['suor', 'transpiracao', 'axila', 'sovaco', 'debaixo do braco', 'de baixo do braco', 'embaixo do braco', 'cheiro de suor'] },
+    { id: 'comida', nome: 'Comida ou molho', familia: 'proteina', sinonimos: ['comida', 'molho', 'molho de tomate', 'tomate', 'carne', 'churrasco', 'ketchup', 'maionese', 'chocolate', 'nescau', 'achocolatado', 'sorvete', 'caldo', 'shoyu', 'feijao', 'pizza'] },
+    { id: 'leite', nome: 'Leite', familia: 'proteina', sinonimos: ['leite', 'iogurte', 'mamadeira', 'golfada', 'papinha', 'leite materno'] },
+    { id: 'ovo', nome: 'Ovo', familia: 'proteina', sinonimos: ['ovo', 'gema', 'clara de ovo'] },
+    { id: 'xixi', nome: 'Xixi', familia: 'proteina', sinonimos: ['xixi', 'urina', 'pipi', 'fralda', 'fralda vazou'] },
+    { id: 'vomito', nome: 'Vômito', familia: 'proteina', sinonimos: ['vomito', 'vomitou', 'golfou'], leia: 'vomito' },
+    { id: 'fezes', nome: 'Fezes', familia: 'proteina', sinonimos: ['fezes', 'coco de cachorro', 'coco de gato', 'coco de bebe', 'coco do bebe', 'dejeto'] },
+    { id: 'maquiagem', nome: 'Maquiagem', familia: 'gordura', sinonimos: ['maquiagem', 'base', 'corretivo', 'po compacto', 'rimel', 'delineador', 'blush', 'make', 'lapis de olho'], leia: 'maquiagem', dica: 'Não use demaquilante: os óleos criam uma segunda mancha, geralmente maior que a original.' },
+    { id: 'batom', nome: 'Batom', familia: 'gordura', sinonimos: ['batom', 'gloss', 'lip tint'], leia: 'maquiagem', dica: 'Não use demaquilante: os óleos criam uma segunda mancha, geralmente maior que a original.' },
+    { id: 'caneta', nome: 'Caneta', familia: 'gordura', sinonimos: ['caneta', 'esferografica', 'canetinha', 'marcador', 'tinta de caneta', 'hidrocor', 'pincel atomico', 'marca texto', 'lapis', 'lapis de cor'] },
+    { id: 'tinta', nome: 'Tinta', familia: 'gordura', sinonimos: ['tinta', 'tinta de parede', 'guache', 'tinta acrilica', 'pintura', 'tinta seca', 'tinta a oleo'] },
     { id: 'esmalte', nome: 'Esmalte', familia: 'gordura', sinonimos: ['esmalte', 'unha'] },
-    { id: 'cola', nome: 'Cola', familia: 'gordura', sinonimos: ['cola', 'adesivo', 'super bonder'] },
-    { id: 'gordura', nome: 'Óleo ou gordura', familia: 'gordura', sinonimos: ['gordura', 'oleo', 'azeite', 'manteiga', 'fritura', 'oleo de cozinha', 'engordurado'] },
-    { id: 'graxa', nome: 'Graxa', familia: 'gordura', sinonimos: ['graxa', 'oleo de motor', 'corrente de bicicleta', 'bicicleta', 'moto', 'piche'] },
-    { id: 'protetor', nome: 'Protetor solar', familia: 'gordura', sinonimos: ['protetor', 'protetor solar', 'filtro solar', 'bronzeador', 'mancha alaranjada', 'alaranjada'] },
-    { id: 'mofo', nome: 'Mofo', familia: 'outras', sinonimos: ['mofo', 'mofado', 'mofada', 'bolor', 'fungo', 'cheiro de guardado', 'pintas pretas'] },
-    { id: 'ferrugem', nome: 'Ferrugem', familia: 'outras', sinonimos: ['ferrugem', 'enferrujado'] },
-    { id: 'cor', nome: 'Cor de outra peça', familia: 'outras', sinonimos: ['cor de outra peca', 'soltou tinta', 'manchou de outra', 'transferencia de cor', 'passou cor', 'tingiu', 'desbotou em'] },
-    { id: 'desodorante', nome: 'Desodorante', familia: 'outras', sinonimos: ['desodorante', 'antitranspirante'] },
-    { id: 'lama', nome: 'Lama ou terra', familia: 'outras', sinonimos: ['lama', 'barro', 'terra', 'poeira', 'areia'] },
-    { id: 'amarelado', nome: 'Amarelado', familia: 'outras', sinonimos: ['amarelado', 'amarelada', 'amarelou', 'encardido', 'encardida', 'amarelamento'] }
+    { id: 'cola', nome: 'Cola', familia: 'gordura', sinonimos: ['cola', 'adesivo', 'super bonder', 'cola quente'] },
+    { id: 'gordura', nome: 'Óleo ou gordura', familia: 'gordura', sinonimos: ['gordura', 'oleo', 'azeite', 'manteiga', 'fritura', 'oleo de cozinha', 'engordurado', 'hidratante', 'creme', 'oleo corporal', 'oleo de massagem', 'dende', 'azeite de dende'], leia: 'gordura' },
+    { id: 'graxa', nome: 'Graxa', familia: 'gordura', sinonimos: ['graxa', 'oleo de motor', 'oleo de carro', 'oleo de maquina', 'oleo diesel', 'corrente de bicicleta', 'bicicleta', 'moto', 'piche', 'graxa de sapato', 'nugget'], dica: 'Não esfregue com detergente: a fricção tira o corante e deixa a área clara.' },
+    { id: 'protetor', nome: 'Protetor solar', familia: 'gordura', sinonimos: ['protetor', 'protetor solar', 'filtro solar', 'bronzeador', 'mancha alaranjada', 'alaranjada'], dica: 'Não use água sanitária, que fixa a mancha, e não passe a ferro antes de tratar.' },
+    { id: 'mofo', nome: 'Mofo', familia: 'outras', sinonimos: ['mofo', 'mofado', 'mofada', 'bolor', 'fungo', 'cheiro de guardado', 'pintas pretas', 'mancha de guardado', 'roupa guardada'], dica: 'Não escove nem esfregue a área, para não espalhar o mofo.' },
+    { id: 'ferrugem', nome: 'Ferrugem', familia: 'outras', sinonimos: ['ferrugem', 'enferrujado', 'enferrujada'], dica: 'Não use água sanitária: ela escurece a mancha de ferrugem.' },
+    { id: 'cor', nome: 'Cor de outra peça', familia: 'outras', sinonimos: ['cor de outra peca', 'outra roupa', 'outra peca', 'manchada por outra', 'manchou de outra', 'soltou tinta', 'soltou cor', 'transferencia de cor', 'passou cor', 'tingiu', 'manchou na lavagem', 'manchou na maquina', 'jeans manchou', 'roupa tingida', 'manchou de vermelho', 'manchou de azul', 'desbotou em', 'uma roupa na outra', 'roupa na outra', 'colorida na branca', 'colorida em roupa branca', 'colorida na roupa branca', 'roupa de cor na branca'], dica: 'Não seque a peça: o calor da secadora fixa o corante de vez.' },
+    { id: 'desodorante', nome: 'Desodorante', familia: 'outras', sinonimos: ['desodorante', 'antitranspirante'], dica: 'Não passe a ferro sobre a mancha: o calor fixa desodorante e suor.' },
+    { id: 'lama', nome: 'Lama ou terra', familia: 'outras', sinonimos: ['lama', 'barro', 'terra', 'poeira', 'areia'], dica: 'Não coloque na máquina com outras roupas: a terra espalha e encarde o resto.' },
+    { id: 'amarelado', nome: 'Amarelado', familia: 'outras', sinonimos: ['amarelado', 'amarelada', 'amarelou', 'encardido', 'encardida', 'amarelamento', 'mancha amarela'], dica: 'Não use água sanitária: o cloro deixa o amarelado mais forte e enfraquece a fibra.' },
+    { id: 'agua-sanitaria', nome: 'Água sanitária ou cloro', familia: 'outras', sinonimos: ['agua sanitaria', 'qboa', 'quiboa', 'candida', 'cloro', 'alvejante com cloro', 'descoloriu'], dica: 'Em peça colorida, o cloro deixa manchas claras que não voltam, como no jeans e na sarja; em peça branca, enfraquece a fibra. Na Dedicada, o alvejamento é à base de oxigênio, sem cloro.' },
+    { id: 'amaciante', nome: 'Amaciante', familia: 'outras', sinonimos: ['amaciante', 'mancha de amaciante'] },
+    { id: 'tinta-cabelo', nome: 'Tinta de cabelo ou henna', familia: 'outras', sinonimos: ['tinta de cabelo', 'tintura', 'tintura de cabelo', 'henna', 'hena', 'descolorante'] },
+    { id: 'remedio', nome: 'Remédio ou pomada', familia: 'outras', sinonimos: ['remedio', 'xarope', 'pomada', 'iodo', 'mertiolate', 'merthiolate', 'noripurum', 'sulfato ferroso', 'antibiotico', 'nebacetin', 'violeta genciana', 'medicamento', 'povidine', 'betadine', 'hipoglos'] },
+    { id: 'cera', nome: 'Cera de vela', familia: 'outras', sinonimos: ['vela', 'cera', 'cera de vela', 'parafina'] },
+    { id: 'chiclete', nome: 'Chiclete', familia: 'outras', sinonimos: ['chiclete', 'goma de mascar', 'chicle'] },
+    { id: 'pasta', nome: 'Pasta de dente', familia: 'outras', sinonimos: ['pasta de dente', 'creme dental'] },
+    { id: 'queimado', nome: 'Marca de ferro ou queimado', familia: 'dano', sinonimos: ['queimado', 'queimou', 'queimei', 'queimada', 'ferro quente', 'passei ferro', 'passei o ferro', 'marca de ferro', 'ferro de passar', 'brilho de ferro', 'chamuscado', 'brilho'], dica: 'O calor achata a fibra, e em alguns tecidos a marca não sai. Da próxima vez, passe a vapor ou com um pano por cima.' },
+    { id: 'encolheu', nome: 'Encolheu', familia: 'dano', sinonimos: ['encolheu', 'encolhida', 'encolhido', 'encolhimento', 'diminuiu', 'feltrou', 'feltragem', 'ficou pequena', 'ficou pequeno'], dica: 'Água quente e secadora são as causas mais comuns, e em muitos tecidos o encolhimento não tem volta na lavagem.' },
+    { id: 'desbotou', nome: 'Desbotou ou perdeu a cor', familia: 'dano', sinonimos: ['desbotou', 'desbotada', 'desbotado', 'desbote', 'perdeu a cor', 'clareou', 'mancha clara', 'manchas claras'], dica: 'Álcool e água sanitária atacam o corante, e as manchas claras que eles deixam costumam não voltar.' },
+    { id: 'bolinhas', nome: 'Bolinhas e pelos', familia: 'dano', sinonimos: ['bolinhas', 'bolinha', 'pelinhos', 'pilling'], dica: 'Não puxe as bolinhas com a mão nem com lâmina: pode furar ou abrir a malha.' },
+    { id: 'cheiro', nome: 'Cheiro ruim', familia: 'dano', sinonimos: ['cheiro', 'fedor', 'odor', 'cheiro ruim', 'catinga', 'fedendo', 'cheirando mal'], dica: 'Deixe a peça arejar e não guarde úmida: cheiro de guardado costuma vir da umidade.' }
   ];
 
   /* ---------- Frases dos guias usadas em vários problemas ---------- */
@@ -135,7 +172,16 @@
     { id: 'inverno', nome: 'Inverno, couro e alfaiataria' },
     { id: 'dia', nome: 'Dia a dia' },
     { id: 'casa', nome: 'Casa' },
-    { id: 'criancas', nome: 'Crianças' }
+    { id: 'criancas', nome: 'Crianças' },
+    { id: 'outras', nome: 'Outras peças e tecidos' }
+  ];
+
+  /* Processo das peças que ainda não têm guia próprio (só fatos gerais confirmados). */
+  var PROCESSO_GERAL = [
+    'Avaliação da peça e da etiqueta antes da lavagem.',
+    'Mancha tratada antes da lavagem, com o tira-manchas da família dela, da linha Hydret da Seitz.',
+    'Lavagem a seco com percloroetileno, wet cleaning com produtos Seitz ou lavagem em água, conforme a etiqueta e o tecido.',
+    'Alvejamento, quando a peça pede, à base de oxigênio, sem cloro.'
   ];
 
   /* ---------- As 17 peças ----------
@@ -146,7 +192,7 @@
   var PECAS = [
     {
       id: 'seda', grupo: 'finas', nome: 'Seda', exemplos: 'Vestidos e blusas de seda',
-      sinonimos: ['seda', 'blusa de seda', 'vestido de seda', 'camisa de seda'],
+      sinonimos: ['seda', 'blusa de seda', 'vestido de seda', 'camisa de seda', 'cambraia'],
       guia: SITE + '/cuidados-seda/', assina: 'liliane',
       fala: 'Muita seda chega com mancha de bebida. Primeiro tiramos o álcool, lavamos a seco e depois em água, para sumir a sombra que a bebida deixa. Quando o tecido colorido fica com aqueles quebrados brancos, um amaciante concentrado da Seitz alinha de novo o brilho da fibra.',
       maquina: 'Não. Mesmo um ciclo rápido pode encolher ou deformar a peça de forma permanente.',
@@ -203,14 +249,14 @@
           dedicada: 'Amaciante concentrado da Seitz, que alinha de novo as fibras e devolve o brilho uniforme.'
         },
         {
-          id: 'encolhimento', nome: 'Encolheu', manchas: [], nivel: 'sem_urgencia',
+          id: 'encolhimento', nome: 'Encolheu', manchas: ['encolheu'], nivel: 'sem_urgencia',
           urgencia: 'Sem urgência, mas sem solução caseira',
           acontece: 'Vem de lavagem em água quente ou de secadora.',
           fazer: [F.avaliar],
           evitar: ['Água quente e secadora.']
         },
         {
-          id: 'brilho-ferro', nome: 'Brilho de ferro', manchas: [], nivel: 'dificil',
+          id: 'brilho-ferro', nome: 'Brilho de ferro', manchas: ['queimado'], nivel: 'dificil',
           urgencia: 'Sem urgência; difícil de reverter',
           acontece: 'O calor achata a fibra e cria um efeito espelhado.',
           fazer: ['Da próxima vez, passe a vapor ou com ferro morno e um pano por cima.'],
@@ -220,7 +266,7 @@
     },
     {
       id: 'festa-noiva', grupo: 'finas', nome: 'Cetim e organza', exemplos: 'Vestidos de festa e de noiva',
-      sinonimos: ['vestido de noiva', 'noiva', 'vestido de festa', 'festa', 'formatura', 'madrinha', 'cetim', 'organza', 'tule', 'zibeline', 'tafeta', 'vestido longo', 'casamento'],
+      sinonimos: ['vestido de noiva', 'noiva', 'vestido de festa', 'festa', 'formatura', 'madrinha', 'cetim', 'organza', 'tule', 'zibeline', 'tafeta', 'vestido longo', 'casamento', 'renda', 'crepe', 'chiffon', 'musseline', 'shantung'],
       guia: SITE + '/cuidados-cetim-organza/', assina: 'liliane',
       fala: 'O vestido de noiva costuma chegar com a barra muito suja e manchas de comida e vinho. Fazemos a pré-lavagem, deixamos de molho e tratamos cada tipo de mancha com um protocolo próprio antes de lavar no programa da Seitz para noivas. Por isso o prazo é de 7 dias.',
       maquina: 'Não. Zibeline e tafetá perdem a estrutura, e a saia fica sem volume.',
@@ -311,7 +357,7 @@
       expresso: 'sim',
       problemas: [
         {
-          id: 'mofo', nome: 'Mofo', manchas: ['mofo'], nivel: 'urgente',
+          id: 'mofo', nome: 'Mofo', manchas: ['mofo', 'cheiro'], nivel: 'urgente',
           urgencia: 'Urgente (24h)',
           acontece: 'Pontos escuros e cheiro de guardado; na umidade de Florianópolis, aparece em peças guardadas sem ventilação.',
           fazer: [F.mofoNaoEscovar, F.levar24, F.mofoGuardar],
@@ -332,7 +378,7 @@
           evitar: ['Esfregar: o pelo deita em outra direção e fica uma área brilhante.', F.calor]
         },
         {
-          id: 'marca-ferro', nome: 'Marca de ferro', manchas: [], nivel: 'sem_solucao',
+          id: 'marca-ferro', nome: 'Marca de ferro', manchas: ['queimado'], nivel: 'sem_solucao',
           urgencia: 'Sem urgência; o dano não tem volta',
           acontece: 'Pelo esmagado pelo ferro encostado, liso e brilhante no formato da base.',
           fazer: ['Da próxima vez, use vapor pelo avesso, sem encostar, e penteie o pelo numa só direção com uma escova macia.'],
@@ -403,21 +449,21 @@
           dedicada: 'Alvejamento sem cloro nas peças brancas ou amareladas.'
         },
         {
-          id: 'encolhimento', nome: 'Encolheu', manchas: [], nivel: 'sem_solucao',
+          id: 'encolhimento', nome: 'Encolheu', manchas: ['encolheu'], nivel: 'sem_solucao',
           urgencia: 'Não tem conserto na lavagem',
           acontece: 'Água quente ou secadora em linho não pré-encolhido.',
           fazer: ['Da próxima vez, siga a etiqueta: se ela permitir água, lave em água fria e seque à sombra.'],
           evitar: ['Água quente e secadora.']
         },
         {
-          id: 'mudanca-cor', nome: 'Mudança de cor', manchas: [], nivel: 'sem_solucao',
+          id: 'mudanca-cor', nome: 'Mudança de cor', manchas: ['desbotou'], nivel: 'sem_solucao',
           urgencia: 'Não tem conserto na lavagem',
           acontece: 'Linho tingido lavado em água, segundo a ANEL.',
           fazer: ['Da próxima vez, se a etiqueta tiver a tina com X, leve a peça para lavar a seco.'],
           evitar: ['Lavar em água o linho tingido cuja etiqueta proíbe água.']
         },
         {
-          id: 'area-clara', nome: 'Área clara ou marcada', manchas: [], nivel: 'sem_solucao',
+          id: 'area-clara', nome: 'Área clara ou marcada', manchas: ['desbotou'], nivel: 'sem_solucao',
           urgencia: 'Não tem conserto na lavagem',
           acontece: 'Mancha esfregada.',
           fazer: ['Na próxima mancha, só encoste um pano limpo, sem esfregar, e leve a peça.'],
@@ -458,7 +504,7 @@
           evitar: ['Capa plástica fina: não deixa o tecido respirar e favorece o mofo.', 'Guardar o terno com suor: ele amarela e mofa.']
         },
         {
-          id: 'suor-axilas', nome: 'Suor e cheiro nas axilas', manchas: ['suor'], nivel: 'urgente',
+          id: 'suor-axilas', nome: 'Suor e cheiro nas axilas', manchas: ['suor', 'cheiro'], nivel: 'urgente',
           urgencia: 'Urgente (24h)',
           acontece: 'O suor amarela e endurece o tecido com o tempo.',
           fazer: [F.levar24, 'Quem usa terno todo dia deve lavá-lo a seco a cada 15 a 20 dias.'],
@@ -473,7 +519,7 @@
           evitar: ['Água e calor no paletó.']
         },
         {
-          id: 'brilho', nome: 'Brilho no tecido', manchas: [], nivel: 'dificil',
+          id: 'brilho', nome: 'Brilho no tecido', manchas: ['queimado'], nivel: 'dificil',
           urgencia: 'Difícil de reverter',
           acontece: 'Ferro quente direto na lã escura achata a fibra.',
           fazer: ['Da próxima vez, passe com um pano por cima.'],
@@ -497,7 +543,7 @@
     },
     {
       id: 'la', grupo: 'inverno', nome: 'Lã', exemplos: 'Ternos, casacos e suéteres',
-      sinonimos: ['la', 'casaco de la', 'la batida', 'sueter', 'pulover', 'cashmere', 'caxemira', 'trico', 'casaco', 'cardiga', 'cachecol'],
+      sinonimos: ['la', 'casaco de la', 'la batida', 'sueter', 'pulover', 'cashmere', 'caxemira', 'trico', 'cardiga', 'cachecol', 'alpaca', 'merino', 'poncho'],
       guia: SITE + '/cuidados-la/', assina: 'jorge',
       fala: 'Casaco de lã batida e suéter vão para a lavagem a seco. Depois, tiramos à mão os pelos e as bolinhas, peça por peça.',
       maquina: 'Não, nem no ciclo delicado: a agitação com água morna ou quente feltra a fibra, e a peça encolhe sem volta.',
@@ -527,14 +573,14 @@
           evitar: [F.quenteProteina, F.calor]
         },
         {
-          id: 'bolinhas', nome: 'Bolinhas e pelos (pilling)', manchas: [], nivel: 'sem_urgencia',
+          id: 'bolinhas', nome: 'Bolinhas e pelos (pilling)', manchas: ['bolinhas'], nivel: 'sem_urgencia',
           urgencia: 'Sem urgência',
           acontece: 'Desgaste natural do uso, mais comum em misturas com poliéster e acrílico.',
           fazer: ['Leve a peça: os pelos e as bolinhas são tirados à mão e com máquina própria, depois da lavagem.'],
           evitar: ['Puxar as bolinhas com a mão ou com lâmina: pode furar ou abrir a malha.']
         },
         {
-          id: 'feltragem', nome: 'Encolheu e endureceu (feltragem)', manchas: [], nivel: 'sem_solucao',
+          id: 'feltragem', nome: 'Encolheu e endureceu (feltragem)', manchas: ['encolheu'], nivel: 'sem_solucao',
           urgencia: 'Sem solução, apenas prevenção',
           acontece: 'Dano físico; nenhum processo recupera.',
           fazer: ['Da próxima vez, nada de máquina de casa nem de secadora: leve a lã para lavar a seco.'],
@@ -558,7 +604,7 @@
     },
     {
       id: 'jaquetas', grupo: 'inverno', nome: 'Jaquetas e sintéticos', exemplos: 'Jaquetas de pena, nylon, poliéster e PU, e roupa de neve',
-      sinonimos: ['jaqueta', 'jaqueta de pena', 'pena', 'puffer', 'corta vento', 'nylon', 'poliester', 'poliuretano', 'pu', 'couro sintetico', 'couro ecologico', 'roupa de neve', 'parka', 'impermeavel', 'capa de chuva', 'sintetico'],
+      sinonimos: ['jaqueta de pena', 'jaqueta de nylon', 'jaqueta impermeavel', 'jaqueta sintetica', 'jaqueta corta vento', 'pena', 'puffer', 'corta vento', 'nylon', 'poliuretano', 'pu', 'couro sintetico', 'couro ecologico', 'roupa de neve', 'parka', 'impermeavel', 'capa de chuva', 'sintetico', 'fleece', 'polar'],
       guia: SITE + '/cuidados-sintetico/', assina: 'jorge',
       fala: 'Jaqueta de pena tem que sair daqui completamente seca. Secamos em temperatura baixa até as penas voltarem soltas para os gomos, porque pena que fica úmida pode mofar.',
       maquina: 'Nylon e poliéster, se a etiqueta permitir: zíperes fechados, do avesso, água fria, ciclo delicado e sem amaciante comum.',
@@ -589,7 +635,7 @@
           evitar: ['Secadora quente: derrete fitas das costuras, zíperes emborrachados e o nylon.']
         },
         {
-          id: 'cheiro-suor', nome: 'Cheiro de suor preso', manchas: ['suor'], nivel: 'sem_urgencia',
+          id: 'cheiro-suor', nome: 'Cheiro de suor preso', manchas: ['suor', 'cheiro'], nivel: 'sem_urgencia',
           urgencia: 'Sem urgência, mas acumula',
           acontece: 'Suor acumulado no recheio e na membrana; o amaciante comum piora.',
           fazer: ['Leve a jaqueta para lavar antes de guardar.'],
@@ -610,7 +656,7 @@
           evitar: ['Amaciante comum: entope os poros da membrana.']
         },
         {
-          id: 'fitas-derretidas', nome: 'Fitas e zíperes derretidos', manchas: [], nivel: 'sem_solucao',
+          id: 'fitas-derretidas', nome: 'Fitas e zíperes derretidos', manchas: ['queimado'], nivel: 'sem_solucao',
           urgencia: 'Não tem conserto na lavagem',
           acontece: 'Calor de secadora ou de ferro.',
           fazer: ['Da próxima vez, secadora só se a etiqueta permitir, e em temperatura baixa.'],
@@ -679,7 +725,7 @@
           evitar: ['Álcool ou água sanitária.']
         },
         {
-          id: 'encolhimento-calor', nome: 'Encolhimento por calor', manchas: [], nivel: 'sem_solucao',
+          id: 'encolhimento-calor', nome: 'Encolhimento por calor', manchas: ['encolheu'], nivel: 'sem_solucao',
           urgencia: 'Sem solução, apenas prevenção',
           acontece: 'Enrugamento por calor não tem correção.',
           fazer: ['Guarde o couro pendurado, em cabide de ombro largo, longe do calor.'],
@@ -713,7 +759,7 @@
           evitar: [F.plastico, F.umida]
         },
         {
-          id: 'cheiro-guardado', nome: 'Cheiro de guardado', manchas: [], nivel: 'sem_urgencia',
+          id: 'cheiro-guardado', nome: 'Cheiro de guardado', manchas: ['cheiro'], nivel: 'sem_urgencia',
           urgencia: 'Sem urgência; lave antes de usar',
           acontece: 'Meses no armário, sem ventilação.',
           fazer: ['Leve para lavar antes de usar.', 'Da próxima vez, lave antes de guardar, no fim do inverno.'],
@@ -799,14 +845,14 @@
           evitar: ['Água sanitária: com o tempo, o cloro enfraquece a fibra, e o colarinho fica puído antes do resto da camisa.']
         },
         {
-          id: 'encolhimento', nome: 'Encolheu', manchas: [], nivel: 'sem_solucao',
+          id: 'encolhimento', nome: 'Encolheu', manchas: ['encolheu'], nivel: 'sem_solucao',
           urgencia: 'Sem urgência; não tem volta na lavagem',
           acontece: 'Água quente e secadora, principalmente na malha.',
           fazer: ['Da próxima vez, use a temperatura da etiqueta e seque no cabide ou no varal, à sombra.'],
           evitar: ['Água quente e secadora.']
         },
         {
-          id: 'bolinhas', nome: 'Bolinhas', manchas: [], nivel: 'sem_urgencia',
+          id: 'bolinhas', nome: 'Bolinhas', manchas: ['bolinhas'], nivel: 'sem_urgencia',
           urgencia: 'Sem urgência',
           acontece: 'Desgaste do fio, comum em misturas com poliéster.',
           fazer: [F.avaliar],
@@ -816,7 +862,7 @@
     },
     {
       id: 'jeans', grupo: 'dia', nome: 'Jeans e sarja', exemplos: 'Calças jeans e de sarja',
-      sinonimos: ['jeans', 'calca jeans', 'sarja', 'calca de sarja', 'bermuda', 'short', 'jaqueta jeans'],
+      sinonimos: ['jeans', 'calca jeans', 'sarja', 'calca de sarja', 'bermuda jeans', 'short jeans', 'jaqueta jeans', 'saia jeans'],
       guia: SITE + '/cuidados-jeans-sarja/', assina: 'alejandro',
       fala: 'A pergunta que mais ouvimos é como lavar sem desbotar. Lavamos em água fria, no wet cleaning, e, quando a peça permite, a seco, sem água nenhuma.',
       maquina: 'Sim: do avesso, em água fria, longe das roupas claras e sem lotar a máquina.',
@@ -854,7 +900,7 @@
           evitar: ['Colocar direto na máquina com outras roupas.']
         },
         {
-          id: 'desbote', nome: 'Desbote', manchas: [], nivel: 'atencao',
+          id: 'desbote', nome: 'Desbote', manchas: ['desbotou'], nivel: 'atencao',
           urgencia: 'Prevenção',
           acontece: 'O corante fica na superfície do fio e sai a cada lavagem.',
           fazer: ['Lave do avesso, em água fria, longe das roupas claras e sem lotar a máquina.'],
@@ -924,7 +970,7 @@
           evitar: ['Máquina de lavar: descola biqueiras e solados e deforma o cabedal.']
         },
         {
-          id: 'cheiro', nome: 'Cheiro forte', manchas: ['suor'], nivel: 'sem_urgencia',
+          id: 'cheiro', nome: 'Cheiro forte', manchas: ['suor', 'cheiro'], nivel: 'sem_urgencia',
           urgencia: 'Sem urgência, mas acumula',
           acontece: 'Bactérias do suor na palmilha e no forro.',
           fazer: ['Lave a palmilha separada e deixe o tênis secar por completo por dentro.'],
@@ -948,7 +994,7 @@
     },
     {
       id: 'roupa-de-cama', grupo: 'casa', nome: 'Roupa de cama e toalhas', exemplos: 'Lençóis, toalhas, mantas e capas de sofá',
-      sinonimos: ['lencol', 'lencois', 'fronha', 'toalha', 'toalhas', 'roupa de cama', 'manta', 'colcha de croche', 'capa de sofa', 'almofada', 'protetor de colchao', 'enxoval', 'airbnb'],
+      sinonimos: ['lencol', 'lencois', 'fronha', 'toalha de banho', 'toalha de rosto', 'roupao', 'roupa de cama', 'manta', 'colcha de croche', 'capa de sofa', 'almofada', 'protetor de colchao', 'enxoval', 'airbnb'],
       guia: SITE + '/cuidados-roupa-de-cama/', assina: 'liliane',
       fala: 'Lençóis, fronhas e toalhas vão sempre para a água, no ciclo de enxoval da Seitz; só o lençol de seda vai a seco. As toalhas passam por duplo alvejamento, e os lençóis saem passados e embalados por jogo, prontos para usar ou guardar.',
       maquina: 'Sim, na temperatura da etiqueta; lençol de seda, não.',
@@ -965,7 +1011,7 @@
       expresso: 'sim',
       problemas: [
         {
-          id: 'toalha-mofo', nome: 'Toalha com cheiro de mofo', manchas: ['mofo'], nivel: 'urgente',
+          id: 'toalha-mofo', nome: 'Toalha com cheiro de mofo', manchas: ['mofo', 'cheiro'], nivel: 'urgente',
           urgencia: 'Urgente (24h)',
           acontece: 'Guardada úmida; o fungo enfraquece a felpa.',
           fazer: [F.levar24, 'Depois, seque a toalha por completo antes de guardar.'],
@@ -986,14 +1032,14 @@
           evitar: ['Água quente e secadora quente.']
         },
         {
-          id: 'toalha-aspera', nome: 'Toalha áspera que não absorve', manchas: [], nivel: 'sem_urgencia',
+          id: 'toalha-aspera', nome: 'Toalha áspera que não absorve', manchas: ['amaciante'], nivel: 'sem_urgencia',
           urgencia: 'Sem urgência',
           acontece: 'Excesso de amaciante ou de sabão nos fios.',
           fazer: ['Use pouco amaciante e seque a toalha por completo antes de guardar.'],
           evitar: ['Excesso de amaciante: deixa uma película que impede a toalha de absorver.']
         },
         {
-          id: 'capa-encolhida', nome: 'Capa de sofá encolhida', manchas: [], nivel: 'sem_solucao',
+          id: 'capa-encolhida', nome: 'Capa de sofá encolhida', manchas: ['encolheu'], nivel: 'sem_solucao',
           urgencia: 'Não tem volta na lavagem',
           acontece: 'Calor da secadora.',
           fazer: ['Da próxima vez, seque a capa ao natural.'],
@@ -1036,7 +1082,7 @@
       expresso: 'sim',
       problemas: [
         {
-          id: 'mofo', nome: 'Mofo e cheiro de guardado', manchas: ['mofo'], nivel: 'urgente',
+          id: 'mofo', nome: 'Mofo e cheiro de guardado', manchas: ['mofo', 'cheiro'], nivel: 'urgente',
           urgencia: 'Urgente: lave logo',
           acontece: 'Umidade presa no enchimento, comum no clima de Florianópolis.',
           fazer: [F.levarLogo, 'Depois, lave sempre antes de guardar.'],
@@ -1081,7 +1127,7 @@
           evitar: ['Lavar edredom grande na máquina de casa.']
         },
         {
-          id: 'manta-bolinhas', nome: 'Manta sem volume, com bolinhas', manchas: [], nivel: 'sem_solucao',
+          id: 'manta-bolinhas', nome: 'Manta sem volume, com bolinhas', manchas: ['bolinhas'], nivel: 'sem_solucao',
           urgencia: 'Sem solução, apenas prevenção',
           acontece: 'Desgaste natural da manta de poliéster com o uso e as lavagens.',
           fazer: [F.avaliar],
@@ -1132,7 +1178,7 @@
           evitar: []
         },
         {
-          id: 'cheiro', nome: 'Cheiro de cigarro ou de fritura', manchas: [], nivel: 'sem_urgencia',
+          id: 'cheiro', nome: 'Cheiro de cigarro ou de fritura', manchas: ['cheiro'], nivel: 'sem_urgencia',
           urgencia: 'Sem urgência',
           acontece: 'O tecido absorve a fumaça e a gordura do ar.',
           fazer: [F.avaliar],
@@ -1146,7 +1192,7 @@
           evitar: ['Lavar blackout que não é lavável.']
         },
         {
-          id: 'encolhimento', nome: 'Encolheu', manchas: [], nivel: 'sem_solucao',
+          id: 'encolhimento', nome: 'Encolheu', manchas: ['encolheu'], nivel: 'sem_solucao',
           urgencia: 'Sem solução, apenas prevenção',
           acontece: 'Linho ou algodão sem pré-encolhimento lavado em água.',
           fazer: ['Da próxima vez, cortina de linho que não foi pré-encolhida vai para a lavagem a seco.'],
@@ -1266,13 +1312,90 @@
           evitar: []
         },
         {
-          id: 'cheiro-guardado', nome: 'Cheiro de guardado', manchas: [], nivel: 'atencao',
+          id: 'cheiro-guardado', nome: 'Cheiro de guardado', manchas: ['cheiro'], nivel: 'atencao',
           urgencia: 'Lave antes de usar de novo',
           acontece: 'Umidade presa nas espumas depois de meses parado.',
           fazer: ['Lave antes de usar de novo.'],
           evitar: []
         }
       ]
+    },
+
+    /* ---------- Peças sem guia próprio (grupo "outras") ----------
+     * semGuia: o botão leva à página central de Cuidados por Tecido e não há fala nem tabela de
+     * problemas. Qualquer mancha é resolvida pela família dela. nota: fato do tecido com fonte.
+     * leia: chaves de BLOG. Quando houver guia, troque guia, assina, fala, processo e problemas. */
+    {
+      id: 'viscose', grupo: 'outras', nome: 'Viscose e malha fria', exemplos: 'Viscose, raiom, cupro, modal e malha fria',
+      sinonimos: ['viscose', 'viscolycra', 'malha fria', 'raiom', 'rayon', 'cupro', 'modal', 'liocel', 'tencel', 'viscolinho', 'crepe de viscose', 'vestido de viscose', 'blusa de viscose'],
+      semGuia: true, foto: false, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
+      nota: 'Segundo a ANEL, a viscose perde boa parte da resistência quando está molhada. Por isso, não esfregue nem torça a peça molhada.',
+      leia: ['cupro'],
+      maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
+      maquinaNao: false,
+      caseiro: ['Esfregar ou torcer a peça molhada: a viscose fica mais frágil quando está molhada.', 'Água quente e secadora.'],
+      processo: PROCESSO_GERAL,
+      prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
+      preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
+      expresso: 'consultar',
+      problemas: []
+    },
+    {
+      id: 'sinteticos', grupo: 'outras', nome: 'Poliéster e roupa de academia', exemplos: 'Legging, top, dry fit, poliéster, poliamida e elastano',
+      sinonimos: ['poliester', 'poliamida', 'elastano', 'lycra', 'legging', 'top', 'dry fit', 'dryfit', 'roupa de academia', 'roupa de ginastica', 'roupa fitness', 'fitness', 'roupa esportiva', 'roupa de treino', 'roupa de ciclismo', 'tactel', 'microfibra', 'oxford', 'tecido oxford', 'malha de academia', 'camisa de time', 'camisa de futebol'],
+      semGuia: true, foto: false, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
+      nota: 'Segundo a ANEL, o poliéster e a poliamida, que é o nylon, amarelam com cloro, e secadora ou ferro muito quentes fazem o elastano perder a força.',
+      leia: ['fitness'],
+      maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
+      maquinaNao: false,
+      caseiro: ['Água sanitária ou alvejante com cloro: segundo a ANEL, o poliéster e a poliamida amarelam com cloro.', 'Secadora quente ou ferro no máximo: o elastano perde a força.'],
+      processo: PROCESSO_GERAL,
+      prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
+      preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
+      expresso: 'consultar',
+      problemas: []
+    },
+    {
+      id: 'bebe', grupo: 'outras', nome: 'Roupa de bebê e infantil', exemplos: 'Roupinhas, enxoval, ninho e manta de bebê',
+      sinonimos: ['roupa de bebe', 'roupinha', 'roupinha de bebe', 'body', 'body de bebe', 'macacao de bebe', 'enxoval de bebe', 'ninho', 'ninho de bebe', 'manta de bebe', 'roupa infantil', 'roupa de crianca', 'babador', 'cueiro', 'saida de maternidade'],
+      semGuia: true, foto: false, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
+      nota: 'Além de carrinho e bebê conforto, a Dedicada lava ninhos de bebê, enxoval e roupas de bebê.',
+      maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
+      maquinaNao: false,
+      caseiro: [F.sanitaria, 'Água quente em mancha de leite, xixi ou vômito: o calor fixa manchas orgânicas.'],
+      processo: PROCESSO_GERAL,
+      prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
+      preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
+      expresso: 'consultar',
+      problemas: []
+    },
+    {
+      id: 'mesa', grupo: 'outras', nome: 'Toalhas de mesa e guardanapos', exemplos: 'Toalhas de mesa, guardanapos e caminhos de mesa',
+      sinonimos: ['toalha de mesa', 'guardanapo', 'guardanapo de pano', 'jogo americano', 'caminho de mesa', 'pano de prato', 'jacquard', 'toalha de natal', 'mesa posta'],
+      semGuia: true, foto: false, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
+      nota: null,
+      maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
+      maquinaNao: false,
+      caseiro: [F.quenteTanino, 'Esperar para tratar: manchas de comida e de bebida se fixam com o tempo.', F.umida],
+      processo: PROCESSO_GERAL,
+      prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
+      preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
+      expresso: 'consultar',
+      problemas: []
+    },
+    {
+      id: 'outra', grupo: 'outras', nome: 'Outra peça ou tecido', exemplos: 'O que não está na lista: a equipe avalia pela foto',
+      sinonimos: ['outro tecido', 'uniforme', 'jaleco', 'farda', 'camurca', 'suede', 'nobuck', 'acrilico', 'kimono', 'quimono', 'tapete', 'bolsa', 'mochila', 'bone', 'colchao', 'sofa', 'estofado'],
+      semGuia: true, foto: false, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
+      nota: 'Esta peça ainda não tem guia próprio. Mande uma foto da peça e da etiqueta pelo WhatsApp: a equipe diz se lava e como.',
+      maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
+      maquinaNao: false,
+      caseiro: [],
+      processo: PROCESSO_GERAL,
+      prazo: 'Conforme a peça; confirme pelo WhatsApp',
+      preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
+      expresso: 'consultar',
+      problemas: []
     }
   ];
 
@@ -1288,7 +1411,8 @@
   var COLETA = 'Coleta e entrega grátis em 26 bairros da Ilha e do Continente, em dias fixos da semana. De outros bairros, é só levar a peça a uma das lojas, no Centro ou no Santa Mônica.';
   var QUANDO = ['Hoje', 'Ontem', 'Nesta semana', 'Há mais tempo', 'Não sei'];
   // Manchas que não são um líquido derramado: "tire o excesso com um pano" não se aplica.
-  var SEM_PANO = ['suor', 'amarelado', 'desodorante', 'cor', 'ferrugem', 'mofo', 'lama', 'grama', 'protetor'];
+  var SEM_PANO = ['suor', 'amarelado', 'desodorante', 'cor', 'ferrugem', 'mofo', 'lama', 'grama', 'protetor', 'agua-sanitaria', 'amaciante', 'cera', 'chiclete'];
+  var CORES_PECA = ['Branca', 'Clara', 'Colorida', 'Escura'];
 
   /* ---------- Utilidades ---------- */
   function normalizar(s) {
@@ -1366,20 +1490,29 @@
       if (!m) return null;
       var especifico = problemaDaMancha(peca, m.id);
       if (especifico) return resolver(peca, especifico.id);
-      return { tipo: 'mancha', chave: chave, peca: peca, nome: m.nome, titulo: m.nome + ' em ' + minuscula(peca.nome), pr: problemaGenerico(peca, m), familia: m.familia !== 'outras' ? m.familia : null, mancha: m };
+      var titulo = m.familia === 'dano' ? peca.nome + ': ' + minuscula(m.nome) : m.nome + ' em ' + minuscula(peca.nome);
+      return { tipo: 'mancha', chave: chave, peca: peca, nome: m.nome, titulo: titulo, pr: problemaGenerico(peca, m), familia: FAMILIAS[m.familia].hydret ? m.familia : null, mancha: m };
     }
     return null;
   }
 
   function familiaDoProblema(pr) {
     var conta = {};
-    (pr.manchas || []).forEach(function (id) { var m = acharMancha(id); if (m && m.familia !== 'outras') conta[m.familia] = (conta[m.familia] || 0) + 1; });
+    (pr.manchas || []).forEach(function (id) { var m = acharMancha(id); if (m && FAMILIAS[m.familia].hydret) conta[m.familia] = (conta[m.familia] || 0) + 1; });
     var fams = Object.keys(conta);
     return fams.length === 1 ? fams[0] : null;
   }
 
   /* Mancha que não está na tabela do guia: orientação pela família da mancha. */
   function problemaGenerico(peca, m) {
+    if (m.familia === 'dano') {
+      return {
+        nivel: 'atencao', urgencia: 'Leve para avaliação',
+        acontece: m.dica || null,
+        fazer: [F.avaliar, 'Se preferir, mande antes uma foto da peça e da etiqueta pelo WhatsApp.'],
+        evitar: (peca.caseiro || []).slice()
+      };
+    }
     var evitar = [F.esfregar];
     if (m.familia === 'tanino') evitar.push(F.quenteTanino);
     if (m.familia === 'proteina') evitar.push(F.quenteProteina);
@@ -1400,78 +1533,185 @@
     var fam = FAMILIAS[m.familia];
     return {
       nivel: 'logo', urgencia: 'Quanto antes, melhor',
-      acontece: fam && fam.hydret
+      acontece: m.dica || (fam && fam.hydret
         ? 'É uma mancha ' + fam.singular + ': pede um tira-manchas próprio, diferente do usado nas outras famílias de manchas.'
-        : null,
+        : null),
       fazer: (SEM_PANO.indexOf(m.id) >= 0 ? [] : [F.pano]).concat([F.levarLogo, F.ateLevar]),
       evitar: evitar
     };
   }
 
-  /* ---------- Busca ---------- */
+  /* ---------- Busca em linguagem natural ----------
+   * "vinho na camisa branca": acha a mancha (vinho), a peça (camisa) e a cor (branca).
+   * Entende plural, falta de acento e um erro de digitação em palavras de 5 letras ou mais.
+   * GENERICAS: palavras que não dizem o tecido; a busca oferece as peças possíveis.
+   * CORES: a cor da peça vai junto na mensagem do WhatsApp. */
+  var GENERICAS = {
+    blusa: ['camisas', 'seda', 'linho', 'viscose', 'sinteticos', 'la'],
+    blusinha: ['camisas', 'seda', 'linho', 'viscose', 'sinteticos', 'la'],
+    vestido: ['festa-noiva', 'seda', 'linho', 'viscose'],
+    calca: ['jeans', 'alfaiataria', 'linho', 'veludo', 'couro', 'sinteticos'],
+    saia: ['linho', 'seda', 'couro', 'viscose', 'festa-noiva'],
+    casaco: ['la', 'couro', 'jaquetas', 'peles'],
+    jaqueta: ['jaquetas', 'couro', 'jeans'],
+    short: ['jeans', 'linho', 'sinteticos'],
+    bermuda: ['jeans', 'linho', 'sinteticos'],
+    macacao: ['jeans', 'linho', 'viscose', 'jaquetas'],
+    pijama: ['camisas', 'seda', 'viscose'],
+    malha: ['camisas', 'viscose', 'sinteticos'],
+    toalha: ['roupa-de-cama', 'mesa'],
+    roupa: [], peca: [], tecido: []
+  };
+  var CORES = {
+    branca: 'Branca', branco: 'Branca', clara: 'Clara', claro: 'Clara', bege: 'Clara', creme: 'Clara', 'off white': 'Clara',
+    colorida: 'Colorida', colorido: 'Colorida', estampada: 'Colorida', estampado: 'Colorida',
+    preta: 'Escura', preto: 'Escura', escura: 'Escura', escuro: 'Escura', 'azul marinho': 'Escura'
+  };
+  var LIGA = ['de', 'da', 'do', 'em', 'na', 'no', 'com'];
+
+  function singular(w) { return w.length > 3 && /s$/.test(w) && !/(is|us|ss)$/.test(w) ? w.slice(0, -1) : w; }
+  function palavras(texto) { return normalizar(texto).split(' ').filter(Boolean).map(singular); }
+  // Distância de no máximo uma letra: troca, falta, sobra ou duas letras invertidas ("vihno").
+  function quaseIgual(a, b) {
+    if (Math.abs(a.length - b.length) > 1) return false;
+    var i = 0;
+    while (i < a.length && i < b.length && a[i] === b[i]) i++;
+    if (a.length === b.length) {
+      return a.slice(i + 1) === b.slice(i + 1) ||
+        (a[i] === b[i + 1] && a[i + 1] === b[i] && a.slice(i + 2) === b.slice(i + 2));
+    }
+    return a.length > b.length ? a.slice(i + 1) === b.slice(i) : a.slice(i) === b.slice(i + 1);
+  }
+  // 3: palavra igual · 2: um erro de digitação · 1: começo da última palavra, ainda sendo digitada
+  function compara(qw, tw, digitando) {
+    if (qw === tw) return 3;
+    if (qw.length >= 5 && tw.length >= 5 && quaseIgual(qw, tw)) return 2;
+    if (digitando && qw.length >= 3 && tw.indexOf(qw) === 0) return 1;
+    return 0;
+  }
+  // Onde o termo (lista de palavras) aparece na frase: { n, ini, fim } do melhor encaixe.
+  function encaixe(q, termo, aberta) {
+    var melhor = null;
+    for (var i = 0; i + termo.length <= q.length; i++) {
+      var n = 3;
+      for (var k = 0; k < termo.length && n; k++) {
+        var digitando = aberta && i + k === q.length - 1 && k === termo.length - 1;
+        n = Math.min(n, compara(q[i + k], termo[k], digitando));
+      }
+      if (!n) continue;
+      // "lã" e "PU" só valem sozinhos ou depois de "de", "na"...: "fui lá" não é lã.
+      if (termo.length === 1 && termo[0].length <= 2 && q.length > 1 && LIGA.indexOf(q[i - 1]) < 0) continue;
+      if (!melhor || n > melhor.n) melhor = { n: n, ini: i, fim: i + termo.length };
+    }
+    return melhor;
+  }
+
   var INDICE = null;
   function montarIndice() {
     INDICE = { manchas: [], pecas: [], problemas: [] };
-    MANCHAS.forEach(function (m) {
-      INDICE.manchas.push({ m: m, termos: [normalizar(m.nome)].concat(m.sinonimos.map(normalizar)) });
-    });
+    function termos(nome, sinonimos) {
+      return [nome].concat(sinonimos || []).map(palavras).filter(function (t) { return t.length; });
+    }
+    MANCHAS.forEach(function (m) { INDICE.manchas.push({ alvo: m, termos: termos(m.nome, m.sinonimos) }); });
     PECAS.forEach(function (p) {
-      INDICE.pecas.push({ p: p, termos: [normalizar(p.nome)].concat((p.sinonimos || []).map(normalizar)) });
-      p.problemas.forEach(function (pr) { INDICE.problemas.push({ p: p, pr: pr, termo: normalizar(pr.nome) }); });
+      INDICE.pecas.push({ alvo: p, termos: termos(p.nome, p.sinonimos) });
+      p.problemas.forEach(function (pr) { INDICE.problemas.push({ alvo: { p: p, pr: pr }, termos: termos(pr.nome), nome: normalizar(pr.nome) }); });
     });
   }
-  function casa(q, termos) {
-    // Nota de 0 a 3: termo inteiro na frase > frase no começo do termo > parte do termo.
-    var melhor = 0;
-    termos.forEach(function (t) {
-      if (!t) return;
-      if ((' ' + q + ' ').indexOf(' ' + t + ' ') >= 0) melhor = Math.max(melhor, 3);
-      else if (q.length >= 3 && t.indexOf(q) === 0) melhor = Math.max(melhor, 2);
-      else if (q.length >= 4 && t.indexOf(q) > 0) melhor = Math.max(melhor, 1);
-    });
-    return melhor;
-  }
-  function buscar(texto) {
-    if (!INDICE) montarIndice();
-    var q = normalizar(texto);
-    if (q.length < 2) return [];
-    var manchas = INDICE.manchas.map(function (x) { return { m: x.m, n: casa(q, x.termos) }; }).filter(function (x) { return x.n; })
-      .sort(function (a, b) { return b.n - a.n; });
-    var pecas = INDICE.pecas.map(function (x) { return { p: x.p, n: casa(q, x.termos) }; }).filter(function (x) { return x.n; })
-      .sort(function (a, b) { return b.n - a.n; });
-    var itens = [];
-    function add(item) { if (!itens.some(function (i) { return i.hash === item.hash; })) itens.push(item); }
 
-    if (manchas.length && pecas.length) {
-      pecas.slice(0, 3).forEach(function (xp) {
-        manchas.slice(0, 2).forEach(function (xm) {
-          var r = resolver(xp.p, 'm-' + xm.m.id);
-          add({ rotulo: r.nome, detalhe: xp.p.nome, hash: '#' + xp.p.id + '/' + r.chave, nivel: r.pr.nivel });
+  /* Lê a frase e devolve o que entendeu: { manchas, pecas, candidatas, generica, problemas, cor }. */
+  function analisar(texto) {
+    if (!INDICE) montarIndice();
+    var bruto = String(texto || '');
+    var q = palavras(bruto);
+    var aberta = !/\s$/.test(bruto);
+    var achados = [];
+    function testa(tipo, x) {
+      var melhor = null;
+      x.termos.forEach(function (t) {
+        var e = encaixe(q, t, aberta);
+        if (e && (!melhor || e.n > melhor.n || (e.n === melhor.n && e.fim - e.ini > melhor.fim - melhor.ini))) melhor = e;
+      });
+      if (melhor) achados.push({ tipo: tipo, alvo: x.alvo, n: melhor.n, ini: melhor.ini, fim: melhor.fim });
+    }
+    if (q.length) {
+      INDICE.manchas.forEach(function (x) { testa('mancha', x); });
+      INDICE.pecas.forEach(function (x) { testa('peca', x); });
+      INDICE.problemas.forEach(function (x) { testa('problema', x); });
+      Object.keys(GENERICAS).forEach(function (g) { testa('generica', { alvo: g, termos: [palavras(g)] }); });
+      Object.keys(CORES).forEach(function (c) { testa('cor', { alvo: CORES[c], termos: [palavras(c)] }); });
+    }
+    // Fica de fora o que está dentro de um termo maior ("calça" em "calça jeans", "clara" em
+    // "clara de ovo") e o encaixe aproximado onde há um exato. Problema só tira a cor.
+    achados = achados.filter(function (a) {
+      return !achados.some(function (b) {
+        if (b === a || (b.tipo === 'problema' && a.tipo !== 'cor')) return false;
+        var contem = b.ini <= a.ini && b.fim >= a.fim && (b.fim - b.ini) > (a.fim - a.ini) && b.n >= a.n;
+        var cruza = b.ini < a.fim && a.ini < b.fim;
+        return contem || (cruza && b.n > a.n);
+      });
+    });
+    // "mancha branca na camisa preta": a cor logo depois de "mancha" é a da mancha, não a da peça.
+    achados = achados.filter(function (a) { return a.tipo !== 'cor' || q[a.ini - 1] !== 'mancha'; });
+    achados.sort(function (a, b) { return (b.n - a.n) || ((b.fim - b.ini) - (a.fim - a.ini)) || (a.ini - b.ini); });
+    function doTipo(t) { return achados.filter(function (a) { return a.tipo === t; }).map(function (a) { return a.alvo; }); }
+    var genericas = doTipo('generica');
+    var candidatas = [];
+    genericas.forEach(function (g) {
+      GENERICAS[g].forEach(function (id) { var p = acharPeca(id); if (p && candidatas.indexOf(p) < 0) candidatas.push(p); });
+    });
+    var problemas = doTipo('problema');
+    // Sem nada inteiro, ainda acha o problema pelo nome enquanto a pessoa digita ("riscos").
+    if (!achados.length) {
+      var ws = normalizar(bruto).split(' ').filter(function (w) { return w.length >= 4; });
+      if (ws.length) {
+        INDICE.problemas.forEach(function (x) {
+          if (ws.every(function (w) { return x.nome.indexOf(w) >= 0; })) problemas.push(x.alvo);
         });
+      }
+    }
+    return {
+      manchas: doTipo('mancha'), pecas: doTipo('peca'), generica: genericas[0] || null,
+      candidatas: candidatas, problemas: problemas, cor: doTipo('cor')[0] || null
+    };
+  }
+
+  /* Sugestões a partir do que a busca entendeu, da mais provável para a menos. */
+  function sugestoes(a) {
+    var itens = [];
+    function add(item) { if (item && !itens.some(function (i) { return i.hash === item.hash; })) itens.push(item); }
+    function doResultado(p, m) {
+      var r = resolver(p, 'm-' + m.id);
+      return r && { rotulo: r.nome, detalhe: p.nome, hash: '#' + p.id + '/' + r.chave, nivel: r.pr.nivel };
+    }
+    var pecas = a.pecas.length ? a.pecas.slice(0, 3) : a.candidatas;
+    var daPeca = a.problemas.filter(function (x) { return pecas.indexOf(x.p) >= 0; });
+    daPeca.forEach(function (x) { add({ rotulo: x.pr.nome, detalhe: x.p.nome, hash: '#' + x.p.id + '/' + x.pr.id, nivel: x.pr.nivel }); });
+
+    if (a.manchas.length && pecas.length) {
+      pecas.forEach(function (p) {
+        a.manchas.slice(0, a.pecas.length ? 2 : 1).forEach(function (m) { add(doResultado(p, m)); });
       });
-    } else if (manchas.length) {
-      manchas.slice(0, 2).forEach(function (xm) {
-        add({ rotulo: xm.m.nome, detalhe: 'Escolha a peça manchada', hash: '#m-' + xm.m.id, nivel: null });
+      if (!a.pecas.length) add({ rotulo: a.manchas[0].nome, detalhe: 'Em outra peça', hash: '#m-' + a.manchas[0].id, nivel: null });
+    } else if (a.manchas.length) {
+      a.manchas.slice(0, 2).forEach(function (m) {
+        add({ rotulo: m.nome, detalhe: 'Escolha a peça manchada', hash: '#m-' + m.id, nivel: null });
       });
-      manchas.slice(0, 2).forEach(function (xm) {
+      a.manchas.slice(0, 2).forEach(function (m) {
         PECAS.forEach(function (p) {
-          var pr = problemaDaMancha(p, xm.m.id);
+          var pr = problemaDaMancha(p, m.id);
           if (pr && NIVEIS[pr.nivel].ordem <= 3) add({ rotulo: pr.nome, detalhe: p.nome, hash: '#' + p.id + '/' + pr.id, nivel: pr.nivel });
         });
       });
     } else if (pecas.length) {
-      pecas.slice(0, 4).forEach(function (xp) { add({ rotulo: xp.p.nome, detalhe: 'Ver os problemas mais comuns', hash: '#' + xp.p.id, nivel: null }); });
-    }
-    // Problemas pelo nome (ex.: "riscos brancos", "encolheu", "bolinhas").
-    var palavras = q.split(' ').filter(function (w) { return w.length >= 4; });
-    if (palavras.length) {
-      INDICE.problemas.forEach(function (x) {
-        var todas = palavras.every(function (w) { return x.termo.indexOf(w) >= 0; });
-        if (todas) add({ rotulo: x.pr.nome, detalhe: x.p.nome, hash: '#' + x.p.id + '/' + x.pr.id, nivel: x.pr.nivel });
+      pecas.forEach(function (p) {
+        add({ rotulo: p.nome, detalhe: p.problemas.length ? 'Ver os problemas mais comuns' : 'Escolher a mancha', hash: '#' + p.id, nivel: null });
       });
     }
+    if (!pecas.length) a.problemas.forEach(function (x) { add({ rotulo: x.pr.nome, detalhe: x.p.nome, hash: '#' + x.p.id + '/' + x.pr.id, nivel: x.pr.nivel }); });
     return itens.slice(0, 8);
   }
+  function buscar(texto) { return sugestoes(analisar(texto)); }
 
   /* ---------- Estado na URL ----------
    * #seda  ·  #seda/vinho-tinto  ·  #seda/m-caneta  ·  #seda/m-desconhecida  ·  #m-caneta (mancha, falta a peça) */
@@ -1509,7 +1749,8 @@
   }
 
   /* ---------- Desenho ---------- */
-  var raiz, avisoLeitor, ultimoHash = null, contexto = { quando: null, tentou: null };
+  var raiz, avisoLeitor, ultimoHash = null, corDaBusca = null;
+  var contexto = { quando: null, tentou: null, cor: null };
 
   function desenhar(mudouPasso) {
     var e = lerEstado();
@@ -1519,6 +1760,8 @@
     }
     ultimoHash = location.hash;
     var passo = e.resultado ? 3 : e.peca ? 2 : 1;
+    // Respostas do "Conte para a equipe" valem só para este resultado; a cor pode vir da busca.
+    if (passo === 3) { contexto = { quando: null, tentou: null, cor: corDaBusca }; corDaBusca = null; }
     var tela = passo === 1 ? telaPeca(e.mancha) : passo === 2 ? telaProblema(e.peca) : telaResultado(e.resultado);
 
     raiz.textContent = '';
@@ -1527,7 +1770,7 @@
     raiz.setAttribute('data-passo', String(passo));
 
     if (passo === 2) evento('dm_peca', { peca: e.peca.id });
-    if (passo === 3) { contexto = { quando: null, tentou: null }; evento('dm_resultado', { peca: e.peca.id, problema: e.resultado.chave, tipo: e.resultado.tipo }); }
+    if (passo === 3) { evento('dm_resultado', { peca: e.peca.id, problema: e.resultado.chave, tipo: e.resultado.tipo }); }
 
     if (mudouPasso) {
       var titulo = raiz.querySelector('.dm-titulo');
@@ -1565,42 +1808,66 @@
       }));
   }
 
-  /* Passo 1: a peça (com busca) */
+  /* Passo 1: a peça (com busca em linguagem natural) */
   function telaPeca(mancha) {
     var lista = h('ul', { class: 'dm-sugestoes', role: 'list', id: 'dm-sugestoes', 'aria-live': 'polite' });
     var campo = h('input', {
       id: 'dm-q', class: 'dm-campo', type: 'search', autocomplete: 'off', enterkeyhint: 'search',
-      placeholder: 'Ex.: vinho, mofo, terno, tênis', 'aria-describedby': 'dm-q-dica', 'aria-controls': 'dm-sugestoes'
+      placeholder: 'Ex.: vinho na camisa branca', 'aria-describedby': 'dm-q-dica', 'aria-controls': 'dm-sugestoes'
     });
+    var itens = [], analise = null;
+    function ir(it) {
+      evento('dm_busca', { termo: campo.value.slice(0, 40) });
+      corDaBusca = analise && analise.cor;
+      irPara(it.hash);
+    }
+    function entendi(a) {
+      var partes = [];
+      if (a.manchas.length) partes.push((a.manchas[0].familia === 'dano' ? 'problema: ' : 'mancha: ') + minuscula(a.manchas[0].nome));
+      if (a.pecas.length) partes.push('peça: ' + minuscula(a.pecas[0].nome));
+      else if (a.generica) partes.push('peça: ' + a.generica + (a.candidatas.length ? ' (escolha o tecido)' : ''));
+      if (a.cor) partes.push('cor: ' + minuscula(a.cor));
+      return partes.length > 1 ? h('li', { class: 'dm-entendi' }, 'Entendi ' + partes.join(' · ')) : null;
+    }
     function atualizar() {
-      var itens = buscar(campo.value);
+      analise = analisar(campo.value);
+      itens = sugestoes(analise);
       lista.textContent = '';
       if (!campo.value.trim()) return;
       if (!itens.length) {
-        lista.appendChild(h('li', { class: 'dm-sugestao-vazia' }, 'Nada encontrado. Escolha a peça abaixo ou ',
+        var soPeca = analise.generica || analise.cor;
+        lista.appendChild(h('li', { class: 'dm-sugestao-vazia' },
+          soPeca ? 'Conte também o que manchou e a peça, por exemplo: café na camisa branca. Ou escolha a peça abaixo, ou ' : 'Nada encontrado. Escolha a peça abaixo ou ',
           h('a', { href: linkWhats('Olá! Vim do Diagnóstico de Manchas e não achei o meu caso: ' + campo.value), target: '_blank', rel: 'noopener' }, 'fale pelo WhatsApp'), '.'));
         return;
       }
+      anexar(lista, entendi(analise));
       itens.forEach(function (it) {
         lista.appendChild(h('li', null, h('a', {
           class: 'dm-sugestao', href: it.hash,
-          onclick: function (ev) { ev.preventDefault(); evento('dm_busca', { termo: campo.value.slice(0, 40) }); irPara(it.hash); }
+          onclick: function (ev) { ev.preventDefault(); ir(it); }
         }, h('span', { class: 'dm-sugestao-nome' }, it.rotulo), h('span', { class: 'dm-sugestao-det' }, it.detalhe),
           it.nivel ? selo(it.nivel) : null)));
       });
     }
     campo.addEventListener('input', atualizar);
+    campo.addEventListener('keydown', function (ev) {
+      if (ev.key !== 'Enter') return;
+      ev.preventDefault();
+      atualizar();
+      if (itens.length) ir(itens[0]);
+    });
 
     return h('section', { class: 'dm-tela', 'aria-labelledby': 'dm-t1' },
       h('h2', { class: 'dm-titulo', id: 'dm-t1', tabindex: '-1' }, 'Qual é a peça?'),
       mancha
         ? h('div', { class: 'dm-contexto' },
-          h('p', null, h('strong', null, 'Mancha: ' + mancha.nome + '. '), 'Agora escolha a peça.'),
-          h('button', { type: 'button', class: 'dm-link', onclick: function () { irPara(''); } }, 'Trocar a mancha'))
-        : h('div', { class: 'dm-busca' },
-          h('label', { for: 'dm-q', class: 'dm-busca-rotulo' }, 'Já sabe o que é? Procure pela mancha ou pela peça'),
+          h('p', null, h('strong', null, (mancha.familia === 'dano' ? 'Problema: ' : 'Mancha: ') + mancha.nome + '. '), 'Agora escolha a peça.'),
+          h('button', { type: 'button', class: 'dm-link', onclick: function () { irPara(''); } }, 'Trocar'))
+        : h('div', { class: 'dm-busca', role: 'search' },
+          h('label', { for: 'dm-q', class: 'dm-busca-rotulo' }, 'O que aconteceu? Escreva a mancha e a peça'),
           campo,
-          h('p', { id: 'dm-q-dica', class: 'dm-so-leitor' }, 'As sugestões aparecem abaixo do campo enquanto você digita.'),
+          h('p', { id: 'dm-q-dica', class: 'dm-so-leitor' }, 'As sugestões aparecem abaixo do campo enquanto você digita. Enter abre a primeira.'),
           lista),
       h('p', { class: 'dm-dica' }, mancha ? 'Toque na peça manchada.' : 'Ou escolha a peça. Não sabe o tecido? Veja a etiqueta.'),
       GRUPOS.map(function (g) {
@@ -1608,10 +1875,13 @@
         return h('div', { class: 'dm-grupo' },
           h('h3', { class: 'dm-grupo-nome' }, g.nome),
           h('ul', { class: 'dm-grade', role: 'list' }, pecas.map(function (p) {
-            var img = h('img', { class: 'dm-cartao-img', src: FOTOS + 'dm-' + p.id + '.webp', alt: '', width: '320', height: '200', loading: 'lazy', decoding: 'async' });
-            img.addEventListener('error', function () { img.remove(); });
+            var img = null;
+            if (p.foto !== false) {
+              img = h('img', { class: 'dm-cartao-img', src: FOTOS + 'dm-' + p.id + '.webp', alt: '', width: '320', height: '200', loading: 'lazy', decoding: 'async' });
+              img.addEventListener('error', function () { img.remove(); });
+            }
             return h('li', null, h('button', {
-              type: 'button', class: 'dm-cartao',
+              type: 'button', class: 'dm-cartao' + (img ? '' : ' dm-cartao--sem-foto'),
               onclick: function () { irPara('#' + p.id + (mancha ? '/m-' + mancha.id : '')); }
             }, img, h('span', { class: 'dm-cartao-txt' },
               h('span', { class: 'dm-cartao-nome' }, p.nome),
@@ -1628,36 +1898,42 @@
     return h('span', { class: 'dm-selo dm-selo--' + n.tom }, n.rotulo);
   }
 
+  function nomeDoGuia(peca) { return peca.semGuia ? 'Cuidados por Tecido' : 'Guia de ' + minuscula(peca.nome); }
+
   /* Passo 2: o problema */
   function telaProblema(peca) {
-    var familias = ['gordura', 'proteina', 'tanino', 'outras'];
+    var familias = ['gordura', 'proteina', 'tanino', 'outras', 'dano'];
+    var temTabela = peca.problemas.length > 0;
+    var escolha = h(temTabela ? 'details' : 'div', { class: 'dm-outra' + (temTabela ? '' : ' dm-outra--aberta') },
+      temTabela ? h('summary', null, 'Outra mancha ou dano? Escolha pelo tipo') : null,
+      h('p', { class: 'dm-outra-dica' }, 'Cada família de mancha pede um tira-manchas diferente.'),
+      familias.map(function (fid) {
+        var fam = FAMILIAS[fid];
+        var ms = MANCHAS.filter(function (m) { return m.familia === fid; });
+        return h('div', { class: 'dm-familia' },
+          h('h3', { class: 'dm-familia-nome' }, fam.nome),
+          h('ul', { class: 'dm-chips', role: 'list' }, ms.map(function (m) {
+            return h('li', null, h('button', { type: 'button', class: 'dm-chip', onclick: function () { irPara('#' + peca.id + '/m-' + m.id); } }, m.nome));
+          })));
+      }));
     return h('section', { class: 'dm-tela', 'aria-labelledby': 'dm-t2' },
       h('h2', { class: 'dm-titulo', id: 'dm-t2', tabindex: '-1' }, 'Qual é o problema?'),
-      h('p', { class: 'dm-dica' }, 'Os problemas que mais chegam à Dedicada em ' + minuscula(peca.nome) + ', do mais urgente ao menos urgente.'),
-      h('ul', { class: 'dm-lista', role: 'list' }, problemasOrdenados(peca).map(function (pr) {
-        return h('li', null, h('button', { type: 'button', class: 'dm-opcao', onclick: function () { irPara('#' + peca.id + '/' + pr.id); } },
-          h('span', { class: 'dm-opcao-nome' }, pr.nome), selo(pr.nivel)));
-      })),
-      h('details', { class: 'dm-outra' },
-        h('summary', null, 'Outra mancha? Escolha pelo tipo'),
-        h('p', { class: 'dm-outra-dica' }, 'Cada família de mancha pede um tira-manchas diferente.'),
-        familias.map(function (fid) {
-          var fam = FAMILIAS[fid];
-          var ms = MANCHAS.filter(function (m) { return m.familia === fid; });
-          return h('div', { class: 'dm-familia' },
-            h('h3', { class: 'dm-familia-nome' }, fam.nome),
-            h('ul', { class: 'dm-chips', role: 'list' }, ms.map(function (m) {
-              return h('li', null, h('button', { type: 'button', class: 'dm-chip', onclick: function () { irPara('#' + peca.id + '/m-' + m.id); } }, m.nome));
-            })));
-        })),
+      temTabela
+        ? [h('p', { class: 'dm-dica' }, 'Os problemas que mais chegam à Dedicada em ' + minuscula(peca.nome) + ', do mais urgente ao menos urgente.'),
+          h('ul', { class: 'dm-lista', role: 'list' }, problemasOrdenados(peca).map(function (pr) {
+            return h('li', null, h('button', { type: 'button', class: 'dm-opcao', onclick: function () { irPara('#' + peca.id + '/' + pr.id); } },
+              h('span', { class: 'dm-opcao-nome' }, pr.nome), selo(pr.nivel)));
+          }))]
+        : h('p', { class: 'dm-dica' }, 'Escolha a mancha ou o dano pelo tipo.'),
+      escolha,
       h('ul', { class: 'dm-lista dm-lista--extra', role: 'list' },
         h('li', null, h('button', { type: 'button', class: 'dm-opcao dm-opcao--leve', onclick: function () { irPara('#' + peca.id + '/m-desconhecida'); } },
           h('span', { class: 'dm-opcao-nome' }, 'Não sei o que é a mancha'), h('span', { class: 'dm-seta', 'aria-hidden': 'true' }, '→')))),
       h('div', { class: 'dm-nao-achei' },
-        h('p', null, h('strong', null, 'Prefere mostrar? '), 'Mande uma foto da peça pelo WhatsApp ou leia o guia completo.'),
+        h('p', null, h('strong', null, 'Prefere mostrar? '), 'Mande uma foto da peça pelo WhatsApp' + (peca.semGuia ? '.' : ' ou leia o guia completo.')),
         h('div', { class: 'dm-acoes' },
           h('a', { class: 'dm-btn dm-btn--primario', href: linkWhats('Olá! Vim do Diagnóstico de Manchas. Tenho um problema em ' + minuscula(peca.nome) + '. Posso mandar uma foto?'), target: '_blank', rel: 'noopener' }, 'Mandar foto pelo WhatsApp'),
-          h('a', { class: 'dm-btn', href: peca.guia }, 'Guia de ' + minuscula(peca.nome)))),
+          h('a', { class: 'dm-btn', href: peca.guia }, nomeDoGuia(peca)))),
       h('p', { class: 'dm-voltar' }, h('button', { type: 'button', class: 'dm-link', onclick: function () { irPara(''); } }, '← Escolher outra peça'))
     );
   }
@@ -1669,10 +1945,20 @@
 
   function mensagemWhats(r) {
     var partes = ['Olá! Vim do Diagnóstico de Manchas do site.', 'Peça: ' + r.peca.nome + '.', 'Problema: ' + r.nome + '.'];
+    if (contexto.cor) partes.push('Cor da peça: ' + minuscula(contexto.cor) + '.');
     if (contexto.quando) partes.push('Quando aconteceu: ' + minuscula(contexto.quando) + '.');
     if (contexto.tentou) partes.push(contexto.tentou === 'Sim' ? 'Já tentei tirar em casa.' : 'Ainda não tentei nada em casa.');
     partes.push('Posso mandar uma foto?');
     return partes.join(' ');
+  }
+
+  // Posts do blog ligados à mancha do resultado e ao tecido.
+  function leituras(r) {
+    var chaves = [];
+    var ids = r.mancha ? [r.mancha.id] : (r.pr.manchas || []);
+    ids.forEach(function (id) { var m = acharMancha(id); if (m && m.leia) chaves.push(m.leia); });
+    chaves = chaves.concat(r.peca.leia || []);
+    return chaves.filter(function (k, i) { return BLOG[k] && chaves.indexOf(k) === i; }).map(function (k) { return BLOG[k]; });
   }
 
   /* Passo 3: o que fazer */
@@ -1681,6 +1967,7 @@
     var pessoa = PESSOAS[peca.assina];
     var prevencao = pr.nivel === 'sem_solucao' || pr.nivel === 'dificil';
     var fam = r.familia && FAMILIAS[r.familia];
+    var leia = leituras(r);
     var botaoWhats = h('a', { class: 'dm-btn dm-btn--primario dm-btn--whats', href: linkWhats(mensagemWhats(r)), target: '_blank', rel: 'noopener',
       onclick: function () { evento('dm_whatsapp', { peca: peca.id, problema: r.chave }); } }, 'Falar com a Dedicada pelo WhatsApp');
     function atualizarWhats() { botaoWhats.setAttribute('href', linkWhats(mensagemWhats(r))); }
@@ -1688,7 +1975,7 @@
       return h('div', { class: 'dm-pergunta', role: 'group', 'aria-label': rotulo },
         h('p', { class: 'dm-pergunta-rotulo' }, rotulo),
         h('div', { class: 'dm-chips' }, opcoes.map(function (op) {
-          var b = h('button', { type: 'button', class: 'dm-chip', 'aria-pressed': 'false' }, op);
+          var b = h('button', { type: 'button', class: 'dm-chip', 'aria-pressed': contexto[chaveCtx] === op ? 'true' : 'false' }, op);
           b.addEventListener('click', function () {
             var ativo = contexto[chaveCtx] === op;
             contexto[chaveCtx] = ativo ? null : op;
@@ -1727,6 +2014,8 @@
         h('h3', null, 'O que não fazer'),
         lista('ul', pr.evitar, 'dm-evitar')) : null,
 
+      peca.nota ? h('p', { class: 'dm-nota-tecido' }, h('strong', null, 'Sobre o tecido: '), peca.nota) : null,
+
       h('p', { class: 'dm-maquina' }, h('strong', null, 'Pode ir na máquina de casa? '), peca.maquina),
 
       h('div', { class: 'dm-bloco dm-dedicada' },
@@ -1752,9 +2041,14 @@
         h('p', { class: 'dm-contato-dica' }, 'Opcional: as respostas vão junto na mensagem do WhatsApp.'),
         grupoChips('Quando aconteceu?', QUANDO, 'quando'),
         grupoChips('Já tentou tirar em casa?', ['Não', 'Sim'], 'tentou'),
+        grupoChips('Cor da peça?', CORES_PECA, 'cor'),
         h('div', { class: 'dm-acoes dm-acoes--final' },
           botaoWhats,
-          h('a', { class: 'dm-btn', href: peca.guia }, 'Guia de ' + minuscula(peca.nome)))),
+          h('a', { class: 'dm-btn', href: peca.guia }, nomeDoGuia(peca)))),
+
+      leia.length ? h('div', { class: 'dm-leia' },
+        h('h3', null, 'Leia também'),
+        h('ul', null, leia.map(function (b) { return h('li', null, h('a', { href: SITE + b[0] }, b[1])); }))) : null,
 
       h('p', { class: 'dm-coleta' }, COLETA, ' ', h('a', { href: '#onde-levar', onclick: function (ev) {
         var alvo = document.getElementById('onde-levar');
@@ -1771,14 +2065,23 @@
   /* ---------- Conferência do banco (usada no teste e pelo gerador da página) ---------- */
   function validar() {
     var erros = [], avisos = [], ids = {};
-    MANCHAS.forEach(function (m) { if (!FAMILIAS[m.familia]) erros.push('Mancha ' + m.id + ': família inválida'); });
+    MANCHAS.forEach(function (m) {
+      if (ids['m-' + m.id]) erros.push('Mancha repetida: ' + m.id);
+      ids['m-' + m.id] = true;
+      if (!FAMILIAS[m.familia]) erros.push('Mancha ' + m.id + ': família inválida');
+      if (m.leia && !BLOG[m.leia]) erros.push('Mancha ' + m.id + ': post do blog inexistente ' + m.leia);
+    });
     PECAS.forEach(function (p) {
       if (ids[p.id]) erros.push('Peça repetida: ' + p.id);
       ids[p.id] = true;
-      ['nome', 'grupo', 'exemplos', 'guia', 'assina', 'maquina', 'prazo', 'preco', 'expresso'].forEach(function (c) { if (!p[c]) erros.push(p.id + ': falta ' + c); });
+      ['nome', 'grupo', 'exemplos', 'guia', 'maquina', 'prazo', 'preco', 'expresso'].forEach(function (c) { if (!p[c]) erros.push(p.id + ': falta ' + c); });
       if (!GRUPOS.some(function (g) { return g.id === p.grupo; })) erros.push(p.id + ': grupo inexistente');
-      if (!PESSOAS[p.assina]) erros.push(p.id + ': quem assina não existe');
-      if (!p.fala) avisos.push(p.id + ': sem fala');
+      if (!p.semGuia) {
+        if (!PESSOAS[p.assina]) erros.push(p.id + ': quem assina não existe');
+        if (!p.fala) avisos.push(p.id + ': sem fala');
+        if (!p.problemas.length) erros.push(p.id + ': peça com guia sem tabela de problemas');
+      }
+      (p.leia || []).forEach(function (k) { if (!BLOG[k]) erros.push(p.id + ': post do blog inexistente ' + k); });
       if (!p.processo || p.processo.length < 2) erros.push(p.id + ': processo incompleto');
       var idsPr = {};
       p.problemas.forEach(function (pr) {
@@ -1798,8 +2101,9 @@
 
   /* Exposto para o teste, para o gerador da página e para conferência no console. */
   window.DM_DIAGNOSTICO = {
-    PECAS: PECAS, GRUPOS: GRUPOS, MANCHAS: MANCHAS, FAMILIAS: FAMILIAS, NIVEIS: NIVEIS, PESSOAS: PESSOAS,
-    validar: validar, buscar: buscar, resolver: resolver, problemasOrdenados: problemasOrdenados
+    PECAS: PECAS, GRUPOS: GRUPOS, MANCHAS: MANCHAS, FAMILIAS: FAMILIAS, NIVEIS: NIVEIS, PESSOAS: PESSOAS, BLOG: BLOG, SITE: SITE,
+    validar: validar, buscar: buscar, analisar: analisar, resolver: resolver, problemasOrdenados: problemasOrdenados,
+    problemaDaMancha: problemaDaMancha
   };
 
   function iniciar() {

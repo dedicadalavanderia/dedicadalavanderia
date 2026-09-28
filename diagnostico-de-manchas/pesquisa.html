@@ -79,14 +79,14 @@
   <div class="topo"><strong>Dedicada Lavanderia</strong><span>Pesquisa e decisões · 28 de setembro de 2026</span></div>
 
   <h1>O que a pesquisa mudou no Diagnóstico de Manchas</h1>
-  <p class="lead">As melhores ferramentas de manchas perguntam pouco e numa ordem clara, respondem pelo tecido e não só pela mancha, e deixam o conteúdo legível para o Google e para as IAs. A versão 2 faz as três coisas com o conteúdo já aprovado dos 17 guias da Dedicada.</p>
+  <p class="lead">As ferramentas de manchas de referência perguntam pouco e numa ordem clara, respondem pelo tecido e não só pela mancha, e deixam o conteúdo legível para o Google e para as IAs. A versão 2 faz as três coisas com o conteúdo já aprovado dos 17 guias da Dedicada. A versão 3 entende a frase do jeito que a pessoa escreve ("vinho na camisa branca") e cobre as manchas e os tecidos que o Brasil mais procura.</p>
   <p><a class="volta" href="index.html">← Voltar ao protótipo</a></p>
 
   <div class="faixa">
     <p><strong>Como avaliar o protótipo no celular</strong></p>
     <ol class="etapas">
       <li>Toque numa peça, depois num problema, e leia o resultado de cima para baixo.</li>
-      <li>Volte ao começo e digite na busca "vinho no vestido de noiva", depois "mofo".</li>
+      <li>Volte ao começo e escreva na busca "camisa com vinho", depois "manchei minha blusa de vinho" e "água sanitária na calça jeans". Aperte Enter para abrir a primeira sugestão.</li>
       <li>Num resultado, responda "Quando aconteceu?" e toque no WhatsApp para ver a mensagem pronta.</li>
       <li>Role a página abaixo da ferramenta: as tabelas e as perguntas também valem para quem não usa a ferramenta.</li>
     </ol>
@@ -152,10 +152,45 @@
     </table>
   </div>
 
+  <h2>Rodada 2: o que faltava</h2>
+  <p>Na segunda rodada, a pergunta foi: o que as pessoas procuram e a ferramenta ainda não entendia? Foram três fontes: as buscas reais do Google, o blog da Dedicada e os guias.</p>
+
+  <h3>O que o Brasil procura</h3>
+  <p>O autocompletar do Google foi coletado em 28/09/2026 a partir de frases como "como tirar mancha de…" e "mancha de…" com cada letra, e "como lavar…" com os tecidos. Foram 1.308 buscas diferentes; 915 são sobre roupa e tecido (as outras falam de pele, parede, piso ou doenças).</p>
+  <div class="rolagem">
+    <table>
+      <thead><tr><th scope="col">O que apareceu</th><th scope="col">Nas buscas</th><th scope="col">O que mudou na ferramenta</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">A peça quase nunca tem tecido</th><td data-rotulo="Nas buscas">"Roupa" aparece em <span class="num">396</span> buscas; "blusa", "vestido", "calça" e "toalha" também não dizem o tecido.</td><td data-rotulo="O que mudou na ferramenta">Palavras genéricas oferecem as peças possíveis: "blusa com vinho" mostra algodão, seda, linho, viscose, poliéster e lã, cada uma com a sua urgência.</td></tr>
+        <tr><th scope="row">A cor da peça importa</th><td data-rotulo="Nas buscas"><span class="num">277</span> buscas falam em roupa branca, colorida ou preta.</td><td data-rotulo="O que mudou na ferramenta">A busca reconhece a cor, que já vem marcada em "Cor da peça?" e vai na mensagem do WhatsApp.</td></tr>
+        <tr><th scope="row">As manchas mais procuradas</th><td data-rotulo="Nas buscas">Óleo e gordura (80), caneta (50), frutas como açaí e uva (43), mofo, xixi e vinho (42 cada), desodorante (40), cor de outra peça (39), sangue (38) e água sanitária (29).</td><td data-rotulo="O que mudou na ferramenta">Todas estão na ferramenta, e três ganharam pergunta frequente: cor de outra peça, água sanitária e desodorante.</td></tr>
+        <tr><th scope="row">Manchas que faltavam</th><td data-rotulo="Nas buscas">Água sanitária (Qboa), tinta de cabelo e henna, remédio e pomada (iodo, sulfato ferroso), amaciante, açafrão e urucum, vela, chiclete, pasta de dente e fezes.</td><td data-rotulo="O que mudou na ferramenta">De 30 para <span class="num">44</span> manchas e danos, com os nomes que as pessoas usam ("nódoa de banana", "hidrocor", "Nugget").</td></tr>
+        <tr><th scope="row">Danos que não são mancha</th><td data-rotulo="Nas buscas">Marca de ferro, encolheu, desbotou, bolinhas e cheiro ruim.</td><td data-rotulo="O que mudou na ferramenta">Novo grupo "Danos no tecido". Onde o guia tem o problema (a lã que feltrou, a seda com brilho de ferro), o resultado é o do guia.</td></tr>
+        <tr><th scope="row">Tecidos sem guia</th><td data-rotulo="Nas buscas">Viscose e malha fria, poliéster, poliamida, elastano e dry fit, roupa de bebê e toalha de mesa.</td><td data-rotulo="O que mudou na ferramenta">5 cartões novos, sem foto, com a nota do tecido e a fonte (ANEL ou guia) e o botão para Cuidados por Tecido.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>O blog da Dedicada</h3>
+  <p>O blog tem 383 posts. Foram conferidos os 31 que tratam de manchas e tecidos: só 6 passam nas regras do projeto e aparecem em "Leia também". Os outros 25 trazem "os melhores produtos do mundo", "melhor lavanderia do Brasil", "garantia", "definitivo", percentuais ou receitas com vinagre e bicarbonato. A lista está em <code>auditoria-blog.md</code>.</p>
+
+  <h3>Todas as combinações têm resposta?</h3>
+  <p>Sim. São 22 peças e 44 manchas e danos, o que dá 968 combinações, e o teste abre cada uma delas. Os 109 problemas das tabelas dos guias têm resposta própria. As outras combinações são respondidas pela família da mancha, com o cuidado próprio da mancha e o que o guia da peça manda evitar. Como os caminhos saem da mesma regra, as combinações não se contradizem.</p>
+  <p>Das 915 buscas reais sobre roupa e tecido, a ferramenta dá sugestão para 94%. As que faltam não dizem a mancha ("como tirar mancha de roupa branca"). Nesse caso, a ferramenta pede para a pessoa contar o que manchou e a peça.</p>
+
+  <h3>E o SEO e o GEO dos resultados?</h3>
+  <p>Os resultados da ferramenta não viram páginas no Google, porque o endereço depois do "#" não é indexado, e as IAs não rodam JavaScript. Criar uma página para cada combinação também seria o conteúdo em massa que o Google desaconselha. Por isso, o que é indexável foi para o HTML da página:</p>
+  <ul>
+    <li><strong>Mancha por mancha:</strong> uma tabela por família, com o primeiro cuidado, o cuidado próprio de cada mancha e as peças em que ela é mais urgente, com o link do guia.</li>
+    <li><strong>Introdução:</strong> diz o que a ferramenta cobre, com os números gerados do banco, e quem orienta: a Dedicada, lavanderia de família em Florianópolis desde 2003.</li>
+    <li><strong>Perguntas frequentes:</strong> 9 perguntas com dados estruturados, 3 delas novas.</li>
+  </ul>
+  <p>A próxima fase sugerida é o blog. Os posts das manchas mais procuradas já existem. Revisá-los e ligar cada um ao resultado certo da ferramenta (por exemplo, <code>diagnostico-de-manchas/#m-sangue</code>) rende mais que criar páginas novas.</p>
+
   <h2>O que ficou de fora</h2>
   <ul>
     <li><span class="marca">Depois</span>Diagnóstico por foto com IA, como na Hublo. O convite para mandar foto pelo WhatsApp resolve agora, com atendimento de gente.</li>
-    <li><span class="marca">Não</span>Uma página separada para cada mancha. O Google desaconselha, e os guias por tecido já fazem esse papel.</li>
+    <li><span class="marca">Não</span>Uma página separada para cada mancha ou combinação. O Google desaconselha páginas em massa; os guias por tecido e os posts do blog, depois de revisados, fazem esse papel.</li>
     <li><span class="marca">Não</span>Dicas caseiras com vinagre, limão ou bicarbonato, comuns nos sites de marcas. Nenhuma foi confirmada pela Dedicada, e os guias pedem para não usar produtos caseiros.</li>
   </ul>
 
@@ -168,7 +203,8 @@
     <li><a href="https://dlionline.org/stain-removal-guide/">DLI: Stain Removal Guide</a> · <a href="https://tide.com/en-us/how-to-wash-clothes/how-to-remove-stains">Tide: How to remove stains</a> · <a href="https://www.cleaninginstitute.org/cleaning-tips/clothes/stain-removal-guide">ACI: Stain Removal Guide</a></li>
     <li><a href="https://www.dr-beckmann.com/de-de/ratgeber/fleckendetektiv/">Dr. Beckmann: Fleckendetektiv</a> · <a href="https://hubloai.com/">Hublo AI</a> · <a href="https://www.jeevesofbelgravia.com/newyork/stains-out-and-about">Jeeves: stains out and about</a></li>
     <li><a href="https://benesse.jp/kosodate/201502/20150227-5.html">Benesse: tipos de mancha</a> · <a href="https://www.vanish.com.br/remocao-de-manchas/">Vanish Brasil: remoção de manchas</a> · <a href="https://www.vanish.co.uk/stain-removal/stains-on-fabrics/">Vanish UK: stains on fabrics</a> · <a href="https://www.omo.com/br/lavanderia/dicas-de-lavanderia/manchas.html">OMO: remoção de manchas</a> · <a href="https://mariamelialavanderia.com.br/roupa-manchou-veja-o-que-fazer-antes-de-levar-para-a-lavanderia/">Mariamélia Lavanderia</a></li>
-    <li>Dedicada Lavanderia: os 17 guias de <a href="https://dedicadalavanderia.com.br/cuidados-por-tecido/">Cuidados por Tecido</a>, a Base técnica (Seitz, ANEL e apostila de couro) e a linha de base do Search Console no Plano do projeto.</li>
+    <li>Google: autocompletar da busca no Brasil (pt-BR), coletado em 28/09/2026 (<code>referencias/demanda/</code>).</li>
+    <li>Dedicada Lavanderia: blog (383 posts no mapa do site; 31 conferidos) e os 17 guias de <a href="https://dedicadalavanderia.com.br/cuidados-por-tecido/">Cuidados por Tecido</a>, a Base técnica (Seitz, ANEL e apostila de couro) e a linha de base do Search Console no Plano do projeto.</li>
   </ul>
   <p><a class="volta" href="index.html">← Voltar ao protótipo</a></p>
 </div>

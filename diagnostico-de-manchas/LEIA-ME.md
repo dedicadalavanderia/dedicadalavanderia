@@ -1,6 +1,13 @@
-# Diagnóstico de Manchas, versão 2: protótipo e passagem
+# Diagnóstico de Manchas, versão 3: protótipo e passagem
 
-Refeito em 28/09/2026 numa sessão na nuvem com acesso ao site. A estrutura foi desenhada a partir de uma pesquisa com ferramentas de manchas de lavanderias e marcas de fora (`pesquisa.html`). O conteúdo foi tirado dos 17 guias de Cuidados por Tecido que estão no ar, e o banco antigo não foi reaproveitado.
+Refeito em 28/09/2026 numa sessão na nuvem com acesso ao site.
+
+- **Versão 2:** a estrutura veio de uma pesquisa com ferramentas de manchas de lavanderias e marcas de fora (`pesquisa.html`), e o conteúdo, dos 17 guias de Cuidados por Tecido que estão no ar. O banco antigo não foi reaproveitado.
+- **Versão 3:**
+  - introdução no topo;
+  - busca em linguagem natural ("vinho na camisa branca");
+  - mais manchas, danos e peças, a partir das buscas reais do Google, dos guias e do blog;
+  - a seção "Mancha por mancha" no HTML, para o Google e as IAs.
 
 **Nada foi publicado no site.** A instalação só acontece com autorização do dono.
 
@@ -11,70 +18,125 @@ Refeito em 28/09/2026 numa sessão na nuvem com acesso ao site. A estrutura foi 
 | `diagnostico-manchas.css` | Substitui o conteúdo do snippet WPCode **3168** (CSS) |
 | `diagnostico-manchas.js` | Substitui o conteúdo do snippet WPCode **3164** (JavaScript). O banco fica no topo do arquivo |
 | `pagina-3165.html` | Substitui o conteúdo da página **3165** (colar no editor de código). **É gerado**: não edite à mão |
-| `fonte/pagina.html` | Modelo da página. As tabelas e as perguntas entram no lugar dos `{{MARCADORES}}` |
+| `fonte/pagina.html` | Modelo da página. As tabelas, os números e as perguntas entram no lugar dos `{{MARCADORES}}` |
 | `prototipo.html` + `prototipo-img/` | Para testar fora do site: abra `prototipo.html` no navegador |
-| `pesquisa.html` | A pesquisa, o que cada referência mudou na ferramenta, SEO e GEO |
+| `pesquisa.html` | A pesquisa, o que cada referência mudou na ferramenta, SEO e GEO (rodadas 1 e 2) |
 | `auditoria-banco-antigo.md` | O banco antigo (516 situações) e tudo o que ele trazia contra as regras |
+| `auditoria-blog.md` | Os 31 posts do blog sobre manchas e tecidos: 6 ligados na ferramenta e 25 para revisar |
 | `perguntas-para-o-dono.md` | O que precisa de resposta antes de publicar |
-| `referencias/` | O que foi baixado: página atual, banco antigo, 17 guias em texto e páginas de referência |
+| `referencias/` | O que foi baixado: página atual, banco antigo, guias em texto, posts do blog, buscas do Google e páginas de referência |
 | `capturas/` | Telas geradas pelo teste |
 | `ferramentas/montar.mjs` | Gera `pagina-3165.html` e `prototipo.html` a partir do banco e do modelo |
 | `ferramentas/testar.mjs` | Testa tudo no Chromium |
+| `ferramentas/cobertura.mjs` | Mede quanto a busca entende das buscas reais do Google |
 
 ## Como a ferramenta funciona agora
 
-- **Três passos fixos:** 1 Peça → 2 Problema → 3 O que fazer. Os passos feitos viram botões para voltar, o voltar do navegador funciona, e cada resultado tem endereço próprio (`#seda/vinho-tinto`).
-- **Passo 1:**
-  - 17 cartões com foto, nos mesmos 5 grupos da página central.
-  - Uma busca que entende a mancha e a peça, com sinônimos e sem acento. Exemplos: "vinho no vestido de noiva", "riscos brancos", "mofo".
-  - Buscando só a mancha, a pessoa escolhe a peça depois.
-- **Passo 2:**
-  - A tabela "problemas mais comuns" do guia, do mais urgente ao menos urgente, com selo de urgência.
-  - "Outra mancha?", organizada pelas três famílias da Seitz: gordurosas e sintéticas, orgânicas e proteicas, vegetais e de tanino.
-  - A opção "Não sei o que é a mancha".
-  - O convite para mandar foto pelo WhatsApp.
-- **Passo 3:**
-  - A urgência escrita no guia e o que geralmente acontece com a peça.
-  - O que fazer agora e o que não fazer.
-  - Se a peça pode ir na máquina de casa.
-  - Como a Dedicada trata: o processo em etapas, prazo, preço e expresso.
-  - A fala aprovada de quem assina o guia, com foto.
-  - Duas perguntas opcionais que vão na mensagem do WhatsApp: "Quando aconteceu?" e "Já tentou tirar em casa?".
-  - O link para o guia da peça.
-- **Página:**
-  - Um só H1, uma resposta rápida de cerca de 40 palavras e a assinatura.
-  - A ferramenta.
-  - Seções estáticas geradas do mesmo banco: manchas mais urgentes por peça, as três famílias de manchas, regras para qualquer mancha, o que não sai na lavagem, perguntas frequentes, endereços e dias de coleta, e fontes.
-  - As tabelas ficam no HTML, e não no JavaScript, porque as IAs (ChatGPT, Claude, Perplexity) não rodam JavaScript.
-- **Medição:** se o dono aprovar, os eventos `dm_peca`, `dm_resultado`, `dm_whatsapp` e `dm_busca` vão para o Google Analytics que já está no site (GT-NBXFRXVL). Não há nenhum dado pessoal.
+### Três passos fixos
+
+1 Peça → 2 Problema → 3 O que fazer. Os passos feitos viram botões para voltar, o voltar do navegador funciona, e cada resultado tem endereço próprio (`#seda/vinho-tinto`).
+
+### Passo 1: a peça
+
+- **Busca em linguagem natural.** A pessoa escreve do jeito que fala: "camisa com vinho", "manchei minha blusa de vinho", "caiu café no terno" ou "água sanitária na calça jeans". A busca:
+  - acha a mancha, a peça e a cor;
+  - aceita plural, falta de acento e um erro de digitação ("vihno");
+  - mostra o que entendeu ("Entendi mancha: vinho · peça: blusa");
+  - abre a primeira sugestão com Enter.
+- **Palavras que não dizem o tecido** ("blusa", "vestido", "calça", "saia", "casaco", "toalha"...) mostram as peças possíveis. Por exemplo, "blusa" com vinho oferece algodão, seda, linho, viscose, poliéster e lã, cada uma com a urgência dela.
+- **A cor da peça** ("camisa branca") já vem marcada no resultado e vai na mensagem do WhatsApp.
+- **22 cartões:**
+  - os 17 guias, com foto;
+  - 5 peças sem guia próprio, só com texto: viscose e malha fria; poliéster e roupa de academia; roupa de bebê e infantil; toalhas de mesa e guardanapos; outra peça ou tecido.
+
+### Passo 2: o problema
+
+- A tabela "problemas mais comuns" do guia, do mais urgente ao menos urgente.
+- "Outra mancha ou dano?", com as 44 manchas e danos em 5 grupos:
+  - gordurosas e sintéticas, orgânicas e proteicas e vegetais e de tanino (as três famílias da Seitz);
+  - outras manchas;
+  - danos no tecido.
+- Nas peças sem guia, os grupos já aparecem abertos.
+- A opção "Não sei o que é a mancha" e o convite para mandar foto.
+
+### Passo 3: o que fazer
+
+- A urgência escrita no guia, o que geralmente acontece e o cuidado próprio da mancha.
+- O que fazer agora e o que não fazer.
+- A nota do tecido, com fonte, nas peças sem guia.
+- Se a peça pode ir na máquina de casa.
+- Como a Dedicada trata, com prazo, preço, expresso e a fala do guia.
+- "Conte para a equipe":
+  - Quando aconteceu?
+  - Já tentou tirar em casa?
+  - Cor da peça?
+- "Leia também", com os posts do blog aprovados.
+
+### Todas as combinações têm resposta
+
+As 22 peças × 44 manchas e danos dão 968 combinações, e todas têm resultado. Quando a mancha está na tabela do guia, o resultado é o do guia. Quando não está, ele é montado pela família da mancha, com o que o guia da peça manda evitar.
+
+### Página
+
+1. Um só H1, a assinatura e uma resposta rápida de cerca de 40 palavras.
+2. A introdução "Como usar o diagnóstico?", com os números gerados do banco e os fatos da página central: família, desde 2003, de 300 a 400 peças por dia.
+3. A ferramenta.
+4. As seções estáticas, geradas do mesmo banco:
+   - manchas mais urgentes por peça;
+   - **mancha por mancha** (novo): uma tabela por família, com o cuidado de cada mancha e as peças em que ela é mais urgente;
+   - as três famílias de manchas;
+   - regras para qualquer mancha;
+   - o que não sai na lavagem;
+   - 9 perguntas frequentes (3 novas: cor de outra peça, água sanitária e desodorante);
+   - endereços e dias de coleta;
+   - fontes.
+
+### Medição
+
+Se o dono aprovar, os eventos `dm_peca`, `dm_resultado`, `dm_whatsapp` e `dm_busca` vão para o Google Analytics do site (GT-NBXFRXVL). Não há nenhum dado pessoal.
 
 ## Banco (topo de `diagnostico-manchas.js`)
 
-- `PECAS`: os 17 guias. Cada peça tem nome, exemplos (o texto do card da página central), guia, quem assina, fala, máquina de casa, `caseiro` (o que evitar em casa), `processo` (as etapas do guia), prazo, preço e expresso.
-- `problemas`: uma linha da tabela do guia cada. `urgencia` e `acontece` são as colunas do guia, sem mudar nada; `nivel` define a ordem e o selo; `manchas` liga a busca e as famílias ao problema certo; `fazer` e `evitar` vêm dos erros comuns e das perguntas frequentes do guia.
-- `MANCHAS`: 30 manchas com sinônimos e família. Quando a mancha não está na tabela da peça, o resultado é montado pela família dela, com o que o guia da peça manda evitar.
-- Para mudar um texto, altere o banco e rode `node ferramentas/montar.mjs`: a página é gerada de novo, com as tabelas e o JSON-LD atualizados.
+- **`FAMILIAS`:** as 5 famílias, cada uma com o seu "primeiro cuidado".
+- **`BLOG`:** os 6 posts ligados. Para ligar outro, revise o post (`auditoria-blog.md`), inclua-o aqui e ponha a chave `leia` na mancha ou na peça.
+- **`MANCHAS`:** 44 manchas e danos, cada uma com:
+  - `sinonimos`: o que a busca reconhece;
+  - `dica`: o cuidado próprio da mancha, tirado dos guias;
+  - `leia`: o post do blog.
+- **`PECAS`:**
+  - Nas 17 peças com guia, os fatos vêm do guia e há a tabela `problemas`.
+  - Nas 5 peças sem guia (`semGuia: true`), vão só a `nota` do tecido, com fonte, e o processo geral. Qualquer mancha é tratada pela família dela.
+- **`problemas`:** uma linha da tabela do guia cada.
+  - `urgencia` e `acontece` são as colunas do guia, sem mudar nada.
+  - `manchas` liga a busca e as famílias ao problema certo. Por exemplo, "encolheu" na lã leva à feltragem.
+- **`GENERICAS` e `CORES`** (na busca): as palavras que não dizem o tecido e as cores da peça.
+
+Para mudar um texto, altere o banco e rode `node ferramentas/montar.mjs`. A página é gerada de novo, com as tabelas, os números da introdução e o JSON-LD atualizados.
 
 ## Como testar
 
 ```
 node ferramentas/montar.mjs
 node ferramentas/testar.mjs
+node ferramentas/cobertura.mjs
 ```
 
 O teste faz estas checagens:
 
-- confere o banco e procura termos proibidos, percentuais sem fonte e processos retirados;
-- verifica se há um só H1;
-- confere os 17 guias na tabela e o JSON-LD (só ASCII e perguntas iguais às visíveis);
-- percorre **os 109 problemas** clicando, a 375 px e sem rolagem horizontal, e 102 resultados por família;
-- testa a busca, o contexto de mancha, as perguntas do WhatsApp, as âncoras, o link direto e o teclado.
+- confere o banco (peças, manchas, famílias e blog) e procura termos proibidos, percentuais sem fonte e processos retirados;
+- verifica se há um só H1, os 17 guias na tabela, a seção "Mancha por mancha", os números da introdução e o JSON-LD (só ASCII e perguntas iguais às visíveis);
+- percorre **os 109 problemas** clicando, a 375 px e sem rolagem horizontal;
+- clica em 7 manchas e danos, além de "Não sei o que é", nas 22 peças, num total de 176 resultados;
+- abre **as 968 combinações peça × mancha** e confere o resultado e o texto de cada uma;
+- testa a busca, com 14 frases, e ainda o Enter, a cor da peça, o dano em peça sem guia, o "Leia também", as perguntas do WhatsApp, as âncoras, o link direto e o teclado.
 
 Resultado em 28/09: **0 erros, 0 avisos**.
 
+A cobertura foi medida com 1.308 buscas reais do autocompletar do Google. Dessas, 915 são sobre roupa e tecido, e a ferramenta dá sugestão para 94% delas. As que faltam não dizem a mancha ("como tirar mancha de roupa branca"). Nesse caso, a ferramenta pede para a pessoa contar o que manchou.
+
 ## O que falta para instalar
 
-1. **Respostas do dono** (`perguntas-para-o-dono.md`), principalmente sobre quem assina e sobre as perguntas do WhatsApp.
+1. **Respostas do dono** (`perguntas-para-o-dono.md`).
 2. **Miniaturas dos cartões.** Suba os 17 arquivos `prototipo-img/dm-*.webp` na biblioteca de mídia e ajuste `FOTOS` no topo do JS para a pasta onde ficarem. Se as fotos não carregarem, os cartões ficam só com o texto, sem quebrar.
 3. **Instalação, com autorização:**
    1. guarde o conteúdo atual dos snippets 3168 e 3164 e da página 3165;
@@ -82,11 +144,17 @@ Resultado em 28/09: **0 erros, 0 avisos**.
    3. cole `pagina-3165.html` no editor de código da página;
    4. limpe o cache;
    5. teste no celular e no computador.
-4. **Título e descrição para o Google** (no plugin de SEO). Título: "Diagnóstico de Manchas: o Que Fazer Antes de Lavar" (o de hoje). Descrição sugerida: "Escolha a peça e a mancha e veja o que fazer em casa, o que evitar e como a Dedicada trata, com prazo e preço. Florianópolis."
+4. **Título e descrição para o Google** (no plugin de SEO). Título: "Diagnóstico de Manchas: o Que Fazer Antes de Lavar" (o de hoje). Descrição sugerida: "Escreva a mancha e a peça, como vinho na camisa, e veja o que fazer em casa, o que evitar e como a Dedicada trata. Florianópolis."
 5. **Depois de publicar:**
    1. confira o código-fonte da página (não o inspetor), para ver se as tabelas estão no HTML;
    2. confira o JSON-LD no teste de pesquisa aprimorada do Google;
    3. acompanhe o relatório de IA generativa do Search Console.
+
+## Próxima fase sugerida: o blog
+
+As buscas mais comuns são por mancha ("como tirar mancha de sangue da roupa"), e o blog já tem posts para quase todas. Mas 25 dos 31 posts conferidos trazem "os melhores do mundo", "garantia", "definitivo", percentuais ou receitas caseiras (`auditoria-blog.md`).
+
+Revisar esses posts e ligar cada um ao resultado certo da ferramenta, como `diagnostico-de-manchas/#m-sangue`, rende mais que criar páginas novas. O Google desaconselha páginas feitas em massa para cada variação de busca.
 
 ## Regras do projeto (resumo)
 

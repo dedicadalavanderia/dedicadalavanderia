@@ -1,5 +1,6 @@
 // Testa o protótipo no Chromium: banco, regras de texto, links, JSON-LD, todos os caminhos
-// da ferramenta a 375 px (e alguns a 1280 px), busca, perguntas do WhatsApp, âncoras,
+// da ferramenta a 375 px (e alguns a 1280 px), todas as combinações peça × mancha, busca em
+// linguagem natural, Enter, cor da peça, perguntas do WhatsApp, âncoras,
 // voltar do navegador, link direto e teclado. Gera as telas em capturas/.
 // Uso: node ferramentas/montar.mjs && node ferramentas/testar.mjs
 // Sai com código 1 se houver ERRO. AVISO não reprova, mas precisa ser resolvido antes de publicar.
@@ -75,11 +76,15 @@ let dados;
   const { contexto, pagina } = await abrir(375, 740);
   dados = await pagina.evaluate(() => {
     const d = window.DM_DIAGNOSTICO;
-    return { validacao: d.validar(), pecas: d.PECAS, manchas: d.MANCHAS };
+    return { validacao: d.validar(), pecas: d.PECAS, manchas: d.MANCHAS, familias: d.FAMILIAS, blog: d.BLOG };
   });
   dados.validacao.erros.forEach((m) => erro('Banco: ' + m));
   dados.validacao.avisos.forEach((m) => aviso('Banco: ' + m));
   for (const p of dados.pecas) checarTexto(`Banco/${p.id}`, JSON.stringify(p));
+  checarTexto('Banco/manchas', JSON.stringify(dados.manchas));
+  checarTexto('Banco/familias', JSON.stringify(dados.familias));
+  checarTexto('Banco/blog', JSON.stringify(dados.blog));
+  dados.comGuia = dados.pecas.filter((p) => !p.semGuia);
 
   const html = readFileSync(join(pasta, 'pagina-3165.html'), 'utf8');
   const textoPagina = await pagina.$eval('.dm-pagina', (el) => {
@@ -94,9 +99,18 @@ let dados;
   if (cab[0] !== 'H1') erro('Página: há um H2 antes do H1');
 
   const linksTabela = new Set(await pagina.$$eval('#mais-urgentes .dm-tabela a', (as) => as.map((a) => a.href)));
-  const linksBanco = new Set(dados.pecas.map((p) => p.guia));
+  const linksBanco = new Set(dados.comGuia.map((p) => p.guia));
   for (const l of linksBanco) if (!linksTabela.has(l)) erro(`Página: falta o guia ${l} na tabela de urgência`);
   if (linksTabela.size !== 17) erro(`Página: esperava 17 guias na tabela de urgência, achei ${linksTabela.size}`);
+  // Mancha por mancha: uma tabela por família e uma linha por mancha, no HTML.
+  const familiasHtml = await pagina.$$eval('#mancha-por-mancha details.dm-mais', (ds) => ds.length);
+  const linhasHtml = await pagina.$$eval('#mancha-por-mancha tbody tr', (ts) => ts.length);
+  if (familiasHtml !== 5) erro(`Mancha por mancha: esperava 5 famílias, achei ${familiasHtml}`);
+  if (linhasHtml !== dados.manchas.length) erro(`Mancha por mancha: esperava ${dados.manchas.length} linhas, achei ${linhasHtml}`);
+  // Números da introdução saem do banco.
+  const numeros = await pagina.$eval('.dm-intro-numeros', (el) => el.textContent);
+  const totalPr = dados.pecas.reduce((n, p) => n + p.problemas.length, 0);
+  if (!numeros.includes(`${dados.pecas.length} peças`) || !numeros.includes(`${totalPr} problemas`) || !numeros.includes(`${dados.manchas.length} tipos`)) erro('Introdução: números diferentes do banco');
 
   const blocos = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => m[1]);
   if (!blocos.length) erro('JSON-LD: nenhum bloco');
@@ -121,6 +135,8 @@ let dados;
   // Imagens dos cartões carregam.
   const imgs = await pagina.$$eval('.dm-cartao-img', (is) => is.length);
   if (imgs !== 17) erro(`Passo 1: esperava 17 fotos nos cartões, achei ${imgs}`);
+  const cartoes = await pagina.$$eval('.dm-cartao', (cs) => cs.length);
+  if (cartoes !== dados.pecas.length) erro(`Passo 1: esperava ${dados.pecas.length} cartões, achei ${cartoes}`);
   await semRolagemLateral(pagina, 'Página inteira a 375px');
   await pagina.screenshot({ path: join(capturas, '375-pagina-inteira.png'), fullPage: true });
   await contexto.close();
@@ -130,7 +146,7 @@ let dados;
 async function percorrer(largura, altura, todos) {
   const { contexto, pagina } = await abrir(largura, altura);
   let caminhos = 0;
-  const pecas = todos ? dados.pecas : dados.pecas.slice(0, 3);
+  const pecas = todos ? dados.comGuia : dados.comGuia.slice(0, 3);
   for (const p of pecas) {
     for (const pr of todos ? p.problemas : p.problemas.slice(0, 1)) {
       if ((await passo(pagina)) !== '1') { erro(`${largura}px: não voltou ao passo 1`); break; }
@@ -156,27 +172,57 @@ async function percorrer(largura, altura, todos) {
 const caminhos375 = await percorrer(375, 740, true);
 const caminhos1280 = await percorrer(1280, 900, false);
 
-// ---------- 3. "Outra mancha" por família e "Não sei o que é", em todas as peças ----------
-let familiasTestadas = 0;
+// ---------- 3. Manchas e danos pelos botões, e todas as combinações peça × mancha ----------
+let familiasTestadas = 0, combinacoes = 0;
 {
   const { contexto, pagina } = await abrir(375, 740);
-  const amostra = ['Caneta', 'Sangue', 'Café', 'Ferrugem', 'Mofo'];
+  // Pelos botões: uma amostra de cada família, "Não sei o que é", em todas as peças.
+  const amostra = ['Caneta', 'Sangue', 'Café', 'Ferrugem', 'Mofo', 'Água sanitária ou cloro', 'Encolheu'];
   for (const p of dados.pecas) {
+    await pagina.goto(url + '#' + p.id);
+    await pagina.waitForSelector('#dm-app[data-passo="2"]');
+    if (!p.problemas.length && !(await pagina.$('.dm-outra--aberta'))) erro(`${p.id}: peça sem tabela deveria abrir as famílias direto`);
     for (const nome of amostra.concat(['__desconhecida'])) {
-      await pagina.goto(url + '#' + p.id);
-      await pagina.waitForSelector('#dm-app[data-passo="2"]');
       if (nome === '__desconhecida') await pagina.click('.dm-opcao--leve');
       else {
-        await pagina.click('.dm-outra > summary');
+        if (await pagina.$('details.dm-outra:not([open])')) await pagina.click('.dm-outra > summary');
         await pagina.click(`.dm-outra .dm-chip:text-is("${nome}")`);
       }
-      if ((await passo(pagina)) !== '3') { erro(`${p.id}: "${nome}" não abriu o resultado`); continue; }
+      if ((await passo(pagina)) !== '3') { erro(`${p.id}: "${nome}" não abriu o resultado`); await pagina.goto(url + '#' + p.id); continue; }
       await semRolagemLateral(pagina, `${p.id} "${nome}"`);
       const txt = await pagina.$eval('.dm-resultado', (el) => el.textContent);
       checarTexto(`Resultado ${p.id}/${nome}`, txt);
+      const guia = await pagina.$eval('.dm-acoes--final a:not(.dm-btn--whats)', (a) => a.href);
+      if (guia !== p.guia) erro(`${p.id}/${nome}: link do guia errado`);
       familiasTestadas++;
+      await pagina.goBack();
+      await pagina.waitForSelector('#dm-app[data-passo="2"]');
     }
   }
+  // Pelo endereço: cada peça com cada mancha e dano do banco.
+  await pagina.goto(url);
+  await pagina.waitForSelector('#dm-app[data-passo="1"]');
+  const falhas = await pagina.evaluate(async () => {
+    const d = window.DM_DIAGNOSTICO, ruins = [], textos = [];
+    let n = 0;
+    for (const p of d.PECAS) {
+      for (const m of d.MANCHAS) {
+        location.hash = '#' + p.id + '/m-' + m.id;
+        await new Promise((r) => setTimeout(r, 0));
+        const app = document.getElementById('dm-app');
+        const t = app.querySelector('.dm-titulo');
+        const passos = app.querySelectorAll('.dm-passos li').length;
+        if (app.getAttribute('data-passo') !== '3' || !t || !t.textContent || !passos) ruins.push(p.id + '/' + m.id);
+        if (document.documentElement.scrollWidth > window.innerWidth) ruins.push(p.id + '/' + m.id + ' (rolagem lateral)');
+        textos.push([p.id + '/' + m.id, app.textContent]);
+        n++;
+      }
+    }
+    return { n, ruins, textos };
+  });
+  combinacoes = falhas.n;
+  falhas.ruins.forEach((c) => erro(`Combinação ${c}: resultado incompleto`));
+  falhas.textos.forEach(([c, t]) => checarTexto(`Combinação ${c}`, t));
   await contexto.close();
 }
 
@@ -187,7 +233,17 @@ let familiasTestadas = 0;
     ['vinho no vestido de noiva', '#festa-noiva/barra-comida-vinho'],
     ['riscos brancos', '#jeans/riscos-brancos'],
     ['terno', '#alfaiataria'],
-    ['mofo', '#m-mofo']
+    ['mofo', '#m-mofo'],
+    ['camisa com vinho', '#camisas/m-vinho'],
+    ['manchei minha blusa de vinho', '#camisas/m-vinho'],
+    ['vihno na camisa', '#camisas/m-vinho'],
+    ['roupa branca manchada por outra roupa', '#m-cor'],
+    ['água sanitária na calça jeans', '#jeans/m-agua-sanitaria'],
+    ['caiu café no terno', '#alfaiataria/m-cafe'],
+    ['mofo na jaqueta de couro', '#couro/mofo'],
+    ['xixi no colchão', '#outra/m-xixi'],
+    ['vestido', '#festa-noiva'],
+    ['legging com cheiro', '#sinteticos/m-cheiro']
   ];
   for (const [termo, esperado] of casos) {
     await pagina.goto(url);
@@ -200,6 +256,33 @@ let familiasTestadas = 0;
   await pagina.screenshot({ path: join(capturas, '375-busca-vinho.png') });
   await pagina.fill('#dm-q', 'xyzw');
   if (!(await pagina.$('.dm-sugestao-vazia'))) erro('Busca sem resultado: falta a mensagem');
+  await pagina.fill('#dm-q', 'manchei minha blusa de vinho');
+  if (!(await pagina.$('.dm-entendi'))) erro('Busca: falta a linha "Entendi"');
+  await pagina.screenshot({ path: join(capturas, '375-busca-blusa-vinho.png') });
+
+  // Enter abre a primeira sugestão, e a cor da busca já vem marcada.
+  await pagina.fill('#dm-q', 'batom na camisa social branca');
+  await pagina.press('#dm-q', 'Enter');
+  await pagina.waitForSelector('#dm-app[data-passo="3"]');
+  if ((await pagina.evaluate(() => location.hash)) !== '#camisas/m-batom') erro('Enter na busca não abriu #camisas/m-batom');
+  const corMarcada = await pagina.$eval('.dm-pergunta .dm-chip[aria-pressed="true"]', (b) => b.textContent).catch(() => null);
+  if (corMarcada !== 'Branca') erro(`Cor da busca: esperava "Branca" marcada, achei ${corMarcada}`);
+  if (!decodeURIComponent(await hrefWhats(pagina)).includes('Cor da peça: branca')) erro('WhatsApp: a cor não entrou na mensagem');
+
+  // Dano numa peça sem guia: título, nota do tecido e botão para Cuidados por Tecido.
+  await pagina.goto(url + '#viscose/m-encolheu');
+  await pagina.waitForSelector('#dm-app[data-passo="3"]');
+  if ((await titulo(pagina)) !== 'Viscose e malha fria: encolheu') erro('Dano: título errado em #viscose/m-encolheu');
+  if (!(await pagina.$('.dm-nota-tecido'))) erro('Peça sem guia: falta a nota do tecido');
+  const botaoGuia = await pagina.$eval('.dm-acoes--final a:not(.dm-btn--whats)', (a) => a.textContent);
+  if (botaoGuia !== 'Cuidados por Tecido') erro('Peça sem guia: o botão deveria levar a Cuidados por Tecido');
+  await pagina.screenshot({ path: join(capturas, '375-passo3-viscose-encolheu.png'), fullPage: true });
+
+  // Leia também: posts do blog aprovados.
+  await pagina.goto(url + '#couro/sangue-leite');
+  await pagina.waitForSelector('#dm-app[data-passo="3"]');
+  const leia = await pagina.$$eval('.dm-leia a', (as) => as.map((a) => a.href));
+  if (!leia.some((h) => h.includes('manchas-de-sangue'))) erro('Leia também: falta o post de sangue em #couro/sangue-leite');
 
   // Mancha escolhida pela busca, depois a peça.
   await pagina.goto(url + '#m-mofo');
@@ -272,7 +355,7 @@ let familiasTestadas = 0;
 await navegador.close();
 
 const totalProblemas = dados.pecas.reduce((n, p) => n + p.problemas.length, 0);
-console.log(`Caminhos testados: ${caminhos375} de ${totalProblemas} problemas a 375 px, ${caminhos1280} a 1280 px, ${familiasTestadas} manchas por família.`);
+console.log(`Caminhos testados: ${caminhos375} de ${totalProblemas} problemas a 375 px, ${caminhos1280} a 1280 px, ${familiasTestadas} manchas pelos botões e ${combinacoes} combinações peça × mancha.`);
 console.log(`\nAVISOS (${avisos.length}) — resolver antes de publicar:`);
 avisos.forEach((m) => console.log('  - ' + m));
 console.log(`\nERROS (${erros.length}):`);

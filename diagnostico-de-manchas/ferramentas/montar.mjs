@@ -21,11 +21,18 @@ const ASSINA = 'jorge'; // Proposta; ver perguntas-para-o-dono.md
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const minuscula = (s) => s.charAt(0).toLowerCase() + s.slice(1);
 const pecasEmOrdem = D.GRUPOS.flatMap((g) => D.PECAS.filter((p) => p.grupo === g.id));
+const pecasComGuia = pecasEmOrdem.filter((p) => !p.semGuia);
 const link = (p) => `<a href="${esc(p.guia)}">${esc(p.nome)}</a>`;
+const NUMEROS = {
+  N_PECAS: D.PECAS.length,
+  N_GUIAS: pecasComGuia.length,
+  N_PROBLEMAS: D.PECAS.reduce((n, p) => n + p.problemas.length, 0),
+  N_MANCHAS: D.MANCHAS.length
+};
 
 // 1. Manchas mais urgentes por peça
 function tabelaUrgencia() {
-  const linhas = pecasEmOrdem.map((p) => {
+  const linhas = pecasComGuia.map((p) => {
     const ordenados = D.problemasOrdenados(p);
     const ordem = D.NIVEIS[ordenados[0].nivel].ordem;
     const topo = ordenados.filter((pr) => D.NIVEIS[pr.nivel].ordem === ordem);
@@ -55,7 +62,7 @@ function tabelaFamilias() {
 
 // 3. O que não sai na lavagem
 function tabelaSemSolucao() {
-  const linhas = pecasEmOrdem.map((p) => {
+  const linhas = pecasComGuia.map((p) => {
     const itens = p.problemas.filter((pr) => pr.nivel === 'sem_solucao' || pr.nivel === 'dificil');
     if (!itens.length) return null;
     const lis = itens.map((pr) => `<li><strong>${esc(pr.nome)}</strong>${pr.nivel === 'dificil' ? ' (' + esc(minuscula(pr.urgencia)) + ')' : ''}: ${esc(minuscula(pr.acontece))}</li>`).join('');
@@ -64,7 +71,28 @@ function tabelaSemSolucao() {
   return `<table class="dm-tabela"><thead><tr><th scope="col">Peça</th><th scope="col">O que não se desfaz na lavagem</th></tr></thead><tbody>\n${linhas.join('\n')}\n</tbody></table>`;
 }
 
-// 4. Perguntas frequentes (as quatro últimas já estão publicadas na página central)
+// 4. Mancha por mancha: cada família com o primeiro cuidado, o cuidado próprio de cada mancha
+// e as peças em que ela é mais urgente segundo os guias. Fica no HTML para Google e IAs lerem.
+function manchaPorMancha() {
+  return ['gordura', 'proteina', 'tanino', 'outras', 'dano'].map((fid) => {
+    const f = D.FAMILIAS[fid];
+    const ms = D.MANCHAS.filter((m) => m.familia === fid);
+    const linhas = ms.map((m) => {
+      const onde = pecasComGuia.map((p) => ({ p, pr: D.problemaDaMancha(p, m.id) })).filter((x) => x.pr)
+        .sort((a, b) => D.NIVEIS[a.pr.nivel].ordem - D.NIVEIS[b.pr.nivel].ordem);
+      const mostrar = onde.slice(0, 4).map((x) => `${link(x.p)}: ${esc(minuscula(x.pr.urgencia))}`);
+      if (onde.length > 4) mostrar.push(`e mais ${onde.length - 4} peças`);
+      const leia = m.leia && D.BLOG[m.leia] ? ` Leia também: <a href="${esc(D.SITE + D.BLOG[m.leia][0])}">${esc(D.BLOG[m.leia][1])}</a>.` : '';
+      const cuidado = (m.dica ? esc(m.dica) : 'Siga o primeiro cuidado.') + leia;
+      const guias = mostrar.length ? mostrar.join('; ') : 'Em qualquer peça, leve quanto antes.';
+      return `<tr><th scope="row">${esc(m.nome)}</th><td data-rotulo="Cuidado">${cuidado}</td><td data-rotulo="Nos guias">${guias}</td></tr>`;
+    });
+    const intro = f.primeiro ? `<p class="dm-mais-txt"><strong>Primeiro cuidado:</strong> ${esc(f.primeiro)}</p>\n` : '';
+    return `<details class="dm-mais"><summary>${esc(f.nome)} (${ms.length})</summary>\n${intro}<table class="dm-tabela"><thead><tr><th scope="col">${fid === 'dano' ? 'Dano' : 'Mancha'}</th><th scope="col">Cuidado</th><th scope="col">Nos guias</th></tr></thead><tbody>\n${linhas.join('\n')}\n</tbody></table>\n</details>`;
+  }).join('\n');
+}
+
+// 5. Perguntas frequentes (quatro delas já estão publicadas na página central)
 const PERGUNTAS = [
   ['O que fazer logo depois que a roupa mancha?',
     'Tire o excesso encostando um pano limpo, sem esfregar, e não use água quente, que fixa manchas de café, chá e vinho. Não passe ferro nem secador antes de a mancha sair, e leve a peça quanto antes: as mais urgentes, como vinho tinto na seda e mofo no couro, pedem cuidado em menos de 24 horas.'],
@@ -76,12 +104,18 @@ const PERGUNTAS = [
     'Guarde as peças limpas e secas, em armário arejado e em capa de tecido, nunca de plástico. Mofo é o problema que mais chega à Dedicada em veludo, couro, peles e pelúcias, e o ideal é tratar quanto antes, de preferência em até 24 horas.'],
   ['Quanto tempo a lavanderia leva e quanto custa?',
     'Na Dedicada, a maioria das peças fica pronta em 2 dias; lençóis, tênis e pelúcias, em 3; cortinas, em 3 a 4; vestidos finos e fantasias, em cerca de 5; couro, em 5 a 7; e vestido de noiva, peles e carrinho de bebê, em 7. Veludo, conforme a peça. Camisa a partir de R$ 23,90 e terno a partir de R$ 91,00. Há serviço expresso para a maioria das peças, no mesmo dia ou no seguinte, com acréscimo de 50%; couro e tênis não têm expresso.'],
+  ['Minha roupa manchou com a cor de outra peça. Tem jeito?',
+    'Quanto antes o tratamento, maior a chance de reverter. O algodão absorve o corante solto com facilidade, e a secadora fixa a mancha: não seque a peça e leve em menos de 24 horas. Para não repetir, não misture peças de cor forte com as brancas.'],
+  ['A mancha clara de água sanitária sai?',
+    'Em peça colorida, geralmente não: o cloro tira o corante, e as manchas claras que ele deixa no jeans e na sarja coloridos não voltam. Em peça branca, o cloro enfraquece a fibra e, segundo a ANEL, amarela o poliéster e a poliamida. Na Dedicada, o alvejamento é à base de oxigênio, sem cloro.'],
+  ['Como tirar mancha de desodorante?',
+    'Trate antes de passar a ferro, porque o calor fixa a mancha. Esfregue a axila com detergente e escova macia e lave com alvejante à base de oxigênio, se a etiqueta permitir. Marca antiga, que já endureceu o tecido, pede tratamento profissional. Na Dedicada, quando as axilas estão muito amareladas e com gordura, a camisa vai antes para a lavagem a seco, e as axilas recebem a mesma pasta do colarinho, que age de um dia para o outro.'],
   ['Vocês buscam as roupas em casa?',
     'Sim. A coleta e a entrega são grátis, sem taxa, em 26 bairros da Ilha e do Continente, em dias fixos da semana. De outros bairros, é só levar as peças a uma das lojas, no Centro ou no Santa Mônica.']
 ];
 const perguntasHtml = () => PERGUNTAS.map(([q, a]) => `<details><summary><h3>${esc(q)}</h3></summary><p>${esc(a)}</p></details>`).join('\n');
 
-// 5. Dados estruturados, com acentos em \uXXXX (o filtro do servidor estraga os acentos)
+// 6. Dados estruturados, com acentos em \uXXXX (o filtro do servidor estraga os acentos)
 function jsonLd() {
   const url = 'https://dedicadalavanderia.com.br/diagnostico-de-manchas/';
   const pessoa = D.PESSOAS[ASSINA];
@@ -131,6 +165,8 @@ const pagina = ler('fonte/pagina.html')
   .replace('{{TABELA_FAMILIAS}}', tabelaFamilias())
   .replace('{{TABELA_SEM_SOLUCAO}}', tabelaSemSolucao())
   .replace('{{PERGUNTAS}}', perguntasHtml())
+  .replace('{{MANCHA_POR_MANCHA}}', manchaPorMancha())
+  .replace(/\{\{(N_[A-Z]+)\}\}/g, (m, k) => String(NUMEROS[k] ?? m))
   .replace('{{JSONLD}}', jsonLd());
 if (/\{\{[A-Z_]+\}\}/.test(pagina)) throw new Error('Sobrou marcador sem trocar em fonte/pagina.html');
 if (/\n\s*\n/.test(pagina.trim())) throw new Error('Linha em branco na página: o WordPress transformaria em parágrafo');
