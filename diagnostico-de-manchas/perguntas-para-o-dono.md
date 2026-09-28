@@ -2,6 +2,12 @@
 
 Atualizado em 28/09/2026. As perguntas 12 a 17 são da versão 3. A nova versão só vai para o site depois dessas respostas e da sua aprovação.
 
+Respondidas em 28/09/2026:
+
+- **Quem assina a página:** Jorge Isaac Mazza (pergunta 1).
+- **Fotos dos cartões:** aprovadas (pergunta 7). As 5 fotos novas foram refeitas para mostrar a peça inteira, sem zoom, como as outras.
+- **Revisão dos 25 posts do blog:** aprovada (pergunta 16). O conteúdo pode mudar para seguir as regras do projeto.
+
 Já resolvidas pelos guias no ar: o couro fica pronto em **5 a 7 dias** (a fala do Alejandro já diz isso), e a fala do guia de lã é do **Jorge**.
 
 1. **Quem assina a página?** A proposta é **Jorge Isaac Mazza**, especialista em lavagem a seco e wet cleaning, com foto: "Revisado por Jorge Isaac Mazza, sócio fundador · Atualizado em setembro de 2026".
