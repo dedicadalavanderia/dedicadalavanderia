@@ -25,7 +25,7 @@ Cada post **mantém o endereço e o assunto**, para não perder a posição que 
 
 | Arquivo | Para que serve |
 |---|---|
-| `posts.mjs` | Os textos de cada post (a fonte). Para mudar um post, mude aqui |
+| `posts.mjs`, `posts-lote1.mjs`, `posts-lote2.mjs`, `posts-lote3.mjs` | Os textos de cada post (a fonte). Para mudar um post, mude aqui |
 | `wordpress/<endereço>.html` | O conteúdo pronto para colar no editor de código do post. **É gerado** |
 | `MUDANCAS.md` | Para cada post: endereço, título novo, título e descrição para o Google, quem assina e o que mudou. **É gerado** |
 | `previa.html` | Prévia local dos posts revisados |
@@ -54,9 +54,9 @@ O conteúdo tem um bloco de dados estruturados (`<script type="application/ld+js
 |---|---|
 | Vinho e xixi (amostras) | Prontos |
 | Lote 1, 12 posts: café, graxa, terra, ferrugem, remédio, comida, cheiro de mofo, amarelado e mofo, desbote, bolinhas, "minha roupa manchou" e rayon | Prontos (29/09) |
-| Lote 2, 3 posts: toalhas de mesa, guardanapos e fardas | Prontos (29/09), com o processo que o dono confirmou; prazo e preço ainda gerais (pergunta 15) |
+| Lote 2, 3 posts: toalhas de mesa, guardanapos e fardas | Prontos (29/09), com o processo e o prazo que o dono confirmou; preço ainda geral (pergunta 15) |
 | 7 posts repetidos (urina, shoyu, chocolate e um de cada par de gordura, maquiagem e roupa de bebê) | Redirecionar: a lista está em `MUDANCAS.md` |
-| "Lavagem de roupas de bebê: o que pode e o que evitar?" | Espera o processo, o prazo e o preço da roupa de bebê (pergunta 24) |
+| Lote 3, 1 post: "Lavagem de roupas de bebê: o que pode e o que evitar?" | Pronto (29/09), com o processo que o dono confirmou; prazo e preço ainda gerais (pergunta 24) |
 | Os 6 posts que já passavam nas regras | Continuam como estão; 2 deles recebem redirecionamentos (gordura e maquiagem) |
 
 ## Posts sobre o mesmo assunto

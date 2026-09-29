@@ -38,6 +38,7 @@ Gerado por `node ferramentas/montar-blog.mjs`. Não edite à mão: mude `blog-re
 - "Wet cleaning" para tudo virou o processo de cada peça, com prazo e preço dos guias.
 - "Coleta e entrega em Florianópolis" virou a coleta confirmada: 26 bairros da Ilha e do Continente, em dias fixos.
 - Entraram a resposta curta, o passo a passo, a urgência de cada peça, a fala aprovada do Alejandro, perguntas frequentes com dados estruturados e o botão para o Diagnóstico de Manchas, já na mancha de xixi.
+- Entrou o processo da roupa de bebê que o dono confirmou em 29/09: só em água, em lote individual, com produtos da Seitz dermatologicamente testados e hipoalergênicos, e secagem natural.
 
 ## Mancha de café na roupa: o que fazer e como a lavanderia tira?
 
@@ -67,7 +68,7 @@ Gerado por `node ferramentas/montar-blog.mjs`. Não edite à mão: mude `blog-re
 **O que mudou:**
 
 - Saíram "os melhores do mundo" e "garantindo".
-- Saiu "produtos dermatologicamente testados e antialérgicos", que os guias não confirmam.
+- "Produtos dermatologicamente testados e antialérgicos" virou o que o dono confirmou em 29/09: os produtos da Seitz usados na Dedicada são dermatologicamente testados e hipoalergênicos.
 - Entraram a resposta curta, o passo a passo, a urgência no jeans, no tênis e no couro, o processo de cada peça, a fala aprovada do Alejandro e o botão para o Diagnóstico de Manchas, já na mancha de graxa.
 
 ## Roupa suja de terra ou barro: como lavar sem espalhar a sujeira?
@@ -240,9 +241,9 @@ Gerado por `node ferramentas/montar-blog.mjs`. Não edite à mão: mude `blog-re
 **O que mudou:**
 
 - Saíram "os melhores produtos para lavanderia do mundo" e "isto remove todas as manchas gordurosas".
-- O processo ficou como o dono descreveu em 29/09: a seco primeiro, depois em água, goma, secagem natural, passadoria à mão e embalagem.
+- O processo e o prazo ficaram como o dono descreveu em 29/09: a seco primeiro, depois em água, goma, secagem natural sem secadora, passadoria à mão e embalagem, em 4 dias.
 - Saíram o alvejamento com ácido peracético e altas temperaturas e as opções de goma forte ou meia goma, que não foram confirmados.
-- Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas, já em toalhas de mesa. O prazo e o preço ficaram gerais, até o dono confirmar (pergunta 15).
+- Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas, já em toalhas de mesa. O preço ficou geral, até o dono confirmar (pergunta 15).
 
 ## Guardanapos de tecido manchados: como a Dedicada lava?
 
@@ -257,8 +258,8 @@ Gerado por `node ferramentas/montar-blog.mjs`. Não edite à mão: mude `blog-re
 **O que mudou:**
 
 - Saíram "os melhores do mundo" e "uma equipe especializada que garante a higienização".
-- "Acabamento com goma, quando solicitado" virou o processo que o dono descreveu em 29/09: goma, secagem natural, passadoria à mão e embalagem.
-- Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas. O prazo e o preço ficaram gerais, até o dono confirmar (pergunta 15).
+- "Acabamento com goma, quando solicitado" virou o processo que o dono descreveu em 29/09: a seco, em água, goma, secagem natural sem secadora, passadoria à mão e embalagem, em 4 dias.
+- Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas. O preço ficou geral, até o dono confirmar (pergunta 15).
 
 ## Como a Dedicada lava fardas e uniformes de trabalho?
 
@@ -274,7 +275,25 @@ Gerado por `node ferramentas/montar-blog.mjs`. Não edite à mão: mude `blog-re
 
 - Saíram "garantindo que a farda esteja sempre bem-apresentada" e "para garantir conforto e bem-estar".
 - Saiu "limpeza profissional elimina ácaros e bactérias", que não foi confirmado.
-- Entrou o processo que o dono descreveu em 29/09: a seco com entretela, em água sem entretela, secagem, passadoria e entrega em cabide. Entraram também a fala aprovada do Jorge (guia de ternos) e o botão para o Diagnóstico de Manchas, já em fardas e uniformes. O prazo e o preço ficaram gerais, até o dono confirmar (pergunta 15).
+- Entraram o processo e o prazo que o dono descreveu em 29/09: a seco com entretela, em água sem entretela, secagem, passadoria e entrega em cabide, em 2 dias. Entraram também a fala aprovada do Jorge (guia de ternos) e o botão para o Diagnóstico de Manchas, já em fardas e uniformes. O preço ficou geral, até o dono confirmar (pergunta 15).
+
+## Roupa de bebê: o que pode e o que evitar na lavagem?
+
+- **Endereço (não muda):** https://dedicadalavanderia.com.br/lavagem-de-roupas-de-bebe-o-que-pode-e-o-que-evitar/
+- **Título atual:** Lavagem de roupas de bebê: o que pode e o que evitar?
+- **Título novo do post:** Roupa de bebê: o que pode e o que evitar na lavagem?
+- **Título para o Google (plugin de SEO):** Lavagem de Roupas de Bebê: o Que Pode e o Que Evitar
+- **Descrição para o Google:** Na Dedicada, a roupa de bebê é lavada só em água, em lote individual, com produtos Seitz hipoalergênicos, e seca ao natural. Veja o que evitar em casa.
+- **Assina:** Liliane Sella Mazza, sócia fundadora
+- **Conteúdo:** `blog-revisado/wordpress/lavagem-de-roupas-de-bebe-o-que-pode-e-o-que-evitar.html`
+
+**O que mudou:**
+
+- Saíram "garanta o melhor para o seu bebê" e "é especializada".
+- Saíram as dicas que não estão nos guias nem foram confirmadas: sabão neutro ou infantil, ciclo delicado, amaciante e "pode secar na máquina, desde que com cuidado". Na Dedicada, a roupa de bebê seca ao natural, sem secadora.
+- Entrou o processo que o dono descreveu em 29/09: só em água, nunca a seco, por unidade, em lote individual, com produtos da Seitz dermatologicamente testados e hipoalergênicos, secagem natural, passadoria e entrega dobrada e separada por tamanho.
+- Entraram o carrinho e o bebê conforto, com processo, prazo e preço do guia, a resposta curta, perguntas frequentes com dados estruturados e o botão para o Diagnóstico de Manchas, já em roupa de bebê. O prazo e o preço da roupa de bebê ficaram gerais, até o dono confirmar (pergunta 24).
+- Recebe o redirecionamento do post repetido sobre roupa de recém-nascido (pergunta 23).
 
 ## Redirecionamentos (301)
 

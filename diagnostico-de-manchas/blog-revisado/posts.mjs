@@ -19,6 +19,7 @@
 //   mudou                   o que mudou em relação ao post no ar
 import { LOTE1 } from './posts-lote1.mjs';
 import { LOTE2 } from './posts-lote2.mjs';
+import { LOTE3 } from './posts-lote3.mjs';
 
 // Posts que saem do ar e passam a levar para outro (redirecionamento 301), aprovados pelo dono:
 // [de, para, por quê]. O gerador põe a lista em MUDANCAS.md.
@@ -109,7 +110,7 @@ export const POSTS = [
 <li><strong>Pelúcia:</strong> escovação à mão, wet cleaning e secagem natural, sem secadora. Pronta em 3 dias, a partir de R$ 80,00.</li>
 <li><strong>Carrinho e bebê conforto:</strong> desmontados e lavados à mão; os cintos são higienizados por fora, sem encharcar, e tudo seca ao natural, com ventilador profissional. Prontos em 7 dias; carrinho a partir de R$ 390,00 e bebê conforto, R$ 290,00.</li>
 <li><strong>Lençóis e fronhas:</strong> em água, no ciclo de enxoval da Seitz. Prontos em 3 dias; lençóis a partir de R$ 44,00 o quilo. O protetor de colchão seca ao natural, ou em secadora quando a etiqueta permite.</li>
-<li><strong>Roupas de bebê e do dia a dia:</strong> além de carrinho e bebê conforto, a Dedicada lava ninhos de bebê, enxoval e roupas de bebê.</li>
+<li><strong>Roupas de bebê:</strong> lavadas só em água, em lote individual, separadas das outras roupas, com produtos da Seitz dermatologicamente testados e hipoalergênicos; secam ao natural, sem secadora. A Dedicada também lava ninhos e enxoval de bebê.</li>
 </ul>
 {{FALA}}` }
     ],
@@ -125,9 +126,11 @@ export const POSTS = [
       'Saiu a explicação química (amônia e sais minerais), que não está nos guias; entrou a que está: a urina entra no enchimento, e o cheiro volta com a umidade.',
       '"Wet cleaning" para tudo virou o processo de cada peça, com prazo e preço dos guias.',
       '"Coleta e entrega em Florianópolis" virou a coleta confirmada: 26 bairros da Ilha e do Continente, em dias fixos.',
-      'Entraram a resposta curta, o passo a passo, a urgência de cada peça, a fala aprovada do Alejandro, perguntas frequentes com dados estruturados e o botão para o Diagnóstico de Manchas, já na mancha de xixi.'
+      'Entraram a resposta curta, o passo a passo, a urgência de cada peça, a fala aprovada do Alejandro, perguntas frequentes com dados estruturados e o botão para o Diagnóstico de Manchas, já na mancha de xixi.',
+      'Entrou o processo da roupa de bebê que o dono confirmou em 29/09: só em água, em lote individual, com produtos da Seitz dermatologicamente testados e hipoalergênicos, e secagem natural.'
     ]
   },
   ...LOTE1,
-  ...LOTE2
+  ...LOTE2,
+  ...LOTE3
 ];

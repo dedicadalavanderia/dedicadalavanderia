@@ -1357,21 +1357,28 @@
       expresso: 'consultar',
       problemas: []
     },
+    // Roupa de bebê: processo confirmado pelo dono em 29/09/2026 (prazo e preço, não).
     {
-      id: 'bebe', grupo: 'outras', nome: 'Roupa de bebê e infantil', exemplos: 'Roupinhas, enxoval, ninho e manta de bebê',
-      sinonimos: ['roupa de bebe', 'roupinha', 'roupinha de bebe', 'body', 'body de bebe', 'macacao de bebe', 'enxoval de bebe', 'ninho', 'ninho de bebe', 'manta de bebe', 'roupa infantil', 'roupa de crianca', 'babador', 'cueiro', 'saida de maternidade'],
+      id: 'bebe', grupo: 'outras', nome: 'Roupa de bebê', exemplos: 'Roupinhas, body, enxoval, ninho e manta de bebê',
+      sinonimos: ['roupa de bebe', 'roupinha', 'roupinha de bebe', 'body', 'body de bebe', 'macacao de bebe', 'enxoval de bebe', 'ninho', 'ninho de bebe', 'manta de bebe', 'babador', 'cueiro', 'saida de maternidade', 'roupa de recem nascido'],
       semGuia: true, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
-      nota: 'Além de carrinho e bebê conforto, a Dedicada lava ninhos de bebê, enxoval e roupas de bebê.',
+      nota: 'Na Dedicada, a roupa de bebê é lavada só em água, nunca a seco, em lote individual e com produtos da Seitz dermatologicamente testados e hipoalergênicos. Seca ao natural, sem secadora. A Dedicada também lava ninhos, enxoval, carrinho e bebê conforto.',
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
       maquinaNao: false,
       caseiro: [F.sanitaria],
-      processo: PROCESSO_GERAL,
-      prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
+      processo: [
+        'Manchas tratadas antes da lavagem, com o tira-manchas da Seitz próprio da família de cada uma (V1, V2 ou V3).',
+        'Lavagem só em água, nunca a seco: por unidade, em lote individual, separada das outras roupas.',
+        'Produtos da Seitz dermatologicamente testados e hipoalergênicos.',
+        'Secagem natural, sem secadora, e passadoria.',
+        'Entrega dobrada e separada por tamanho, pronta para uso.'
+      ],
+      prazo: 'Confirme pelo WhatsApp',
       preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
-      expresso: 'consultar',
+      expresso: 'Confirme pelo WhatsApp.',
       problemas: []
     },
-    // Toalhas de mesa e guardanapos: processo confirmado pelo dono em 29/09/2026 (prazo e preço, não).
+    // Toalhas de mesa e guardanapos: processo e prazo confirmados pelo dono em 29/09/2026 (preço, não).
     {
       id: 'mesa', grupo: 'outras', nome: 'Toalhas de mesa e guardanapos', exemplos: 'Toalhas de mesa, guardanapos e caminhos de mesa',
       sinonimos: ['toalha de mesa', 'guardanapo', 'guardanapo de pano', 'jogo americano', 'caminho de mesa', 'pano de prato', 'jacquard', 'toalha de natal', 'mesa posta'],
@@ -1383,15 +1390,15 @@
       processo: [
         'Lavagem a seco primeiro, para tirar a gordura de comidas.',
         'Lavagem em água, com a remoção do restante das manchas.',
-        'Goma e secagem natural.',
+        'Goma e secagem natural, sem secadora: na secadora, a goma desaparece.',
         'Passadoria à mão e embalagem: toalhas e guardanapos saem prontos para uso ou para guardar.'
       ],
-      prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
+      prazo: '4 dias: lavagem a seco, lavagem em água e goma com secagem natural, porque na secadora a goma desaparece',
       preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
-      expresso: 'consultar',
+      expresso: 'Confirme pelo WhatsApp.',
       problemas: []
     },
-    // Fardas e uniformes: processo confirmado pelo dono em 29/09/2026 (prazo e preço, não).
+    // Fardas e uniformes: processo e prazo confirmados pelo dono em 29/09/2026 (preço, não).
     {
       id: 'fardas', grupo: 'outras', nome: 'Fardas e uniformes', exemplos: 'Fardas e uniformes de trabalho',
       sinonimos: ['farda', 'fardamento', 'uniforme', 'uniforme de trabalho', 'uniforme escolar', 'uniforme de empresa', 'jaleco', 'dolma'],
@@ -1406,7 +1413,7 @@
         'Secagem e passadoria.',
         'Entrega em cabide, pronta para uso.'
       ],
-      prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
+      prazo: '2 dias',
       preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
       expresso: 'consultar',
       problemas: []
@@ -2074,7 +2081,7 @@
         h('h3', null, 'O que não fazer'),
         lista('ul', pr.evitar, 'dm-evitar')) : null,
 
-      peca.nota ? h('p', { class: 'dm-nota-tecido' }, h('strong', null, 'Sobre o tecido: '), peca.nota) : null,
+      peca.nota ? h('p', { class: 'dm-nota-tecido' }, h('strong', null, 'Sobre a peça: '), peca.nota) : null,
 
       h('p', { class: 'dm-maquina' }, h('strong', null, 'Pode ir na máquina de casa? '), peca.maquina),
 

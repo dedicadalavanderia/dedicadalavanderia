@@ -1,11 +1,13 @@
 // Lote 2 da revisão do blog (29/09/2026): toalhas de mesa, guardanapos e fardas, com o processo
-// que o dono confirmou em 29/09. O prazo e o preço dessas peças ainda não foram confirmados.
-const PRAZO_E_PRECO = '<p>A maioria das peças fica pronta em 2 dias; confirme o prazo pelo WhatsApp. O preço é conforme a peça: mande uma foto e peça o orçamento.</p>';
+// e o prazo que o dono confirmou em 29/09. O preço dessas peças ainda não foi confirmado.
+const PRECO = 'O preço é conforme a peça: mande uma foto e peça o orçamento pelo WhatsApp.';
+const PRAZO_MESA = `<p>Toalhas de mesa e guardanapos ficam prontos em 4 dias. São três etapas: a lavagem a seco, a lavagem em água e a goma, que seca ao natural, porque na secadora a goma desaparece. ${PRECO}</p>`;
+const PRAZO_FARDAS = `<p>A farda fica pronta em 2 dias. ${PRECO}</p>`;
 
 const PROCESSO_MESA = `<ol>
 <li>Lavagem a seco primeiro, para tirar a gordura de comidas.</li>
 <li>Lavagem em água, com a remoção do restante das manchas.</li>
-<li>Goma e secagem natural.</li>
+<li>Goma e secagem natural, sem secadora: na secadora, a goma desaparece.</li>
 <li>Passadoria à mão e embalagem: toalhas e guardanapos saem prontos para uso ou para guardar.</li>
 </ol>`;
 
@@ -32,10 +34,11 @@ export const LOTE2 = [
       { h2: 'Por que a toalha vai primeiro a seco?', html: `<p>Para tirar a gordura de comidas. Depois, na água, sai o restante das manchas. Na Dedicada, cada família de mancha tem o seu tira-manchas da Seitz (V1, V2 ou V3), e cada mancha é tratada na sua vez.</p>` },
       { h2: 'Como a Dedicada lava toalhas de mesa?', html: `${PROCESSO_MESA}
 <p>Os guardanapos de tecido passam pelo mesmo processo.</p>` },
-      { h2: 'Quanto tempo leva e quanto custa?', html: PRAZO_E_PRECO }
+      { h2: 'Por que a toalha leva 4 dias?', html: PRAZO_MESA }
     ],
     perguntas: [
       ['Toalha de mesa com gordura sai?', 'Na Dedicada, a toalha vai primeiro para a lavagem a seco, justamente para tirar a gordura de comidas. Depois, na água, é removido o restante das manchas.'],
+      ['Quanto tempo leva a lavagem da toalha de mesa?', 'Na Dedicada, 4 dias: a toalha passa pela lavagem a seco, pela lavagem em água e pela goma, que seca ao natural. Na secadora, a goma desaparece.'],
       ['A toalha volta passada?', 'Sim. Depois da lavagem, recebe goma e seca ao natural; quando seca, é passada à mão e embalada, pronta para uso ou para guardar.'],
       ['Posso lavar toalha de mesa com mancha de vinho em casa?', 'Tire só o excesso com um pano limpo, sem esfregar, e não use água quente, que fixa a mancha de vinho. Quanto antes a toalha chega à lavanderia, melhor.']
     ],
@@ -43,9 +46,9 @@ export const LOTE2 = [
     extras: [['/lavagem-de-guardanapos/', 'Lavagem de guardanapos'], ['/retirada-de-manchas-de-comida-molhos-bebidas-e-sucos/', 'Mancha de comida, molho ou suco']],
     mudou: [
       'Saíram "os melhores produtos para lavanderia do mundo" e "isto remove todas as manchas gordurosas".',
-      'O processo ficou como o dono descreveu em 29/09: a seco primeiro, depois em água, goma, secagem natural, passadoria à mão e embalagem.',
+      'O processo e o prazo ficaram como o dono descreveu em 29/09: a seco primeiro, depois em água, goma, secagem natural sem secadora, passadoria à mão e embalagem, em 4 dias.',
       'Saíram o alvejamento com ácido peracético e altas temperaturas e as opções de goma forte ou meia goma, que não foram confirmados.',
-      'Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas, já em toalhas de mesa. O prazo e o preço ficaram gerais, até o dono confirmar (pergunta 15).'
+      'Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas, já em toalhas de mesa. O preço ficou geral, até o dono confirmar (pergunta 15).'
     ]
   },
   {
@@ -68,10 +71,11 @@ export const LOTE2 = [
 </ol>` },
       { h2: 'Como a Dedicada lava guardanapos?', html: `${PROCESSO_MESA}
 <p>As toalhas de mesa passam pelo mesmo processo.</p>` },
-      { h2: 'Quanto tempo leva e quanto custa?', html: PRAZO_E_PRECO }
+      { h2: 'Por que os guardanapos levam 4 dias?', html: PRAZO_MESA }
     ],
     perguntas: [
       ['Por que o guardanapo vai primeiro a seco?', 'Para tirar a gordura de comidas. Depois, na água, é removido o restante das manchas.'],
+      ['Quanto tempo leva a lavagem dos guardanapos?', 'Na Dedicada, 4 dias: os guardanapos passam pela lavagem a seco, pela lavagem em água e pela goma, que seca ao natural. Na secadora, a goma desaparece.'],
       ['Os guardanapos voltam passados?', 'Sim. Recebem goma, secam ao natural e, quando secos, são passados à mão e embalados, prontos para uso ou para guardar.'],
       ['Posso usar água sanitária nos guardanapos brancos?', 'Não é o indicado: o cloro enfraquece a fibra. Nas peças brancas, prefira alvejante à base de oxigênio, se a etiqueta permitir.']
     ],
@@ -79,8 +83,8 @@ export const LOTE2 = [
     extras: [['/lavagem-de-toalhas-de-mesa-em-florianopolis/', 'Lavagem de toalhas de mesa']],
     mudou: [
       'Saíram "os melhores do mundo" e "uma equipe especializada que garante a higienização".',
-      '"Acabamento com goma, quando solicitado" virou o processo que o dono descreveu em 29/09: goma, secagem natural, passadoria à mão e embalagem.',
-      'Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas. O prazo e o preço ficaram gerais, até o dono confirmar (pergunta 15).'
+      '"Acabamento com goma, quando solicitado" virou o processo que o dono descreveu em 29/09: a seco, em água, goma, secagem natural sem secadora, passadoria à mão e embalagem, em 4 dias.',
+      'Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas. O preço ficou geral, até o dono confirmar (pergunta 15).'
     ]
   },
   {
@@ -109,17 +113,18 @@ export const LOTE2 = [
 <li>Não passe ferro antes de a mancha sair: o calor fixa a mancha.</li>
 <li>Ao entregar, conte o que caiu, quando e se já tentou tirar em casa.</li>
 </ol>` },
-      { h2: 'Quanto tempo leva e quanto custa?', html: PRAZO_E_PRECO }
+      { h2: 'Quanto tempo leva e quanto custa?', html: PRAZO_FARDAS }
     ],
     perguntas: [
       ['Farda com entretela pode ir na máquina?', 'Não é o indicado: água e calor soltam a cola da entretela e deixam bolhas no peito. Na Dedicada, a farda estilo alfaiataria vai para a lavagem a seco.'],
-      ['A farda volta passada?', 'Sim: depois de seca, é passada e entregue em cabide, pronta para uso.']
+      ['A farda volta passada?', 'Sim: depois de seca, é passada e entregue em cabide, pronta para uso.'],
+      ['Quanto tempo leva a lavagem da farda?', 'Na Dedicada, a farda fica pronta em 2 dias.']
     ],
     guias: ['alfaiataria'],
     mudou: [
       'Saíram "garantindo que a farda esteja sempre bem-apresentada" e "para garantir conforto e bem-estar".',
       'Saiu "limpeza profissional elimina ácaros e bactérias", que não foi confirmado.',
-      'Entrou o processo que o dono descreveu em 29/09: a seco com entretela, em água sem entretela, secagem, passadoria e entrega em cabide. Entraram também a fala aprovada do Jorge (guia de ternos) e o botão para o Diagnóstico de Manchas, já em fardas e uniformes. O prazo e o preço ficaram gerais, até o dono confirmar (pergunta 15).'
+      'Entraram o processo e o prazo que o dono descreveu em 29/09: a seco com entretela, em água sem entretela, secagem, passadoria e entrega em cabide, em 2 dias. Entraram também a fala aprovada do Jorge (guia de ternos) e o botão para o Diagnóstico de Manchas, já em fardas e uniformes. O preço ficou geral, até o dono confirmar (pergunta 15).'
     ]
   }
 ];

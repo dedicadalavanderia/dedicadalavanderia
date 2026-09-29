@@ -62,7 +62,7 @@ export const LOTE1 = [
       { h2: 'Por que a graxa é tão difícil de tirar?', html: `<p>Porque ela entra rápido nos poros do tecido, do couro e da borracha, e quanto mais tempo passa, mais difícil fica tirar. É uma mancha gordurosa: pede um tira-manchas próprio, diferente do usado para comida ou para vinho.</p>
 <p>Os guias da Dedicada recomendam estes prazos:</p>
 {{TABELA}}` },
-      { h2: 'Como a Dedicada tira a graxa?', html: `<p>A graxa é tratada antes da lavagem, com o tira-manchas da Seitz próprio das manchas gordurosas (V1, V2 ou V3). Depois, a peça segue o processo do tecido:</p>
+      { h2: 'Como a Dedicada tira a graxa?', html: `<p>A graxa é tratada antes da lavagem, com o tira-manchas da Seitz próprio das manchas gordurosas (V1, V2 ou V3). Os produtos da Seitz usados na Dedicada são dermatologicamente testados e hipoalergênicos. Depois, a peça segue o processo do tecido:</p>
 <ul>
 <li><strong>Jeans e sarja:</strong> lavagem em água fria, no wet cleaning, no programa da Seitz para peças coloridas, em que a água não passa de 30 °C; ou a seco, quando a peça permite.</li>
 <li><strong>Tênis:</strong> lavado à mão e seco ao natural. O tênis de couro, que não pode ir na água, é higienizado à mão.</li>
@@ -78,7 +78,7 @@ export const LOTE1 = [
     guias: ['jeans', 'tenis', 'couro', 'jaquetas'],
     mudou: [
       'Saíram "os melhores do mundo" e "garantindo".',
-      'Saiu "produtos dermatologicamente testados e antialérgicos", que os guias não confirmam.',
+      '"Produtos dermatologicamente testados e antialérgicos" virou o que o dono confirmou em 29/09: os produtos da Seitz usados na Dedicada são dermatologicamente testados e hipoalergênicos.',
       'Entraram a resposta curta, o passo a passo, a urgência no jeans, no tênis e no couro, o processo de cada peça, a fala aprovada do Alejandro e o botão para o Diagnóstico de Manchas, já na mancha de graxa.'
     ]
   },

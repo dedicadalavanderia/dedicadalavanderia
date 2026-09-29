@@ -29,8 +29,8 @@ Arquivos: `diagnostico-manchas.css` (snippet WPCode 3168) e `diagnostico-manchas
   - as três famílias da Seitz: gordurosas e sintéticas, orgânicas e proteicas, vegetais e de tanino;
   - outras manchas;
   - danos no tecido: queimado, encolheu, desbotou, bolinhas e cheiro ruim.
-- **6 peças sem guia próprio:** viscose e malha fria; poliéster e roupa de academia; roupa de bebê e infantil; toalhas de mesa e guardanapos; fardas e uniformes; outra peça ou tecido.
-  - Toalhas de mesa e fardas têm o processo que o dono confirmou em 29/09.
+- **6 peças sem guia próprio:** viscose e malha fria; poliéster e roupa de academia; roupa de bebê; toalhas de mesa e guardanapos; fardas e uniformes; outra peça ou tecido.
+  - Roupa de bebê, toalhas de mesa e fardas têm o processo que o dono confirmou em 29/09; toalhas e fardas, também o prazo.
   - As outras têm a nota do tecido, com fonte (ANEL ou guia), e o processo geral.
 - **Todas as combinações têm resultado:** são 23 peças × 44 manchas e danos, ou 1.012 combinações. Quando a mancha está na tabela do guia, vale o guia. Quando não está, a resposta vem da família da mancha.
 
@@ -77,12 +77,24 @@ Cada frase possível foi comparada com os guias. Detalhes em `auditoria-combinac
 - **Toalhas de mesa e guardanapos:**
   1. a seco primeiro, para tirar a gordura de comidas;
   2. em água, com a remoção do restante das manchas;
-  3. goma e secagem natural;
+  3. goma e secagem natural, sem secadora, porque na secadora a goma desaparece;
   4. passadoria à mão e embalagem.
+
+  Ficam prontos em **4 dias**.
 - **Fardas:**
   1. a seco, se forem estilo alfaiataria e tiverem entretela; em água, se não tiverem;
   2. secagem e passadoria;
   3. entrega em cabide, pronta para uso.
+
+  Ficam prontas em **2 dias**.
+- **Roupa de bebê:**
+  1. só em água, nunca a seco;
+  2. por unidade, em lote individual, separada das outras roupas;
+  3. secagem natural, sem secadora, e passadoria;
+  4. entrega dobrada e separada por tamanho, pronta para uso.
+
+  A peça passou a se chamar "Roupa de bebê": a roupa infantil, de criança maior, espera confirmação (pergunta 24).
+- **Produtos:** todos os produtos da Seitz usados na Dedicada são dermatologicamente testados e hipoalergênicos. A frase entrou na roupa de bebê e voltou ao post de graxa.
 
 ## 2. Página 3165
 
@@ -121,9 +133,9 @@ O PDF antigo, os "casos reais", as frases sobre mofo sem confirmação, "mais de
 
 ## 4. Blog
 
-Detalhes em `blog-revisado/MUDANCAS.md`. Os textos ficam em `blog-revisado/posts.mjs`, `posts-lote1.mjs` e `posts-lote2.mjs`, e o gerador é `ferramentas/montar-blog.mjs`.
+Detalhes em `blog-revisado/MUDANCAS.md`. Os textos ficam em `blog-revisado/posts.mjs`, `posts-lote1.mjs`, `posts-lote2.mjs` e `posts-lote3.mjs`, e o gerador é `ferramentas/montar-blog.mjs`.
 
-### Posts revisados (17)
+### Posts revisados (18)
 
 Cada post mantém o endereço e o assunto.
 
@@ -131,7 +143,8 @@ Cada post mantém o endereço e o assunto.
 |---|---|
 | Amostras | Vinho e xixi |
 | Lote 1 | Café, graxa, terra, ferrugem, remédio, comida, cheiro de mofo, amarelado e mofo, desbote, bolinhas, "minha roupa manchou" e rayon |
-| Lote 2 | Toalhas de mesa, guardanapos e fardas |
+| Lote 2 | Toalhas de mesa, guardanapos e fardas, com processo e prazo confirmados |
+| Lote 3 | Roupa de bebê: o que pode e o que evitar |
 
 Em todos, o formato é o mesmo:
 - a assinatura de um dos sócios;
@@ -150,7 +163,9 @@ Saíram:
 - "definitivo" e "elimina";
 - percentuais sem fonte;
 - receitas caseiras;
-- afirmações não confirmadas, como "dermatologicamente testados", "elimina ácaros e bactérias", "ácido peracético" nas toalhas e "remoção totalmente manual".
+- afirmações não confirmadas, como "elimina ácaros e bactérias", "ácido peracético" nas toalhas, "remoção totalmente manual" e "pode secar na máquina" na roupa de bebê.
+
+"Dermatologicamente testados" chegou a sair do post de graxa, mas voltou em 29/09, com a confirmação do dono: os produtos da Seitz são dermatologicamente testados e hipoalergênicos.
 
 Nas tags de alguns posts, é preciso tirar "melhor lavanderia do Brasil".
 
@@ -167,7 +182,7 @@ A lista completa está em `blog-revisado/MUDANCAS.md`.
 ### Situação dos outros posts
 
 - **Continuam como estão:** os 6 que já passavam nas regras. Eles aparecem em "Leia também" na ferramenta.
-- **Espera resposta:** "Lavagem de roupas de bebê: o que pode e o que evitar?" (pergunta 24).
+- **Todos os outros** foram revisados ou recebem redirecionamento.
 
 ## 5. Documentos e ferramentas de apoio
 
@@ -199,6 +214,8 @@ A lista completa está em `blog-revisado/MUDANCAS.md`.
 | 29/09 | O conteúdo antigo pode sair da página |
 | 29/09 | Shoyu, chocolate e os pares repetidos são redirecionados |
 | 29/09 | Processo de toalhas de mesa, guardanapos e fardas |
+| 29/09 | Prazos: toalhas e guardanapos em 4 dias, fardas em 2 dias |
+| 29/09 | Processo da roupa de bebê; produtos da Seitz dermatologicamente testados e hipoalergênicos |
 
 ## 7. O que ainda falta
 
@@ -206,11 +223,11 @@ A lista completa está em `blog-revisado/MUDANCAS.md`.
   - 2: falas no resultado;
   - 5: expresso em algumas peças;
   - 13: processo geral das peças sem guia;
-  - 15: prazo e preço de toalhas, guardanapos e fardas;
+  - 15: preço de toalhas, guardanapos e fardas, e expresso de toalhas e guardanapos;
   - 17: as 3 perguntas frequentes novas;
   - 20: qual V é de qual família;
   - 21: formato dos posts;
-  - 24: processo da roupa de bebê.
+  - 24: prazo e preço da roupa de bebê, e se a roupa infantil segue o mesmo processo.
 - **Instalação da ferramenta**, pelo painel do WordPress, com autorização (`LEIA-ME.md`):
   1. cópia do que está no ar;
   2. envio das 23 miniaturas;
@@ -236,4 +253,5 @@ A lista completa está em `blog-revisado/MUDANCAS.md`.
 | 7f9eb1f | 29/09 | Script de publicação pela API e nota sobre o login |
 | 300e9b4 | 29/09 | Respostas do dono: foto, Analytics, o que não lava e conteúdo antigo |
 | 9a76e3a | 29/09 | Blog: lote 1 (12 posts) |
-| (este) | 29/09 | Fardas e uniformes, processo das toalhas de mesa, blog lote 2, redirecionamentos e este registro |
+| 848f751 | 29/09 | Fardas e uniformes, processo das toalhas de mesa, blog lote 2, redirecionamentos e este registro |
+| (este) | 29/09 | Prazos de toalhas, guardanapos e fardas; processo da roupa de bebê; post de bebê |
