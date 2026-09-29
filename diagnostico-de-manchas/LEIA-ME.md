@@ -169,6 +169,14 @@ A cobertura foi medida com 1.308 buscas reais do autocompletar do Google. Dessas
    2. confira o JSON-LD no teste de pesquisa aprimorada do Google;
    3. acompanhe o relatório de IA generativa do Search Console.
 
+### Instalação pela API (opcional)
+
+`ferramentas/publicar-wp.mjs` envia as miniaturas e troca o conteúdo da página 3165 pela API do WordPress. Antes de trocar, ele guarda uma cópia da página em `backups/`, e sem `--publicar` só mostra o que faria. Ele precisa de uma senha de aplicativo nas variáveis de ambiente `WP_USUARIO` e `WP_SENHA_APP`.
+
+**Em 29/09/2026, o site ignorava senhas de aplicativo:** até um usuário inexistente recebia "você não está logado", sinal de que o cabeçalho de login não chega ao WordPress. A causa provável é a hospedagem (HostGator) ou o plugin Really Simple Security. Enquanto isso não for resolvido, a instalação é feita pelo painel, no navegador. Os snippets WPCode 3168 e 3164 só podem ser trocados pelo painel de qualquer jeito.
+
+O site tem o plugin Redirection, que faz os redirecionamentos 301 dos posts sobre urina (`blog-revisado/LEIA-ME.md`).
+
 ## Próxima fase sugerida: o blog
 
 As buscas mais comuns são por mancha ("como tirar mancha de sangue da roupa"), e o blog já tem posts para quase todas. Mas 25 dos 31 posts conferidos trazem "os melhores do mundo", "garantia", "definitivo", percentuais ou receitas caseiras (`auditoria-blog.md`).
