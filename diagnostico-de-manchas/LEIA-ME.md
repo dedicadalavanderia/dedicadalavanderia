@@ -24,6 +24,7 @@ Refeito em 28/09/2026 numa sessão na nuvem com acesso ao site.
 | `auditoria-banco-antigo.md` | O banco antigo (516 situações) e tudo o que ele trazia contra as regras |
 | `auditoria-combinacoes.md` | A revisão de todas as combinações de peça e mancha contra os guias: o que foi corrigido e o que ficou |
 | `auditoria-blog.md` | Os 31 posts do blog sobre manchas e tecidos: 6 ligados na ferramenta e 25 para revisar |
+| `REGISTRO-DE-MUDANCAS.md` | Tudo o que foi mudado na ferramenta, na página, nas imagens e no blog, as decisões do dono e o que falta |
 | `perguntas-para-o-dono.md` | O que precisa de resposta antes de publicar |
 | `referencias/` | O que foi baixado: página atual, banco antigo, guias em texto, posts do blog, buscas do Google e páginas de referência |
 | `capturas/` | Telas geradas pelo teste |
@@ -49,9 +50,9 @@ Refeito em 28/09/2026 numa sessão na nuvem com acesso ao site.
   - abre a primeira sugestão com Enter.
 - **Palavras que não dizem o tecido** ("blusa", "vestido", "calça", "saia", "casaco", "toalha"...) mostram as peças possíveis. Por exemplo, "blusa" com vinho oferece algodão, seda, linho, viscose, poliéster e lã, cada uma com a urgência dela.
 - **A cor da peça** ("camisa branca") já vem marcada no resultado e vai na mensagem do WhatsApp.
-- **22 cartões com foto:**
+- **23 cartões com foto:**
   - os 17 guias, com as fotos dos cards da página central;
-  - 5 peças sem guia próprio: viscose e malha fria; poliéster e roupa de academia; roupa de bebê e infantil; toalhas de mesa e guardanapos; outra peça ou tecido. As fotos foram recortadas das imagens dos posts do blog da Dedicada, só a parte da foto, sem texto nem logo.
+  - 6 peças sem guia próprio: viscose e malha fria; poliéster e roupa de academia; roupa de bebê e infantil; toalhas de mesa e guardanapos; fardas e uniformes; outra peça ou tecido. Toalhas de mesa e fardas têm o processo que o dono confirmou em 29/09. As fotos foram recortadas das imagens dos posts do blog da Dedicada, só a parte da foto, sem texto nem logo.
 
 ### Passo 2: o problema
 
@@ -93,7 +94,7 @@ Refeito em 28/09/2026 numa sessão na nuvem com acesso ao site.
 
 ### Todas as combinações têm resposta
 
-As 22 peças × 44 manchas e danos dão 968 combinações, e todas têm resultado. Quando a mancha está na tabela do guia, o resultado é o do guia. Quando não está, ele é montado pela família da mancha, com o que o guia da peça manda evitar.
+As 23 peças × 44 manchas e danos dão 1.012 combinações, e todas têm resultado. Quando a mancha está na tabela do guia, o resultado é o do guia. Quando não está, ele é montado pela família da mancha, com o que o guia da peça manda evitar.
 
 ### Página
 
@@ -128,7 +129,7 @@ Resposta do dono em 29/09: bolsas, camurça, sofás e estofados, colchões e tap
   - `leia`: o post do blog.
 - **`PECAS`:**
   - Nas 17 peças com guia, os fatos vêm do guia e há a tabela `problemas`.
-  - Nas 5 peças sem guia (`semGuia: true`), vão só a `nota` do tecido, com fonte, e o processo geral. Qualquer mancha é tratada pela família dela.
+  - Nas 6 peças sem guia (`semGuia: true`), vão só a `nota` do tecido, com fonte, e o processo (o geral, ou o que o dono confirmou, em toalhas de mesa e fardas). Qualquer mancha é tratada pela família dela.
 - **`problemas`:** uma linha da tabela do guia cada.
   - `urgencia` e `acontece` são as colunas do guia, sem mudar nada.
   - `manchas` liga a busca e as famílias ao problema certo. Por exemplo, "encolheu" na lã leva à feltragem.
@@ -149,8 +150,8 @@ O teste faz estas checagens:
 - confere o banco (peças, manchas, famílias e blog) e procura termos proibidos, percentuais sem fonte e processos retirados;
 - verifica se há um só H1, os 17 guias na tabela, a seção "Mancha por mancha", os números da introdução e o JSON-LD (só ASCII e perguntas iguais às visíveis);
 - percorre **os 109 problemas** clicando, a 375 px e sem rolagem horizontal;
-- clica em 7 manchas e danos, além de "Não sei o que é", nas 22 peças, num total de 176 resultados;
-- abre **as 968 combinações peça × mancha** e confere o resultado e o texto de cada uma;
+- clica em 7 manchas e danos, além de "Não sei o que é", nas 23 peças, num total de 184 resultados;
+- abre **as 1.012 combinações peça × mancha** e confere o resultado e o texto de cada uma;
 - testa a busca, com 14 frases, e ainda o Enter, a cor da peça, o dano em peça sem guia, o "Leia também", as perguntas do WhatsApp, as âncoras, o link direto e o teclado.
 
 Resultado em 28/09: **0 erros, 0 avisos**.
@@ -160,7 +161,7 @@ A cobertura foi medida com 1.308 buscas reais do autocompletar do Google. Dessas
 ## O que falta para instalar
 
 1. **Respostas do dono** (`perguntas-para-o-dono.md`).
-2. **Miniaturas dos cartões.** Suba os 22 arquivos `prototipo-img/dm-*.webp` na biblioteca de mídia. O JS procura as fotos em `/wp-content/uploads/2026/09/`. O WordPress guarda cada arquivo na pasta do mês em que ele foi enviado: enviados a partir de outubro, eles vão para `2026/10/`, e aí é preciso trocar `FOTOS` no topo do JS para essa pasta. Antes de trocar os snippets, abra uma das fotos pelo endereço, para confirmar. Se as fotos não carregarem, os cartões ficam só com o texto, sem quebrar. As fotos de quem assina (Liliane, Jorge e Alejandro) já estão no site, em `2026/09/`.
+2. **Miniaturas dos cartões.** Suba os 23 arquivos `prototipo-img/dm-*.webp` na biblioteca de mídia. O JS procura as fotos em `/wp-content/uploads/2026/09/`. O WordPress guarda cada arquivo na pasta do mês em que ele foi enviado: enviados a partir de outubro, eles vão para `2026/10/`, e aí é preciso trocar `FOTOS` no topo do JS para essa pasta. Antes de trocar os snippets, abra uma das fotos pelo endereço, para confirmar. Se as fotos não carregarem, os cartões ficam só com o texto, sem quebrar. As fotos de quem assina (Liliane, Jorge e Alejandro) já estão no site, em `2026/09/`.
 3. **Instalação, com autorização:**
    1. guarde o conteúdo atual dos snippets 3168 e 3164 e da página 3165;
    2. troque os snippets pelo CSS e pelo JS;

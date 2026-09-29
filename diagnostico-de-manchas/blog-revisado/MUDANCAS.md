@@ -130,7 +130,7 @@ Gerado por `node ferramentas/montar-blog.mjs`. Não edite à mão: mude `blog-re
 
 - Saíram "os melhores produtos do mundo", "O melhor de tudo" e "garantindo limpeza profunda". Nas tags do post, tire "melhor lavanderia do Brasil".
 - "As soluções caseiras acabam quase sempre ... imprimir a mancha permanentemente" virou o que os guias dizem: produto caseiro pode fixar a mancha ou tirar a cor.
-- Entraram as famílias de manchas da refeição, a urgência no veludo, no vestido e no carrinho, a fala aprovada da Liliane e o botão para o Diagnóstico de Manchas, já na mancha de comida. O post passa a responder também chocolate e shoyu (pergunta 22).
+- Entraram as famílias de manchas da refeição, a urgência no veludo, no vestido e no carrinho, a fala aprovada da Liliane e o botão para o Diagnóstico de Manchas, já na mancha de comida. O post passa a responder também chocolate e shoyu, cujos posts serão redirecionados para ele (pergunta 22).
 
 ## Cheiro de mofo na roupa: de onde vem e como tirar?
 
@@ -226,3 +226,66 @@ Gerado por `node ferramentas/montar-blog.mjs`. Não edite à mão: mude `blog-re
 - Saiu "garantindo que suas roupas fiquem limpas, macias e com o caimento perfeito".
 - Saiu "passar em baixa temperatura, sempre do avesso", que os guias não confirmam.
 - Entraram a nota da ANEL sobre a viscose molhada, como lavar em casa, como a Dedicada lava conforme a etiqueta e o botão para o Diagnóstico de Manchas, já em viscose e malha fria.
+
+## Toalha de mesa manchada: como a Dedicada lava em Florianópolis?
+
+- **Endereço (não muda):** https://dedicadalavanderia.com.br/lavagem-de-toalhas-de-mesa-em-florianopolis/
+- **Título atual:** Lavagem de Toalhas de Mesa em Florianópolis
+- **Título novo do post:** Toalha de mesa manchada: como a Dedicada lava em Florianópolis?
+- **Título para o Google (plugin de SEO):** Lavagem de Toalhas de Mesa em Florianópolis
+- **Descrição para o Google:** Toalha de mesa com vinho, molho ou gordura? Na Dedicada, ela vai primeiro a seco, para tirar a gordura, e depois para a água. Volta com goma, passada.
+- **Assina:** Jorge Isaac Mazza, sócio fundador
+- **Conteúdo:** `blog-revisado/wordpress/lavagem-de-toalhas-de-mesa-em-florianopolis.html`
+
+**O que mudou:**
+
+- Saíram "os melhores produtos para lavanderia do mundo" e "isto remove todas as manchas gordurosas".
+- O processo ficou como o dono descreveu em 29/09: a seco primeiro, depois em água, goma, secagem natural, passadoria à mão e embalagem.
+- Saíram o alvejamento com ácido peracético e altas temperaturas e as opções de goma forte ou meia goma, que não foram confirmados.
+- Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas, já em toalhas de mesa. O prazo e o preço ficaram gerais, até o dono confirmar (pergunta 15).
+
+## Guardanapos de tecido manchados: como a Dedicada lava?
+
+- **Endereço (não muda):** https://dedicadalavanderia.com.br/lavagem-de-guardanapos/
+- **Título atual:** Lavagem de Guardanapos
+- **Título novo do post:** Guardanapos de tecido manchados: como a Dedicada lava?
+- **Título para o Google (plugin de SEO):** Lavagem de Guardanapos de Tecido em Florianópolis
+- **Descrição para o Google:** Guardanapos de tecido com gordura, vinho ou molho? Na Dedicada, vão primeiro a seco e depois para a água, recebem goma e voltam passados, prontos para usar.
+- **Assina:** Alejandro David Mazza, sócio administrador
+- **Conteúdo:** `blog-revisado/wordpress/lavagem-de-guardanapos.html`
+
+**O que mudou:**
+
+- Saíram "os melhores do mundo" e "uma equipe especializada que garante a higienização".
+- "Acabamento com goma, quando solicitado" virou o processo que o dono descreveu em 29/09: goma, secagem natural, passadoria à mão e embalagem.
+- Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas. O prazo e o preço ficaram gerais, até o dono confirmar (pergunta 15).
+
+## Como a Dedicada lava fardas e uniformes de trabalho?
+
+- **Endereço (não muda):** https://dedicadalavanderia.com.br/lavagem-de-fardas-higiene-e-imagem-em-cada-detalhe/
+- **Título atual:** Lavagem de Fardas: Higiene e Imagem em Cada Detalhe
+- **Título novo do post:** Como a Dedicada lava fardas e uniformes de trabalho?
+- **Título para o Google (plugin de SEO):** Lavagem de Fardas e Uniformes em Florianópolis
+- **Descrição para o Google:** Fardas com entretela vão para a lavagem a seco; as sem entretela, para a água. Depois, são secas, passadas e entregues em cabide, prontas para uso.
+- **Assina:** Jorge Isaac Mazza, sócio fundador
+- **Conteúdo:** `blog-revisado/wordpress/lavagem-de-fardas-higiene-e-imagem-em-cada-detalhe.html`
+
+**O que mudou:**
+
+- Saíram "garantindo que a farda esteja sempre bem-apresentada" e "para garantir conforto e bem-estar".
+- Saiu "limpeza profissional elimina ácaros e bactérias", que não foi confirmado.
+- Entrou o processo que o dono descreveu em 29/09: a seco com entretela, em água sem entretela, secagem, passadoria e entrega em cabide. Entraram também a fala aprovada do Jorge (guia de ternos) e o botão para o Diagnóstico de Manchas, já em fardas e uniformes. O prazo e o preço ficaram gerais, até o dono confirmar (pergunta 15).
+
+## Redirecionamentos (301)
+
+Posts que saem do ar e passam a levar para outro. Fazer no plugin Redirection, depois de publicar o post de destino revisado.
+
+| De | Para | Por quê |
+|---|---|---|
+| /como-remover-cheiro-de-urina-da-roupa-pets-e-criancas/ | /como-lavar-roupa-com-xixi/ | Mesmo assunto: urina (pergunta 19) |
+| /lavagem-de-roupas-com-urina-em-florianopolis/ | /como-lavar-roupa-com-xixi/ | Mesmo assunto: urina (pergunta 19) |
+| /como-remover-manchas-de-shoyu-das-roupas/ | /retirada-de-manchas-de-comida-molhos-bebidas-e-sucos/ | O post de comida responde shoyu (pergunta 22) |
+| /removemos-manchas-de-chocolate-das-suas-roupas-favoritas/ | /retirada-de-manchas-de-comida-molhos-bebidas-e-sucos/ | O post de comida responde chocolate (pergunta 22) |
+| /como-remover-manchas-de-gordura-das-roupas-de-forma-segura/ | /como-remover-manchas-de-gordura-das-roupas-descubra-a-solucao-definitiva/ | Par repetido: gordura (pergunta 23) |
+| /lavagem-de-roupas-com-manchas-de-maquiagem/ | /remocao-de-manchas-de-maquiagem/ | Par repetido: maquiagem (pergunta 23) |
+| /como-lavar-roupas-de-recem-nascido-guia-para-pais-e-maes/ | /lavagem-de-roupas-de-bebe-o-que-pode-e-o-que-evitar/ | Par repetido: roupa de bebê (pergunta 23) |

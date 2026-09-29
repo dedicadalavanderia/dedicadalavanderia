@@ -18,6 +18,19 @@
 //   guias                   ids das peças cujos guias entram em "Leia também"
 //   mudou                   o que mudou em relação ao post no ar
 import { LOTE1 } from './posts-lote1.mjs';
+import { LOTE2 } from './posts-lote2.mjs';
+
+// Posts que saem do ar e passam a levar para outro (redirecionamento 301), aprovados pelo dono:
+// [de, para, por quê]. O gerador põe a lista em MUDANCAS.md.
+export const REDIRECIONAR = [
+  ['/como-remover-cheiro-de-urina-da-roupa-pets-e-criancas/', '/como-lavar-roupa-com-xixi/', 'Mesmo assunto: urina (pergunta 19)'],
+  ['/lavagem-de-roupas-com-urina-em-florianopolis/', '/como-lavar-roupa-com-xixi/', 'Mesmo assunto: urina (pergunta 19)'],
+  ['/como-remover-manchas-de-shoyu-das-roupas/', '/retirada-de-manchas-de-comida-molhos-bebidas-e-sucos/', 'O post de comida responde shoyu (pergunta 22)'],
+  ['/removemos-manchas-de-chocolate-das-suas-roupas-favoritas/', '/retirada-de-manchas-de-comida-molhos-bebidas-e-sucos/', 'O post de comida responde chocolate (pergunta 22)'],
+  ['/como-remover-manchas-de-gordura-das-roupas-de-forma-segura/', '/como-remover-manchas-de-gordura-das-roupas-descubra-a-solucao-definitiva/', 'Par repetido: gordura (pergunta 23)'],
+  ['/lavagem-de-roupas-com-manchas-de-maquiagem/', '/remocao-de-manchas-de-maquiagem/', 'Par repetido: maquiagem (pergunta 23)'],
+  ['/como-lavar-roupas-de-recem-nascido-guia-para-pais-e-maes/', '/lavagem-de-roupas-de-bebe-o-que-pode-e-o-que-evitar/', 'Par repetido: roupa de bebê (pergunta 23)']
+];
 
 export const POSTS = [
   {
@@ -115,5 +128,6 @@ export const POSTS = [
       'Entraram a resposta curta, o passo a passo, a urgência de cada peça, a fala aprovada do Alejandro, perguntas frequentes com dados estruturados e o botão para o Diagnóstico de Manchas, já na mancha de xixi.'
     ]
   },
-  ...LOTE1
+  ...LOTE1,
+  ...LOTE2
 ];

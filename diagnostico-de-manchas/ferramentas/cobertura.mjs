@@ -20,7 +20,9 @@ const ler = (f) => {
 const todas = [...new Set([...ler('autocompletar_manchas.json'), ...ler('autocompletar_tecidos.json')])];
 const FORA = /rosto|pele|corpo|espinha|acne|parede|piso|porcelanato|vidro|inox|dente|m[aã]o\b|dedos|olho|olheira|carro|madeira|m[oó]vel|azulejo|rejunte|fog[aã]o|panela|vaso|teto|gesso|dengue|sarampo|catapora|c[aâ]ncer|diabetes|alergia|estresse|ansiedade|hansen|herpes|nascen|melasma|perna|costas|virilha|foliculite|hematoma|cicatriz|queimadura|lente|celular|tela|espelho|m[aá]rmore|granito|cal[cç]ada|telhado|piscina|bitot|koplik|fluorose|forchheimer|gumprecht|infiltra|umidade|geladeira|\bpia\b|box|banheir|carpete|tapete|estofado|colch[aã]o|alum[ií]nio|foto|imagem|livro|lou[cç]a|laminado|lajota|quartzo|[oó]culos|quadro|dermatite|micose|urtic[aá]ria|vitiligo|lupus|leucemia|meningite|rub[eé]ola|insulina|picada|inunda[cç][aã]o|oceano|j[uú]piter|on[cç]a|vaca|rorschach|plasma|janela|instrumenta|hiperpigmenta|lavanderia/i;
 const roupa = todas.filter((q) => !FORA.test(q));
-const faltas = roupa.filter((q) => !D.buscar(q + ' ').length);
+// Conta como resposta a sugestão e o aviso de que a Dedicada não lava a peça (bolsa, camurça...).
+const avisos = roupa.filter((q) => !D.buscar(q + ' ').length && D.analisar(q + ' ').naoLava);
+const faltas = roupa.filter((q) => !D.buscar(q + ' ').length && !D.analisar(q + ' ').naoLava);
 const pct = Math.round((100 * (roupa.length - faltas.length)) / roupa.length);
-console.log(`${todas.length} buscas únicas; ${roupa.length} sobre roupa e tecido; ${roupa.length - faltas.length} com sugestão (${pct}%).`);
+console.log(`${todas.length} buscas únicas; ${roupa.length} sobre roupa e tecido; ${roupa.length - faltas.length} com resposta (${pct}%), das quais ${avisos.length} com o aviso de que a Dedicada não lava a peça.`);
 if (process.argv.includes('--faltas')) faltas.forEach((q) => console.log('  - ' + q));

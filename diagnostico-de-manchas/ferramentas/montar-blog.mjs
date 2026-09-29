@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import vm from 'node:vm';
 import { checarTexto } from './regras.mjs';
-import { POSTS } from '../blog-revisado/posts.mjs';
+import { POSTS, REDIRECIONAR } from '../blog-revisado/posts.mjs';
 
 const pasta = join(dirname(fileURLToPath(import.meta.url)), '..');
 const saida = join(pasta, 'blog-revisado');
@@ -63,6 +63,7 @@ function corpo(post, fotoLocal) {
   const foto = fotoLocal ? `prototipo-img/${post.assina}.webp` : pessoa.foto;
   const msg = encodeURIComponent(`Olá! Vim do post sobre ${post.assunto} no blog. Posso mandar uma foto da peça?`);
   const leia = post.guias.map((id) => `<a href="${esc(peca(id).guia)}">Guia de ${esc(peca(id).nome.toLowerCase())}</a>`)
+    .concat((post.extras || []).map(([url, texto]) => `<a href="${SITE}${esc(url)}">${esc(texto)}</a>`))
     .concat(`<a href="${SITE}/diagnostico-de-manchas/">Diagnóstico de Manchas</a>`).join(' · ');
   const partes = [
     `<p style="display:flex;align-items:center;gap:12px;font-size:14px"><img src="${esc(foto)}" alt="${esc(pessoa.nome)}" width="48" height="48" style="border-radius:50%;flex:0 0 48px;object-fit:cover"><span>Revisado por <strong>${esc(pessoa.nome)}</strong>, ${esc(pessoa.papel)} da Dedicada Lavanderia · Atualizado em setembro de 2026</span></p>`,
@@ -93,6 +94,7 @@ for (const post of POSTS) {
   if (alvo.startsWith('m-') ? !D.MANCHAS.some((m) => 'm-' + m.id === alvo) : alvo && !peca(alvo)) erros.push(`${post.slug}: o botão leva a #${alvo}, que não existe na ferramenta`);
   if (!post.assunto) erros.push(`${post.slug}: falta o assunto (usado na mensagem do WhatsApp)`);
   post.guias.forEach((id) => { if (!peca(id) || peca(id).semGuia) erros.push(`${post.slug}: guia ${id} não existe`); });
+  (post.extras || []).forEach(([url]) => { if (REDIRECIONAR.some(([de]) => de === url)) erros.push(`${post.slug}: o link ${url} vai ser redirecionado; use o endereço de destino`); });
   const palavras = post.resposta.split(/\s+/).length;
   if (palavras < 30 || palavras > 70) avisos.push(`${post.slug}: resposta curta com ${palavras} palavras (o ideal é de 40 a 60)`);
   if (post.seoTitulo.length > 60) avisos.push(`${post.slug}: título de SEO com ${post.seoTitulo.length} caracteres (máximo 60)`);
@@ -118,6 +120,14 @@ for (const post of POSTS) {
     `- **Conteúdo:** \`blog-revisado/wordpress/${post.slug}.html\``, '',
     '**O que mudou:**', '', ...post.mudou.map((m) => `- ${m}`), '');
 }
+md.push('## Redirecionamentos (301)', '',
+  'Posts que saem do ar e passam a levar para outro. Fazer no plugin Redirection, depois de publicar o post de destino revisado.', '',
+  '| De | Para | Por quê |', '|---|---|---|',
+  ...REDIRECIONAR.map(([de, para, porque]) => `| ${de} | ${para} | ${porque} |`), '');
+REDIRECIONAR.forEach(([de, para]) => {
+  if (POSTS.some((p) => '/' + p.slug + '/' === de)) erros.push(`Redirecionamento: ${de} é um post revisado; não pode sair do ar`);
+  if (REDIRECIONAR.some(([de2]) => de2 === para)) erros.push(`Redirecionamento: ${para} também é redirecionado (cadeia)`);
+});
 writeFileSync(join(saida, 'MUDANCAS.md'), md.join('\n'));
 
 // Prévia: os posts como vão ficar, com o que mudou em cada um.

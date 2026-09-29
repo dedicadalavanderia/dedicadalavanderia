@@ -1371,15 +1371,41 @@
       expresso: 'consultar',
       problemas: []
     },
+    // Toalhas de mesa e guardanapos: processo confirmado pelo dono em 29/09/2026 (prazo e preço, não).
     {
       id: 'mesa', grupo: 'outras', nome: 'Toalhas de mesa e guardanapos', exemplos: 'Toalhas de mesa, guardanapos e caminhos de mesa',
       sinonimos: ['toalha de mesa', 'guardanapo', 'guardanapo de pano', 'jogo americano', 'caminho de mesa', 'pano de prato', 'jacquard', 'toalha de natal', 'mesa posta'],
       semGuia: true, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
-      nota: null,
+      nota: 'Na Dedicada, toalhas de mesa e guardanapos vão primeiro para a lavagem a seco, que tira a gordura de comidas, e depois para a água, onde sai o restante das manchas.',
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
       maquinaNao: false,
       caseiro: [F.umida],
-      processo: PROCESSO_GERAL,
+      processo: [
+        'Lavagem a seco primeiro, para tirar a gordura de comidas.',
+        'Lavagem em água, com a remoção do restante das manchas.',
+        'Goma e secagem natural.',
+        'Passadoria à mão e embalagem: toalhas e guardanapos saem prontos para uso ou para guardar.'
+      ],
+      prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
+      preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
+      expresso: 'consultar',
+      problemas: []
+    },
+    // Fardas e uniformes: processo confirmado pelo dono em 29/09/2026 (prazo e preço, não).
+    {
+      id: 'fardas', grupo: 'outras', nome: 'Fardas e uniformes', exemplos: 'Fardas e uniformes de trabalho',
+      sinonimos: ['farda', 'fardamento', 'uniforme', 'uniforme de trabalho', 'uniforme escolar', 'uniforme de empresa', 'jaleco', 'dolma'],
+      semGuia: true, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
+      nota: 'Na Dedicada, a farda estilo alfaiataria, com entretela, vai para a lavagem a seco; a que não tem entretela vai para a água. Depois, é seca, passada e entregue em cabide, pronta para uso.',
+      maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
+      maquinaNao: false,
+      caseiro: ['Encharcar a farda com entretela: a água pode soltar a cola da entretela.'],
+      processo: [
+        'Lavagem a seco, quando a farda é estilo alfaiataria e tem entretela; em água, quando não tem.',
+        'Manchas tratadas antes da lavagem, com o tira-manchas da Seitz próprio da família de cada uma (V1, V2 ou V3).',
+        'Secagem e passadoria.',
+        'Entrega em cabide, pronta para uso.'
+      ],
       prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
       preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
       expresso: 'consultar',
@@ -1387,7 +1413,7 @@
     },
     {
       id: 'outra', grupo: 'outras', nome: 'Outra peça ou tecido', exemplos: 'Mochila, boné, tapete pequeno e outras peças: a equipe avalia pela foto',
-      sinonimos: ['outro tecido', 'uniforme', 'jaleco', 'farda', 'nobuck', 'acrilico', 'kimono', 'quimono', 'tapete', 'tapete pequeno', 'tapetinho', 'tapete de banheiro', 'mochila', 'bone'],
+      sinonimos: ['outro tecido', 'nobuck', 'acrilico', 'kimono', 'quimono', 'tapete', 'tapete pequeno', 'tapetinho', 'tapete de banheiro', 'mochila', 'bone'],
       semGuia: true, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
       nota: 'A Dedicada lava mochilas, bonés e tapetes pequenos, que ainda não têm guia próprio. Não lava bolsas, camurça, sofás, colchões nem tapetes médios e grandes. Mande uma foto da peça e da etiqueta pelo WhatsApp: a equipe avalia pela foto e diz como lavar.',
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',

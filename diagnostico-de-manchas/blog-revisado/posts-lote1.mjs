@@ -232,7 +232,7 @@ export const LOTE1 = [
     mudou: [
       'Saíram "os melhores produtos do mundo", "O melhor de tudo" e "garantindo limpeza profunda". Nas tags do post, tire "melhor lavanderia do Brasil".',
       '"As soluções caseiras acabam quase sempre ... imprimir a mancha permanentemente" virou o que os guias dizem: produto caseiro pode fixar a mancha ou tirar a cor.',
-      'Entraram as famílias de manchas da refeição, a urgência no veludo, no vestido e no carrinho, a fala aprovada da Liliane e o botão para o Diagnóstico de Manchas, já na mancha de comida. O post passa a responder também chocolate e shoyu (pergunta 22).'
+      'Entraram as famílias de manchas da refeição, a urgência no veludo, no vestido e no carrinho, a fala aprovada da Liliane e o botão para o Diagnóstico de Manchas, já na mancha de comida. O post passa a responder também chocolate e shoyu, cujos posts serão redirecionados para ele (pergunta 22).'
     ]
   },
   {

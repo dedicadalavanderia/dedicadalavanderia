@@ -54,12 +54,12 @@ O conteúdo tem um bloco de dados estruturados (`<script type="application/ld+js
 |---|---|
 | Vinho e xixi (amostras) | Prontos |
 | Lote 1, 12 posts: café, graxa, terra, ferrugem, remédio, comida, cheiro de mofo, amarelado e mofo, desbote, bolinhas, "minha roupa manchou" e rayon | Prontos (29/09) |
-| 2 posts sobre urina | Redirecionar para "Como lavar roupa com xixi" (não precisam de revisão) |
-| Shoyu e chocolate | Proposta: redirecionar para o post de comida (pergunta 22) |
-| Gordura, maquiagem e bebê (um de cada par) | Proposta: redirecionar para o outro post do par (pergunta 23) |
-| Toalhas de mesa, guardanapos, fardas e roupa de bebê | Esperam os fatos do dono (pergunta 24) |
+| Lote 2, 3 posts: toalhas de mesa, guardanapos e fardas | Prontos (29/09), com o processo que o dono confirmou; prazo e preço ainda gerais (pergunta 15) |
+| 7 posts repetidos (urina, shoyu, chocolate e um de cada par de gordura, maquiagem e roupa de bebê) | Redirecionar: a lista está em `MUDANCAS.md` |
+| "Lavagem de roupas de bebê: o que pode e o que evitar?" | Espera o processo, o prazo e o preço da roupa de bebê (pergunta 24) |
+| Os 6 posts que já passavam nas regras | Continuam como estão; 2 deles recebem redirecionamentos (gordura e maquiagem) |
 
-## Três posts sobre o mesmo assunto
+## Posts sobre o mesmo assunto
 
 Três posts tratam de urina e competem entre si no Google:
 
