@@ -156,7 +156,7 @@ A cobertura foi medida com 1.308 buscas reais do autocompletar do Google. Dessas
 ## O que falta para instalar
 
 1. **Respostas do dono** (`perguntas-para-o-dono.md`).
-2. **Miniaturas dos cartões.** Suba os 22 arquivos `prototipo-img/dm-*.webp` na biblioteca de mídia e ajuste `FOTOS` no topo do JS para a pasta onde ficarem. Se as fotos não carregarem, os cartões ficam só com o texto, sem quebrar.
+2. **Miniaturas dos cartões.** Suba os 22 arquivos `prototipo-img/dm-*.webp` na biblioteca de mídia. O JS procura as fotos em `/wp-content/uploads/2026/09/`. O WordPress guarda cada arquivo na pasta do mês em que ele foi enviado: enviados a partir de outubro, eles vão para `2026/10/`, e aí é preciso trocar `FOTOS` no topo do JS para essa pasta. Antes de trocar os snippets, abra uma das fotos pelo endereço, para confirmar. Se as fotos não carregarem, os cartões ficam só com o texto, sem quebrar. As fotos de quem assina (Liliane, Jorge e Alejandro) já estão no site, em `2026/09/`.
 3. **Instalação, com autorização:**
    1. guarde o conteúdo atual dos snippets 3168 e 3164 e da página 3165;
    2. troque os snippets pelo CSS e pelo JS;
