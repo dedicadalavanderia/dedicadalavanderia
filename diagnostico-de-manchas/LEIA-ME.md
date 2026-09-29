@@ -52,7 +52,7 @@ Refeito em 28/09/2026 numa sessão na nuvem com acesso ao site.
 - **A cor da peça** ("camisa branca") já vem marcada no resultado e vai na mensagem do WhatsApp.
 - **23 cartões com foto:**
   - os 17 guias, com as fotos dos cards da página central;
-  - 6 peças sem guia próprio: viscose e malha fria; poliéster e roupa de academia; roupa de bebê; toalhas de mesa e guardanapos; fardas e uniformes; outra peça ou tecido. Roupa de bebê, toalhas de mesa e fardas têm o processo que o dono confirmou em 29/09, e toalhas e fardas, também o prazo. As fotos foram recortadas das imagens dos posts do blog da Dedicada, só a parte da foto, sem texto nem logo.
+  - 6 peças sem guia próprio: viscose e malha fria; poliéster e roupa de academia; roupa de bebê e infantil; toalhas de mesa e guardanapos; fardas e uniformes; outra peça ou tecido. Roupa de bebê e infantil, toalhas de mesa e fardas têm o processo, o prazo e o preço que o dono confirmou em 29/09. As fotos foram recortadas das imagens dos posts do blog da Dedicada, só a parte da foto, sem texto nem logo.
 
 ### Passo 2: o problema
 

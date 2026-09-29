@@ -38,7 +38,7 @@ Gerado por `node ferramentas/montar-blog.mjs`. Não edite à mão: mude `blog-re
 - "Wet cleaning" para tudo virou o processo de cada peça, com prazo e preço dos guias.
 - "Coleta e entrega em Florianópolis" virou a coleta confirmada: 26 bairros da Ilha e do Continente, em dias fixos.
 - Entraram a resposta curta, o passo a passo, a urgência de cada peça, a fala aprovada do Alejandro, perguntas frequentes com dados estruturados e o botão para o Diagnóstico de Manchas, já na mancha de xixi.
-- Entrou o processo da roupa de bebê que o dono confirmou em 29/09: só em água, em lote individual, com produtos da Seitz dermatologicamente testados e hipoalergênicos, e secagem natural.
+- Entraram o processo, o prazo e o preço da roupa de bebê e infantil que o dono confirmou em 29/09: só em água, em lote individual, com produtos da Seitz dermatologicamente testados e hipoalergênicos, secagem natural, 4 dias, a partir de R$ 15,00.
 
 ## Mancha de café na roupa: o que fazer e como a lavanderia tira?
 
@@ -243,7 +243,8 @@ Gerado por `node ferramentas/montar-blog.mjs`. Não edite à mão: mude `blog-re
 - Saíram "os melhores produtos para lavanderia do mundo" e "isto remove todas as manchas gordurosas".
 - O processo e o prazo ficaram como o dono descreveu em 29/09: a seco primeiro, depois em água, goma, secagem natural sem secadora, passadoria à mão e embalagem, em 4 dias.
 - Saíram o alvejamento com ácido peracético e altas temperaturas e as opções de goma forte ou meia goma, que não foram confirmados.
-- Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas, já em toalhas de mesa. O preço ficou geral, até o dono confirmar (pergunta 15).
+- Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas, já em toalhas de mesa.
+- Entraram o preço e o expresso que o dono confirmou em 29/09: toalha a partir de R$ 69,00, guardanapo a partir de R$ 13,00, sem serviço expresso.
 
 ## Guardanapos de tecido manchados: como a Dedicada lava?
 
@@ -259,7 +260,8 @@ Gerado por `node ferramentas/montar-blog.mjs`. Não edite à mão: mude `blog-re
 
 - Saíram "os melhores do mundo" e "uma equipe especializada que garante a higienização".
 - "Acabamento com goma, quando solicitado" virou o processo que o dono descreveu em 29/09: a seco, em água, goma, secagem natural sem secadora, passadoria à mão e embalagem, em 4 dias.
-- Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas. O preço ficou geral, até o dono confirmar (pergunta 15).
+- Entraram a resposta curta, o passo a passo e o botão para o Diagnóstico de Manchas.
+- Entraram o preço e o expresso que o dono confirmou em 29/09: guardanapo a partir de R$ 13,00, toalha a partir de R$ 69,00, sem serviço expresso.
 
 ## Como a Dedicada lava fardas e uniformes de trabalho?
 
@@ -275,7 +277,8 @@ Gerado por `node ferramentas/montar-blog.mjs`. Não edite à mão: mude `blog-re
 
 - Saíram "garantindo que a farda esteja sempre bem-apresentada" e "para garantir conforto e bem-estar".
 - Saiu "limpeza profissional elimina ácaros e bactérias", que não foi confirmado.
-- Entraram o processo e o prazo que o dono descreveu em 29/09: a seco com entretela, em água sem entretela, secagem, passadoria e entrega em cabide, em 2 dias. Entraram também a fala aprovada do Jorge (guia de ternos) e o botão para o Diagnóstico de Manchas, já em fardas e uniformes. O preço ficou geral, até o dono confirmar (pergunta 15).
+- Entraram o processo e o prazo que o dono descreveu em 29/09: a seco com entretela, em água sem entretela, secagem, passadoria e entrega em cabide, em 2 dias. Entraram também a fala aprovada do Jorge (guia de ternos) e o botão para o Diagnóstico de Manchas, já em fardas e uniformes.
+- Entrou o preço que o dono confirmou em 29/09: a partir de R$ 49,00.
 
 ## Roupa de bebê: o que pode e o que evitar na lavagem?
 
@@ -292,7 +295,8 @@ Gerado por `node ferramentas/montar-blog.mjs`. Não edite à mão: mude `blog-re
 - Saíram "garanta o melhor para o seu bebê" e "é especializada".
 - Saíram as dicas que não estão nos guias nem foram confirmadas: sabão neutro ou infantil, ciclo delicado, amaciante e "pode secar na máquina, desde que com cuidado". Na Dedicada, a roupa de bebê seca ao natural, sem secadora.
 - Entrou o processo que o dono descreveu em 29/09: só em água, nunca a seco, por unidade, em lote individual, com produtos da Seitz dermatologicamente testados e hipoalergênicos, secagem natural, passadoria e entrega dobrada e separada por tamanho.
-- Entraram o carrinho e o bebê conforto, com processo, prazo e preço do guia, a resposta curta, perguntas frequentes com dados estruturados e o botão para o Diagnóstico de Manchas, já em roupa de bebê. O prazo e o preço da roupa de bebê ficaram gerais, até o dono confirmar (pergunta 24).
+- Entraram o carrinho e o bebê conforto, com processo, prazo e preço do guia, a resposta curta, perguntas frequentes com dados estruturados e o botão para o Diagnóstico de Manchas, já em roupa de bebê.
+- Entraram o prazo e o preço que o dono confirmou em 29/09 (4 dias, a partir de R$ 15,00) e a roupa infantil, que segue o mesmo processo.
 - Recebe o redirecionamento do post repetido sobre roupa de recém-nascido (pergunta 23).
 
 ## Redirecionamentos (301)

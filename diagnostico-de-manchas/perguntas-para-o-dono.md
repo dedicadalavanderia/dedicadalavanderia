@@ -1,6 +1,6 @@
 # Perguntas para o dono: nova Ferramenta de Diagnóstico de Manchas (versão 3)
 
-Atualizado em 29/09/2026, no fim da tarde.
+Atualizado em 29/09/2026, à noite.
 
 ## Respondidas
 
@@ -20,8 +20,8 @@ Atualizado em 29/09/2026, no fim da tarde.
 | 22. Shoyu e chocolate | Redirecionar para o post de comida (29/09) | Redirecionamentos em `blog-revisado/MUDANCAS.md` |
 | 23. Pares repetidos (gordura, maquiagem, roupa de bebê) | Manter um de cada e redirecionar o outro (29/09) | Redirecionamentos em `blog-revisado/MUDANCAS.md` |
 | 15 e 24. Como a Dedicada lava toalhas de mesa, guardanapos e fardas | Toalhas e guardanapos: primeiro a seco, para tirar a gordura de comidas; depois em água, com a remoção do restante das manchas; goma, secagem natural, passadoria à mão e embalagem, prontos para uso ou para guardar. Fardas: a seco quando são estilo alfaiataria e têm entretela, em água quando não têm; depois secagem, passadoria e entrega em cabides, prontas para uso (29/09) | Processo na ferramenta (toalhas de mesa e a peça nova "Fardas e uniformes") e posts revisados |
-| 15. Prazo de toalhas de mesa, guardanapos e fardas | Toalhas e guardanapos, 4 dias: lavagem a seco, lavagem em água e goma com secagem natural, porque na secadora a goma desaparece. Fardas, 2 dias (29/09) | Prazos na ferramenta e nos 3 posts; o preço continua em aberto |
-| 24. Como a Dedicada lava roupa de bebê | Só em água, para evitar a lavagem a seco; por unidade, em lote individual, separada; secagem natural, sem secadora; passadoria; entrega dobrada e separada por tamanho, pronta para uso. Todos os produtos da Seitz usados são dermatologicamente testados e hipoalergênicos (29/09) | Processo na peça "Roupa de bebê", post de bebê revisado, e o selo dos produtos voltou ao post de graxa |
+| 15. Prazo, preço e expresso de toalhas de mesa, guardanapos e fardas | Toalhas e guardanapos, 4 dias: lavagem a seco, lavagem em água e goma com secagem natural, porque na secadora a goma desaparece; sem expresso. Toalha a partir de R$ 69,00; guardanapo a partir de R$ 13,00. Fardas, 2 dias, a partir de R$ 49,00 (29/09) | Prazo, preço e expresso na ferramenta e nos 3 posts |
+| 24. Como a Dedicada lava roupa de bebê | Só em água, para evitar a lavagem a seco; por unidade, em lote individual, separada; secagem natural, sem secadora; passadoria; entrega dobrada e separada por tamanho, pronta para uso. Todos os produtos da Seitz usados são dermatologicamente testados e hipoalergênicos. Pronta em 4 dias, a partir de R$ 15,00. A roupa infantil segue o mesmo processo (29/09) | Peça "Roupa de bebê e infantil" na ferramenta, post de bebê revisado, e o selo dos produtos voltou ao post de graxa |
 
 Já resolvidas pelos guias no ar: o couro fica pronto em **5 a 7 dias** (a fala do Alejandro já diz isso), e a fala do guia de lã é do **Jorge**.
 
@@ -30,13 +30,12 @@ Já resolvidas pelos guias no ar: o couro fica pronto em **5 a 7 dias** (a fala 
 Nenhuma delas impede a instalação: o texto de hoje é o mais cauteloso.
 
 2. **As falas dos guias podem aparecer no resultado?** Cada resultado mostra a fala aprovada do guia da peça, com o nome e a foto de quem assina. Por exemplo, a fala da Liliane aparece em "Vinho tinto em seda". Nenhuma fala nova foi criada.
-5. **Quais destas peças têm serviço expresso: peles, cortinas, pelúcias e fantasias, carrinho de bebê e vestido de noiva?** Nos guias delas, o expresso não aparece. Por enquanto, a ferramenta diz: "A maioria das peças tem expresso… Confirme pelo WhatsApp".
+5. **Quais destas peças têm serviço expresso: peles, cortinas, pelúcias e fantasias, carrinho de bebê, vestido de noiva, fardas e roupa de bebê?** O expresso não aparece nos guias delas, e fardas e roupa de bebê não têm guia. Por enquanto, a ferramenta diz: "A maioria das peças tem expresso… Confirme pelo WhatsApp". Na roupa de bebê, diz só "Confirme pelo WhatsApp", porque a secagem é natural e o prazo é de 4 dias.
 13. **Este processo geral vale para qualquer peça sem guia?** A ferramenta mostra estas quatro etapas nas peças sem guia:
     1. "Avaliação da peça e da etiqueta antes da lavagem."
     2. "Mancha tratada antes da lavagem, com o tira-manchas da Seitz próprio da família dela (V1, V2 ou V3)."
     3. "Lavagem a seco com percloroetileno, wet cleaning com produtos Seitz ou lavagem em água, conforme a etiqueta e o tecido."
     4. "Alvejamento, quando a peça pede, à base de oxigênio, sem cloro."
-15. **Qual o preço de toalhas de mesa, guardanapos e fardas?** O processo e o prazo já foram confirmados. Por enquanto, a ferramenta e os posts dizem: "conforme a peça; peça o orçamento pelo WhatsApp". Falta também saber se toalhas e guardanapos têm expresso: a ferramenta diz "Confirme pelo WhatsApp".
 17. **As 3 perguntas frequentes novas estão aprovadas?** São elas:
     - "Minha roupa manchou com a cor de outra peça. Tem jeito?";
     - "A mancha clara de água sanitária sai?";
@@ -45,4 +44,3 @@ Nenhuma delas impede a instalação: o texto de hoje é o mais cauteloso.
     As respostas foram montadas com frases dos guias de algodão e de jeans. A de desodorante é a resposta publicada no guia de algodão.
 20. **Qual V é de qual família de mancha?** Os guias ligam cada família a um tira-manchas: gordurosas e sintéticas, orgânicas e proteicas, e vegetais e de tanino. Mas o post antigo de vinho diz que o V2 tira vinho tinto, e o vinho é da família vegetal e de tanino. Enquanto isso não for confirmado, a ferramenta, a página e os posts dizem só "V1, V2 ou V3", sem ligar cada um a uma família. O guia de cetim e organza, que está no ar, tem uma tabela com "Hydret 1, 2 e 3" e também precisa ser trocado.
 21. **O formato das 2 amostras de post está aprovado?** São os posts de vinho e xixi, em `blog-revisado/`. Os outros 16 posts revisados seguem o mesmo formato.
-24. **Qual o prazo e o preço da roupa de bebê? E a roupa infantil, de criança maior, segue o mesmo processo?** O processo já foi confirmado. Por enquanto, a ferramenta diz "Confirme pelo WhatsApp" no prazo e no expresso, e "conforme a peça" no preço. A peça passou a se chamar "Roupa de bebê": enquanto a roupa infantil não for confirmada, a busca não a leva para essa peça.

@@ -54,9 +54,9 @@ O conteúdo tem um bloco de dados estruturados (`<script type="application/ld+js
 |---|---|
 | Vinho e xixi (amostras) | Prontos |
 | Lote 1, 12 posts: café, graxa, terra, ferrugem, remédio, comida, cheiro de mofo, amarelado e mofo, desbote, bolinhas, "minha roupa manchou" e rayon | Prontos (29/09) |
-| Lote 2, 3 posts: toalhas de mesa, guardanapos e fardas | Prontos (29/09), com o processo e o prazo que o dono confirmou; preço ainda geral (pergunta 15) |
+| Lote 2, 3 posts: toalhas de mesa, guardanapos e fardas | Prontos (29/09), com o processo, o prazo e o preço que o dono confirmou |
 | 7 posts repetidos (urina, shoyu, chocolate e um de cada par de gordura, maquiagem e roupa de bebê) | Redirecionar: a lista está em `MUDANCAS.md` |
-| Lote 3, 1 post: "Lavagem de roupas de bebê: o que pode e o que evitar?" | Pronto (29/09), com o processo que o dono confirmou; prazo e preço ainda gerais (pergunta 24) |
+| Lote 3, 1 post: "Lavagem de roupas de bebê: o que pode e o que evitar?" | Pronto (29/09), com o processo, o prazo e o preço que o dono confirmou; inclui a roupa infantil |
 | Os 6 posts que já passavam nas regras | Continuam como estão; 2 deles recebem redirecionamentos (gordura e maquiagem) |
 
 ## Posts sobre o mesmo assunto

@@ -1357,12 +1357,12 @@
       expresso: 'consultar',
       problemas: []
     },
-    // Roupa de bebê: processo confirmado pelo dono em 29/09/2026 (prazo e preço, não).
+    // Roupa de bebê e infantil: processo, prazo e preço confirmados pelo dono em 29/09/2026.
     {
-      id: 'bebe', grupo: 'outras', nome: 'Roupa de bebê', exemplos: 'Roupinhas, body, enxoval, ninho e manta de bebê',
-      sinonimos: ['roupa de bebe', 'roupinha', 'roupinha de bebe', 'body', 'body de bebe', 'macacao de bebe', 'enxoval de bebe', 'ninho', 'ninho de bebe', 'manta de bebe', 'babador', 'cueiro', 'saida de maternidade', 'roupa de recem nascido'],
+      id: 'bebe', grupo: 'outras', nome: 'Roupa de bebê e infantil', exemplos: 'Roupinhas, body, enxoval, ninho, manta e roupa de criança',
+      sinonimos: ['roupa de bebe', 'roupinha', 'roupinha de bebe', 'body', 'body de bebe', 'macacao de bebe', 'enxoval de bebe', 'ninho', 'ninho de bebe', 'manta de bebe', 'roupa infantil', 'roupa de crianca', 'roupinha infantil', 'babador', 'cueiro', 'saida de maternidade', 'roupa de recem nascido'],
       semGuia: true, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
-      nota: 'Na Dedicada, a roupa de bebê é lavada só em água, nunca a seco, em lote individual e com produtos da Seitz dermatologicamente testados e hipoalergênicos. Seca ao natural, sem secadora. A Dedicada também lava ninhos, enxoval, carrinho e bebê conforto.',
+      nota: 'Na Dedicada, a roupa de bebê e a infantil são lavadas só em água, nunca a seco, em lote individual e com produtos da Seitz dermatologicamente testados e hipoalergênicos. Secam ao natural, sem secadora. A Dedicada também lava ninhos, enxoval, carrinho e bebê conforto.',
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
       maquinaNao: false,
       caseiro: [F.sanitaria],
@@ -1373,12 +1373,12 @@
         'Secagem natural, sem secadora, e passadoria.',
         'Entrega dobrada e separada por tamanho, pronta para uso.'
       ],
-      prazo: 'Confirme pelo WhatsApp',
-      preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
+      prazo: '4 dias',
+      preco: 'A partir de R$ 15,00',
       expresso: 'Confirme pelo WhatsApp.',
       problemas: []
     },
-    // Toalhas de mesa e guardanapos: processo e prazo confirmados pelo dono em 29/09/2026 (preço, não).
+    // Toalhas de mesa e guardanapos: processo, prazo, preço e expresso confirmados pelo dono em 29/09/2026.
     {
       id: 'mesa', grupo: 'outras', nome: 'Toalhas de mesa e guardanapos', exemplos: 'Toalhas de mesa, guardanapos e caminhos de mesa',
       sinonimos: ['toalha de mesa', 'guardanapo', 'guardanapo de pano', 'jogo americano', 'caminho de mesa', 'pano de prato', 'jacquard', 'toalha de natal', 'mesa posta'],
@@ -1394,11 +1394,11 @@
         'Passadoria à mão e embalagem: toalhas e guardanapos saem prontos para uso ou para guardar.'
       ],
       prazo: '4 dias: lavagem a seco, lavagem em água e goma com secagem natural, porque na secadora a goma desaparece',
-      preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
-      expresso: 'Confirme pelo WhatsApp.',
+      preco: 'Toalha de mesa a partir de R$ 69,00; guardanapo, R$ 13,00',
+      expresso: 'nao',
       problemas: []
     },
-    // Fardas e uniformes: processo e prazo confirmados pelo dono em 29/09/2026 (preço, não).
+    // Fardas e uniformes: processo, prazo e preço confirmados pelo dono em 29/09/2026.
     {
       id: 'fardas', grupo: 'outras', nome: 'Fardas e uniformes', exemplos: 'Fardas e uniformes de trabalho',
       sinonimos: ['farda', 'fardamento', 'uniforme', 'uniforme de trabalho', 'uniforme escolar', 'uniforme de empresa', 'jaleco', 'dolma'],
@@ -1414,7 +1414,7 @@
         'Entrega em cabide, pronta para uso.'
       ],
       prazo: '2 dias',
-      preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
+      preco: 'A partir de R$ 49,00',
       expresso: 'consultar',
       problemas: []
     },
