@@ -54,7 +54,7 @@ Arquivos: `diagnostico-manchas.css` (snippet WPCode 3168) e `diagnostico-manchas
   - Já tentou tirar em casa?
   - Cor da peça?
 - **WhatsApp:** mensagem pronta, uma informação por linha, com o link do resultado que a pessoa viu.
-- **"Leia também":** só os posts do blog que passam nas regras.
+- **"Leia também":** só os posts do blog que passam nas regras. Os 18 posts revisados já estão ligados às manchas e às peças, mas só aparecem depois de publicados, quando `POSTS_REVISADOS_NO_AR` passa para `true`.
 
 ### Revisão de todas as combinações (29/09)
 
@@ -70,7 +70,7 @@ Cada frase possível foi comparada com os guias. Detalhes em `auditoria-combinac
 
 ### Respostas do dono aplicadas
 
-- **Tira-manchas da Seitz:** chamados de V1, V2 e V3, sem dizer qual é de qual família (pergunta 20).
+- **Tira-manchas da Seitz:** chamados de V1, V2 e V3, sem dizer qual é de qual família; o dono pediu para deixar assim (pergunta 20).
 - **Foto pelo WhatsApp:** confirmado que a Dedicada avalia peças por foto.
 - **Google Analytics:** eventos `dm_peca`, `dm_resultado`, `dm_whatsapp` e `dm_busca`, sem dado pessoal.
 - **O que não lava:** bolsa, camurça, sofá, colchão e tapete médio e grande. O que lava sem guia próprio: mochila, boné e tapete pequeno.
@@ -95,6 +95,14 @@ Cada frase possível foi comparada com os guias. Detalhes em `auditoria-combinac
 
   Fica pronta em **4 dias**, a partir de **R$ 15,00**. A roupa infantil segue o mesmo processo.
 - **Produtos:** todos os produtos da Seitz usados na Dedicada são dermatologicamente testados e hipoalergênicos. A frase entrou na roupa de bebê e voltou ao post de graxa.
+- **Expresso:** tudo tem, menos lençóis, vestidos, toalhas de mesa e guardanapos.
+  - "Menos para vestidos" em seda, linho, veludo, viscose e poliéster.
+  - Vestido de festa e de noiva: sem expresso.
+  - Roupa de cama: sem expresso nos lençóis.
+  - Fardas: com expresso.
+  - Couro e tênis continuam sem expresso, como dizem os guias.
+  - Peles, cortinas, pelúcias, carrinho, roupa de bebê e outras peças: "a maioria das peças tem expresso; confirme pelo WhatsApp".
+- **Aprovados:** as falas dos guias nos resultados, o processo geral das peças sem guia, as 3 perguntas frequentes novas e o formato dos posts.
 
 ## 2. Página 3165
 
@@ -188,6 +196,7 @@ A lista completa está em `blog-revisado/MUDANCAS.md`.
 
 | Arquivo | Para que serve |
 |---|---|
+| `PASSAGEM-PARA-O-DESKTOP.md` | O passo a passo para o Claude do desktop colocar tudo no ar |
 | `LEIA-ME.md` | Como a ferramenta funciona e o passo a passo da instalação |
 | `perguntas-para-o-dono.md` | Respondidas e em aberto |
 | `pesquisa.html` | A pesquisa internacional, a demanda do Google e as decisões de SEO e GEO |
@@ -216,26 +225,22 @@ A lista completa está em `blog-revisado/MUDANCAS.md`.
 | 29/09 | Processo de toalhas de mesa, guardanapos e fardas |
 | 29/09 | Prazos: toalhas e guardanapos em 4 dias, fardas em 2 dias |
 | 29/09 | Processo da roupa de bebê; produtos da Seitz dermatologicamente testados e hipoalergênicos |
+| 29/09 | Falas dos guias nos resultados, processo geral das peças sem guia, 3 perguntas frequentes novas e formato dos posts: aprovados. Qual V é de qual família: deixar como está |
+| 29/09 | Expresso: tudo menos lençóis, vestidos, toalhas de mesa e guardanapos |
 | 29/09 | Preços: toalha a partir de R$ 69,00, guardanapo R$ 13,00, farda R$ 49,00, roupa de bebê R$ 15,00; roupa de bebê em 4 dias; toalhas e guardanapos sem expresso; a roupa infantil segue o processo da de bebê |
 
 ## 7. O que ainda falta
 
-- **Perguntas em aberto** (`perguntas-para-o-dono.md`). Nenhuma impede a instalação:
-  - 2: falas no resultado;
-  - 5: expresso em algumas peças;
-  - 13: processo geral das peças sem guia;
-  - 17: as 3 perguntas frequentes novas;
-  - 20: qual V é de qual família;
-  - 21: formato dos posts.
-- **Instalação da ferramenta**, pelo painel do WordPress, com autorização (`LEIA-ME.md`):
-  1. cópia do que está no ar;
-  2. envio das 23 miniaturas;
-  3. troca dos snippets 3168 e 3164;
-  4. troca da página 3165;
-  5. título e descrição no plugin de SEO;
-  6. teste no celular e no computador.
-- **Publicação dos posts** (`blog-revisado/LEIA-ME.md`): conteúdo, título, título e descrição de SEO, tags, e depois os redirecionamentos no plugin Redirection.
-- **Depois de publicar:** trocar "Hydret 1, 2 e 3" por V1, V2 e V3 no guia de cetim e organza, que está no ar, e incluir os posts revisados em "Leia também" na ferramenta.
+**Perguntas em aberto:** nenhuma. Todas foram respondidas em 28 e 29/09 (`perguntas-para-o-dono.md`).
+
+O passo a passo para colocar tudo no ar está em `PASSAGEM-PARA-O-DESKTOP.md`. Em resumo:
+
+1. **Ferramenta:** cópia do que está no ar, envio das 23 miniaturas, troca dos snippets 3168 e 3164, troca da página 3165, título e descrição no plugin de SEO, e teste no celular e no computador.
+2. **Blog:** publicação dos 18 posts revisados (conteúdo, título, título e descrição de SEO e tags), e depois os 7 redirecionamentos no plugin Redirection.
+3. **Guias no ar:**
+   - trocar "Hydret 1, 2 e 3" por V1, V2 e V3 no guia de cetim e organza;
+   - acertar o expresso em 5 páginas, como o dono respondeu em 29/09: seda, linho, roupa de cama, cetim e organza, e a página central.
+4. **Depois de publicar os posts:** trocar `POSTS_REVISADOS_NO_AR` para `true` no JS e colar o snippet 3164 de novo, para os posts revisados aparecerem em "Leia também".
 
 ## 8. Histórico
 
@@ -254,4 +259,5 @@ A lista completa está em `blog-revisado/MUDANCAS.md`.
 | 9a76e3a | 29/09 | Blog: lote 1 (12 posts) |
 | 848f751 | 29/09 | Fardas e uniformes, processo das toalhas de mesa, blog lote 2, redirecionamentos e este registro |
 | fa70344 | 29/09 | Prazos de toalhas, guardanapos e fardas; processo da roupa de bebê; post de bebê |
-| (este) | 29/09 | Preços de toalhas, guardanapos, fardas e roupa de bebê; prazo da roupa de bebê; roupa infantil |
+| f80bfde | 29/09 | Preços de toalhas, guardanapos, fardas e roupa de bebê; prazo da roupa de bebê; roupa infantil |
+| (este) | 29/09 | Expresso, últimas respostas do dono e passagem para o Claude do desktop |

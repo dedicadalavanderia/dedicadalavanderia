@@ -25,7 +25,8 @@ Refeito em 28/09/2026 numa sessão na nuvem com acesso ao site.
 | `auditoria-combinacoes.md` | A revisão de todas as combinações de peça e mancha contra os guias: o que foi corrigido e o que ficou |
 | `auditoria-blog.md` | Os 31 posts do blog sobre manchas e tecidos: 6 ligados na ferramenta e 25 para revisar |
 | `REGISTRO-DE-MUDANCAS.md` | Tudo o que foi mudado na ferramenta, na página, nas imagens e no blog, as decisões do dono e o que falta |
-| `perguntas-para-o-dono.md` | O que precisa de resposta antes de publicar |
+| `perguntas-para-o-dono.md` | As perguntas feitas ao dono e as respostas: todas respondidas em 29/09 |
+| `PASSAGEM-PARA-O-DESKTOP.md` | O passo a passo para o Claude do desktop colocar tudo no ar |
 | `referencias/` | O que foi baixado: página atual, banco antigo, guias em texto, posts do blog, buscas do Google e páginas de referência |
 | `capturas/` | Telas geradas pelo teste |
 | `ferramentas/montar.mjs` | Gera `pagina-3165.html` e `prototipo.html` a partir do banco e do modelo |
@@ -129,7 +130,7 @@ Resposta do dono em 29/09: bolsas, camurça, sofás e estofados, colchões e tap
   - `leia`: o post do blog.
 - **`PECAS`:**
   - Nas 17 peças com guia, os fatos vêm do guia e há a tabela `problemas`.
-  - Nas 6 peças sem guia (`semGuia: true`), vão só a `nota` do tecido, com fonte, e o processo (o geral, ou o que o dono confirmou, em toalhas de mesa e fardas). Qualquer mancha é tratada pela família dela.
+  - Nas 6 peças sem guia (`semGuia: true`), vão só a `nota` do tecido, com fonte, e o processo (o geral, ou o que o dono confirmou, em roupa de bebê e infantil, toalhas de mesa e fardas). Qualquer mancha é tratada pela família dela.
 - **`problemas`:** uma linha da tabela do guia cada.
   - `urgencia` e `acontece` são as colunas do guia, sem mudar nada.
   - `manchas` liga a busca e as famílias ao problema certo. Por exemplo, "encolheu" na lã leva à feltragem.
@@ -154,13 +155,13 @@ O teste faz estas checagens:
 - abre **as 1.012 combinações peça × mancha** e confere o resultado e o texto de cada uma;
 - testa a busca, com 14 frases, e ainda o Enter, a cor da peça, o dano em peça sem guia, o "Leia também", as perguntas do WhatsApp, as âncoras, o link direto e o teclado.
 
-Resultado em 28/09: **0 erros, 0 avisos**.
+Resultado em 29/09: **0 erros, 0 avisos**.
 
 A cobertura foi medida com 1.308 buscas reais do autocompletar do Google. Dessas, 915 são sobre roupa e tecido, e a ferramenta dá sugestão para 94% delas. As que faltam não dizem a mancha ("como tirar mancha de roupa branca"). Nesse caso, a ferramenta pede para a pessoa contar o que manchou.
 
 ## O que falta para instalar
 
-1. **Respostas do dono** (`perguntas-para-o-dono.md`).
+1. **Respostas do dono:** todas respondidas em 29/09 (`perguntas-para-o-dono.md`). O passo a passo completo está em `PASSAGEM-PARA-O-DESKTOP.md`.
 2. **Miniaturas dos cartões.** Suba os 23 arquivos `prototipo-img/dm-*.webp` na biblioteca de mídia. O JS procura as fotos em `/wp-content/uploads/2026/09/`. O WordPress guarda cada arquivo na pasta do mês em que ele foi enviado: enviados a partir de outubro, eles vão para `2026/10/`, e aí é preciso trocar `FOTOS` no topo do JS para essa pasta. Antes de trocar os snippets, abra uma das fotos pelo endereço, para confirmar. Se as fotos não carregarem, os cartões ficam só com o texto, sem quebrar. As fotos de quem assina (Liliane, Jorge e Alejandro) já estão no site, em `2026/09/`.
 3. **Instalação, com autorização:**
    1. guarde o conteúdo atual dos snippets 3168 e 3164 e da página 3165;
@@ -182,11 +183,9 @@ A cobertura foi medida com 1.308 buscas reais do autocompletar do Google. Dessas
 
 O site tem o plugin Redirection, que faz os redirecionamentos 301 dos posts sobre urina (`blog-revisado/LEIA-ME.md`).
 
-## Próxima fase sugerida: o blog
+## O blog
 
-As buscas mais comuns são por mancha ("como tirar mancha de sangue da roupa"), e o blog já tem posts para quase todas. Mas 25 dos 31 posts conferidos trazem "os melhores do mundo", "garantia", "definitivo", percentuais ou receitas caseiras (`auditoria-blog.md`).
-
-Revisar esses posts e ligar cada um ao resultado certo da ferramenta, como `diagnostico-de-manchas/#m-sangue`, rende mais que criar páginas novas. O Google desaconselha páginas feitas em massa para cada variação de busca.
+Os posts sobre manchas e tecidos que iam contra as regras foram revisados em `blog-revisado/` (18 posts, cada um com o mesmo endereço), e 7 posts repetidos recebem redirecionamento 301. A ligação de cada post revisado ao resultado certo da ferramenta já está pronta em `BLOG_REVISADOS` e `LEIA_REVISADOS`, no topo do JS. Ela fica desligada até os posts serem publicados: depois, troque `POSTS_REVISADOS_NO_AR` para `true`.
 
 ## Regras do projeto (resumo)
 

@@ -71,15 +71,16 @@ export const POSTS = [
     perguntas: [
       ['Mancha de vinho sai?', 'Costuma sair quando é tratada antes da lavagem e sem água quente. No couro, o vinho dissolve o corante, e a recuperação costuma ser parcial: pode ficar marca.'],
       ['Posso usar produto caseiro na mancha de vinho?', 'Não é o indicado. Tira-manchas caseiro, álcool e água sanitária costumam piorar: em seda, couro e jeans colorido, o dano costuma ser pior que a mancha. Tire só o excesso com um pano limpo, sem esfregar, e leve a peça.'],
-      ['Quanto tempo a lavanderia leva?', 'Na Dedicada, a maioria das peças fica pronta em 2 dias; vestidos finos, em cerca de 5; couro, em 5 a 7; e vestido de noiva, em 7. Há serviço expresso para a maioria das peças, no mesmo dia ou no seguinte, com acréscimo de 50%; couro e tênis não têm expresso.']
+      ['Quanto tempo a lavanderia leva?', 'Na Dedicada, a maioria das peças fica pronta em 2 dias; vestidos finos, em cerca de 5; couro, em 5 a 7; e vestido de noiva, em 7. Há serviço expresso para a maioria das peças, no mesmo dia ou no seguinte, com acréscimo de 50%; não têm expresso couro, tênis, vestidos, lençóis, toalhas de mesa e guardanapos.']
     ],
     guias: ['seda', 'festa-noiva', 'linho', 'la', 'couro'],
     mudou: [
       'Saíram "produto exclusivo", "da melhor marca do mundo" e "uma das melhores lavanderias do Brasil"; da descrição, saiu "definitivamente".',
-      'Saiu "o V2 retira as manchas de vinho tinto": os guias ligam o vinho ao tira-manchas das manchas de tanino, e falta confirmar qual dos três (V1, V2 ou V3) é esse (pergunta 20).',
+      'Saiu "o V2 retira as manchas de vinho tinto": os guias ligam o vinho ao tira-manchas das manchas de tanino, sem dizer qual dos três (V1, V2 ou V3) é esse, e o dono pediu para deixar assim (pergunta 20).',
       '"Vários bairros de Florianópolis" virou a coleta confirmada: 26 bairros da Ilha e do Continente, em dias fixos.',
       'Entraram a resposta curta no começo, o passo a passo, a urgência de cada tecido tirada dos guias, o processo de cada peça, a fala aprovada da Liliane e perguntas frequentes com dados estruturados.',
-      'Entraram o botão para o Diagnóstico de Manchas, já na mancha de vinho, e os links para os guias.'
+      'Entraram o botão para o Diagnóstico de Manchas, já na mancha de vinho, e os links para os guias.',
+      'O expresso ficou como o dono confirmou em 29/09: a maioria das peças tem; couro, tênis, vestidos, lençóis, toalhas de mesa e guardanapos, não.'
     ]
   },
   {

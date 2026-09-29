@@ -103,7 +103,7 @@ const PERGUNTAS = [
   ['Como evitar mofo nas roupas em Florianópolis?',
     'Guarde as peças limpas e secas, em armário arejado e em capa de tecido, nunca de plástico. Mofo é o problema que mais chega à Dedicada em veludo, couro, peles e pelúcias, e o ideal é tratar quanto antes, de preferência em até 24 horas.'],
   ['Quanto tempo a lavanderia leva e quanto custa?',
-    'Na Dedicada, a maioria das peças fica pronta em 2 dias; lençóis, tênis e pelúcias, em 3; cortinas, em 3 a 4; vestidos finos e fantasias, em cerca de 5; couro, em 5 a 7; e vestido de noiva, peles e carrinho de bebê, em 7. Veludo, conforme a peça. Camisa a partir de R$ 23,90 e terno a partir de R$ 91,00. Há serviço expresso para a maioria das peças, no mesmo dia ou no seguinte, com acréscimo de 50%; couro e tênis não têm expresso.'],
+    'Na Dedicada, a maioria das peças fica pronta em 2 dias; lençóis, tênis e pelúcias, em 3; cortinas, em 3 a 4; roupa de bebê, toalhas de mesa e guardanapos, em 4; vestidos finos e fantasias, em cerca de 5; couro, em 5 a 7; e vestido de noiva, peles e carrinho de bebê, em 7. Veludo, conforme a peça. Camisa a partir de R$ 23,90 e terno a partir de R$ 91,00. Há serviço expresso para a maioria das peças, no mesmo dia ou no seguinte, com acréscimo de 50%; não têm expresso couro, tênis, vestidos, lençóis, toalhas de mesa e guardanapos.'],
   ['Minha roupa manchou com a cor de outra peça. Tem jeito?',
     'Quanto antes o tratamento, maior a chance de reverter. O algodão absorve o corante solto com facilidade, e a secadora fixa a mancha: não seque a peça e leve em menos de 24 horas. Para não repetir, não misture peças de cor forte com as brancas.'],
   ['A mancha clara de água sanitária sai?',

@@ -1,7 +1,7 @@
 /*
  * Dedicada Lavanderia · Diagnóstico de Manchas (versão 3)
  * Snippet WPCode 3164 (JavaScript). Vai DEPOIS de <div id="dm-app"> no conteúdo da página 3165.
- * Protótipo de 28/09/2026. Não publicar sem a revisão descrita em LEIA-ME.md.
+ * Versão de 29/09/2026, com todas as respostas do dono. Instalação: PASSAGEM-PARA-O-DESKTOP.md.
  *
  * DE ONDE VEM O CONTEÚDO
  *   Tudo foi tirado dos 17 guias de Cuidados por Tecido no ar em 28/09/2026: a tabela
@@ -16,11 +16,12 @@
  *   NIVEIS   → níveis de urgência e a ordem em que aparecem.
  *   FAMILIAS → gordurosas e sintéticas, orgânicas e proteicas, vegetais e de tanino, outras
  *              manchas e danos no tecido; "primeiro" é o primeiro cuidado de cada família.
- *   BLOG     → posts do blog que passaram pela conferência das regras.
+ *   BLOG     → posts do blog que passaram pela conferência das regras. BLOG_REVISADOS: os 18
+ *              posts revisados, ligados só com POSTS_REVISADOS_NO_AR = true.
  *   MANCHAS  → 44 manchas e danos, com sinônimos para a busca, "dica" (cuidado próprio,
  *              tirado dos guias) e "leia" (post do blog).
  *   GRUPOS   → os 5 grupos da página central, mais "Outras peças e tecidos".
- *   PECAS    → os 17 guias e 5 peças sem guia próprio (semGuia). Cada peça traz os fatos do
+ *   PECAS    → os 17 guias e 6 peças sem guia próprio (semGuia). Cada peça traz os fatos do
  *              guia e a lista de problemas:
  *     problema = { id, nome, manchas[], nivel, urgencia, acontece, fazer[], evitar[], dedicada }
  *       manchas:  ids de MANCHAS que caem neste problema (liga a busca ao problema certo)
@@ -65,7 +66,7 @@
   };
 
   /* ---------- Famílias de manchas (tira-manchas V1, V2 e V3 da Seitz) ----------
-   * seitz: true quando a família tem tira-manchas próprio. Qual V é de qual família: pergunta 20. */
+   * seitz: true quando a família tem tira-manchas próprio. Qual V é de qual família não é dito, a pedido do dono (pergunta 20). */
   var FAMILIAS = {
     gordura: {
       nome: 'Gordurosas e sintéticas', singular: 'gordurosa ou sintética', seitz: true,
@@ -96,6 +97,40 @@
     cupro: ['/lavagem-de-roupas-em-cupro-cuidados-para-pecas-delicadas/', 'Lavagem de roupas em cupro'],
     fitness: ['/lavagem-de-roupas-fitness-e-esportivas/', 'Lavagem de roupas fitness e esportivas']
   };
+
+  /* Posts revisados em 29/09/2026 (pasta blog-revisado/). Entram em "Leia também" só depois de
+   * publicados: troque POSTS_REVISADOS_NO_AR para true quando os 18 posts estiverem no ar.
+   * LEIA_REVISADOS liga cada mancha (por id) e cada peça aos posts revisados. */
+  var POSTS_REVISADOS_NO_AR = CONFIG.postsRevisados === true || false;
+  var BLOG_REVISADOS = {
+    vinho: ['/removemos-manchas-de-vinho-dedicada-lavanderia/', 'Mancha de vinho na roupa: o que fazer e como a lavanderia tira?'],
+    xixi: ['/como-lavar-roupa-com-xixi/', 'Roupa com xixi: como lavar e tirar o cheiro?'],
+    cafe: ['/como-remover-mancha-de-cafe-de-suas-roupas-de-forma-segura/', 'Mancha de café na roupa: o que fazer e como a lavanderia tira?'],
+    graxa: ['/como-remover-manchas-de-graxa-das-roupas-de-forma-segura/', 'Mancha de graxa na roupa: o que fazer e como a lavanderia tira?'],
+    terra: ['/lavagem-de-roupas-com-manchas-de-terra/', 'Roupa suja de terra ou barro: como lavar sem espalhar a sujeira?'],
+    ferrugem: ['/como-tirar-manchas-de-ferrugem-das-roupas/', 'Mancha de ferrugem na roupa: o que fazer?'],
+    remedio: ['/remocao-de-manchas-de-remedios-das-roupas/', 'Mancha de remédio na roupa: o que fazer?'],
+    comida: ['/retirada-de-manchas-de-comida-molhos-bebidas-e-sucos/', 'Mancha de comida, molho ou suco na roupa: o que fazer?'],
+    cheiroMofo: ['/como-tirar-cheiro-de-mofo-da-roupa-de-forma-definitiva/', 'Cheiro de mofo na roupa: de onde vem e como tirar?'],
+    amarelado: ['/como-remover-manchas-amareladas-e-de-mofo-das-roupas/', 'Roupa amarelada ou com mancha de mofo: tem jeito?'],
+    desbote: ['/por-que-suas-roupas-desbotam-e-como-evitar-isso/', 'Por que as roupas desbotam e como evitar?'],
+    bolinhas: ['/remocao-manual-de-bolinhas-e-pelos-de-roupas/', 'Bolinhas e pelos na roupa: como tirar sem estragar?'],
+    rayon: ['/como-lavar-vestidos-e-pecas-em-rayon-dedicada-lavanderia/', 'Como lavar roupa de rayon (raiom) sem estragar?'],
+    toalhas: ['/lavagem-de-toalhas-de-mesa-em-florianopolis/', 'Toalha de mesa manchada: como a Dedicada lava em Florianópolis?'],
+    guardanapos: ['/lavagem-de-guardanapos/', 'Guardanapos de tecido manchados: como a Dedicada lava?'],
+    fardas: ['/lavagem-de-fardas-higiene-e-imagem-em-cada-detalhe/', 'Como a Dedicada lava fardas e uniformes de trabalho?'],
+    bebe: ['/lavagem-de-roupas-de-bebe-o-que-pode-e-o-que-evitar/', 'Roupa de bebê: o que pode e o que evitar na lavagem?']
+  };
+  var LEIA_REVISADOS = {
+    manchas: {
+      vinho: ['vinho'], xixi: ['xixi'], cafe: ['cafe'], graxa: ['graxa'], lama: ['terra'], ferrugem: ['ferrugem'],
+      remedio: ['remedio'], comida: ['comida'], suco: ['comida'], bebida: ['comida'], refrigerante: ['comida'],
+      cheiro: ['cheiroMofo'], mofo: ['amarelado', 'cheiroMofo'], amarelado: ['amarelado'], desbotou: ['desbote'],
+      bolinhas: ['bolinhas']
+    },
+    pecas: { viscose: ['rayon'], mesa: ['toalhas', 'guardanapos'], fardas: ['fardas'], bebe: ['bebe'] }
+  };
+  if (POSTS_REVISADOS_NO_AR) Object.keys(BLOG_REVISADOS).forEach(function (k) { BLOG[k] = BLOG_REVISADOS[k]; });
 
   /* ---------- Vocabulário de manchas e danos ----------
    * familia: chave de FAMILIAS. sinonimos: palavras que a busca reconhece (escritas sem acento).
@@ -187,7 +222,8 @@
   ];
 
   /* ---------- As 17 peças ----------
-   * expresso: 'sim' | 'nao' | 'consultar' | texto próprio
+   * expresso: 'sim' | 'semVestido' | 'nao' | 'consultar' | texto próprio. Segundo o dono (29/09), tudo tem
+   * expresso menos lençóis, vestidos, toalhas de mesa e guardanapos; couro e tênis não têm, pelos guias.
    * caseiro: o que o guia manda evitar em casa, usado quando a mancha não está na tabela.
    * sinonimos: palavras que levam a esta peça na busca.
    */
@@ -210,7 +246,7 @@
       ],
       prazo: '2 dias; vestidos finos, 5 dias',
       preco: 'Blusa a partir de R$ 29,00; vestido a partir de R$ 65,00',
-      expresso: 'sim',
+      expresso: 'semVestido',
       problemas: [
         {
           id: 'vinho-tinto', nome: 'Vinho tinto', manchas: ['vinho'], nivel: 'muito_urgente',
@@ -284,7 +320,7 @@
       ],
       prazo: 'Vestido de noiva, 7 dias; vestidos de festa e finos, 5 dias',
       preco: 'Sob consulta pelo WhatsApp, conforme o vestido',
-      expresso: 'Vestido de festa tem expresso, no mesmo dia ou no seguinte, com acréscimo de 50%. Se só precisa passar, é na hora, sem agendar.',
+      expresso: 'Vestidos não têm serviço expresso. Se só precisa passar, é na hora, sem agendar.',
       problemas: [
         {
           id: 'mofo', nome: 'Mofo (guarda prolongada)', manchas: ['mofo'], nivel: 'muito_urgente',
@@ -356,7 +392,7 @@
       ],
       prazo: 'Conforme a peça; consulte pelo WhatsApp',
       preco: 'Sob consulta pelo WhatsApp',
-      expresso: 'sim',
+      expresso: 'semVestido',
       problemas: [
         {
           id: 'mofo', nome: 'Mofo', manchas: ['mofo', 'cheiro'], nivel: 'urgente',
@@ -426,7 +462,7 @@
       ],
       prazo: '2 dias; vestidos finos, 5 dias',
       preco: 'Camisa a partir de R$ 23,90; calça social, R$ 42,00; blazer, R$ 49,00',
-      expresso: 'sim',
+      expresso: 'semVestido',
       problemas: [
         {
           id: 'mofo', nome: 'Mofo', manchas: ['mofo'], nivel: 'muito_urgente',
@@ -1010,7 +1046,7 @@
       ],
       prazo: '3 dias',
       preco: 'Lençóis a partir de R$ 44,00 o quilo; toalha de banho, R$ 14,00; rosto, piso ou mão, R$ 8,00',
-      expresso: 'sim',
+      expresso: 'Lençóis não têm serviço expresso. Toalhas, mantas e capas têm, no mesmo dia ou no seguinte, com acréscimo de 50%.',
       problemas: [
         {
           id: 'toalha-mofo', nome: 'Toalha com cheiro de mofo', manchas: ['mofo', 'cheiro'], nivel: 'urgente',
@@ -1339,7 +1375,7 @@
       processo: PROCESSO_GERAL,
       prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
       preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
-      expresso: 'consultar',
+      expresso: 'semVestido',
       problemas: []
     },
     {
@@ -1354,7 +1390,7 @@
       processo: PROCESSO_GERAL,
       prazo: 'A maioria das peças fica pronta em 2 dias; confirme pelo WhatsApp',
       preco: 'Conforme a peça; peça o orçamento pelo WhatsApp',
-      expresso: 'consultar',
+      expresso: 'semVestido',
       problemas: []
     },
     // Roupa de bebê e infantil: processo, prazo e preço confirmados pelo dono em 29/09/2026.
@@ -1375,7 +1411,7 @@
       ],
       prazo: '4 dias',
       preco: 'A partir de R$ 15,00',
-      expresso: 'Confirme pelo WhatsApp.',
+      expresso: 'consultar',
       problemas: []
     },
     // Toalhas de mesa e guardanapos: processo, prazo, preço e expresso confirmados pelo dono em 29/09/2026.
@@ -1398,7 +1434,7 @@
       expresso: 'nao',
       problemas: []
     },
-    // Fardas e uniformes: processo, prazo e preço confirmados pelo dono em 29/09/2026.
+    // Fardas e uniformes: processo, prazo, preço e expresso confirmados pelo dono em 29/09/2026.
     {
       id: 'fardas', grupo: 'outras', nome: 'Fardas e uniformes', exemplos: 'Fardas e uniformes de trabalho',
       sinonimos: ['farda', 'fardamento', 'uniforme', 'uniforme de trabalho', 'uniforme escolar', 'uniforme de empresa', 'jaleco', 'dolma'],
@@ -1415,7 +1451,7 @@
       ],
       prazo: '2 dias',
       preco: 'A partir de R$ 49,00',
-      expresso: 'consultar',
+      expresso: 'sim',
       problemas: []
     },
     {
@@ -1440,6 +1476,7 @@
 
   var EXPRESSO = {
     sim: 'Tem expresso, no mesmo dia ou no seguinte, com acréscimo de 50%.',
+    semVestido: 'Tem expresso, no mesmo dia ou no seguinte, com acréscimo de 50%, menos para vestidos.',
     nao: 'Não tem serviço expresso.',
     consultar: 'A maioria das peças tem expresso, no mesmo dia ou no seguinte, com acréscimo de 50%. Confirme pelo WhatsApp.'
   };
@@ -2023,8 +2060,12 @@
   function leituras(r) {
     var chaves = [];
     var ids = r.mancha ? [r.mancha.id] : (r.pr.manchas || []);
-    ids.forEach(function (id) { var m = acharMancha(id); if (m && m.leia) chaves.push(m.leia); });
-    chaves = chaves.concat(r.peca.leia || []);
+    ids.forEach(function (id) {
+      var m = acharMancha(id);
+      if (m && m.leia) chaves.push(m.leia);
+      if (POSTS_REVISADOS_NO_AR) chaves = chaves.concat(LEIA_REVISADOS.manchas[id] || []);
+    });
+    chaves = chaves.concat(r.peca.leia || [], POSTS_REVISADOS_NO_AR ? (LEIA_REVISADOS.pecas[r.peca.id] || []) : []);
     return chaves.filter(function (k, i) { return BLOG[k] && chaves.indexOf(k) === i; }).map(function (k) { return BLOG[k]; });
   }
 
@@ -2137,6 +2178,7 @@
       ids['m-' + m.id] = true;
       if (!FAMILIAS[m.familia]) erros.push('Mancha ' + m.id + ': família inválida');
       if (m.leia && !BLOG[m.leia]) erros.push('Mancha ' + m.id + ': post do blog inexistente ' + m.leia);
+      (LEIA_REVISADOS.manchas[m.id] || []).forEach(function (k) { if (!BLOG_REVISADOS[k]) erros.push('Mancha ' + m.id + ': post revisado inexistente ' + k); });
     });
     PECAS.forEach(function (p) {
       if (ids[p.id]) erros.push('Peça repetida: ' + p.id);
@@ -2149,6 +2191,7 @@
         if (!p.problemas.length) erros.push(p.id + ': peça com guia sem tabela de problemas');
       }
       (p.leia || []).forEach(function (k) { if (!BLOG[k]) erros.push(p.id + ': post do blog inexistente ' + k); });
+      (LEIA_REVISADOS.pecas[p.id] || []).forEach(function (k) { if (!BLOG_REVISADOS[k]) erros.push(p.id + ': post revisado inexistente ' + k); });
       if (!p.processo || p.processo.length < 2) erros.push(p.id + ': processo incompleto');
       var idsPr = {};
       p.problemas.forEach(function (pr) {
@@ -2173,7 +2216,7 @@
 
   /* Exposto para o teste, para o gerador da página e para conferência no console. */
   window.DM_DIAGNOSTICO = {
-    PECAS: PECAS, GRUPOS: GRUPOS, MANCHAS: MANCHAS, FAMILIAS: FAMILIAS, NIVEIS: NIVEIS, PESSOAS: PESSOAS, BLOG: BLOG, SITE: SITE,
+    PECAS: PECAS, GRUPOS: GRUPOS, MANCHAS: MANCHAS, FAMILIAS: FAMILIAS, NIVEIS: NIVEIS, PESSOAS: PESSOAS, BLOG: BLOG, BLOG_REVISADOS: BLOG_REVISADOS, LEIA_REVISADOS: LEIA_REVISADOS, SITE: SITE,
     validar: validar, buscar: buscar, analisar: analisar, resolver: resolver, problemasOrdenados: problemasOrdenados,
     problemaDaMancha: problemaDaMancha
   };
