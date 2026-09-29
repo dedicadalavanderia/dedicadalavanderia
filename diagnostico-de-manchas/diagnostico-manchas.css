@@ -139,6 +139,7 @@ button.dm-etapa-btn:hover { border-color: var(--dm-preto); }
 .dm-sugestao .dm-selo { grid-area: selo; }
 .dm-sugestao-vazia { font-size: 15px; padding: 6px 2px; }
 .dm-entendi { font-size: 13.5px; color: var(--dm-suave); padding: 0 2px; }
+.dm-nao-lava { font-size: 15px; padding: 10px 12px; border: 2px dashed var(--dm-preto); border-radius: 8px; background: var(--dm-branco); }
 .dm-contexto { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; padding: 10px 14px; margin: 0 0 16px; background: var(--dm-faixa); border-radius: 8px; }
 .dm-contexto p { margin: 0; }
 

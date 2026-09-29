@@ -112,7 +112,11 @@ As 22 peças × 44 manchas e danos dão 968 combinações, e todas têm resultad
 
 ### Medição
 
-Se o dono aprovar, os eventos `dm_peca`, `dm_resultado`, `dm_whatsapp` e `dm_busca` vão para o Google Analytics do site (GT-NBXFRXVL). Não há nenhum dado pessoal.
+Aprovada pelo dono em 29/09: os eventos `dm_peca`, `dm_resultado`, `dm_whatsapp` e `dm_busca` vão para o Google Analytics do site (GT-NBXFRXVL). Não há nenhum dado pessoal.
+
+### O que a Dedicada não lava
+
+Resposta do dono em 29/09: bolsas, camurça, sofás e estofados, colchões e tapetes médios e grandes. Quando a busca encontra um desses itens, mostra um aviso no lugar das sugestões, com o link para a roupa de cama quando for o caso (capas e mantas de sofá e protetor de colchão, a Dedicada lava). A lista fica em `NAO_LAVA`, na parte da busca do JS. Mochila, boné e tapete pequeno vão para "Outra peça ou tecido".
 
 ## Banco (topo de `diagnostico-manchas.js`)
 

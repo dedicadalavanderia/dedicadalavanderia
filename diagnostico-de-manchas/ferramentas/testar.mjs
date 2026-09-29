@@ -227,7 +227,10 @@ let familiasTestadas = 0, combinacoes = 0;
     ['água sanitária na calça jeans', '#jeans/m-agua-sanitaria'],
     ['caiu café no terno', '#alfaiataria/m-cafe'],
     ['mofo na jaqueta de couro', '#couro/mofo'],
-    ['xixi no colchão', '#outra/m-xixi'],
+    ['protetor de colchão com xixi', '#roupa-de-cama/m-xixi'],
+    ['capa de sofá com vinho', '#roupa-de-cama/m-vinho'],
+    ['mochila com mofo', '#outra/m-mofo'],
+    ['bolso da camisa com caneta', '#camisas/m-caneta'],
     ['vestido', '#festa-noiva'],
     ['legging com cheiro', '#sinteticos/m-cheiro']
   ];
@@ -242,6 +245,16 @@ let familiasTestadas = 0, combinacoes = 0;
   await pagina.screenshot({ path: join(capturas, '375-busca-vinho.png') });
   await pagina.fill('#dm-q', 'xyzw');
   if (!(await pagina.$('.dm-sugestao-vazia'))) erro('Busca sem resultado: falta a mensagem');
+  // O que a Dedicada não lava: aviso no lugar das sugestões.
+  for (const [termo, temLink] of [['bolsa de couro', false], ['caneta no sofá', true], ['xixi no colchão', true], ['jaqueta de camurça', false]]) {
+    await pagina.fill('#dm-q', termo);
+    const aviso = await pagina.$('.dm-nao-lava');
+    const sugestoes = await pagina.$$('.dm-sugestao');
+    if (!aviso || sugestoes.length) erro(`Busca "${termo}": deveria avisar que a Dedicada não lava, sem sugestões`);
+    else if (temLink && !(await pagina.$('.dm-nao-lava a[href="#roupa-de-cama"]'))) erro(`Busca "${termo}": falta o link para roupa de cama`);
+  }
+  await pagina.fill('#dm-q', 'caneta no sofá');
+  await (await pagina.$('.dm-busca')).screenshot({ path: join(capturas, '375-busca-nao-lava.png') });
   await pagina.fill('#dm-q', 'manchei minha blusa de vinho');
   if (!(await pagina.$('.dm-entendi'))) erro('Busca: falta a linha "Entendi"');
   await pagina.screenshot({ path: join(capturas, '375-busca-blusa-vinho.png') });

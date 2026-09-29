@@ -54,7 +54,7 @@ As instruções para fazer em casa também são dos guias. Por exemplo, a escova
 
 ## O que não está nos guias
 
-- **Foto pelo WhatsApp:** é o único convite frequente que não está em nenhum guia ("mande uma foto da peça e da etiqueta pelo WhatsApp"). É a pergunta 4 para o dono.
+- **Foto pelo WhatsApp:** é o único convite frequente que não está em nenhum guia ("mande uma foto da peça e da etiqueta pelo WhatsApp"). O dono confirmou em 29/09 que a Dedicada avalia peças por foto.
 - **Peças sem guia próprio:** o processo das 5 peças sem guia (viscose, poliéster e academia, bebê, toalhas de mesa e outra peça) é geral e está na pergunta 13.
 
 ## Proteções que ficaram

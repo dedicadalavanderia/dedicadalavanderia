@@ -996,7 +996,7 @@
     },
     {
       id: 'roupa-de-cama', grupo: 'casa', nome: 'Roupa de cama e toalhas', exemplos: 'Lençóis, toalhas, mantas e capas de sofá',
-      sinonimos: ['lencol', 'lencois', 'fronha', 'toalha de banho', 'toalha de rosto', 'roupao', 'roupa de cama', 'manta', 'colcha de croche', 'capa de sofa', 'almofada', 'protetor de colchao', 'enxoval', 'airbnb'],
+      sinonimos: ['lencol', 'lencois', 'fronha', 'toalha de banho', 'toalha de rosto', 'roupao', 'roupa de cama', 'manta', 'manta de sofa', 'colcha de croche', 'capa de sofa', 'capa de almofada', 'almofada', 'protetor de colchao', 'capa de colchao', 'enxoval', 'airbnb'],
       guia: SITE + '/cuidados-roupa-de-cama/', assina: 'liliane',
       fala: 'Lençóis, fronhas e toalhas vão sempre para a água, no ciclo de enxoval da Seitz; só o lençol de seda vai a seco. As toalhas passam por duplo alvejamento, e os lençóis saem passados e embalados por jogo, prontos para usar ou guardar.',
       maquina: 'Sim, na temperatura da etiqueta; lençol de seda, não.',
@@ -1386,10 +1386,10 @@
       problemas: []
     },
     {
-      id: 'outra', grupo: 'outras', nome: 'Outra peça ou tecido', exemplos: 'O que não está na lista: a equipe avalia pela foto',
-      sinonimos: ['outro tecido', 'uniforme', 'jaleco', 'farda', 'camurca', 'suede', 'nobuck', 'acrilico', 'kimono', 'quimono', 'tapete', 'bolsa', 'mochila', 'bone', 'colchao', 'sofa', 'estofado'],
+      id: 'outra', grupo: 'outras', nome: 'Outra peça ou tecido', exemplos: 'Mochila, boné, tapete pequeno e outras peças: a equipe avalia pela foto',
+      sinonimos: ['outro tecido', 'uniforme', 'jaleco', 'farda', 'nobuck', 'acrilico', 'kimono', 'quimono', 'tapete', 'tapete pequeno', 'tapetinho', 'tapete de banheiro', 'mochila', 'bone'],
       semGuia: true, guia: SITE + '/cuidados-por-tecido/', assina: null, fala: null,
-      nota: 'Esta peça ainda não tem guia próprio. Mande uma foto da peça e da etiqueta pelo WhatsApp: a equipe diz se lava e como.',
+      nota: 'A Dedicada lava mochilas, bonés e tapetes pequenos, que ainda não têm guia próprio. Não lava bolsas, camurça, sofás, colchões nem tapetes médios e grandes. Mande uma foto da peça e da etiqueta pelo WhatsApp: a equipe avalia pela foto e diz como lavar.',
       maquina: 'Siga a etiqueta. Na dúvida, use água fria, não esfregue e não use secadora nem água sanitária.',
       maquinaNao: false,
       caseiro: [],
@@ -1576,6 +1576,15 @@
     preta: 'Escura', preto: 'Escura', escura: 'Escura', escuro: 'Escura', 'azul marinho': 'Escura'
   };
   var LIGA = ['de', 'da', 'do', 'em', 'na', 'no', 'com'];
+  /* O que a Dedicada não lava (resposta do dono, 29/09/2026): a busca avisa em vez de sugerir.
+   * peca: onde fica o que a Dedicada lava do mesmo tipo (a capa do sofá, o protetor do colchão). */
+  var NAO_LAVA = [
+    { termos: ['camurca', 'suede'], texto: 'A Dedicada não lava peças de camurça.' },
+    { termos: ['bolsa'], texto: 'A Dedicada não lava bolsas.' },
+    { termos: ['sofa', 'estofado'], texto: 'A Dedicada não lava sofás nem estofados. Capas e mantas de sofá, sim.', peca: 'roupa-de-cama' },
+    { termos: ['colchao'], texto: 'A Dedicada não lava colchões. Protetor de colchão, sim.', peca: 'roupa-de-cama' },
+    { termos: ['tapete grande', 'tapete medio', 'tapetao'], texto: 'A Dedicada lava só tapetes pequenos. Tapetes médios e grandes, não.' }
+  ];
 
   function singular(w) { return w.length > 3 && /s$/.test(w) && !/(is|us|ss)$/.test(w) ? w.slice(0, -1) : w; }
   function palavras(texto) { return normalizar(texto).split(' ').filter(Boolean).map(singular); }
@@ -1640,7 +1649,8 @@
         var e = encaixe(q, t, aberta);
         if (e && (!melhor || e.n > melhor.n || (e.n === melhor.n && e.fim - e.ini > melhor.fim - melhor.ini))) melhor = e;
       });
-      if (melhor) achados.push({ tipo: tipo, alvo: x.alvo, n: melhor.n, ini: melhor.ini, fim: melhor.fim });
+      // O que não lava só vale com a palavra exata ("bolso" não é "bolsa").
+      if (melhor && (tipo !== 'naoLava' || melhor.n === 3)) achados.push({ tipo: tipo, alvo: x.alvo, n: melhor.n, ini: melhor.ini, fim: melhor.fim });
     }
     if (q.length) {
       INDICE.manchas.forEach(function (x) { testa('mancha', x); });
@@ -1648,6 +1658,7 @@
       INDICE.problemas.forEach(function (x) { testa('problema', x); });
       Object.keys(GENERICAS).forEach(function (g) { testa('generica', { alvo: g, termos: [palavras(g)] }); });
       Object.keys(CORES).forEach(function (c) { testa('cor', { alvo: CORES[c], termos: [palavras(c)] }); });
+      NAO_LAVA.forEach(function (x) { testa('naoLava', { alvo: x, termos: x.termos.map(palavras) }); });
     }
     // Fica de fora o que está dentro de um termo maior ("calça" em "calça jeans", "clara" em
     // "clara de ovo") e o encaixe aproximado onde há um exato. Problema só tira a cor.
@@ -1680,13 +1691,16 @@
     }
     return {
       manchas: doTipo('mancha'), pecas: doTipo('peca'), generica: genericas[0] || null,
-      candidatas: candidatas, problemas: problemas, cor: doTipo('cor')[0] || null
+      candidatas: candidatas, problemas: problemas, cor: doTipo('cor')[0] || null, naoLava: doTipo('naoLava')[0] || null
     };
   }
 
   /* Sugestões a partir do que a busca entendeu, da mais provável para a menos. */
   function sugestoes(a) {
     var itens = [];
+    // Item que a Dedicada não lava ("bolsa de couro", "sofá"): só o aviso. "Capa de sofá" não cai
+    // aqui, porque o termo maior da roupa de cama engole a palavra "sofá".
+    if (a.naoLava) return itens;
     function add(item) { if (item && !itens.some(function (i) { return i.hash === item.hash; })) itens.push(item); }
     function doResultado(p, m) {
       if (!servePara(m, p)) return null;
@@ -1845,7 +1859,15 @@
       itens = sugestoes(analise);
       lista.textContent = '';
       if (!campo.value.trim()) return;
+      if (analise.naoLava) {
+        var alt = analise.naoLava.peca && acharPeca(analise.naoLava.peca);
+        lista.appendChild(h('li', { class: 'dm-nao-lava' }, h('strong', null, analise.naoLava.texto), ' ',
+          alt ? h('a', { href: '#' + alt.id, onclick: function (ev) { ev.preventDefault(); irPara('#' + alt.id); } }, 'Ver ' + minuscula(alt.nome)) : null,
+          alt ? '. ' : '',
+          h('a', { href: linkWhats('Olá! Vim do Diagnóstico de Manchas. Tenho uma dúvida: ' + campo.value), target: '_blank', rel: 'noopener' }, 'Dúvidas? Fale pelo WhatsApp'), '.'));
+      }
       if (!itens.length) {
+        if (analise.naoLava) return;
         var soPeca = analise.generica || analise.cor;
         lista.appendChild(h('li', { class: 'dm-sugestao-vazia' },
           soPeca ? 'Conte também o que manchou e a peça, por exemplo: café na camisa branca. Ou escolha a peça abaixo, ou ' : 'Nada encontrado. Escolha a peça abaixo ou ',
