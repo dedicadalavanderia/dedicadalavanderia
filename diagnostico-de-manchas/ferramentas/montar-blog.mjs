@@ -39,6 +39,7 @@ function tabela(post) {
 }
 
 function fala(post) {
+  if (!post.falaDe) return ''; // sem fala aprovada que combine com o assunto
   const p = peca(post.falaDe);
   const pessoa = D.PESSOAS[post.assina];
   if (!p || !p.fala) { erros.push(`${post.slug}: a peça ${post.falaDe} não tem fala aprovada`); return ''; }
@@ -60,13 +61,13 @@ function jsonLd(post) {
 function corpo(post, fotoLocal) {
   const pessoa = D.PESSOAS[post.assina];
   const foto = fotoLocal ? `prototipo-img/${post.assina}.webp` : pessoa.foto;
-  const msg = encodeURIComponent(`Olá! Vim do post sobre ${D.MANCHAS.find((m) => m.id === post.mancha).nome.toLowerCase()} no blog. Posso mandar uma foto da peça?`);
+  const msg = encodeURIComponent(`Olá! Vim do post sobre ${post.assunto} no blog. Posso mandar uma foto da peça?`);
   const leia = post.guias.map((id) => `<a href="${esc(peca(id).guia)}">Guia de ${esc(peca(id).nome.toLowerCase())}</a>`)
     .concat(`<a href="${SITE}/diagnostico-de-manchas/">Diagnóstico de Manchas</a>`).join(' · ');
   const partes = [
     `<p style="display:flex;align-items:center;gap:12px;font-size:14px"><img src="${esc(foto)}" alt="${esc(pessoa.nome)}" width="48" height="48" style="border-radius:50%;flex:0 0 48px;object-fit:cover"><span>Revisado por <strong>${esc(pessoa.nome)}</strong>, ${esc(pessoa.papel)} da Dedicada Lavanderia · Atualizado em setembro de 2026</span></p>`,
     `<p>${esc(post.resposta)}</p>`,
-    `<p style="border:2px solid #111;border-radius:8px;padding:12px 14px"><a href="${SITE}/diagnostico-de-manchas/#m-${post.mancha}"><strong>${esc(post.chamada)} →</strong></a></p>`,
+    `<p style="border:2px solid #111;border-radius:8px;padding:12px 14px"><a href="${SITE}/diagnostico-de-manchas/${post.ancora ? '#' + post.ancora : ''}"><strong>${esc(post.chamada)} →</strong></a></p>`,
     ...post.secoes.map((s) => `<h2>${esc(s.h2)}</h2>\n${s.html.replace('{{TABELA}}', tabela(post)).replace('{{FALA}}', fala(post))}`),
     `<h2>Perguntas frequentes</h2>`,
     ...post.perguntas.map(([q, a]) => `<h3>${esc(q)}</h3>\n<p>${esc(a)}</p>`),
@@ -88,7 +89,9 @@ for (const post of POSTS) {
   if (/\n\s*\n/.test(html)) erros.push(`${post.slug}: linha em branco no conteúdo`);
   if (/\{\{[A-Z]+\}\}/.test(html)) erros.push(`${post.slug}: sobrou marcador sem trocar`);
   if (!D.PESSOAS[post.assina]) erros.push(`${post.slug}: quem assina não existe`);
-  if (!D.MANCHAS.some((m) => m.id === post.mancha)) erros.push(`${post.slug}: mancha ${post.mancha} não existe na ferramenta`);
+  const alvo = post.ancora || '';
+  if (alvo.startsWith('m-') ? !D.MANCHAS.some((m) => 'm-' + m.id === alvo) : alvo && !peca(alvo)) erros.push(`${post.slug}: o botão leva a #${alvo}, que não existe na ferramenta`);
+  if (!post.assunto) erros.push(`${post.slug}: falta o assunto (usado na mensagem do WhatsApp)`);
   post.guias.forEach((id) => { if (!peca(id) || peca(id).semGuia) erros.push(`${post.slug}: guia ${id} não existe`); });
   const palavras = post.resposta.split(/\s+/).length;
   if (palavras < 30 || palavras > 70) avisos.push(`${post.slug}: resposta curta com ${palavras} palavras (o ideal é de 40 a 60)`);

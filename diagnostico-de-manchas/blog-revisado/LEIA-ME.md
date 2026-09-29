@@ -52,10 +52,12 @@ O conteúdo tem um bloco de dados estruturados (`<script type="application/ld+js
 
 | Post | Situação |
 |---|---|
-| Removemos manchas de vinho | Amostra pronta, aguardando aprovação do formato |
-| Roupa com cheiro de xixi | Amostra pronta, aguardando aprovação do formato |
+| Vinho e xixi (amostras) | Prontos |
+| Lote 1, 12 posts: café, graxa, terra, ferrugem, remédio, comida, cheiro de mofo, amarelado e mofo, desbote, bolinhas, "minha roupa manchou" e rayon | Prontos (29/09) |
 | 2 posts sobre urina | Redirecionar para "Como lavar roupa com xixi" (não precisam de revisão) |
-| Os outros 21 de `../auditoria-blog.md` | Depois da aprovação das amostras |
+| Shoyu e chocolate | Proposta: redirecionar para o post de comida (pergunta 22) |
+| Gordura, maquiagem e bebê (um de cada par) | Proposta: redirecionar para o outro post do par (pergunta 23) |
+| Toalhas de mesa, guardanapos, fardas e roupa de bebê | Esperam os fatos do dono (pergunta 24) |
 
 ## Três posts sobre o mesmo assunto
 

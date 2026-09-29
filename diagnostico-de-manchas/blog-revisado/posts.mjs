@@ -7,15 +7,18 @@
 //   slug, tituloAntigo      endereço (não muda) e título atual, para comparar
 //   titulo                  título do post (vira o H1 do tema)
 //   seoTitulo, meta         título e descrição para o plugin de SEO
-//   assina                  liliane | jorge | alejandro; falaDe: id da peça cuja fala aprovada entra
+//   assina                  liliane | jorge | alejandro; falaDe: id da peça cuja fala aprovada entra (ou null)
 //   resposta                resposta curta do começo (cerca de 40 a 60 palavras)
-//   mancha                  id da mancha na ferramenta: o botão leva a /diagnostico-de-manchas/#m-<mancha>
+//   ancora                  aonde o botão leva na ferramenta: 'm-vinho' (mancha), 'viscose' (peça) ou '' (início)
+//   assunto                 o assunto do post, na mensagem do WhatsApp ("Vim do post sobre ...")
 //   chamada                 texto do botão para a ferramenta
 //   secoes                  [{ h2, html }]; html pode usar {{TABELA}} para a tabela de urgência
 //   tabela                  [[peça, problema], ...] da ferramenta: urgência e "o que acontece" dos guias
 //   perguntas               [[pergunta, resposta], ...]: viram seção visível e dados estruturados
 //   guias                   ids das peças cujos guias entram em "Leia também"
 //   mudou                   o que mudou em relação ao post no ar
+import { LOTE1 } from './posts-lote1.mjs';
+
 export const POSTS = [
   {
     slug: 'removemos-manchas-de-vinho-dedicada-lavanderia',
@@ -25,7 +28,7 @@ export const POSTS = [
     meta: 'Caiu vinho na roupa? Tire o excesso com um pano, sem esfregar e sem água quente, e leve a peça logo. Veja a urgência na seda, no linho, na lã e no couro.',
     assina: 'liliane', falaDe: 'seda',
     resposta: 'Tire o excesso encostando um pano limpo, sem esfregar, e não use água quente, que fixa a mancha de vinho. Não passe ferro nem secador e leve a peça quanto antes: na seda, o vinho tinto pede cuidado em menos de 24 horas; no linho, na lã e no couro, em até 24 horas.',
-    mancha: 'vinho',
+    ancora: 'm-vinho', assunto: 'mancha de vinho',
     chamada: 'Está com vinho na roupa agora? Escolha a peça no Diagnóstico de Manchas e veja o que fazer',
     tabela: [['seda', 'vinho-tinto'], ['linho', 'vinho-cafe-cha'], ['la', 'vinho'], ['veludo', 'bebida-comida'], ['couro', 'vinho'], ['festa-noiva', 'barra-comida-vinho']],
     secoes: [
@@ -73,7 +76,7 @@ export const POSTS = [
     meta: 'Xixi no edredom, na pelúcia, no carrinho ou na roupa de bebê? Tire o excesso sem esfregar, sem água quente nem água sanitária, e leve em até 24 horas.',
     assina: 'alejandro', falaDe: 'carrinho',
     resposta: 'Tire o excesso encostando um pano limpo, sem esfregar, e não use água quente, secadora nem água sanitária. Leve a peça em até 24 horas: no edredom, na pelúcia e no acolchoado do carrinho de bebê, a urina entra no enchimento, e o cheiro volta com a umidade.',
-    mancha: 'xixi',
+    ancora: 'm-xixi', assunto: 'roupa com xixi',
     chamada: 'Tem uma peça com xixi agora? Escolha a peça no Diagnóstico de Manchas e veja o que fazer',
     tabela: [['couro', 'sangue-leite'], ['edredom', 'xixi'], ['pelucias', 'xixi-vomito-leite'], ['carrinho', 'xixi']],
     secoes: [
@@ -111,5 +114,6 @@ export const POSTS = [
       '"Coleta e entrega em Florianópolis" virou a coleta confirmada: 26 bairros da Ilha e do Continente, em dias fixos.',
       'Entraram a resposta curta, o passo a passo, a urgência de cada peça, a fala aprovada do Alejandro, perguntas frequentes com dados estruturados e o botão para o Diagnóstico de Manchas, já na mancha de xixi.'
     ]
-  }
+  },
+  ...LOTE1
 ];

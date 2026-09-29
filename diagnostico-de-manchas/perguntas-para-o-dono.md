@@ -43,3 +43,12 @@ Nenhuma delas impede a instalação: o texto de hoje é o mais cauteloso.
     As respostas foram montadas com frases dos guias de algodão e de jeans. A de desodorante é a resposta publicada no guia de algodão.
 20. **Qual V é de qual família de mancha?** Os guias ligam cada família a um tira-manchas: gordurosas e sintéticas, orgânicas e proteicas, e vegetais e de tanino. Mas o post antigo de vinho diz que o V2 tira vinho tinto, e o vinho é da família vegetal e de tanino. Enquanto isso não for confirmado, a ferramenta, a página e os posts dizem só "V1, V2 ou V3", sem ligar cada um a uma família. O guia de cetim e organza, que está no ar, tem uma tabela com "Hydret 1, 2 e 3" e também precisa ser trocado.
 21. **O formato das 2 amostras de post está aprovado?** São os posts de vinho e xixi, em `blog-revisado/`. Os outros 21 seguem o mesmo formato.
+22. **Os posts de shoyu e de chocolate podem ser redirecionados para o de manchas de comida?** Os guias não têm quase nada próprio sobre essas duas manchas, e os três posts ficariam quase iguais, o que o Google desaconselha. O post de comida revisado já responde chocolate e shoyu.
+23. **Os pares repetidos podem virar um post só?** Três assuntos têm dois posts que competem no Google. A sugestão é manter um de cada e redirecionar o outro:
+    - **gordura:** manter "Como remover manchas de gordura das roupas" (`...descubra-a-solucao-definitiva/`, que já passou nas regras e está na ferramenta) e redirecionar `...de-forma-segura/`;
+    - **maquiagem:** manter "Remoção de manchas de maquiagem" (já passou nas regras) e redirecionar "Lavagem de Roupas com Manchas de Maquiagem em Florianópolis";
+    - **roupa de bebê:** manter "Lavagem de roupas de bebê: o que pode e o que evitar?" e redirecionar "Como lavar roupas de recém-nascido".
+24. **Como a Dedicada lava toalhas de mesa, guardanapos, fardas e roupa de bebê?** Os guias não dizem, e sem esses fatos os posts não têm o que contar. Para cada um, bastam processo, prazo e preço. Os posts antigos dizem, sem confirmação:
+    - **toalhas de mesa:** as com gordura vão antes para a lavagem a seco; alvejamento sem cloro; sem secadora; goma forte ou meia, sob pedido;
+    - **fardas:** o post não traz processo;
+    - **roupa de bebê:** o único fato confirmado é que a Dedicada lava ninhos, enxoval e roupas de bebê (guia de carrinho).
